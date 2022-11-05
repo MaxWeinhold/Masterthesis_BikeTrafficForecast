@@ -1,0 +1,156 @@
+#Spatial prediction of urban bicycle traffic volume with machine learning
+#Maximilian Weinhold
+#------------------------------------------------------------------------
+#Data preperation Bremen
+
+#Clean up memory
+rm(list=ls())
+
+#Target storage location (inside the GitHub Repository)
+#C:\Users\MaxWe\Documents\GitHub\Masterthesis_BikeTrafficForecast\data preparation
+
+#Source storage location (outside the GitHub Repository)
+#Because of file size limitation
+#files about 100 MB have to be excluded
+#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Bochum
+setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bremen")
+
+#Read Bycicle Counting Data----------------------------------------------
+  countingData = read.csv(file = "2022-10-27-10-49-35_Radzaehler_VMZ-Bremen_Values.csv",sep=";")
+  names(countingData)[1]="Timestamp"
+  names(countingData)
+  
+#Divide raw data per stations----------------------------------------------
+  
+  MoltkeStr_Ost=cbind(countingData$Timestamp,countingData[2])
+  MoltkeStr_West=cbind(countingData$Timestamp,countingData[3])
+  HastedterBr=cbind(countingData$Timestamp,countingData[4])
+  LangemarckStr_Ost=cbind(countingData$Timestamp,countingData[5])
+  LangemarckStr_West=cbind(countingData$Timestamp,countingData[6])
+  Osterdeich=cbind(countingData$Timestamp,countingData[7])
+  Radweg_Kleine_Weser=cbind(countingData$Timestamp,countingData[8])
+  Schwachhauser_Ring=cbind(countingData$Timestamp,countingData[9])
+  WachmannStr_Sued=cbind(countingData$Timestamp,countingData[10])
+  WachmannStr_Nord=cbind(countingData$Timestamp,countingData[11])
+  WilhelmKaiserBr_Ost=cbind(countingData$Timestamp,countingData[12])
+  WilhelmKaiserBr_West=cbind(countingData$Timestamp,countingData[13])
+  
+#Rename Columns----------------------------------------------
+  
+  names(MoltkeStr_Ost)[1]="Timestamp"
+  names(MoltkeStr_West)[1]="Timestamp"
+  names(HastedterBr)[1]="Timestamp"
+  names(LangemarckStr_Ost)[1]="Timestamp"
+  names(LangemarckStr_West)[1]="Timestamp"
+  names(Osterdeich)[1]="Timestamp"
+  names(Radweg_Kleine_Weser)[1]="Timestamp"
+  names(Schwachhauser_Ring)[1]="Timestamp"
+  names(WachmannStr_Sued)[1]="Timestamp"
+  names(WachmannStr_Nord)[1]="Timestamp"
+  names(WilhelmKaiserBr_Ost)[1]="Timestamp"
+  names(WilhelmKaiserBr_West)[1]="Timestamp"
+  
+  names(MoltkeStr_Ost)[2]="Value"
+  names(MoltkeStr_West)[2]="Value"
+  names(HastedterBr)[2]="Value"
+  names(LangemarckStr_Ost)[2]="Value"
+  names(LangemarckStr_West)[2]="Value"
+  names(Osterdeich)[2]="Value"
+  names(Radweg_Kleine_Weser)[2]="Value"
+  names(Schwachhauser_Ring)[2]="Value"
+  names(WachmannStr_Sued)[2]="Value"
+  names(WachmannStr_Nord)[2]="Value"
+  names(WilhelmKaiserBr_Ost)[2]="Value"
+  names(WilhelmKaiserBr_West)[2]="Value"
+  
+#Add Location Columns----------------------------------------------
+  
+  MoltkeStr_Ost$Town = "Bremen"
+  MoltkeStr_West$Town = "Bremen"
+  HastedterBr$Town = "Bremen"
+  LangemarckStr_Ost$Town = "Bremen"
+  LangemarckStr_West$Town = "Bremen"
+  Osterdeich$Town = "Bremen"
+  Radweg_Kleine_Weser$Town = "Bremen"
+  Schwachhauser_Ring$Town = "Bremen"
+  WachmannStr_Sued$Town = "Bremen"
+  WachmannStr_Nord$Town = "Bremen"
+  WilhelmKaiserBr_Ost$Town = "Bremen"
+  WilhelmKaiserBr_West$Town = "Bremen"
+  
+  MoltkeStr_Ost$Station = "MoltkeStr"
+  MoltkeStr_West$Station = "MoltkeStr"
+  HastedterBr$Station = "HastedterBr"
+  LangemarckStr_Ost$Station = "LangemarckStr"
+  LangemarckStr_West$Station = "LangemarckStr"
+  Osterdeich$Station = "Osterdeich"
+  Radweg_Kleine_Weser$Station = "Radweg_Kleine_Weser"
+  Schwachhauser_Ring$Station = "Schwachhauser"
+  WachmannStr_Sued$Station = "WachmannStr"
+  WachmannStr_Nord$Station = "WachmannStr"
+  WilhelmKaiserBr_Ost$Station = "WilhelmKaiserBr"
+  WilhelmKaiserBr_West$Station = "WilhelmKaiserBr"
+  
+  MoltkeStr_Ost$Lon = 8.8330
+  MoltkeStr_West$Lon = 8.8330
+  HastedterBr$Lon = 8.8528
+  LangemarckStr_Ost$Lon = 8.7974
+  LangemarckStr_West$Lon = 8.7969
+  Osterdeich$Lon = 8.8198
+  Radweg_Kleine_Weser$Lon = 8.8073
+  Schwachhauser_Ring$Lon = 8.8409
+  WachmannStr_Sued$Lon = 8.8263
+  WachmannStr_Nord$Lon = 8.8264
+  WilhelmKaiserBr_Ost$Lon = 8.8040
+  WilhelmKaiserBr_West$Lon = 8.8040
+  
+  MoltkeStr_Ost$Lat = 53.0778
+  MoltkeStr_West$Lat = 53.0778
+  HastedterBr$Lat = 53.0612
+  LangemarckStr_Ost$Lat = 53.0764
+  LangemarckStr_West$Lat = 53.0765
+  Osterdeich$Lat = 53.0693
+  Radweg_Kleine_Weser$Lat = 53.0660
+  Schwachhauser_Ring$Lat = 53.0891
+  WachmannStr_Sued$Lat = 53.0845
+  WachmannStr_Nord$Lat = 53.0847
+  WilhelmKaiserBr_Ost$Lat = 53.0722
+  WilhelmKaiserBr_West$Lat = 53.0726
+  
+  MoltkeStr_Ost$Oneway = FALSE
+  MoltkeStr_West$Oneway = FALSE
+  HastedterBr$Oneway = FALSE
+  LangemarckStr_Ost$Oneway = FALSE
+  LangemarckStr_West$Oneway = FALSE
+  Osterdeich$Oneway = FALSE
+  Radweg_Kleine_Weser$Oneway = FALSE
+  Schwachhauser_Ring$Oneway = FALSE
+  WachmannStr_Sued$Oneway = FALSE
+  WachmannStr_Nord$Oneway = FALSE
+  WilhelmKaiserBr_Ost$Oneway = FALSE
+  WilhelmKaiserBr_West$Oneway = FALSE
+  
+#Summarize Directions----------------------------------------------
+  
+  MoltkeStr=MoltkeStr_Ost
+  MoltkeStr$Value = as.numeric(MoltkeStr_Ost$Value) + as.numeric(MoltkeStr_West$Value)
+  LangemarckStr=LangemarckStr_Ost
+  LangemarckStr$Value = as.numeric(LangemarckStr_Ost$Value) + as.numeric(LangemarckStr_West$Value)
+  WachmannStr=WachmannStr_Sued
+  WachmannStr$Value = as.numeric(WachmannStr_Sued$Value) + as.numeric(WachmannStr_Nord$Value)
+  WilhelmKaiserBr=WilhelmKaiserBr_Ost
+  WilhelmKaiserBr$Value = as.numeric(WilhelmKaiserBr$Value) + as.numeric(WilhelmKaiserBr_West$Value)
+  
+#Connect the Stations----------------------------------------------
+  
+  Bremen_rawData=rbind(MoltkeStr,HastedterBr)
+  Bremen_rawData=rbind(Bremen_rawData,LangemarckStr)
+  Bremen_rawData=rbind(Bremen_rawData,Osterdeich)
+  Bremen_rawData=rbind(Bremen_rawData,Radweg_Kleine_Weser)
+  Bremen_rawData=rbind(Bremen_rawData,Schwachhauser_Ring)
+  Bremen_rawData=rbind(Bremen_rawData,WachmannStr)
+  Bremen_rawData=rbind(Bremen_rawData,WilhelmKaiserBr)
+  
+  Bremen_rawData=na.omit(Bremen_rawData)
+  Bremen_rawData$Value=as.numeric(Bremen_rawData$Value)
+  summary(Bremen_rawData)

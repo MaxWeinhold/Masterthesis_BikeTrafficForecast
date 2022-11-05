@@ -22,14 +22,14 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   names(countingData_Springorumtrasse)
   names(countingData_Wittener_Strasse)
   
-#Rename Columns
+#Rename Columns----------------------------------------------
   names(countingData_Springorumtrasse)[1]="Timestamp"
   names(countingData_Springorumtrasse)[2]="Value"
   
   names(countingData_Wittener_Strasse)[1]="Timestamp"
   names(countingData_Wittener_Strasse)[2]="Value"
   
-#Delete Columns we don't need
+#Delete Columns we don't need----------------------------------------------
   countingData_Springorumtrasse$X <- NULL
   countingData_Springorumtrasse$Springorumtrasse.stadteinwärts.Fahrräder <- NULL
   countingData_Springorumtrasse$Springorumtrasse.stadtauswärts.Fahrräder <- NULL
@@ -38,7 +38,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   countingData_Wittener_Strasse$Wittener.Str..Gesamt.Wittener.Str..stadteinwärts <- NULL
   countingData_Wittener_Strasse$Wittener.Str..Gesamt.Wittener.Str..stadtauswärts <- NULL
   
-#Add Location Columns
+#Add Location Columns----------------------------------------------
   
   countingData_Springorumtrasse$Town = "Bochum"
   countingData_Springorumtrasse$Station = "Springorumtr"
@@ -52,11 +52,15 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   countingData_Wittener_Strasse$Lat = 51.479342160683515
   countingData_Wittener_Strasse$Oneway = FALSE
   
-#Connect the Stations
+#Connect the Stations----------------------------------------------
   
   Bochum_rawData=rbind(countingData_Springorumtrasse,countingData_Wittener_Strasse)
+  
+  Bochum_rawData=na.omit(Bochum_rawData)
+  Bochum_rawData$Value=as.numeric(Bochum_rawData$Value)
+  summary(Bochum_rawData)
 
 
 
-
+  
 

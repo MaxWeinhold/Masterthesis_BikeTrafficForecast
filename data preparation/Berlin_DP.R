@@ -29,7 +29,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
 
   names(countingData21)
 
-#Connect all years
+#Connect all years----------------------------------------------
   
   countingData=rbind(countingData12,countingData13)
   countingData=rbind(countingData,countingData14)
@@ -42,7 +42,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   countingData=rbind(countingData,countingData21)
   
   
-#Divide raw date per stations
+#Divide raw data per stations----------------------------------------------
   
   Data_X02.MI.JAN.N=cbind(countingData$Datum,countingData$X02.MI.JAN.N)
   Data_X02.MI.JAN.S=cbind(countingData$Datum,countingData$X02.MI.JAN.S)
@@ -66,11 +66,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   Data_X20.TS.MAR.N=cbind(countingData$Datum,countingData$X20.TS.MAR.N)
   Data_X20.TS.MAR.S=cbind(countingData$Datum,countingData$X20.TS.MAR.S)
   Data_X21.NK.MAY=cbind(countingData$Datum,countingData$X21.NK.MAY)
+  Data_X21.NK.MAY=cbind(countingData$Datum,countingData$X21.NK.MAY)
+  Data_X23.TK.KAI=cbind(countingData$Datum,countingData$X23.TK.KAI)
   Data_X24.MH.ALB=cbind(countingData$Datum,countingData$X24.MH.ALB)
   Data_X26.LI.PUP=cbind(countingData$Datum,countingData$X26.LI.PUP)
   Data_X27.RE.MAR=cbind(countingData$Datum,countingData$X27.RE.MAR)
   
-#change data to DataFrame
+#change data to DataFrame----------------------------------------------
   
   Data_X02.MI.JAN.N=as.data.frame(Data_X02.MI.JAN.N)
   Data_X02.MI.JAN.S=as.data.frame(Data_X02.MI.JAN.S)
@@ -94,11 +96,12 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   Data_X20.TS.MAR.N=as.data.frame(Data_X20.TS.MAR.N)
   Data_X20.TS.MAR.S=as.data.frame(Data_X20.TS.MAR.S)
   Data_X21.NK.MAY=as.data.frame(Data_X21.NK.MAY)
+  Data_X23.TK.KAI=as.data.frame(Data_X23.TK.KAI)
   Data_X24.MH.ALB=as.data.frame(Data_X24.MH.ALB)
   Data_X26.LI.PUP=as.data.frame(Data_X26.LI.PUP)
   Data_X27.RE.MAR=as.data.frame(Data_X27.RE.MAR)
   
-#Rename Columns
+#Rename Columns----------------------------------------------
   
   names(Data_X02.MI.JAN.N)[1]="Timestamp"
   names(Data_X02.MI.JAN.S)[1]="Timestamp"
@@ -153,8 +156,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   names(Data_X24.MH.ALB)[2]="Value"
   names(Data_X26.LI.PUP)[2]="Value"
   names(Data_X27.RE.MAR)[2]="Value"
-  
-#Add Location Columns
+
+#Add Location Columns----------------------------------------------
   
   Data_X02.MI.JAN.N$Town = "Berlin"
   Data_X02.MI.JAN.S$Town = "Berlin"
@@ -265,30 +268,75 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   Data_X26.LI.PUP$Lat = 52.50025
   Data_X27.RE.MAR$Lat = 52.55819
 
-  Data_X02.MI.JAN.N$Oneway = TRUE
-  Data_X02.MI.JAN.S$Oneway = TRUE
-  Data_X03.MI.SAN.O$Oneway = TRUE
-  Data_X03.MI.SAN.W$Oneway = TRUE
-  Data_X05.FK.OBB.O$Oneway = TRUE
-  Data_X05.FK.OBB.W$Oneway = TRUE
-  Data_X06.FK.FRA.O$Oneway = TRUE
-  Data_X06.FK.FRA.W$Oneway = TRUE
-  Data_X10.PA.BER.N$Oneway = TRUE
-  Data_X10.PA.BER.S$Oneway = TRUE
+  Data_X02.MI.JAN.N$Oneway = FALSE
+  Data_X02.MI.JAN.S$Oneway = FALSE
+  Data_X03.MI.SAN.O$Oneway = FALSE
+  Data_X03.MI.SAN.W$Oneway = FALSE
+  Data_X05.FK.OBB.O$Oneway = FALSE
+  Data_X05.FK.OBB.W$Oneway = FALSE
+  Data_X06.FK.FRA.O$Oneway = FALSE
+  Data_X06.FK.FRA.W$Oneway = FALSE
+  Data_X10.PA.BER.N$Oneway = FALSE
+  Data_X10.PA.BER.S$Oneway = FALSE
   Data_X12.PA.SCH$Oneway = FALSE
   Data_X13.CW.PRI$Oneway = FALSE
-  Data_X15.SP.KLO.N$Oneway = TRUE
-  Data_X15.SP.KLO.S$Oneway = TRUE
-  Data_X17.SZ.BRE.O$Oneway = TRUE
-  Data_X17.SZ.BRE.W$Oneway = TRUE
-  Data_X18.TS.YOR.O$Oneway = TRUE
-  Data_X18.TS.YOR.W$Oneway = TRUE
+  Data_X15.SP.KLO.N$Oneway = FALSE
+  Data_X15.SP.KLO.S$Oneway = FALSE
+  Data_X17.SZ.BRE.O$Oneway = FALSE
+  Data_X17.SZ.BRE.W$Oneway = FALSE
+  Data_X18.TS.YOR.O$Oneway = FALSE
+  Data_X18.TS.YOR.W$Oneway = FALSE
   Data_X19.TS.MON$Oneway = FALSE
-  Data_X20.TS.MAR.N$Oneway = TRUE
-  Data_X20.TS.MAR.S$Oneway = TRUE
+  Data_X20.TS.MAR.N$Oneway = FALSE
+  Data_X20.TS.MAR.S$Oneway = FALSE
   Data_X21.NK.MAY$Oneway = FALSE
   Data_X23.TK.KAI$Oneway = FALSE
   Data_X24.MH.ALB$Oneway = FALSE
   Data_X26.LI.PUP$Oneway = FALSE
   Data_X27.RE.MAR$Oneway = FALSE
+  
+#Summarize Directions----------------------------------------------
+  
+  Data_X02.MI.JAN=Data_X02.MI.JAN.N
+  Data_X02.MI.JAN$Value = as.numeric(Data_X02.MI.JAN.N$Value) + as.numeric(Data_X02.MI.JAN.S$Value)
+  Data_X03.MI.SAN=Data_X03.MI.SAN.O
+  Data_X03.MI.SAN$Value = as.numeric(Data_X03.MI.SAN.O$Value) + as.numeric(Data_X03.MI.SAN.W$Value)
+  Data_X05.FK.OBB=Data_X05.FK.OBB.O
+  Data_X05.FK.OBB$Value = as.numeric(Data_X05.FK.OBB.O$Value) + as.numeric(Data_X05.FK.OBB.W$Value)
+  Data_X06.FK.FRA=Data_X06.FK.FRA.O
+  Data_X06.FK.FRA$Value = as.numeric(Data_X06.FK.FRA.O$Value) + as.numeric(Data_X06.FK.FRA.W$Value)
+  Data_X10.PA.BER=Data_X10.PA.BER.N
+  Data_X10.PA.BER$Value = as.numeric(Data_X10.PA.BER.N$Value) + as.numeric(Data_X10.PA.BER.S$Value)
+  Data_X15.SP.KLO=Data_X15.SP.KLO.N
+  Data_X15.SP.KLO$Value = as.numeric(Data_X15.SP.KLO.N$Value) + as.numeric(Data_X15.SP.KLO.S$Value)
+  Data_X17.SZ.BRE=Data_X17.SZ.BRE.O
+  Data_X17.SZ.BRE$Value = as.numeric(Data_X17.SZ.BRE.O$Value) + as.numeric(Data_X17.SZ.BRE.W$Value)
+  Data_X18.TS.YOR=Data_X18.TS.YOR.O
+  Data_X18.TS.YOR$Value = as.numeric(Data_X18.TS.YOR.O$Value) + as.numeric(Data_X18.TS.YOR.W$Value)
+  Data_X20.TS.MAR=Data_X20.TS.MAR.N
+  Data_X20.TS.MAR$Value = as.numeric(Data_X20.TS.MAR.N$Value) + as.numeric(Data_X20.TS.MAR.S$Value)
+  
+#Connect the Stations----------------------------------------------
+  
+  Berlin_rawData=rbind(Data_X02.MI.JAN,Data_X03.MI.SAN)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X05.FK.OBB)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X06.FK.FRA)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X10.PA.BER)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X12.PA.SCH)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X13.CW.PRI)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X15.SP.KLO)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X17.SZ.BRE)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X18.TS.YOR)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X19.TS.MON)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X20.TS.MAR)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X21.NK.MAY)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X23.TK.KAI)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X24.MH.ALB)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X26.LI.PUP)
+  Berlin_rawData=rbind(Berlin_rawData,Data_X27.RE.MAR)
+  
+  Berlin_rawData=na.omit(Berlin_rawData)
+  Berlin_rawData$Value=as.numeric(Berlin_rawData$Value)
+  summary(Berlin_rawData)
+    
   
