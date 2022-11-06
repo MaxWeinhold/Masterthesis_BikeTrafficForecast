@@ -59,9 +59,9 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Darmstadt")
   
 #Connect the Stations----------------------------------------------
   
-  Darmstadt_rawData=rbind(ArheilgerStr,Lincoln_Siedlung)
-  Darmstadt_rawData=rbind(Darmstadt_rawData,Woogsweg)
+  rawData=rbind(ArheilgerStr,Lincoln_Siedlung)
+  rawData=rbind(rawData,Woogsweg)
   
-  Darmstadt_rawData=na.omit(Darmstadt_rawData)
-  Darmstadt_rawData$Value=as.numeric(Darmstadt_rawData$Value)
-  summary(Darmstadt_rawData)
+  rawData=na.omit(rawData)
+  rawData$Value=as.numeric(rawData$Value)
+  summary(rawData)

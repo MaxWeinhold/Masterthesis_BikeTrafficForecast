@@ -1,0 +1,257 @@
+#Spatial prediction of urban bicycle traffic volume with machine learning
+#Maximilian Weinhold
+#------------------------------------------------------------------------
+#Data preperation Muenchen
+
+library(dplyr)
+library(plyr)
+
+#Clean up memory
+rm(list=ls())
+
+#Target storage location (inside the GitHub Repository)
+#C:\Users\MaxWe\Documents\GitHub\Masterthesis_BikeTrafficForecast\data preparation
+
+#Source storage location (outside the GitHub Repository)
+#Because of file size limitation
+#files about 100 MB have to be excluded
+#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\München
+setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/München")
+
+#Read Bycicle Counting Data----------------------------------------------
+  countingData_1 = read.csv(file = "rad_2022_01_15min.csv",sep=",")
+  countingData_2 = read.csv(file = "rad_2022_02_15min.csv",sep=",")
+  countingData_3 = read.csv(file = "rad_2022_03_15min.csv",sep=",")
+  countingData_4 = read.csv(file = "rad_2022_04_15min.csv",sep=",")
+  countingData_5 = read.csv(file = "rad_2022_05_15min.csv",sep=",")
+  countingData_6 = read.csv(file = "rad_2022_06_15min.csv",sep=",")
+  countingData_7 = read.csv(file = "rad_2022_07_15min.csv",sep=",")
+  countingData_8 = read.csv(file = "rad_2022_08_15min.csv",sep=",")
+  countingData_9 = read.csv(file = "rad_2022_09_15min.csv",sep=",")
+  countingData_10 = read.csv(file = "rad20210115min.csv",sep=",")
+  countingData_12 = read.csv(file = "rad20210215min.csv",sep=",")
+  countingData_13 = read.csv(file = "rad20210315min.csv",sep=",")
+  countingData_14 = read.csv(file = "rad20210415min.csv",sep=",")
+  countingData_15 = read.csv(file = "rad20210515min.csv",sep=",")
+  countingData_16 = read.csv(file = "rad_2021_06_15min.csv",sep=",")
+  countingData_17 = read.csv(file = "rad_2021_07_15min.csv",sep=",")
+  countingData_18 = read.csv(file = "rad_2021_08_15min.csv",sep=",")
+  countingData_19 = read.csv(file = "rad_2021_09_15min.csv",sep=",")
+  countingData_20 = read.csv(file = "rad_2021_10_15min.csv",sep=",")
+  countingData_21 = read.csv(file = "rad_2021_11_15min.csv",sep=",")
+  countingData_22 = read.csv(file = "rad_2021_12_15min.csv",sep=",")
+  countingData_23 = read.csv(file = "rad20200115min.csv",sep=",")
+  countingData_24 = read.csv(file = "rad20200215min.csv",sep=",")
+  countingData_25 = read.csv(file = "rad20200315min.csv",sep=",")
+  countingData_26 = read.csv(file = "rad20200415min.csv",sep=",")
+  countingData_27 = read.csv(file = "rad20200515min.csv",sep=",")
+  countingData_28 = read.csv(file = "rad20200615min.csv",sep=",")
+  countingData_29 = read.csv(file = "rad20200715min.csv",sep=",")
+  countingData_30 = read.csv(file = "rad20200815min.csv",sep=",")
+  countingData_31 = read.csv(file = "rad20200915min.csv",sep=",")
+  countingData_32 = read.csv(file = "rad20201015min.csv",sep=",")
+  countingData_33 = read.csv(file = "rad20201115min.csv",sep=",")
+  countingData_34 = read.csv(file = "rad20201215minbearbeitet.csv",sep=",")
+  countingData_35 = read.csv(file = "rad20190115min.csv",sep=",")
+  countingData_36 = read.csv(file = "rad20190215min.csv",sep=",")
+  countingData_37 = read.csv(file = "rad20190315min.csv",sep=",")
+  countingData_38 = read.csv(file = "rad20190415min.csv",sep=",")
+  countingData_39 = read.csv(file = "rad20190515min.csv",sep=",")
+  countingData_40 = read.csv(file = "rad20190615min.csv",sep=",")
+  countingData_41 = read.csv(file = "rad20190715min.csv",sep=",")
+  countingData_42 = read.csv(file = "rad20190815min.csv",sep=",")
+  countingData_43 = read.csv(file = "rad20190915min.csv",sep=",")
+  countingData_44 = read.csv(file = "rad20191015min.csv",sep=",")
+  countingData_45 = read.csv(file = "rad20191115min.csv",sep=",")
+  countingData_46 = read.csv(file = "rad20191215min.csv",sep=",")
+  countingData_47 = read.csv(file = "rad20180115min.csv",sep=",")
+  countingData_48 = read.csv(file = "rad20180215min.csv",sep=",")
+  countingData_49 = read.csv(file = "rad_2018_03_15min.csv",sep=",")
+  countingData_50 = read.csv(file = "rad20180415min.csv",sep=",")
+  countingData_51 = read.csv(file = "rad20180515min.csv",sep=",")
+  countingData_52 = read.csv(file = "rad20180615min.csv",sep=",")
+  countingData_53 = read.csv(file = "rad20180715min.csv",sep=",")
+  countingData_54 = read.csv(file = "rad20180815min.csv",sep=",")
+  countingData_55 = read.csv(file = "rad20180915min.csv",sep=",")
+  countingData_56 = read.csv(file = "rad20181015min.csv",sep=",")
+  countingData_57 = read.csv(file = "rad20181115min.csv",sep=",")
+  countingData_58 = read.csv(file = "rad20181215min.csv",sep=",")
+  countingData_59 = read.csv(file = "rad20170115min.csv",sep=",")
+  countingData_60 = read.csv(file = "rad20170315min.csv",sep=",")
+  countingData_61 = read.csv(file = "rad20170415min.csv",sep=",")
+  countingData_62 = read.csv(file = "rad20170515min.csv",sep=",")
+  countingData_63 = read.csv(file = "rad20170615min.csv",sep=",")
+  countingData_64 = read.csv(file = "rad20170715min.csv",sep=",")
+  countingData_65 = read.csv(file = "rad20170815min.csv",sep=",")
+  countingData_66 = read.csv(file = "rad20170915min.csv",sep=",")
+  countingData_67 = read.csv(file = "rad20171015min.csv",sep=",")
+  countingData_68 = read.csv(file = "rad20171115min.csv",sep=",")
+  countingData_69 = read.csv(file = "rad20171215min.csv",sep=",")
+
+#Connect all years----------------------------------------------
+  
+  countingData=rbind(countingData_1,countingData_2)
+  countingData=rbind(countingData,countingData_3)
+  countingData=rbind(countingData,countingData_4)
+  countingData=rbind(countingData,countingData_5)
+  countingData=rbind(countingData,countingData_6)
+  countingData=rbind(countingData,countingData_7)
+  countingData=rbind(countingData,countingData_8)
+  countingData=rbind(countingData,countingData_9)
+  countingData=rbind(countingData,countingData_10)
+  countingData=rbind(countingData,countingData_12)
+  countingData=rbind(countingData,countingData_13)
+  countingData=rbind(countingData,countingData_14)
+  countingData=rbind(countingData,countingData_15)
+  countingData=rbind(countingData,countingData_16)
+  countingData=rbind(countingData,countingData_17)
+  countingData=rbind(countingData,countingData_18)
+  countingData=rbind(countingData,countingData_19)
+  countingData=rbind(countingData,countingData_20)
+  countingData=rbind(countingData,countingData_21)
+  countingData=rbind(countingData,countingData_22)
+  countingData=rbind(countingData,countingData_23)
+  countingData=rbind(countingData,countingData_24)
+  countingData=rbind(countingData,countingData_25)
+  countingData=rbind(countingData,countingData_26)
+  countingData=rbind(countingData,countingData_27)
+  countingData=rbind(countingData,countingData_28)
+  countingData=rbind(countingData,countingData_29)
+  countingData=rbind(countingData,countingData_30)
+  countingData=rbind(countingData,countingData_31)
+  countingData=rbind(countingData,countingData_32)
+  countingData=rbind(countingData,countingData_33)
+  countingData=rbind(countingData,countingData_34)
+  countingData=rbind(countingData,countingData_35)
+  countingData=rbind(countingData,countingData_36)
+  countingData=rbind(countingData,countingData_37)
+  countingData=rbind(countingData,countingData_38)
+  countingData=rbind(countingData,countingData_39)
+  countingData=rbind(countingData,countingData_40)
+  countingData=rbind(countingData,countingData_41)
+  countingData=rbind(countingData,countingData_42)
+  countingData=rbind(countingData,countingData_43)
+  countingData=rbind(countingData,countingData_44)
+  countingData=rbind(countingData,countingData_45)
+  countingData=rbind(countingData,countingData_46)
+  countingData=rbind(countingData,countingData_47)
+  countingData=rbind(countingData,countingData_48)
+  countingData=rbind(countingData,countingData_49)
+  countingData=rbind(countingData,countingData_50)
+  countingData=rbind(countingData,countingData_51)
+  countingData=rbind(countingData,countingData_52)
+  countingData=rbind(countingData,countingData_53)
+  countingData=rbind(countingData,countingData_54)
+  countingData=rbind(countingData,countingData_55)
+  countingData=rbind(countingData,countingData_56)
+  countingData=rbind(countingData,countingData_57)
+  countingData=rbind(countingData,countingData_58)
+  countingData=rbind(countingData,countingData_59)
+  countingData=rbind(countingData,countingData_60)
+  countingData=rbind(countingData,countingData_61)
+  countingData=rbind(countingData,countingData_62)
+  countingData=rbind(countingData,countingData_63)
+  countingData=rbind(countingData,countingData_64)
+  countingData=rbind(countingData,countingData_65)
+  countingData=rbind(countingData,countingData_66)
+  countingData=rbind(countingData,countingData_67)
+  countingData=rbind(countingData,countingData_68)
+  countingData=rbind(countingData,countingData_69)
+
+#Delete Columns we don't need----------------------------------------------
+  
+  names(countingData)
+  countingData$uhrzeit_ende <- NULL
+  countingData$richtung_1 <- NULL
+  countingData$richtung_2 <- NULL
+  
+#Change count frequency to hourly data----------------------------------------------
+  
+  countingData$Uhrzeit=paste(countingData$datum,countingData$uhrzeit_start, sep=" ")
+  countingData$Uhrzeit=cut(strptime(countingData$Uhrzeit,"%Y.%m.%d %H:%M"),"hour")
+  countingData=ddply(countingData,.(Uhrzeit,zaehlstelle),summarize,Value=sum(gesamt))
+  
+#Divide Data Set for Stations
+  
+  nlevels(as.factor(countingData$zaehlstelle))
+  levels(as.factor(countingData$zaehlstelle))
+  
+  Arnulf <- countingData[ which(countingData$zaehlstelle=='Arnulf'),]
+  Erhardt <- countingData[ which(countingData$zaehlstelle=='Erhardt'),]
+  Hirsch <- countingData[ which(countingData$zaehlstelle=='Hirsch'),]
+  Kreuther <- countingData[ which(countingData$zaehlstelle=='Kreuther'),]
+  Margareten <- countingData[ which(countingData$zaehlstelle=='Margareten'),]
+  Olympia <- countingData[ which(countingData$zaehlstelle=='Olympia'),]
+  
+#Delete Columns we don't need----------------------------------------------
+  Arnulf$zaehlstelle <- NULL
+  Erhardt$zaehlstelle <- NULL
+  Hirsch$zaehlstelle <- NULL
+  Kreuther$zaehlstelle <- NULL
+  Margareten$zaehlstelle <- NULL
+  Olympia$zaehlstelle <- NULL
+  
+#Rename Columns----------------------------------------------
+  names(Arnulf)[1]="Timestamp"
+  names(Erhardt)[1]="Timestamp"
+  names(Hirsch)[1]="Timestamp"
+  names(Kreuther)[1]="Timestamp"
+  names(Margareten)[1]="Timestamp"
+  names(Olympia)[1]="Timestamp"
+  
+#Add Location Columns----------------------------------------------
+  
+  Arnulf$Town = "Muenchen"
+  Arnulf$Station = "Arnulf"
+  Arnulf$Lon = 11.55534
+  Arnulf$Lat = 48.14205	
+  Arnulf$Oneway = FALSE
+  #Arnulf$Road_type = "Street"  
+  
+  Erhardt$Town = "Muenchen"
+  Erhardt$Station = "Erhardt"
+  Erhardt$Lon = 11.58469
+  Erhardt$Lat = 48.13192	
+  Erhardt$Oneway = FALSE
+  #Erhardt$Road_type = "Street"  
+  
+  Hirsch$Town = "Muenchen"
+  Hirsch$Station = "Hirsch"
+  Hirsch$Lon = 11.51794
+  Hirsch$Lat = 48.14438	
+  Hirsch$Oneway = FALSE
+  #Hirsch$Road_type = "Pathway"  
+  
+  Kreuther$Town = "Muenchen"
+  Kreuther$Station = "Kreuther"
+  Kreuther$Lon = 11.62417
+  Kreuther$Lat = 48.12194	
+  Kreuther$Oneway = FALSE
+  #Kreuther$Road_type = "Street"  
+  
+  Margareten$Town = "Muenchen"
+  Margareten$Station = "Margareten"
+  Margareten$Lon = 11.53599
+  Margareten$Lat = 48.12032	
+  Margareten$Oneway = FALSE
+  #Margareten$Road_type = "Pathway"  
+  
+  Olympia$Town = "Muenchen"
+  Olympia$Station = "Olympia"
+  Olympia$Lon = 11.55005
+  Olympia$Lat = 48.16887	
+  Olympia$Oneway = FALSE
+  #Olympia$Road_type = "Pathway"
+  
+#Connect the Stations----------------------------------------------
+  
+  rawData=rbind(Arnulf,Erhardt)
+  rawData=rbind(rawData,Hirsch)
+  rawData=rbind(rawData,Kreuther)
+  rawData=rbind(rawData,Margareten)
+  rawData=rbind(rawData,Olympia)
+  
+  rawData=na.omit(rawData)
+  rawData$Value=as.numeric(rawData$Value)
+  summary(rawData)
+  

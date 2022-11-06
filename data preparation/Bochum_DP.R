@@ -54,11 +54,11 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   
 #Connect the Stations----------------------------------------------
   
-  Bochum_rawData=rbind(countingData_Springorumtrasse,countingData_Wittener_Strasse)
+  rawData=rbind(countingData_Springorumtrasse,countingData_Wittener_Strasse)
   
-  Bochum_rawData=na.omit(Bochum_rawData)
-  Bochum_rawData$Value=as.numeric(Bochum_rawData$Value)
-  summary(Bochum_rawData)
+  rawData=na.omit(rawData)
+  rawData$Value=as.numeric(rawData$Value)
+  summary(rawData)
 
 
 
