@@ -3,6 +3,8 @@
 #------------------------------------------------------------------------
 #Data preperation Darmstadt
 
+library(lubridate)
+
 #Clean up memory
 rm(list=ls())
 
@@ -65,3 +67,4 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Darmstadt")
   rawData=na.omit(rawData)
   rawData$Value=as.numeric(rawData$Value)
   summary(rawData)
+  

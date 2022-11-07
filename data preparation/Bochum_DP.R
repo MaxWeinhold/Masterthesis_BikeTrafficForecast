@@ -59,8 +59,24 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   rawData=na.omit(rawData)
   rawData$Value=as.numeric(rawData$Value)
   summary(rawData)
-
-
-
   
-
+#Time related Data including Months, Summer, Winter, Weekday, Weekends, Hour and Night, Public and School Holidays, Year
+  
+  rawData$Months=month(as.POSIXlt(rawData$Timestamp))
+  rawData$Summer = ifelse(rawData$Months == "6" | rawData$Months == "7"| rawData$Months == "8", "1", "0")
+  rawData$Winter = ifelse(rawData$Months == "12" | rawData$Months == "1"| rawData$Months == "2", "1", "0")
+  rawData$Weekday	= format(as.POSIXlt(rawData$Timestamp),"%a")
+  rawData$Weekend <- ifelse(rawData$Weekday == "So" | rawData$Weekday == "Sa", "Weekend", "Weekday")
+  rawData$Hour	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%H"))
+  rawData$Night = ifelse(rawData$Hour<7,1,0)
+  
+  #Load data for holidays
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  publicHolidays = read.csv(file = "Feiertage.csv",sep=",")
+  
+  as.POSIXlt(rawData$Timestamp)[1]
+  as.POSIXlt(publicHolidays$Datum,format="%d:%m:%Y")[1]
+  for(i in 1:length(rawData$Timestamp)) {}
+  
+  
+  
