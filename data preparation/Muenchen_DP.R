@@ -255,3 +255,33 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/München")
   rawData$Value=as.numeric(rawData$Value)
   summary(rawData)
   
+#Time related Data including Year, Months, Summer, Winter, Weekday, Weekends, Hour and Night, Public and School Holidays
+  
+  rawData$Year	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%Y"))
+  rawData$Months=month(as.POSIXlt(rawData$Timestamp))
+  rawData$Summer = ifelse(rawData$Months == "6" | rawData$Months == "7"| rawData$Months == "8", 1, 0)
+  rawData$Winter = ifelse(rawData$Months == "12" | rawData$Months == "1"| rawData$Months == "2", 1, 0)
+  rawData$Weekday	= format(as.POSIXlt(rawData$Timestamp),"%a")
+  rawData$Weekend <- ifelse(rawData$Weekday == "So" | rawData$Weekday == "Sa", 1, 0)
+  rawData$Hour	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%H"))
+  rawData$Night = ifelse(rawData$Hour<7,1,0)
+  
+  #Load data for public holidays
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
+  
+  pH=publicHolidays[publicHolidays$BAY %in% TRUE,]
+  rawData$publicHoliday = ifelse(as.Date(rawData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
+  
+  #Load data for school holidays
+  schoolHolidays = read.csv(file = "Schulferien.csv",sep=",")
+  
+  sH=schoolHolidays[schoolHolidays$Bundesland %in% "BAY",]
+  x <- vector()
+  for(i in 1:length(sH$Startdatum)){
+    x = append(x, as.Date(sH$Startdatum,format="%d.%m.%y")[i]:as.Date(sH$Enddatum,format="%d.%m.%y")[i])
+  }
+  rawData$schoolHoliday = ifelse(as.numeric(as.Date(rawData$Timestamp)) %in% x,1,0)
+  
+  summary(rawData)
+  

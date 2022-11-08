@@ -3,6 +3,8 @@
 #------------------------------------------------------------------------
 #Data preperation Bochum
 
+library(lubridate)
+
 #Clean up memory
 rm(list=ls())
 
@@ -60,23 +62,33 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   rawData$Value=as.numeric(rawData$Value)
   summary(rawData)
   
-#Time related Data including Months, Summer, Winter, Weekday, Weekends, Hour and Night, Public and School Holidays, Year
+#Time related Data including Year, Months, Summer, Winter, Weekday, Weekends, Hour and Night, Public and School Holidays
   
+  rawData$Year	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%Y"))
   rawData$Months=month(as.POSIXlt(rawData$Timestamp))
-  rawData$Summer = ifelse(rawData$Months == "6" | rawData$Months == "7"| rawData$Months == "8", "1", "0")
-  rawData$Winter = ifelse(rawData$Months == "12" | rawData$Months == "1"| rawData$Months == "2", "1", "0")
+  rawData$Summer = ifelse(rawData$Months == "6" | rawData$Months == "7"| rawData$Months == "8", 1, 0)
+  rawData$Winter = ifelse(rawData$Months == "12" | rawData$Months == "1"| rawData$Months == "2", 1, 0)
   rawData$Weekday	= format(as.POSIXlt(rawData$Timestamp),"%a")
-  rawData$Weekend <- ifelse(rawData$Weekday == "So" | rawData$Weekday == "Sa", "Weekend", "Weekday")
+  rawData$Weekend <- ifelse(rawData$Weekday == "So" | rawData$Weekday == "Sa", 1, 0)
   rawData$Hour	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%H"))
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
-  #Load data for holidays
+  #Load data for public holidays
   setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
-  publicHolidays = read.csv(file = "Feiertage.csv",sep=",")
+  publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
-  as.POSIXlt(rawData$Timestamp)[1]
-  as.POSIXlt(publicHolidays$Datum,format="%d:%m:%Y")[1]
-  for(i in 1:length(rawData$Timestamp)) {}
+  pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
+  rawData$publicHoliday = ifelse(as.Date(rawData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
   
+  #Load data for school holidays
+  schoolHolidays = read.csv(file = "Schulferien.csv",sep=",")
   
+  sH=schoolHolidays[schoolHolidays$Bundesland %in% "NRW",]
+  x <- vector()
+  for(i in 1:length(sH$Startdatum)){
+    x = append(x, as.Date(sH$Startdatum,format="%d.%m.%y")[i]:as.Date(sH$Enddatum,format="%d.%m.%y")[i])
+  }
+  rawData$schoolHoliday = ifelse(as.numeric(as.Date(rawData$Timestamp)) %in% x,1,0)
+  
+  summary(rawData)
   
