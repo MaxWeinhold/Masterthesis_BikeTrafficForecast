@@ -368,6 +368,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   
   rawData$Year	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%Y"))
   rawData$Months=month(as.POSIXlt(rawData$Timestamp))
+  rawData$Day	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%d"))
   rawData$Summer = ifelse(rawData$Months == "6" | rawData$Months == "7"| rawData$Months == "8", 1, 0)
   rawData$Winter = ifelse(rawData$Months == "12" | rawData$Months == "1"| rawData$Months == "2", 1, 0)
   rawData$Weekday	= format(as.POSIXlt(rawData$Timestamp),"%a")
