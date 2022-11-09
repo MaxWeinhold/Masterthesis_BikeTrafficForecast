@@ -4,6 +4,7 @@
 #Data preperation Muenster
 
 library(plyr)
+library(lubridate)
 
 #Clean up memory
 rm(list=ls())
@@ -55,39 +56,57 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   countingData_WolbeckerStr_21 = read.csv(file = "Zaehlstelle_Wolbecker_Strasse_Stundenauswertung_2021.csv",sep=";", skip = 1, header = F)
   countingData_WolbeckerStr_18 = read.csv(file = "zahelstelle_wolbecker_2018_stundenauswertung.csv",sep=";", skip = 1, header = F)
   
+#Convert Timestamps (Timestamps differ in stations)  
+
+  #names(countingData_GartenStr_18)
   
-  #Connect all years per Station----------------------------------------------
+  #countingData_GartenStr_18[1] = gsub(" Jan. ", "01.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Febr. ", "02.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Mrz. ", "03.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Apr. ", "04.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Mai. ", "05.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Jun. ", "06.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Jul. ", "07.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Aug. ", "08.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Sep. ", "09.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Okt. ", "10.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Nov. ", "11.", countingData_GartenStr_18[1])
+  #countingData_GartenStr_18[1] = gsub(" Dez. ", "12.", countingData_GartenStr_18[1])
   
-  countingData_GartenStr=rbind(countingData_GartenStr_18,countingData_GartenStr_19)
+  #countingData_GartenStr_18[1]=as.POSIXlt(countingData_GartenStr_18[1],format="%d.%m.%Y %H:%M")
+  
+#Connect all years per Station----------------------------------------------
+  
+  countingData_GartenStr=rbind(countingData_GartenStr_19)
   countingData_GartenStr=rbind(countingData_GartenStr,countingData_GartenStr_20)
   countingData_GartenStr=rbind(countingData_GartenStr,countingData_GartenStr_21)
   
   countingData_HafenStr=rbind(countingData_HafenStr_20,countingData_HafenStr_21)
   
-  countingData_HammerStr=rbind(countingData_HammerStr_18,countingData_HammerStr_19)
+  countingData_HammerStr=rbind(countingData_HammerStr_19)
   countingData_HammerStr=rbind(countingData_HammerStr,countingData_HammerStr_20)
   countingData_HammerStr=rbind(countingData_HammerStr,countingData_HammerStr_21)
   
-  countingData_HuefferStr=rbind(countingData_HuefferStr_18,countingData_HuefferStr_19)
+  countingData_HuefferStr=rbind(countingData_HuefferStr_19)
   countingData_HuefferStr=rbind(countingData_HuefferStr,countingData_HuefferStr_20)
   countingData_HuefferStr=rbind(countingData_HuefferStr,countingData_HuefferStr_21)
   
   countingData_Kanalpromenade=rbind(countingData_Kanalpromenade_20,countingData_Kanalpromenade_21)
   
-  countingData_Neutor=rbind(countingData_Neutor_18,countingData_Neutor_19)
+  countingData_Neutor=rbind(countingData_Neutor_19)
   countingData_Neutor=rbind(countingData_Neutor,countingData_Neutor_20)
   
-  countingData_Promenade=rbind(countingData_Promenade_18,countingData_Promenade_19)
+  countingData_Promenade=rbind(countingData_Promenade_19)
   countingData_Promenade=rbind(countingData_Promenade,countingData_Promenade_20)
   countingData_Promenade=rbind(countingData_Promenade,countingData_Promenade_21)
   
-  countingData_WarendorferStr=countingData_WarendorferStr_18
-  countingData_WarendorferStr=rbind(countingData_WarendorferStr,countingData_WarendorferStr_20)
+  #countingData_WarendorferStr=countingData_WarendorferStr_18
+  countingData_WarendorferStr=rbind(countingData_WarendorferStr_20)
   
-  countingData_WeselerStr=rbind(countingData_WeselerStr_18,countingData_WeselerStr_19)
+  countingData_WeselerStr=rbind(countingData_WeselerStr_19)
   countingData_WeselerStr=rbind(countingData_WeselerStr,countingData_WeselerStr_20)
   
-  countingData_WolbeckerStr=rbind(countingData_WolbeckerStr_18,countingData_WolbeckerStr_19)
+  countingData_WolbeckerStr=rbind(countingData_WolbeckerStr_19)
   countingData_WolbeckerStr=rbind(countingData_WolbeckerStr,countingData_WolbeckerStr_20)
   countingData_WolbeckerStr=rbind(countingData_WolbeckerStr,countingData_WolbeckerStr_21)
   
@@ -135,7 +154,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   countingData_WeselerStr[3:9] <- NULL
   countingData_WolbeckerStr[3:9] <- NULL
   
-  #Add Location Columns----------------------------------------------
+#Add Location Columns----------------------------------------------
   
   countingData_GartenStr$Town = "Muenster"
   countingData_GartenStr$Station = "GartenStr"
@@ -225,22 +244,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
 #Time related Data including Year, Months, Summer, Winter, Weekday, Weekends, Hour and Night, Public and School Holidays
   
-  #TimeStamp Configurations
-  
-  rawData$Timestamp = gsub(" Jan. ", "01.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Feb. ", "02.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Mrz. ", "03.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Apr. ", "04.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Mai. ", "05.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Jun. ", "06.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Jul. ", "07.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Aug. ", "08.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Sep. ", "09.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Okt. ", "10.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Nov. ", "11.", rawData$Timestamp)
-  rawData$Timestamp = gsub(" Dez. ", "12.", rawData$Timestamp)
-  
-  rawData$Timestamp=as.POSIXlt(rawData$Timestamp,format="%d.%m.%Y %H:%M")
+  rawData$Timestamp=as.POSIXlt(rawData$Timestamp,format="%d-%m-%Y %H:%M:%S")
   
   rawData$Year	= as.numeric(format(as.POSIXlt(rawData$Timestamp), format = "%Y"))
   rawData$Months=month(as.POSIXlt(rawData$Timestamp))
