@@ -3,6 +3,8 @@
 #------------------------------------------------------------------------
 #Data preperation Berlin
 
+library(lubridate)
+
 #Clean up memory
 rm(list=ls())
 
@@ -395,3 +397,189 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   
   summary(rawData)
   
+  #Add Weather Data (Source: Deutscher Wetterdienst)
+  
+  rm(publicHolidays)
+  rm(schoolHolidays)
+  rm(sH)
+  rm(pH)
+  rm(x)
+  rm(i)
+  rm(countingData)
+  rm(countingData12)
+  rm(countingData13)
+  rm(countingData14)
+  rm(countingData15)
+  rm(countingData16)
+  rm(countingData17)
+  rm(countingData18)
+  rm(countingData19)
+  rm(countingData20)
+  rm(countingData21)
+  rm(Data_X02.MI.JAN)
+  rm(Data_X02.MI.JAN.N)
+  rm(Data_X02.MI.JAN.S)
+  rm(Data_X03.MI.SAN)
+  rm(Data_X03.MI.SAN.O)
+  rm(Data_X03.MI.SAN.W)
+  rm(Data_X05.FK.OBB)
+  rm(Data_X05.FK.OBB.O)
+  rm(Data_X05.FK.OBB.W)
+  rm(Data_X06.FK.FRA)
+  rm(Data_X06.FK.FRA.O)
+  rm(Data_X06.FK.FRA.W)
+  rm(Data_X10.PA.BER)
+  rm(Data_X10.PA.BER.N)
+  rm(Data_X10.PA.BER.S)
+  rm(Data_X12.PA.SCH)
+  rm(Data_X13.CW.PRI)
+  rm(Data_X15.SP.KLO)
+  rm(Data_X15.SP.KLO.N)
+  rm(Data_X15.SP.KLO.S)
+  rm(Data_X17.SZ.BRE)
+  rm(Data_X17.SZ.BRE.O)
+  rm(Data_X17.SZ.BRE.W)
+  rm(Data_X18.TS.YOR)
+  rm(Data_X18.TS.YOR.O)
+  rm(Data_X18.TS.YOR.W)
+  rm(Data_X19.TS.MON)
+  rm(Data_X20.TS.MAR)
+  rm(Data_X20.TS.MAR.N)
+  rm(Data_X20.TS.MAR.S)
+  rm(Data_X21.NK.MAY)
+  rm(Data_X23.TK.KAI)
+  rm(Data_X24.MH.ALB)
+  rm(Data_X26.LI.PUP)
+  rm(Data_X27.RE.MAR)
+  
+  #Import Weather Data
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
+  Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
+  Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
+  Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
+  Weather_Rain  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RR.csv",sep=",", skip = 1, header = F)
+  Weather_Temperature  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_T2M.csv",sep=",", skip = 1, header = F)
+  
+  Weather_Wind[1] <- NULL
+  Weather_Wind[1] <- NULL
+  Weather_Wind[3] <- NULL
+  Weather_Wind[3] <- NULL
+  Weather_Wind[3] <- NULL
+  
+  Weather_CloudCover[1] <- NULL
+  Weather_CloudCover[1] <- NULL
+  Weather_CloudCover[3] <- NULL
+  Weather_CloudCover[3] <- NULL
+  Weather_CloudCover[3] <- NULL
+  
+  Weather_Humidity[1] <- NULL
+  Weather_Humidity[1] <- NULL
+  Weather_Humidity[3] <- NULL
+  Weather_Humidity[3] <- NULL
+  Weather_Humidity[3] <- NULL
+  
+  Weather_Rain[1] <- NULL
+  Weather_Rain[1] <- NULL
+  Weather_Rain[3] <- NULL
+  Weather_Rain[3] <- NULL
+  Weather_Rain[3] <- NULL
+  
+  Weather_Temperature[1] <- NULL
+  Weather_Temperature[1] <- NULL
+  Weather_Temperature[3] <- NULL
+  Weather_Temperature[3] <- NULL
+  Weather_Temperature[3] <- NULL
+  
+  names(Weather_Wind)[1]="Timestamp"
+  names(Weather_Wind)[2]="Wind"
+  
+  names(Weather_CloudCover)[1]="Timestamp"
+  names(Weather_CloudCover)[2]="CloudCover"
+  
+  names(Weather_Humidity)[1]="Timestamp"
+  names(Weather_Humidity)[2]="Humidity"
+  
+  names(Weather_Rain)[1]="Timestamp"
+  names(Weather_Rain)[2]="Rain"
+  
+  names(Weather_Temperature)[1]="Timestamp"
+  names(Weather_Temperature)[2]="Temperature"
+  
+  Weather_Wind$Timestamp = gsub("T", " ", Weather_Wind$Timestamp)
+  Weather_Wind$Timestamp=as.POSIXlt(Weather_Wind$Timestamp,format="%Y-%m-%d %H:%M:%S")
+  Weather_Wind$Year	= as.numeric(format(as.POSIXlt(Weather_Wind$Timestamp), format = "%Y"))
+  Weather_Wind$Months=month(as.POSIXlt(Weather_Wind$Timestamp))
+  Weather_Wind$Day	= as.numeric(format(as.POSIXlt(Weather_Wind$Timestamp), format = "%d"))
+  Weather_Wind$Hour	= as.numeric(format(as.POSIXlt(Weather_Wind$Timestamp), format = "%H"))
+  
+  Weather_CloudCover$Timestamp = gsub("T", " ", Weather_CloudCover$Timestamp)
+  Weather_CloudCover$Timestamp=as.POSIXlt(Weather_CloudCover$Timestamp,format="%Y-%m-%d %H:%M:%S")
+  Weather_CloudCover$Year	= as.numeric(format(as.POSIXlt(Weather_CloudCover$Timestamp), format = "%Y"))
+  Weather_CloudCover$Months=month(as.POSIXlt(Weather_CloudCover$Timestamp))
+  Weather_CloudCover$Day	= as.numeric(format(as.POSIXlt(Weather_CloudCover$Timestamp), format = "%d"))
+  Weather_CloudCover$Hour	= as.numeric(format(as.POSIXlt(Weather_CloudCover$Timestamp), format = "%H"))
+  
+  Weather_Humidity$Timestamp = gsub("T", " ", Weather_Humidity$Timestamp)
+  Weather_Humidity$Timestamp=as.POSIXlt(Weather_Humidity$Timestamp,format="%Y-%m-%d %H:%M:%S")
+  Weather_Humidity$Year	= as.numeric(format(as.POSIXlt(Weather_Humidity$Timestamp), format = "%Y"))
+  Weather_Humidity$Months=month(as.POSIXlt(Weather_Humidity$Timestamp))
+  Weather_Humidity$Day	= as.numeric(format(as.POSIXlt(Weather_Humidity$Timestamp), format = "%d"))
+  Weather_Humidity$Hour	= as.numeric(format(as.POSIXlt(Weather_Humidity$Timestamp), format = "%H"))
+  
+  Weather_Rain$Timestamp = gsub("T", " ", Weather_Rain$Timestamp)
+  Weather_Rain$Timestamp=as.POSIXlt(Weather_Rain$Timestamp,format="%Y-%m-%d %H:%M:%S")
+  Weather_Rain$Year	= as.numeric(format(as.POSIXlt(Weather_Rain$Timestamp), format = "%Y"))
+  Weather_Rain$Months=month(as.POSIXlt(Weather_Rain$Timestamp))
+  Weather_Rain$Day	= as.numeric(format(as.POSIXlt(Weather_Rain$Timestamp), format = "%d"))
+  Weather_Rain$Hour	= as.numeric(format(as.POSIXlt(Weather_Rain$Timestamp), format = "%H"))
+  
+  Weather_Temperature$Timestamp = gsub("T", " ", Weather_Temperature$Timestamp)
+  Weather_Temperature$Timestamp=as.POSIXlt(Weather_Temperature$Timestamp,format="%Y-%m-%d %H:%M:%S")
+  Weather_Temperature$Year	= as.numeric(format(as.POSIXlt(Weather_Temperature$Timestamp), format = "%Y"))
+  Weather_Temperature$Months=month(as.POSIXlt(Weather_Temperature$Timestamp))
+  Weather_Temperature$Day	= as.numeric(format(as.POSIXlt(Weather_Temperature$Timestamp), format = "%d"))
+  Weather_Temperature$Hour	= as.numeric(format(as.POSIXlt(Weather_Temperature$Timestamp), format = "%H"))
+  
+  Weather_Wind$Timestamp <- NULL
+  Weather_CloudCover$Timestamp <- NULL
+  Weather_Humidity$Timestamp <- NULL
+  Weather_Rain$Timestamp <- NULL
+  Weather_Temperature$Timestamp <- NULL
+  
+  rawData = merge(x = rawData,y = Weather_Wind,
+                  by = c("Year","Months","Day","Hour"),
+                  all = FALSE)
+  
+  rawData=na.omit(rawData)
+  rm(Weather_Wind)
+  
+  rawData = merge(x = rawData,y = Weather_CloudCover,
+                  by = c("Year","Months","Day","Hour"),
+                  all = TRUE)
+  
+  rawData=na.omit(rawData)
+  rm(Weather_CloudCover)
+  
+  rawData = merge(x = rawData,y = Weather_Humidity,
+                  by = c("Year","Months","Day","Hour"),
+                  all = FALSE)
+  
+  rawData=na.omit(rawData)
+  rm(Weather_Humidity)
+  
+  rawData = merge(x = rawData,y = Weather_Rain,
+                  by = c("Year","Months","Day","Hour"),
+                  all = FALSE)
+  
+  rawData=na.omit(rawData)
+  rm(Weather_Rain)
+  
+  rawData = merge(x = rawData,y = Weather_Temperature,
+                  by = c("Year","Months","Day","Hour"),
+                  all = FALSE)
+  
+  rawData=na.omit(rawData)
+  rm(Weather_Temperature)
+  summary(rawData)
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  write.csv(rawData,"Berlin.csv")
