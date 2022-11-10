@@ -209,6 +209,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
                    by = c("Year","Months","Day","Hour"),
                    all = FALSE)
   
+  rm(list=setdiff(ls(), "rawData"))
+  
   rawData=na.omit(rawData)
   rm(Weather_CloudCover)
   
@@ -235,3 +237,140 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   summary(rawData)
   setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Bochum.csv")
+  
+# Adding ADFC-Fahrradklima Values
+  
+  Year=c(2012,2013,2014,2015,2016,2017,2018,2019,2020,2021)
+  ADFC_Index=c(4.4,4.4,4.4,4.4,4.1,4.1,4.1,4.1,4.2,4.2)
+  
+  ADFC=as.data.frame(cbind(Year,ADFC_Index))
+  
+  rawData = merge(x = rawData,y = ADFC,
+                  by = c("Year"),
+                  all = FALSE)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+#Add Data about number of inhabitants, city size, city center and male and female inhabitant ratio
+#Also calculate distance to city ratio
+  
+  #Load data (source: Destatis)
+  
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
+  Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
+  Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
+  Destatis15 = read.csv(file = "31122015_Auszug_GV.csv",sep=";")
+  Destatis16 = read.csv(file = "31122016_Auszug_GV.csv",sep=";")
+  Destatis17 = read.csv(file = "31122017_Auszug_GV.csv",sep=";")
+  Destatis18 = read.csv(file = "31122018_Auszug_GV.csv",sep=";")
+  Destatis19 = read.csv(file = "31122019_Auszug_GV.csv",sep=";")
+  Destatis20 = read.csv(file = "31122020_Auszug_GV.csv",sep=";")
+  Destatis21 = read.csv(file = "31122021_Auszug_GV.csv",sep=";")
+  
+  title=", Stadt" #This differs, there are cities and also hanseatic cities
+  
+  test12=as.data.frame(Destatis12[Destatis12$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test12[17] <- NULL
+  test12[17] <- NULL
+  test12 <- test12 %>% mutate_all(na_if,"")
+  names(test12)[1]="number"
+  test12=na.omit(test12)
+  test12$Year=2012
+  
+  test13=as.data.frame(Destatis13[Destatis13$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test13[17] <- NULL
+  test13[17] <- NULL
+  test13 <- test13 %>% mutate_all(na_if,"")
+  names(test13)[1]="number"
+  test13=na.omit(test13)
+  test13$Year=2013
+  
+  test14=as.data.frame(Destatis14[Destatis14$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test14[17] <- NULL
+  test14[17] <- NULL
+  test14 <- test14 %>% mutate_all(na_if,"")
+  names(test14)[1]="number"
+  test14=na.omit(test14)
+  test14$Year=2014
+  
+  test15=as.data.frame(Destatis15[Destatis15$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test15[17] <- NULL
+  test15[17] <- NULL
+  test15 <- test15 %>% mutate_all(na_if,"")
+  names(test13)[1]="number"
+  test15=na.omit(test15)
+  test15$Year=2015
+  
+  test16=as.data.frame(Destatis16[Destatis16$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test16[17] <- NULL
+  test16[17] <- NULL
+  test16 <- test16 %>% mutate_all(na_if,"")
+  names(test16)[1]="number"
+  test16=na.omit(test16)
+  test16$Year=2016
+  
+  test17=as.data.frame(Destatis17[Destatis17$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test17[17] <- NULL
+  test17[17] <- NULL
+  test17 <- test17 %>% mutate_all(na_if,"")
+  names(test17)[1]="number"
+  test17=na.omit(test17)
+  test17$Year=2017
+  
+  test18=as.data.frame(Destatis18[Destatis18$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test18[17] <- NULL
+  test18[17] <- NULL
+  test18 <- test18 %>% mutate_all(na_if,"")
+  names(test18)[1]="number"
+  test18=na.omit(test18)
+  test18$Year=2018
+  
+  test19=as.data.frame(Destatis19[Destatis19$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test19[17] <- NULL
+  test19[17] <- NULL
+  test19 <- test19 %>% mutate_all(na_if,"")
+  names(test19)[1]="number"
+  test19=na.omit(test19)
+  test19$Year=2019
+  
+  test20=as.data.frame(Destatis20[Destatis20$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test20[17] <- NULL
+  test20[17] <- NULL
+  test20 <- test20 %>% mutate_all(na_if,"")
+  names(test20)[1]="number"
+  test20=na.omit(test20)
+  test20$Year=2020
+  
+  test21=as.data.frame(Destatis21[Destatis21$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  test21[17] <- NULL
+  test21[17] <- NULL
+  test21 <- test21 %>% mutate_all(na_if,"")
+  names(test21)[1]="number"
+  test21=na.omit(test21)
+  test21$Year=2021
+  
+  test=rbind(test12,test13)
+  test=rbind(test,test14)
+  test=rbind(test,test15)
+  test=rbind(test,test16)
+  test=rbind(test,test17)
+  test=rbind(test,test18)
+  test=rbind(test,test19)
+  test=rbind(test,test20)
+  test=rbind(test,test21)
+  
+  test$X.7 = gsub(" ", "", test$X.7)
+  as.numeric(test$X.7)
+  test$X.7=as.numeric(test$X.7)
+  
+  
+  
+  
+  

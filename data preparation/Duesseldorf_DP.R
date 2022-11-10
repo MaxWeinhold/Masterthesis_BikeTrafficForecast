@@ -618,3 +618,16 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   summary(rawData)
   setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Duesseldorf.csv")
+  
+# Adding ADFC-Fahrradklima Values
+  
+  Year=c(2012,2013,2014,2015,2016,2017,2018,2019,2020,2021)
+  ADFC_Index=c(4.4,4.4,4.3,4.3,4.2,4.2,4.2,4.2,4.2,4.2)
+  
+  ADFC=as.data.frame(cbind(Year,ADFC_Index))
+  
+  rawData = merge(x = rawData,y = ADFC,
+                   by = c("Year"),
+                   all = FALSE)
+  
+  rm(list=setdiff(ls(), "rawData"))
