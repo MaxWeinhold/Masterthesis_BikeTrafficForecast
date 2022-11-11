@@ -4,6 +4,8 @@
 #Data preperation Bochum
 
 library(lubridate)
+library(dplyr)
+library(geosphere)#package for calculating distance using longitude and latitude
 
 #Clean up memory
 rm(list=ls())
@@ -209,8 +211,6 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
                    by = c("Year","Months","Day","Hour"),
                    all = FALSE)
   
-  rm(list=setdiff(ls(), "rawData"))
-  
   rawData=na.omit(rawData)
   rm(Weather_CloudCover)
   
@@ -233,10 +233,12 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
                    all = FALSE)
   
   rawData=na.omit(rawData)
-  rm(Weather_Temperature)
+  #rm(Weather_Temperature)
   summary(rawData)
   setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Bochum.csv")
+  
+  rm(list=setdiff(ls(), "rawData"))
   
 # Adding ADFC-Fahrradklima Values
   
@@ -249,13 +251,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
                   by = c("Year"),
                   all = FALSE)
   
-  
-  
-  
-  
-  
-  
-  
+  rm(list=setdiff(ls(), "rawData"))
   
 #Add Data about number of inhabitants, city size, city center and male and female inhabitant ratio
 #Also calculate distance to city ratio
@@ -304,7 +300,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   test15[17] <- NULL
   test15[17] <- NULL
   test15 <- test15 %>% mutate_all(na_if,"")
-  names(test13)[1]="number"
+  names(test15)[1]="number"
   test15=na.omit(test15)
   test15$Year=2015
   
@@ -367,10 +363,83 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   test=rbind(test,test21)
   
   test$X.7 = gsub(" ", "", test$X.7)
-  as.numeric(test$X.7)
-  test$X.7=as.numeric(test$X.7)
+  test$X.7 = gsub(",", ".", test$X.7)
+  test$X.7 = as.numeric(test$X.7)
+  names(test)[9]="Area"
   
+  test$X.8 = gsub(" ", "", test$X.8)
+  test$X.8 = as.numeric(test$X.8)
+  names(test)[10]="Inhabitants"
   
+  test$X.9 = gsub(" ", "", test$X.9)
+  test$X.9 = as.numeric(test$X.9) / test$Inhabitants
+  names(test)[11]="Male_Ratio"
   
+  #City Longitude and Latidtude
   
+  test$X.13 = gsub(" ", "", test$X.13)
+  test$X.13 = gsub(",", ".", test$X.13)
+  test$X.13 = as.numeric(test$X.13)
+  names(test)[15]="City_Lon"
+  
+  test$X.14 = gsub(" ", "", test$X.14)
+  test$X.14 = gsub(",", ".", test$X.14)
+  test$X.14 = as.numeric(test$X.14)
+  names(test)[16]="City_Lat"
+
+  names(test)[18]="Density"
+  
+  test$number <- NULL
+  test$X <- NULL
+  test$X.1 <- NULL
+  test$X.2 <- NULL
+  test$X.3 <- NULL
+  test$X.4 <- NULL
+  test$X.5 <- NULL
+  test$X.6 <- NULL
+  test$X.10 <- NULL
+  test$X.11 <- NULL
+  test$X.12 <- NULL
+  test$X.17 <- NULL
+  
+  rawData = merge(x = rawData,y = test,
+                  by = c("Year"),
+                  all = FALSE)
+  
+  rm(list=setdiff(ls(), "rawData"))
+  
+  #calculate distance to city center for every station
+  
+  #create a matrix, that later will contaion needed information
+  distmat=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  
+  #divide in stations in a for loop
+  #Each Loop is for one station
+  #Than calculate distance and add this in a data frame
+  for(i in 1:nlevels(as.factor(rawData$Station))){
+    print(levels(as.factor(rawData$Station))[i])
+    d=rawData[rawData$Station %in% toString(levels(as.factor(rawData$Station))[i]),]
+    
+    #calculate distance for station
+    dist=distm(c(d$Lon[i],d$Lat[i]), c(d$City_Lon[i],d$City_Lat[i]), fun=distGeo)
+    print(paste("Distance from",d[1,8]," station to city center is",dist,"meters"))
+    
+    distmat[i,1]=d[1,8]
+    distmat[i,2]=dist
+    
+    rm(d)
+  }
+  
+  distmat=as.data.frame(distmat)
+  names(distmat)[1]="Station"
+  names(distmat)[2]="Distance_to_Center"
+  distmat$Distance_to_Center=as.numeric(distmat$Distance_to_Center)
+  
+  rawData = merge(x = rawData,y = distmat,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  summary(rawData)
+  
+  rm(list=setdiff(ls(), "rawData"))
   
