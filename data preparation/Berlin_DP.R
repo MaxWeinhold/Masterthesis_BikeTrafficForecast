@@ -1905,3 +1905,226 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   }
   
   summary(rawData)
+  
+  #Bike Shops_____________________________________________________________
+  
+  q <- getbb(toString(rawData$Town[1])) %>%
+    opq() %>%
+    add_osm_feature("shop", "bicycle")
+  
+  str(q) #query structure
+  
+  cinema <- osmdata_sf(q)
+  
+  #cinema$osm_points$osm_id
+  
+  #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+  cinmat=matrix(1:3*length(cinema$osm_points$osm_id), nrow = length(cinema$osm_points$osm_id), ncol = 3)
+  
+  for(i in 1:length(cinema$osm_points$osm_id)){
+    
+    cinmat[i,1]=cinema$osm_points$osm_id[i]
+    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    
+  }
+  
+  #cinmat=na.omit(cinmat)
+  cinmat=as.data.frame(cinmat)
+  names(cinmat)[1]="name"
+  names(cinmat)[2]="lon"
+  names(cinmat)[3]="lat"
+  cinmat$lon=as.numeric(cinmat$lon)
+  cinmat$lat=as.numeric(cinmat$lat)
+  
+  #Not every city has tramstations, so we make a if question for this
+  
+  if(length(cinmat$name)>0){
+    
+    distmat_closest=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+    distmat_1kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+    distmat_3kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+    
+    #divide in stations in a for loop
+    #Each Loop is for one station
+    #Than calculate distance to the closest cinema
+    for(i in 1:nlevels(as.factor(rawData$Station))){
+      d=rawData[rawData$Station %in% toString(levels(as.factor(rawData$Station))[i]),]
+      
+      distc=c(1:length(cinmat$name))
+      
+      #Start loops for each cinemar
+      for (j in 1:length(cinmat$name)) {
+        cindist=distm(c(d$Lon[i],d$Lat[i]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+        distc[j]=cindist
+      }
+      
+      
+      distmat_closest[i,1]=d[1,1]
+      distmat_closest[i,2]=min(distc)
+      
+      distmat_1kmradius[i,1]=d[1,1]
+      distmat_1kmradius[i,2]=sum(distc < 1000)
+      
+      distmat_3kmradius[i,1]=d[1,1]
+      distmat_3kmradius[i,2]=sum(distc < 3000)
+      
+    }
+    
+    distmat_closest=as.data.frame(distmat_closest)
+    names(distmat_closest)[1]="Station"
+    names(distmat_closest)[2]="ClosestBikeShop"
+    distmat_closest$ClosestBikeShop=as.numeric(distmat_closest$ClosestBikeShop)
+    
+    distmat_1kmradius=as.data.frame(distmat_1kmradius)
+    names(distmat_1kmradius)[1]="Station"
+    names(distmat_1kmradius)[2]="BikeShop1kmRadius"
+    distmat_1kmradius$BikeShop1kmRadius=as.numeric(distmat_1kmradius$BikeShop1kmRadius)
+    
+    distmat_3kmradius=as.data.frame(distmat_3kmradius)
+    names(distmat_3kmradius)[1]="Station"
+    names(distmat_3kmradius)[2]="BikeShop3kmRadius"
+    distmat_3kmradius$BikeShop3kmRadius=as.numeric(distmat_3kmradius$BikeShop3kmRadius)
+    
+    rawData = merge(x = rawData,y = distmat_closest,
+                    by = c("Station"),
+                    all = FALSE)
+    
+    rawData = merge(x = rawData,y = distmat_1kmradius,
+                    by = c("Station"),
+                    all = FALSE)
+    
+    rawData = merge(x = rawData,y = distmat_3kmradius,
+                    by = c("Station"),
+                    all = FALSE)
+    
+    #rm(list=setdiff(ls(), "rawData"))
+    
+  }else{
+    
+    rawData$ClosestTrainS=50000
+    rawData$TrainS1kmRadius=0
+    rawData$TrainS3kmRadius=0
+  }
+  
+  summary(rawData)
+  
+  rm(list=setdiff(ls(), "rawData"))
+  
+  
+  
+  #RoadNetwork
+  
+  city=rawData$Town[1]
+  
+  q1 <- getbb(city) %>%
+    opq() %>%
+    add_osm_feature("highway", "cycleway")
+  q2 <- getbb(city) %>%
+    opq() %>%
+    add_osm_feature("highway", "residential")
+  q3 <- getbb(city) %>%
+    opq() %>%
+    add_osm_feature("highway", "living_street")
+  q4 <- getbb(city) %>%
+    opq() %>%
+    add_osm_feature("highway", "path")
+  q5 <- getbb(city) %>%
+    opq() %>%
+    add_osm_feature("highway", "secondary")
+  q6 <- getbb(city) %>%
+    opq() %>%
+    add_osm_feature("highway", "primary")
+  q7 <- getbb(city) %>%
+    opq() %>%
+    add_osm_feature("bridge", "yes")
+  
+  #str(q1) #query structure
+  
+  cycleways <- osmdata_sf(q1)
+  residential <- osmdata_sf(q2)
+  living_street <- osmdata_sf(q3)
+  path <- osmdata_sf(q4)
+  secondary <- osmdata_sf(q5)
+  primary <- osmdata_sf(q6)
+  bridge <- osmdata_sf(q7)
+  
+  dist_mat=as.data.frame(levels(as.factor(rawData$Station)))
+  dist_mat$cycleways = 9999
+  dist_mat$residential = 9999
+  dist_mat$living_street = 9999
+  dist_mat$path = 9999
+  dist_mat$secondary = 9999
+  dist_mat$primary = 9999
+  
+  bool_mat=as.data.frame(levels(as.factor(rawData$Station)))
+  bool_mat$cycleways = 0
+  bool_mat$residential = 0
+  bool_mat$living_street = 0
+  bool_mat$path = 0
+  bool_mat$secondary = 0
+  bool_mat$primary = 0
+  
+  bridge_mat=levels(as.factor(rawData$Station))
+  bridge_mat=as.data.frame(bridge_mat)
+  bridge_mat$ClosestBridge = 9999
+  bridge_mat$isBridge = 0
+  
+  i=1
+  
+  for(i in 1:nlevels(as.factor(rawData$Station))){
+    
+    d=rawData[rawData$Station %in% toString(levels(as.factor(rawData$Station))[i]),]
+    
+    DT = as.data.frame(cbind(d$Lon[i],d$Lat[i]))
+    names(DT)[1]="long1"
+    names(DT)[2]="lat1"
+    DT2 = st_as_sf(DT, coords = c("long1","lat1"))
+    DT2 <- st_set_crs(DT2, 4269)
+    st_crs(DT2) <- 4269 
+    DT3cycleways = st_transform(cycleways$osm_lines$geometry,4269)
+    DT3residential = st_transform(residential$osm_lines$geometry,4269)
+    DT3living_street = st_transform(living_street$osm_lines$geometry,4269)
+    DT3path = st_transform(path$osm_lines$geometry,4269)
+    DT3secondary = st_transform(secondary$osm_lines$geometry,4269)
+    DT3primary = st_transform(primary$osm_lines$geometry,4269)
+    DT3bridge = st_transform(bridge$osm_lines$geometry,4269)
+    
+    dist_mat$cycleways[i]=min(st_distance(DT2$geometry, DT3cycleways))
+    dist_mat$residential[i]=min(st_distance(DT2$geometry, DT3residential))
+    dist_mat$living_street[i]=min(st_distance(DT2$geometry, DT3living_street))
+    dist_mat$path[i]=min(st_distance(DT2$geometry, DT3path))
+    dist_mat$secondary[i]=min(st_distance(DT2$geometry, DT3secondary))
+    dist_mat$primary[i]=min(st_distance(DT2$geometry, DT3primary))
+    
+    bridge_mat$ClosestBridge[i]=min(st_distance(DT2$geometry, DT3primary))
+    if(bridge_mat$ClosestBridge[i]<5){bridge_mat$isBridge[i]=1}
+    
+    if(dist_mat$cycleways[i]<5){bool_mat$cycleways[i]=1}
+    if(dist_mat$residential[i]<5){bool_mat$residential[i]=1}
+    if(dist_mat$living_street[i]<5){bool_mat$living_street[i]=1}
+    if(dist_mat$path[i]<5){bool_mat$path[i]=1}
+    if(dist_mat$secondary[i]<5){bool_mat$secondary[i]=1}
+    if(dist_mat$primary[i]<5){bool_mat$primary[i]=1}
+  }
+  
+  dist_mat
+  bool_mat
+  bridge_mat
+  
+  names(bool_mat)[1]="Station"
+  names(bridge_mat)[1]="Station"
+  
+  rawData = merge(x = rawData,y = bool_mat,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  
+  rawData = merge(x = rawData,y = bridge_mat,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  summary(rawData)
+  
+  citation ("osmdata")
+  
