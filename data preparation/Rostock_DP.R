@@ -17,8 +17,8 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Rostock
-setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Rostock")
+#D:\STUDIUM\MÃ¼nster\7. Semester\Masterarbeit Daten\Rostock
+setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Rostock")
 
 #Read Bycicle Counting Data----------------------------------------------
   countingData = read.csv(file = "Zaehldaten_Rostock.csv",sep=",")
@@ -164,7 +164,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Rostock")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$MVP %in% TRUE,]
@@ -182,12 +182,46 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Rostock")
   
   summary(rawData)
   
+#Add Data on the Youth Inhabitant Ratio
+  
+  youthRatios = read.csv(file = "Altersgruppen.csv",sep=";", encoding="UTF-8")
+  names(youthRatios)
+  
+  youthRatios$Code <- NULL
+  youthRatios$Kreis <- NULL
+  youthRatios$unter.3.Jahre <- NULL
+  youthRatios$X3.bis.unter.6.Jahre <- NULL
+  youthRatios$X6.bis.unter.10.Jahre <- NULL
+  youthRatios$X10.bis.unter.15.Jahre <- NULL
+  youthRatios$X15.bis.unter.18.Jahre <- NULL
+  youthRatios$X18.bis.unter.20.Jahre <- NULL
+  youthRatios$Insgesamt <- NULL
+  youthRatios$Unter.18 <- NULL
+  youthRatios$Unter.20 <- NULL
+  
+  names(youthRatios)[1]="Year"
+  names(youthRatios)[2]="Town"
+  names(youthRatios)[3]="young18"
+  names(youthRatios)[4]="young20"
+  
+  youthRatios$young18 = gsub(",", ".", youthRatios$young18)
+  youthRatios$young20 = gsub(",", ".", youthRatios$young20)
+  
+  youthRatios$young18 = as.numeric(youthRatios$young18)
+  youthRatios$young20 = as.numeric(youthRatios$young20)
+  
+  rawData = merge(x = rawData,y = youthRatios,
+                  by = c("Year","Town"),
+                  all = FALSE)
+  
+  summary(rawData)
+  
 #Add Weather Data (Source: Deutscher Wetterdienst)
   
   rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Rostock")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Rostock")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -315,7 +349,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Rostock")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Rostock.csv")
   
 # Adding ADFC-Fahrradklima Values
@@ -336,7 +370,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Rostock")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -1770,3 +1804,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Rostock")
   
   
   rm(list=setdiff(ls(), "rawData"))
+  
+  
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))

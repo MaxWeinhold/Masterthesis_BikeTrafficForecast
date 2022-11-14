@@ -17,19 +17,19 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Bochum
-setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
+#D:\STUDIUM\MÃ¼nster\7. Semester\Masterarbeit Daten\Bochum
+setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/DÃ¼sseldorf")
 #Read Bycicle Counting Data----------------------------------------------
-  countingData2012 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2012_3.csv",sep=";")
-  countingData2013 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2013_1.csv",sep=";")
-  countingData2014 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2014_1.csv",sep=";")
-  countingData2015 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2015_1.csv",sep=";")
-  countingData2016 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2016_1.csv",sep=";")
-  countingData2017 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2017_1.csv",sep=";")
-  countingData2018 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2018_1.csv",sep=";")
-  countingData2019 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2019_1.csv",sep=";")
-  countingData2020 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2020.csv",sep=";")
-  countingData2021 = read.csv(file = "Jahresübersicht aller Dauerzählstellen 2021_2.csv",sep=";")
+  countingData2012 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2012_3.csv",sep=";")
+  countingData2013 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2013_1.csv",sep=";")
+  countingData2014 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2014_1.csv",sep=";")
+  countingData2015 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2015_1.csv",sep=";")
+  countingData2016 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2016_1.csv",sep=";")
+  countingData2017 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2017_1.csv",sep=";")
+  countingData2018 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2018_1.csv",sep=";")
+  countingData2019 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2019_1.csv",sep=";")
+  countingData2020 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2020.csv",sep=";")
+  countingData2021 = read.csv(file = "JahresÃ¼bersicht aller DauerzÃ¤hlstellen 2021_2.csv",sep=";")
   names(countingData2021)
   
 #Change count frequency to hourly data----------------------------------------------
@@ -43,7 +43,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
                          Fleher_Deich_Ost_stromaufwaerts=sum(Fleher_Deich_Ost_stromaufwaerts),
                          Fleher_Deich_west_stromabwaerts=sum(Fleher_Deich_west_stromabwaerts),
                          Friedrichstr=sum(Friedrichstr),
-                         Kirchfeldstrasse=sum(KirchfeldstraÃYe),
+                         Kirchfeldstrasse=sum(KirchfeldstraÃƒÅ¸e),
                          Koblenzer_einwaerts_nach_TLS=sum(Koblenzer_einwaerts_nach_TLS),
                          Koblenzer_einwaerts_vor_TLS=sum(Koblenzer_einwaerts_vor_TLS),
                          Koblenzer_stadtauswaerts=sum(Koblenzer_stadtauswaerts),
@@ -60,19 +60,19 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
                          Bilker.Allee.OUT=sum(Bilker.Allee.OUT),
                          Christophstr=sum(Christophstr.),
                          Elisabethstr=sum(Elisabethstr),
-                         Fleher_Deich_Ost_stromaufwaerts=sum(Fleher.Deich.Ost.stromaufwÃ.rts),
-                         Fleher_Deich_west_stromabwaerts=sum(Fleher.Deich.west.stromabwÃ.rts),
+                         Fleher_Deich_Ost_stromaufwaerts=sum(Fleher.Deich.Ost.stromaufwÃƒ.rts),
+                         Fleher_Deich_west_stromabwaerts=sum(Fleher.Deich.west.stromabwÃƒ.rts),
                          Friedrichstr=sum(Friedrichstr),
-                         Kirchfeldstrasse=sum(KirchfeldstraÃYe),
-                         Koblenzer_einwaerts_nach_TLS=sum(Koblenzer.einwÃ.rts.nach.TLS),
-                         Koblenzer_einwaerts_vor_TLS=sum(Koblenzer.einwÃ.rts.vor.TLS),
-                         Koblenzer_stadtauswaerts=sum(Koblenzer.stadtauswÃ.rts),
-                         #Koblenzer_stadtauswaertss=sum(Koblenzer.stadtauswÃ.rtss),
-                         Koe_Steinstr=sum(KÃ..Steinstr),
+                         Kirchfeldstrasse=sum(KirchfeldstraÃƒÅ¸e),
+                         Koblenzer_einwaerts_nach_TLS=sum(Koblenzer.einwÃƒ.rts.nach.TLS),
+                         Koblenzer_einwaerts_vor_TLS=sum(Koblenzer.einwÃƒ.rts.vor.TLS),
+                         Koblenzer_stadtauswaerts=sum(Koblenzer.stadtauswÃƒ.rts),
+                         #Koblenzer_stadtauswaertss=sum(Koblenzer.stadtauswÃƒ.rtss),
+                         Koe_Steinstr=sum(KÃƒ..Steinstr),
                          Lohauser_Deich=sum(Lohauser.Deich),
                          Mannesmann_Ufer.Totem_01=sum(Mannesmann.Ufer.Totem.01),
                          OKB_Nord=sum(OKB.Nord),
-                         OKB_Sued=sum(OKB.SÃ.d))
+                         OKB_Sued=sum(OKB.SÃƒ.d))
   
   
   countingData2014$Uhrzeit=paste(countingData2014$Datum,countingData2014$Uhrzeit, sep=" ")
@@ -81,19 +81,19 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
                          Bilker.Allee.OUT=sum(Bilker.Allee.OUT),
                          Christophstr=sum(Christophstr.),
                          Elisabethstr=sum(Elisabethstr),
-                         Fleher_Deich_Ost_stromaufwaerts=sum(Fleher.Deich.Ost.stromaufwÃ.rts),
-                         Fleher_Deich_west_stromabwaerts=sum(Fleher.Deich.west.stromabwÃ.rts),
+                         Fleher_Deich_Ost_stromaufwaerts=sum(Fleher.Deich.Ost.stromaufwÃƒ.rts),
+                         Fleher_Deich_west_stromabwaerts=sum(Fleher.Deich.west.stromabwÃƒ.rts),
                          Friedrichstr=sum(Friedrichstr),
-                         Kirchfeldstrasse=sum(KirchfeldstraÃYe),
-                         Koblenzer_einwaerts_nach_TLS=sum(Koblenzer.einwÃ.rts.nach.TLS),
-                         Koblenzer_einwaerts_vor_TLS=sum(Koblenzer.einwÃ.rts.vor.TLS),
-                         Koblenzer_stadtauswaerts=sum(Koblenzer.stadtauswÃ.rts),
-                         #Koblenzer_stadtauswaertss=sum(Koblenzer.stadtauswÃ.rtss),
-                         Koe_Steinstr=sum(KÃ..Steinstr),
+                         Kirchfeldstrasse=sum(KirchfeldstraÃƒÅ¸e),
+                         Koblenzer_einwaerts_nach_TLS=sum(Koblenzer.einwÃƒ.rts.nach.TLS),
+                         Koblenzer_einwaerts_vor_TLS=sum(Koblenzer.einwÃƒ.rts.vor.TLS),
+                         Koblenzer_stadtauswaerts=sum(Koblenzer.stadtauswÃƒ.rts),
+                         #Koblenzer_stadtauswaertss=sum(Koblenzer.stadtauswÃƒ.rtss),
+                         Koe_Steinstr=sum(KÃƒ..Steinstr),
                          Lohauser_Deich=sum(Lohauser.Deich),
                          Mannesmann_Ufer.Totem_01=sum(Mannesmann.Ufer.Totem.01),
                          OKB_Nord=sum(OKB.Nord),
-                         OKB_Sued=sum(OKB.SÃ.d))
+                         OKB_Sued=sum(OKB.SÃƒ.d))
   
   countingData2015$Uhrzeit=paste(countingData2015$Datum,countingData2015$Uhrzeit, sep=" ")
   countingData2015$Uhrzeit=cut(strptime(countingData2015$Uhrzeit,"%d.%m.%Y %H:%M"),"hour")
@@ -104,7 +104,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
                          Fleher_Deich_Ost_stromaufwaerts=sum(Fleher.Deich.Ost.stromaufwaerts),
                          Fleher_Deich_west_stromabwaerts=sum(Fleher.Deich.west.stromabwaerts),
                          Friedrichstr=sum(Friedrichstr),
-                         Kirchfeldstrasse=sum(KirchfeldstraÃYe),
+                         Kirchfeldstrasse=sum(KirchfeldstraÃƒÅ¸e),
                          Koblenzer_einwaerts_nach_TLS=sum(Koblenzer.einwaerts.nach.TLS),
                          Koblenzer_einwaerts_vor_TLS=sum(Koblenzer.einwaerts.vor.TLS),
                          Koblenzer_stadtauswaerts=sum(Koblenzer.stadtauswaerts),
@@ -124,7 +124,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
                          Fleher_Deich_Ost_stromaufwaerts=sum(Fleher.Deich.Ost.stromaufwaerts),
                          Fleher_Deich_west_stromabwaerts=sum(Fleher.Deich.west.stromabwaerts),
                          Friedrichstr=sum(Friedrichstr),
-                         Kirchfeldstrasse=sum(KirchfeldstraÃYe),
+                         Kirchfeldstrasse=sum(KirchfeldstraÃƒÅ¸e),
                          Koblenzer_einwaerts_nach_TLS=sum(Koblenzer.einwaerts.nach.TLS),
                          Koblenzer_einwaerts_vor_TLS=sum(Koblenzer.einwaerts.vor.TLS),
                          Koblenzer_stadtauswaerts=sum(Koblenzer.stadtauswaerts),
@@ -144,7 +144,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
                          Fleher_Deich_Ost_stromaufwaerts=sum(Fleher.Deich.Ost.stromaufwaerts),
                          Fleher_Deich_west_stromabwaerts=sum(Fleher.Deich.west.stromabwaerts),
                          Friedrichstr=sum(Friedrichstr),
-                         Kirchfeldstrasse=sum(KirchfeldstraÃYe),
+                         Kirchfeldstrasse=sum(KirchfeldstraÃƒÅ¸e),
                          Koblenzer_einwaerts_nach_TLS=sum(Koblenzer.einwaerts.nach.TLS),
                          Koblenzer_einwaerts_vor_TLS=sum(Koblenzer.einwaerts.vor.TLS),
                          Koblenzer_stadtauswaerts=sum(Koblenzer.stadtauswaerts),
@@ -305,22 +305,22 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
 #Add Location Columns----------------------------------------------
   
-  Data_bilkeralleein$Town = "Duesseldorf"
-  Data_bilkeralleeout$Town = "Duesseldorf"
-  Data_Christophstr$Town = "Duesseldorf"
-  Data_Elisabethstr$Town = "Duesseldorf"
-  Data_Fleher_Deich_Ost$Town = "Duesseldorf"
-  Data_Fleher_Deich_west$Town = "Duesseldorf"
-  Data_Friedrichstr$Town = "Duesseldorf"
-  Data_Kirchfeldstrasse$Town = "Duesseldorf"
-  Data_Koblenzer_einwaerts_nach_TLS$Town = "Duesseldorf"
-  Data_Koblenzer_einwaerts_vor_TLS$Town = "Duesseldorf"
-  Data_Koblenzer_stadtauswaerts$Town = "Duesseldorf"
-  Data_Koe_Steinstr$Town = "Duesseldorf"
-  Data_Lohauser_Deich$Town = "Duesseldorf"
-  Data_Mannesmann_Ufer$Town = "Duesseldorf"
-  Data_OKB_Nord$Town = "Duesseldorf"
-  Data_OKB_Sued$Town = "Duesseldorf"
+  Data_bilkeralleein$Town = "DÃ¼sseldorf"
+  Data_bilkeralleeout$Town = "DÃ¼sseldorf"
+  Data_Christophstr$Town = "DÃ¼sseldorf"
+  Data_Elisabethstr$Town = "DÃ¼sseldorf"
+  Data_Fleher_Deich_Ost$Town = "DÃ¼sseldorf"
+  Data_Fleher_Deich_west$Town = "DÃ¼sseldorf"
+  Data_Friedrichstr$Town = "DÃ¼sseldorf"
+  Data_Kirchfeldstrasse$Town = "DÃ¼sseldorf"
+  Data_Koblenzer_einwaerts_nach_TLS$Town = "DÃ¼sseldorf"
+  Data_Koblenzer_einwaerts_vor_TLS$Town = "DÃ¼sseldorf"
+  Data_Koblenzer_stadtauswaerts$Town = "DÃ¼sseldorf"
+  Data_Koe_Steinstr$Town = "DÃ¼sseldorf"
+  Data_Lohauser_Deich$Town = "DÃ¼sseldorf"
+  Data_Mannesmann_Ufer$Town = "DÃ¼sseldorf"
+  Data_OKB_Nord$Town = "DÃ¼sseldorf"
+  Data_OKB_Sued$Town = "DÃ¼sseldorf"
   
   Data_bilkeralleein$Station = "bilkeralleein"
   Data_bilkeralleeout$Station = "bilkeralleeout"
@@ -431,7 +431,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
@@ -449,48 +449,48 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   summary(rawData)
   
+  
+  #Add Data on the Youth Inhabitant Ratio
+  
+  youthRatios = read.csv(file = "Altersgruppen.csv",sep=";", encoding="UTF-8")
+  names(youthRatios)
+  
+  youthRatios$Code <- NULL
+  youthRatios$Kreis <- NULL
+  youthRatios$unter.3.Jahre <- NULL
+  youthRatios$X3.bis.unter.6.Jahre <- NULL
+  youthRatios$X6.bis.unter.10.Jahre <- NULL
+  youthRatios$X10.bis.unter.15.Jahre <- NULL
+  youthRatios$X15.bis.unter.18.Jahre <- NULL
+  youthRatios$X18.bis.unter.20.Jahre <- NULL
+  youthRatios$Insgesamt <- NULL
+  youthRatios$Unter.18 <- NULL
+  youthRatios$Unter.20 <- NULL
+  
+  names(youthRatios)[1]="Year"
+  names(youthRatios)[2]="Town"
+  names(youthRatios)[3]="young18"
+  names(youthRatios)[4]="young20"
+  
+  youthRatios$young18 = gsub(",", ".", youthRatios$young18)
+  youthRatios$young20 = gsub(",", ".", youthRatios$young20)
+  
+  youthRatios$young18 = as.numeric(youthRatios$young18)
+  youthRatios$young20 = as.numeric(youthRatios$young20)
+  
+  rawData = merge(x = rawData,y = youthRatios,
+                  by = c("Year","Town"),
+                  all = FALSE)
+  
+  summary(rawData)
+  
+  
 #Add Weather Data (Source: Deutscher Wetterdienst)
   
-  rm(publicHolidays)
-  rm(schoolHolidays)
-  rm(sH)
-  rm(pH)
-  rm(x)
-  rm(i)
-  rm(countingData)
-  rm(countingData2012)
-  rm(countingData2013)
-  rm(countingData2014)
-  rm(countingData2015)
-  rm(countingData2016)
-  rm(countingData2017)
-  rm(countingData2018)
-  rm(countingData2019)
-  rm(countingData2020)
-  rm(countingData2021)
-  rm(Data_bilkerallee)
-  rm(Data_bilkeralleein)
-  rm(Data_bilkeralleeout)
-  rm(Data_Christophstr)
-  rm(Data_Elisabethstr)
-  rm(Data_Fleher_Deich)
-  rm(Data_Fleher_Deich_Ost)
-  rm(Data_Fleher_Deich_West)
-  rm(Data_Friedrichstr)
-  rm(Data_Kirchfeldstrasse)
-  rm(Data_Koblenzer)
-  rm(Data_Koblenzer_einwaerts_nach_TLS)
-  rm(Data_Koblenzer_einwaerts_vor_TLS)
-  rm(Data_Koblenzer_stadtauswaerts)
-  rm(Data_Koe_Steinstr)
-  rm(Data_Lohauser_Deich)
-  rm(Data_Mannesmann_Ufer)
-  rm(Data_OKB)
-  rm(Data_OKB_Nord)
-  rm(Data_OKB_Sued)
+  rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/DÃ¼sseldorf")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -618,7 +618,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Duesseldorf.csv")
   
 # Adding ADFC-Fahrradklima Values
@@ -639,7 +639,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -653,7 +653,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   title=", Stadt" #This differs, there are cities and also hanseatic cities
   
-  test12=as.data.frame(Destatis12[Destatis12$X.6 == "Düsseldorf, Stadt",])
+  test12=as.data.frame(Destatis12[Destatis12$X.6 == "DÃ¼sseldorf, Stadt",])
   test12[17] <- NULL
   test12[17] <- NULL
   test12 <- test12 %>% mutate_all(na_if,"")
@@ -661,7 +661,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test12=na.omit(test12)
   test12$Year=2012
   
-  test13=as.data.frame(Destatis13[Destatis13$X.6 == "Düsseldorf, Stadt",])
+  test13=as.data.frame(Destatis13[Destatis13$X.6 == "DÃ¼sseldorf, Stadt",])
   test13[17] <- NULL
   test13[17] <- NULL
   test13 <- test13 %>% mutate_all(na_if,"")
@@ -669,7 +669,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test13=na.omit(test13)
   test13$Year=2013
   
-  test14=as.data.frame(Destatis14[Destatis14$X.6 == "Düsseldorf, Stadt",])
+  test14=as.data.frame(Destatis14[Destatis14$X.6 == "DÃ¼sseldorf, Stadt",])
   test14[17] <- NULL
   test14[17] <- NULL
   test14 <- test14 %>% mutate_all(na_if,"")
@@ -677,7 +677,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test14=na.omit(test14)
   test14$Year=2014
   
-  test15=as.data.frame(Destatis15[Destatis15$X.6 == "Düsseldorf, Stadt",])
+  test15=as.data.frame(Destatis15[Destatis15$X.6 == "DÃ¼sseldorf, Stadt",])
   test15[17] <- NULL
   test15[17] <- NULL
   test15 <- test15 %>% mutate_all(na_if,"")
@@ -685,7 +685,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test15=na.omit(test15)
   test15$Year=2015
   
-  test16=as.data.frame(Destatis16[Destatis16$X.6 == "Düsseldorf, Stadt",])
+  test16=as.data.frame(Destatis16[Destatis16$X.6 == "DÃ¼sseldorf, Stadt",])
   test16[17] <- NULL
   test16[17] <- NULL
   test16 <- test16 %>% mutate_all(na_if,"")
@@ -693,7 +693,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test16=na.omit(test16)
   test16$Year=2016
   
-  test17=as.data.frame(Destatis17[Destatis17$X.6 == "Düsseldorf, Stadt",])
+  test17=as.data.frame(Destatis17[Destatis17$X.6 == "DÃ¼sseldorf, Stadt",])
   test17[17] <- NULL
   test17[17] <- NULL
   test17 <- test17 %>% mutate_all(na_if,"")
@@ -701,7 +701,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test17=na.omit(test17)
   test17$Year=2017
   
-  test18=as.data.frame(Destatis18[Destatis18$X.6 == "Düsseldorf, Stadt",])
+  test18=as.data.frame(Destatis18[Destatis18$X.6 == "DÃ¼sseldorf, Stadt",])
   test18[17] <- NULL
   test18[17] <- NULL
   test18 <- test18 %>% mutate_all(na_if,"")
@@ -709,7 +709,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test18=na.omit(test18)
   test18$Year=2018
   
-  test19=as.data.frame(Destatis19[Destatis19$X.6 == "Düsseldorf, Stadt",])
+  test19=as.data.frame(Destatis19[Destatis19$X.6 == "DÃ¼sseldorf, Stadt",])
   test19[17] <- NULL
   test19[17] <- NULL
   test19 <- test19 %>% mutate_all(na_if,"")
@@ -717,7 +717,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test19=na.omit(test19)
   test19$Year=2019
   
-  test20=as.data.frame(Destatis20[Destatis20$X.6 == "Düsseldorf, Stadt",])
+  test20=as.data.frame(Destatis20[Destatis20$X.6 == "DÃ¼sseldorf, Stadt",])
   test20[17] <- NULL
   test20[17] <- NULL
   test20 <- test20 %>% mutate_all(na_if,"")
@@ -725,7 +725,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   test20=na.omit(test20)
   test20$Year=2020
   
-  test21=as.data.frame(Destatis21[Destatis21$X.6 == "Düsseldorf, Stadt",])
+  test21=as.data.frame(Destatis21[Destatis21$X.6 == "DÃ¼sseldorf, Stadt",])
   test21[17] <- NULL
   test21[17] <- NULL
   test21 <- test21 %>% mutate_all(na_if,"")
@@ -842,7 +842,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("amenity", "cinema")
   
@@ -944,7 +944,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("amenity", "school")
   
@@ -1046,7 +1046,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("amenity", "university")
   
@@ -1150,7 +1150,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("shop", "supermarket")
   
@@ -1252,7 +1252,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Clothingshops__________________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("shop", "clothes")
   
@@ -1354,7 +1354,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Crossing Signals_______________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("highway", "traffic_signals")
   
@@ -1446,7 +1446,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Crossing Signals_______________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("highway", "traffic_signals")
   
@@ -1538,7 +1538,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Crossing Unmarked_______________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("crossing", "unmarked")
   
@@ -1632,7 +1632,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Get Tram Stattions_____________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("railway", "tram_stop")
   
@@ -1736,7 +1736,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Get Subway Entrance_____________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("railway", "subway_entrance")
   
@@ -1839,7 +1839,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Railway Station operated by the DB Netz AG_____________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("railway", "station")%>%
     add_osm_feature("operator", "DB Netz AG")
@@ -1944,7 +1944,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #Bike Shops_____________________________________________________________
   
-  q <- getbb("Düsseldorf") %>%
+  q <- getbb("DÃ¼sseldorf") %>%
     opq() %>%
     add_osm_feature("shop", "bicycle")
   
@@ -2049,7 +2049,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   #RoadNetwork
   
-  city="Düsseldorf"
+  city="DÃ¼sseldorf"
   
   q1 <- getbb(city) %>%
     opq() %>%
@@ -2162,3 +2162,5 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Düsseldorf")
   
   
   rm(list=setdiff(ls(), "rawData"))
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))

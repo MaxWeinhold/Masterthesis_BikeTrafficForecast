@@ -16,15 +16,15 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Hamburg
-setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
+#D:\STUDIUM\MÃ¼nster\7. Semester\Masterarbeit Daten\Hamburg
+setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Hamburg")
 
 #Read Bycicle Counting Data----------------------------------------------
   countingData_Dauer = read.csv(file = "export_radverkehr.csv",sep=";")
   countingData_6399 = read.csv(file = "Anzahl_Fahrraeder_6399_Querschnitt 1-Stunde_2022-11-07_11-27-35.csv",sep=";")
-  countingData_6397 = read.csv(file = "Anzahl_Fahrraeder_6397_Nord nach Süd 1-Stunde_2022-11-07_11-24-09.csv",sep=";")
+  countingData_6397 = read.csv(file = "Anzahl_Fahrraeder_6397_Nord nach SÃ¼d 1-Stunde_2022-11-07_11-24-09.csv",sep=";")
   countingData_6393 = read.csv(file = "Anzahl_Fahrraeder_6393_Querschnitt 1-Stunde_2022-11-07_11-25-07.csv",sep=";")
-  countingData_6344 = read.csv(file = "Anzahl_Fahrraeder_6344_Nordwest nach Südost 1-Stunde_2022-11-07_11-21-19.csv",sep=";")
+  countingData_6344 = read.csv(file = "Anzahl_Fahrraeder_6344_Nordwest nach SÃ¼dost 1-Stunde_2022-11-07_11-21-19.csv",sep=";")
   countingData_5901 = read.csv(file = "Anzahl_Fahrraeder_5901_Querschnitt 1-Stunde_2022-11-07_11-27-25.csv",sep=";")
   countingData_5883 = read.csv(file = "Anzahl_Fahrraeder_5883_Querschnitt 1-Stunde_2022-11-07_11-24-31.csv",sep=";")
   countingData_5869 = read.csv(file = "Anzahl_Fahrraeder_5869_Querschnitt 1-Stunde_2022-11-07_11-21-05.csv",sep=";")
@@ -41,12 +41,12 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
   countingData_5623 = read.csv(file = "Anzahl_Fahrraeder_5623_Querschnitt 1-Stunde_2022-11-07_11-20-41.csv",sep=";")
   countingData_5620 = read.csv(file = "Anzahl_Fahrraeder_5620_Querschnitt 1-Stunde_2022-11-07_11-25-31.csv",sep=";")
   countingData_5617 = read.csv(file = "Anzahl_Fahrraeder_5617_Querschnitt 1-Stunde_2022-11-07_11-27-56.csv",sep=";")
-  countingData_5616 = read.csv(file = "Anzahl_Fahrraeder_5616_Südwest nach Nordost 1-Stunde_2022-11-07_11-25-45.csv",sep=";")
+  countingData_5616 = read.csv(file = "Anzahl_Fahrraeder_5616_SÃ¼dwest nach Nordost 1-Stunde_2022-11-07_11-25-45.csv",sep=";")
   countingData_5606 = read.csv(file = "Anzahl_Fahrraeder_5606_Ost nach West 1-Stunde_2022-11-07_11-22-32.csv",sep=";")
   countingData_5593 = read.csv(file = "Anzahl_Fahrraeder_5593_Querschnitt 1-Stunde_2022-11-07_11-23-16.csv",sep=";")
   countingData_5590 = read.csv(file = "Anzahl_Fahrraeder_5590_Querschnitt 1-Stunde_2022-11-07_11-22-01.csv",sep=";")
   countingData_5584 = read.csv(file = "Anzahl_Fahrraeder_5584_Querschnitt 1-Stunde_2022-11-07_11-28-06.csv",sep=";")
-  countingData_5583 = read.csv(file = "Anzahl_Fahrraeder_5583_Südost nach Nordwest 1-Stunde_2022-11-07_11-22-50.csv",sep=";")
+  countingData_5583 = read.csv(file = "Anzahl_Fahrraeder_5583_SÃ¼dost nach Nordwest 1-Stunde_2022-11-07_11-22-50.csv",sep=";")
   countingData_5575 = read.csv(file = "Anzahl_Fahrraeder_5575_Querschnitt 1-Stunde_2022-11-07_11-26-05.csv",sep=";")
   countingData_5573 = read.csv(file = "Anzahl_Fahrraeder_5573_Querschnitt 1-Stunde_2022-11-07_11-26-35.csv",sep=";")
   #countingData_5567 = read.csv(file = "Anzahl_Fahrraeder_5567_Querschnitt 1-Stunde_2022-11-07_11-21-40.csv",sep=";")
@@ -63,35 +63,35 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
   countingData_Dauer$Timestamp	= as.POSIXct(countingData_Dauer$Timestamp, format = "%d.%m.%Y %H:%M")
   
   names(countingData_6399)
-  countingData_6399$Timestamp=paste(countingData_6399$ï..Datum,countingData_6399$Uhrzeit.von, sep=" ")
-  countingData_6397$Timestamp=paste(countingData_6397$ï..Datum,countingData_6397$Uhrzeit.von, sep=" ")
-  countingData_6393$Timestamp=paste(countingData_6393$ï..Datum,countingData_6393$Uhrzeit.von, sep=" ")
-  countingData_6344$Timestamp=paste(countingData_6344$ï..Datum,countingData_6344$Uhrzeit.von, sep=" ")
-  countingData_5901$Timestamp=paste(countingData_5901$ï..Datum,countingData_5901$Uhrzeit.von, sep=" ")
-  countingData_5883$Timestamp=paste(countingData_5883$ï..Datum,countingData_5883$Uhrzeit.von, sep=" ")
-  countingData_5869$Timestamp=paste(countingData_5869$ï..Datum,countingData_5869$Uhrzeit.von, sep=" ")
-  countingData_5866$Timestamp=paste(countingData_5866$ï..Datum,countingData_5866$Uhrzeit.von, sep=" ")
-  countingData_5862$Timestamp=paste(countingData_5862$ï..Datum,countingData_5862$Uhrzeit.von, sep=" ")
-  countingData_5856$Timestamp=paste(countingData_5856$ï..Datum,countingData_5856$Uhrzeit.von, sep=" ")
-  countingData_5854$Timestamp=paste(countingData_5854$ï..Datum,countingData_5854$Uhrzeit.von, sep=" ")
-  countingData_5812$Timestamp=paste(countingData_5812$ï..Datum,countingData_5812$Uhrzeit.von, sep=" ")
-  countingData_5809$Timestamp=paste(countingData_5809$ï..Datum,countingData_5809$Uhrzeit.von, sep=" ")
-  countingData_5804$Timestamp=paste(countingData_5804$ï..Datum,countingData_5804$Uhrzeit.von, sep=" ")
-  countingData_5801$Timestamp=paste(countingData_5801$ï..Datum,countingData_5801$Uhrzeit.von, sep=" ")
-  countingData_5636$Timestamp=paste(countingData_5636$ï..Datum,countingData_5636$Uhrzeit.von, sep=" ")
-  countingData_5629$Timestamp=paste(countingData_5629$ï..Datum,countingData_5629$Uhrzeit.von, sep=" ")
-  countingData_5623$Timestamp=paste(countingData_5623$ï..Datum,countingData_5623$Uhrzeit.von, sep=" ")
-  countingData_5620$Timestamp=paste(countingData_5620$ï..Datum,countingData_5620$Uhrzeit.von, sep=" ")
-  countingData_5617$Timestamp=paste(countingData_5617$ï..Datum,countingData_5617$Uhrzeit.von, sep=" ")
-  countingData_5616$Timestamp=paste(countingData_5616$ï..Datum,countingData_5616$Uhrzeit.von, sep=" ")
-  countingData_5606$Timestamp=paste(countingData_5606$ï..Datum,countingData_5606$Uhrzeit.von, sep=" ")
-  countingData_5593$Timestamp=paste(countingData_5593$ï..Datum,countingData_5593$Uhrzeit.von, sep=" ")
-  countingData_5590$Timestamp=paste(countingData_5590$ï..Datum,countingData_5590$Uhrzeit.von, sep=" ")
-  countingData_5584$Timestamp=paste(countingData_5584$ï..Datum,countingData_5584$Uhrzeit.von, sep=" ")
-  countingData_5583$Timestamp=paste(countingData_5583$ï..Datum,countingData_5583$Uhrzeit.von, sep=" ")
-  countingData_5575$Timestamp=paste(countingData_5575$ï..Datum,countingData_5575$Uhrzeit.von, sep=" ")
-  countingData_5573$Timestamp=paste(countingData_5573$ï..Datum,countingData_5573$Uhrzeit.von, sep=" ")
-  countingData_5564$Timestamp=paste(countingData_5564$ï..Datum,countingData_5564$Uhrzeit.von, sep=" ")
+  countingData_6399$Timestamp=paste(countingData_6399$Ã¯..Datum,countingData_6399$Uhrzeit.von, sep=" ")
+  countingData_6397$Timestamp=paste(countingData_6397$Ã¯..Datum,countingData_6397$Uhrzeit.von, sep=" ")
+  countingData_6393$Timestamp=paste(countingData_6393$Ã¯..Datum,countingData_6393$Uhrzeit.von, sep=" ")
+  countingData_6344$Timestamp=paste(countingData_6344$Ã¯..Datum,countingData_6344$Uhrzeit.von, sep=" ")
+  countingData_5901$Timestamp=paste(countingData_5901$Ã¯..Datum,countingData_5901$Uhrzeit.von, sep=" ")
+  countingData_5883$Timestamp=paste(countingData_5883$Ã¯..Datum,countingData_5883$Uhrzeit.von, sep=" ")
+  countingData_5869$Timestamp=paste(countingData_5869$Ã¯..Datum,countingData_5869$Uhrzeit.von, sep=" ")
+  countingData_5866$Timestamp=paste(countingData_5866$Ã¯..Datum,countingData_5866$Uhrzeit.von, sep=" ")
+  countingData_5862$Timestamp=paste(countingData_5862$Ã¯..Datum,countingData_5862$Uhrzeit.von, sep=" ")
+  countingData_5856$Timestamp=paste(countingData_5856$Ã¯..Datum,countingData_5856$Uhrzeit.von, sep=" ")
+  countingData_5854$Timestamp=paste(countingData_5854$Ã¯..Datum,countingData_5854$Uhrzeit.von, sep=" ")
+  countingData_5812$Timestamp=paste(countingData_5812$Ã¯..Datum,countingData_5812$Uhrzeit.von, sep=" ")
+  countingData_5809$Timestamp=paste(countingData_5809$Ã¯..Datum,countingData_5809$Uhrzeit.von, sep=" ")
+  countingData_5804$Timestamp=paste(countingData_5804$Ã¯..Datum,countingData_5804$Uhrzeit.von, sep=" ")
+  countingData_5801$Timestamp=paste(countingData_5801$Ã¯..Datum,countingData_5801$Uhrzeit.von, sep=" ")
+  countingData_5636$Timestamp=paste(countingData_5636$Ã¯..Datum,countingData_5636$Uhrzeit.von, sep=" ")
+  countingData_5629$Timestamp=paste(countingData_5629$Ã¯..Datum,countingData_5629$Uhrzeit.von, sep=" ")
+  countingData_5623$Timestamp=paste(countingData_5623$Ã¯..Datum,countingData_5623$Uhrzeit.von, sep=" ")
+  countingData_5620$Timestamp=paste(countingData_5620$Ã¯..Datum,countingData_5620$Uhrzeit.von, sep=" ")
+  countingData_5617$Timestamp=paste(countingData_5617$Ã¯..Datum,countingData_5617$Uhrzeit.von, sep=" ")
+  countingData_5616$Timestamp=paste(countingData_5616$Ã¯..Datum,countingData_5616$Uhrzeit.von, sep=" ")
+  countingData_5606$Timestamp=paste(countingData_5606$Ã¯..Datum,countingData_5606$Uhrzeit.von, sep=" ")
+  countingData_5593$Timestamp=paste(countingData_5593$Ã¯..Datum,countingData_5593$Uhrzeit.von, sep=" ")
+  countingData_5590$Timestamp=paste(countingData_5590$Ã¯..Datum,countingData_5590$Uhrzeit.von, sep=" ")
+  countingData_5584$Timestamp=paste(countingData_5584$Ã¯..Datum,countingData_5584$Uhrzeit.von, sep=" ")
+  countingData_5583$Timestamp=paste(countingData_5583$Ã¯..Datum,countingData_5583$Uhrzeit.von, sep=" ")
+  countingData_5575$Timestamp=paste(countingData_5575$Ã¯..Datum,countingData_5575$Uhrzeit.von, sep=" ")
+  countingData_5573$Timestamp=paste(countingData_5573$Ã¯..Datum,countingData_5573$Uhrzeit.von, sep=" ")
+  countingData_5564$Timestamp=paste(countingData_5564$Ã¯..Datum,countingData_5564$Uhrzeit.von, sep=" ")
   
 #Rename Columns----------------------------------------------
   names(countingData_Dauer)[3]="Value"
@@ -384,7 +384,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$HAM %in% TRUE,]
@@ -402,12 +402,47 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
   
   summary(rawData)
   
+  #Add Data on the Youth Inhabitant Ratio
+  
+  youthRatios = read.csv(file = "Altersgruppen.csv",sep=";", encoding="UTF-8")
+  names(youthRatios)
+  
+  youthRatios$Code <- NULL
+  youthRatios$Kreis <- NULL
+  youthRatios$unter.3.Jahre <- NULL
+  youthRatios$X3.bis.unter.6.Jahre <- NULL
+  youthRatios$X6.bis.unter.10.Jahre <- NULL
+  youthRatios$X10.bis.unter.15.Jahre <- NULL
+  youthRatios$X15.bis.unter.18.Jahre <- NULL
+  youthRatios$X18.bis.unter.20.Jahre <- NULL
+  youthRatios$Insgesamt <- NULL
+  youthRatios$Unter.18 <- NULL
+  youthRatios$Unter.20 <- NULL
+  
+  names(youthRatios)[1]="Year"
+  names(youthRatios)[2]="Town"
+  names(youthRatios)[3]="young18"
+  names(youthRatios)[4]="young20"
+  
+  youthRatios$young18 = gsub(",", ".", youthRatios$young18)
+  youthRatios$young20 = gsub(",", ".", youthRatios$young20)
+  
+  youthRatios$young18 = as.numeric(youthRatios$young18)
+  youthRatios$young20 = as.numeric(youthRatios$young20)
+  
+  rawData = merge(x = rawData,y = youthRatios,
+                  by = c("Year","Town"),
+                  all = FALSE)
+  
+  summary(rawData)
+  
+  
 #Add Weather Data (Source: Deutscher Wetterdienst)
   
   rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Hamburg")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -535,7 +570,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Hamburg.csv")
   
 # Adding ADFC-Fahrradklima Values
@@ -556,7 +591,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -2000,3 +2035,5 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Hamburg")
   
   
   rm(list=setdiff(ls(), "rawData"))
+  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))
