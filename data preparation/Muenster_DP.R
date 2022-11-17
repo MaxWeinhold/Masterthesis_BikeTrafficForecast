@@ -17,8 +17,8 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Münster
-setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
+#D:\STUDIUM\M�nster\7. Semester\Masterarbeit Daten\M�nster
+setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/M�nster")
 
 #Read Bycicle Counting Data----------------------------------------------
   countingData_GartenStr_18 = read.csv(file = "zaehlstelle_gartenstrasse_2018_stundenauswertung.csv",sep=";", skip = 1, header = F)
@@ -158,70 +158,70 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
 #Add Location Columns----------------------------------------------
   
-  countingData_GartenStr$Town = "Münster"
+  countingData_GartenStr$Town = "M�nster"
   countingData_GartenStr$Station = "GartenStr"
   countingData_GartenStr$Lon = 7.635686416805148
   countingData_GartenStr$Lat = 51.97154102512242
   countingData_GartenStr$Oneway = FALSE
   #countingData_GartenStr$Road_type = "Street"
   
-  countingData_HafenStr$Town = "Münster"
+  countingData_HafenStr$Town = "M�nster"
   countingData_HafenStr$Station = "HafenStr"
   countingData_HafenStr$Lon = 7.62974
   countingData_HafenStr$Lat = 51.95426
   countingData_HafenStr$Oneway = FALSE
   #countingData_HafenStr$Road_type = "Street"  
   
-  countingData_HammerStr$Town = "Münster"
+  countingData_HammerStr$Town = "M�nster"
   countingData_HammerStr$Station = "HammerStr"
   countingData_HammerStr$Lon = 7.62631
   countingData_HammerStr$Lat = 51.95462
   countingData_HammerStr$Oneway = FALSE
   #countingData_HammerStr$Road_type = "Street"  
   
-  countingData_HuefferStr$Town = "Münster"
+  countingData_HuefferStr$Town = "M�nster"
   countingData_HuefferStr$Station = "HuefferStr"
   countingData_HuefferStr$Lon = 7.61094
   countingData_HuefferStr$Lat = 51.9617
   countingData_HuefferStr$Oneway = FALSE
   #countingData_HuefferStr$Road_type = "Street"  
   
-  countingData_Kanalpromenade$Town = "Münster"
+  countingData_Kanalpromenade$Town = "M�nster"
   countingData_Kanalpromenade$Station = "Kanalpromenade"
   countingData_Kanalpromenade$Lon = 7.64931603023393
   countingData_Kanalpromenade$Lat = 51.91728273862377
   countingData_Kanalpromenade$Oneway = FALSE
   #countingData_Kanalpromenade$Road_type = "Pathway"  
   
-  countingData_Neutor$Town = "Münster"
+  countingData_Neutor$Town = "M�nster"
   countingData_Neutor$Station = "Neutor"
   countingData_Neutor$Lon = 7.615573751539727
   countingData_Neutor$Lat = 51.967021135540726
   countingData_Neutor$Oneway = FALSE
   #countingData_Neutor$Road_type = "large_Street"  
   
-  countingData_Promenade$Town = "Münster"
+  countingData_Promenade$Town = "M�nster"
   countingData_Promenade$Station = "Promenade"
   countingData_Promenade$Lon = 7.634015197473532
   countingData_Promenade$Lat = 51.960595599885565
   countingData_Promenade$Oneway = FALSE
   #countingData_Promenade$Road_type = "Pathway"  
   
-  countingData_WarendorferStr$Town = "Münster"
+  countingData_WarendorferStr$Town = "M�nster"
   countingData_WarendorferStr$Station = "WarendorferStr"
   countingData_WarendorferStr$Lon = 7.637658504624373
   countingData_WarendorferStr$Lat = 51.96180915463516
   countingData_WarendorferStr$Oneway = FALSE
   #countingData_WarendorferStr$Road_type = "Street"  
   
-  countingData_WeselerStr$Town = "Münster"
+  countingData_WeselerStr$Town = "M�nster"
   countingData_WeselerStr$Station = "WeselerStr"
   countingData_WeselerStr$Lon = 7.617581706511294
   countingData_WeselerStr$Lat = 51.95063640185317
   countingData_WeselerStr$Oneway = FALSE
   #countingData_WeselerStr$Road_type = "large_Street"  
   
-  countingData_WolbeckerStr$Town = "Münster"
+  countingData_WolbeckerStr$Town = "M�nster"
   countingData_WolbeckerStr$Station = "WolbeckerStr"
   countingData_WolbeckerStr$Lon = 7.636358065438691
   countingData_WolbeckerStr$Lat = 51.959244978875326
@@ -259,7 +259,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
@@ -316,7 +316,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/M�nster")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -444,7 +444,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Muenster.csv")
   
 # Adding ADFC-Fahrradklima Values
@@ -465,7 +465,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -479,7 +479,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   title=", Stadt" #This differs, there are cities and also hanseatic cities
   
-  test12=as.data.frame(Destatis12[Destatis12$X.6 == paste("Münster",title,sep=""),])
+  test12=as.data.frame(Destatis12[Destatis12$X.6 == paste("M�nster",title,sep=""),])
   test12[17] <- NULL
   test12[17] <- NULL
   test12 <- test12 %>% mutate_all(na_if,"")
@@ -487,7 +487,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test12=na.omit(test12)
   test12$Year=2012
   
-  test13=as.data.frame(Destatis13[Destatis13$X.6 == paste("Münster",title,sep=""),])
+  test13=as.data.frame(Destatis13[Destatis13$X.6 == paste("M�nster",title,sep=""),])
   test13[17] <- NULL
   test13[17] <- NULL
   test13 <- test13 %>% mutate_all(na_if,"")
@@ -495,7 +495,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test13=na.omit(test13)
   test13$Year=2013
   
-  test14=as.data.frame(Destatis14[Destatis14$X.6 == paste("Münster",title,sep=""),])
+  test14=as.data.frame(Destatis14[Destatis14$X.6 == paste("M�nster",title,sep=""),])
   test14[17] <- NULL
   test14[17] <- NULL
   test14 <- test14 %>% mutate_all(na_if,"")
@@ -503,7 +503,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test14=na.omit(test14)
   test14$Year=2014
   
-  test15=as.data.frame(Destatis15[Destatis15$X.6 == paste("Münster",title,sep=""),])
+  test15=as.data.frame(Destatis15[Destatis15$X.6 == paste("M�nster",title,sep=""),])
   test15[17] <- NULL
   test15[17] <- NULL
   test15 <- test15 %>% mutate_all(na_if,"")
@@ -511,7 +511,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test15=na.omit(test15)
   test15$Year=2015
   
-  test16=as.data.frame(Destatis16[Destatis16$X.6 == paste("Münster",title,sep=""),])
+  test16=as.data.frame(Destatis16[Destatis16$X.6 == paste("M�nster",title,sep=""),])
   test16[17] <- NULL
   test16[17] <- NULL
   test16 <- test16 %>% mutate_all(na_if,"")
@@ -519,7 +519,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test16=na.omit(test16)
   test16$Year=2016
   
-  test17=as.data.frame(Destatis17[Destatis17$X.6 == paste("Münster",title,sep=""),])
+  test17=as.data.frame(Destatis17[Destatis17$X.6 == paste("M�nster",title,sep=""),])
   test17[17] <- NULL
   test17[17] <- NULL
   test17 <- test17 %>% mutate_all(na_if,"")
@@ -527,7 +527,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test17=na.omit(test17)
   test17$Year=2017
   
-  test18=as.data.frame(Destatis18[Destatis18$X.6 == paste("Münster",title,sep=""),])
+  test18=as.data.frame(Destatis18[Destatis18$X.6 == paste("M�nster",title,sep=""),])
   test18[17] <- NULL
   test18[17] <- NULL
   test18 <- test18 %>% mutate_all(na_if,"")
@@ -535,7 +535,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test18=na.omit(test18)
   test18$Year=2018
   
-  test19=as.data.frame(Destatis19[Destatis19$X.6 == paste("Münster",title,sep=""),])
+  test19=as.data.frame(Destatis19[Destatis19$X.6 == paste("M�nster",title,sep=""),])
   test19[17] <- NULL
   test19[17] <- NULL
   test19 <- test19 %>% mutate_all(na_if,"")
@@ -543,7 +543,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test19=na.omit(test19)
   test19$Year=2019
   
-  test20=as.data.frame(Destatis20[Destatis20$X.6 == paste("Münster",title,sep=""),])
+  test20=as.data.frame(Destatis20[Destatis20$X.6 == paste("M�nster",title,sep=""),])
   test20[17] <- NULL
   test20[17] <- NULL
   test20 <- test20 %>% mutate_all(na_if,"")
@@ -551,7 +551,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   test20=na.omit(test20)
   test20$Year=2020
   
-  test21=as.data.frame(Destatis21[Destatis21$X.6 == paste("Münster",title,sep=""),])
+  test21=as.data.frame(Destatis21[Destatis21$X.6 == paste("M�nster",title,sep=""),])
   test21[17] <- NULL
   test21[17] <- NULL
   test21 <- test21 %>% mutate_all(na_if,"")
@@ -667,7 +667,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("amenity", "cinema")
   
@@ -769,7 +769,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("amenity", "school")
   
@@ -871,7 +871,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("amenity", "university")
   
@@ -975,7 +975,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Build a query asking for cinemas
   #building the query
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("shop", "supermarket")
   
@@ -1077,7 +1077,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Clothingshops__________________________________________________________________
   
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("shop", "clothes")
   
@@ -1177,10 +1177,102 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   available_tags("amenity")
   
+  #Get Data about public transport by OSM____________________________________________________________
+  
+  q <- getbb(toString(rawData$Town[1])) %>%
+    opq() %>%
+    add_osm_feature("highway", "bus_stop")
+  
+  str(q) #query structure
+  
+  cinema <- osmdata_sf(q)
+  
+  #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  
+  for(i in 1:length(cinema$osm_points$name)){
+    
+    cinmat[i,1]=cinema$osm_points$name[i]
+    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    
+  }
+  
+  cinmat=na.omit(cinmat)
+  cinmat=as.data.frame(cinmat)
+  names(cinmat)[1]="name"
+  names(cinmat)[2]="lon"
+  names(cinmat)[3]="lat"
+  cinmat$lon=as.numeric(cinmat$lon)
+  cinmat$lat=as.numeric(cinmat$lat)
+  
+  distmat_closest=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  distmat_1kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  distmat_3kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  
+  #divide in stations in a for loop
+  #Each Loop is for one station
+  #Than calculate distance to the closest cinema
+  for(i in 1:nlevels(as.factor(rawData$Station))){
+    d=rawData[rawData$Station %in% toString(levels(as.factor(rawData$Station))[i]),]
+    
+    distc=c(1:length(cinmat$name))
+    
+    #Start loops for each cinemar
+    for (j in 1:length(cinmat$name)) {
+      cindist=distm(c(d$Lon[i],d$Lat[i]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+      distc[j]=cindist
+    }
+    
+    
+    distmat_closest[i,1]=d[1,1]
+    distmat_closest[i,2]=min(distc)
+    
+    distmat_1kmradius[i,1]=d[1,1]
+    distmat_1kmradius[i,2]=sum(distc < 250)
+    
+    distmat_3kmradius[i,1]=d[1,1]
+    distmat_3kmradius[i,2]=sum(distc < 1000)
+    
+  }
+  
+  distmat_closest=as.data.frame(distmat_closest)
+  names(distmat_closest)[1]="Station"
+  names(distmat_closest)[2]="ClosestBusStop"
+  distmat_closest$ClosestBusStop=as.numeric(distmat_closest$ClosestBusStop)
+  
+  distmat_1kmradius=as.data.frame(distmat_1kmradius)
+  names(distmat_1kmradius)[1]="Station"
+  names(distmat_1kmradius)[2]="BusStop250mmRadius"
+  distmat_1kmradius$BusStop250mmRadius=as.numeric(distmat_1kmradius$BusStop250mmRadius)
+  
+  distmat_3kmradius=as.data.frame(distmat_3kmradius)
+  names(distmat_3kmradius)[1]="Station"
+  names(distmat_3kmradius)[2]="BusStop1kmRadius"
+  distmat_3kmradius$BusStop1kmRadius=as.numeric(distmat_3kmradius$BusStop1kmRadius)
+  
+  rawData = merge(x = rawData,y = distmat_closest,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  rawData = merge(x = rawData,y = distmat_1kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  rawData = merge(x = rawData,y = distmat_3kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  
+  
+  summary(rawData)
+  
+  rm(list=setdiff(ls(), "rawData"))
+  
   
   #Crossing Signals_______________________________________________________________
   
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("highway", "traffic_signals")
   
@@ -1273,7 +1365,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Crossing Unmarked_______________________________________________________________
   
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("crossing", "unmarked")
   
@@ -1367,7 +1459,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Get Tram Stattions_____________________________________________________________
   
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("railway", "tram_stop")
   
@@ -1471,7 +1563,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Get Subway Entrance_____________________________________________________________
   
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("railway", "subway_entrance")
   
@@ -1574,7 +1666,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Railway Station operated by the DB Netz AG_____________________________________________________________
   
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("railway", "station")%>%
     add_osm_feature("operator", "DB Netz AG")
@@ -1679,7 +1771,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #Bike Shops_____________________________________________________________
   
-  q <- getbb("Münster") %>%
+  q <- getbb("M�nster") %>%
     opq() %>%
     add_osm_feature("shop", "bicycle")
   
@@ -1784,7 +1876,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   #RoadNetwork
   
-  city="Münster"
+  city="M�nster"
   
   q1 <- getbb(city) %>%
     opq() %>%
@@ -1898,5 +1990,5 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Münster")
   
   rm(list=setdiff(ls(), "rawData"))
   
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
-  write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
+  write.csv(rawData,"M�nster.csv")

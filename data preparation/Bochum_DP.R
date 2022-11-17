@@ -16,8 +16,8 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\MÃ¼nster\7. Semester\Masterarbeit Daten\Bochum
-setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
+#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Bochum
+setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
 
 #Read Bycicle Counting Data----------------------------------------------
   countingData_Springorumtrasse = read.csv(file = "Springorumtrasse_2019_KumuliertAufStunden_Gesamt_Richtungen.csv",sep=",")
@@ -35,12 +35,12 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
   
 #Delete Columns we don't need----------------------------------------------
   countingData_Springorumtrasse$X <- NULL
-  countingData_Springorumtrasse$Springorumtrasse.stadteinwÃ¤rts.FahrrÃ¤der <- NULL
-  countingData_Springorumtrasse$Springorumtrasse.stadtauswÃ¤rts.FahrrÃ¤der <- NULL
+  countingData_Springorumtrasse$Springorumtrasse.stadteinwärts.Fahrräder <- NULL
+  countingData_Springorumtrasse$Springorumtrasse.stadtauswärts.Fahrräder <- NULL
   
   countingData_Wittener_Strasse$X <- NULL
-  countingData_Wittener_Strasse$Wittener.Str..Gesamt.Wittener.Str..stadteinwÃ¤rts <- NULL
-  countingData_Wittener_Strasse$Wittener.Str..Gesamt.Wittener.Str..stadtauswÃ¤rts <- NULL
+  countingData_Wittener_Strasse$Wittener.Str..Gesamt.Wittener.Str..stadteinwärts <- NULL
+  countingData_Wittener_Strasse$Wittener.Str..Gesamt.Wittener.Str..stadtauswärts <- NULL
   
 #Add Location Columns----------------------------------------------
   
@@ -77,7 +77,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
@@ -135,7 +135,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
   rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bochum")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -263,7 +263,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
   rawData=na.omit(rawData)
   #rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Bochum.csv")
   
   rm(list=setdiff(ls(), "rawData"))
@@ -286,7 +286,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -1809,5 +1809,5 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bochum")
   
   
   rm(list=setdiff(ls(), "rawData"))
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))

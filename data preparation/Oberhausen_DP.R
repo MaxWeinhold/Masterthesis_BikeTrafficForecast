@@ -16,8 +16,8 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Oberhausen
-setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
+#D:\STUDIUM\M�nster\7. Semester\Masterarbeit Daten\Oberhausen
+setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/Oberhausen")
 
 #Read Bycicle Counting Data----------------------------------------------
   countingData = read.csv(file = "Oberhausen_Daten.csv",sep=";")
@@ -114,7 +114,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
@@ -172,7 +172,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
   rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/Oberhausen")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -300,7 +300,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Oberhausen.csv")
   
 # Adding ADFC-Fahrradklima Values
@@ -321,7 +321,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -738,7 +738,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
   
   #There are no University Buildings in Oberhausen. So we will add this manually
 
-  #Next University Building is in Essen (Institut für Naturheilkunde)
+  #Next University Building is in Essen (Institut fÃ¼r Naturheilkunde)
   #It is approxamatly 15 km away
   rawData$ClosestUniBuild=15000
   rawData$UniBuild500mmRadius=0
@@ -955,6 +955,99 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
   rm(list=setdiff(ls(), "rawData"))
   
   available_tags("amenity")
+  
+  
+  #Get Data about public transport by OSM____________________________________________________________
+  
+  q <- getbb(toString(rawData$Town[1])) %>%
+    opq() %>%
+    add_osm_feature("highway", "bus_stop")
+  
+  str(q) #query structure
+  
+  cinema <- osmdata_sf(q)
+  
+  #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  
+  for(i in 1:length(cinema$osm_points$name)){
+    
+    cinmat[i,1]=cinema$osm_points$name[i]
+    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    
+  }
+  
+  cinmat=na.omit(cinmat)
+  cinmat=as.data.frame(cinmat)
+  names(cinmat)[1]="name"
+  names(cinmat)[2]="lon"
+  names(cinmat)[3]="lat"
+  cinmat$lon=as.numeric(cinmat$lon)
+  cinmat$lat=as.numeric(cinmat$lat)
+  
+  distmat_closest=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  distmat_1kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  distmat_3kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  
+  #divide in stations in a for loop
+  #Each Loop is for one station
+  #Than calculate distance to the closest cinema
+  for(i in 1:nlevels(as.factor(rawData$Station))){
+    d=rawData[rawData$Station %in% toString(levels(as.factor(rawData$Station))[i]),]
+    
+    distc=c(1:length(cinmat$name))
+    
+    #Start loops for each cinemar
+    for (j in 1:length(cinmat$name)) {
+      cindist=distm(c(d$Lon[i],d$Lat[i]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+      distc[j]=cindist
+    }
+    
+    
+    distmat_closest[i,1]=d[1,1]
+    distmat_closest[i,2]=min(distc)
+    
+    distmat_1kmradius[i,1]=d[1,1]
+    distmat_1kmradius[i,2]=sum(distc < 250)
+    
+    distmat_3kmradius[i,1]=d[1,1]
+    distmat_3kmradius[i,2]=sum(distc < 1000)
+    
+  }
+  
+  distmat_closest=as.data.frame(distmat_closest)
+  names(distmat_closest)[1]="Station"
+  names(distmat_closest)[2]="ClosestBusStop"
+  distmat_closest$ClosestBusStop=as.numeric(distmat_closest$ClosestBusStop)
+  
+  distmat_1kmradius=as.data.frame(distmat_1kmradius)
+  names(distmat_1kmradius)[1]="Station"
+  names(distmat_1kmradius)[2]="BusStop250mmRadius"
+  distmat_1kmradius$BusStop250mmRadius=as.numeric(distmat_1kmradius$BusStop250mmRadius)
+  
+  distmat_3kmradius=as.data.frame(distmat_3kmradius)
+  names(distmat_3kmradius)[1]="Station"
+  names(distmat_3kmradius)[2]="BusStop1kmRadius"
+  distmat_3kmradius$BusStop1kmRadius=as.numeric(distmat_3kmradius$BusStop1kmRadius)
+  
+  rawData = merge(x = rawData,y = distmat_closest,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  rawData = merge(x = rawData,y = distmat_1kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  rawData = merge(x = rawData,y = distmat_3kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  
+  
+  summary(rawData)
+  
+  rm(list=setdiff(ls(), "rawData"))
   
   
   #Crossing Signals_______________________________________________________________
@@ -1675,5 +1768,5 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Oberhausen")
   
   
   rm(list=setdiff(ls(), "rawData"))
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))

@@ -17,67 +17,67 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\MÃ¼nster\7. Semester\Masterarbeit Daten\Bochum
-setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
+#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Bochum
+setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bonn")
 
 #Read Bycicle Counting Data----------------------------------------------
-  countingData_KennedybrueckeNordseite_2018 = read.csv(file = "501_2018BNKennedybrÃ¼ckeNordseite.csv",sep=";")
-  countingData_KennedybrÃ¼ckeSÃ¼dseite_2018 = read.csv(file = "502_2018BNKennedybrÃ¼ckeSÃ¼dseite.csv",sep=";")
-  countingData_NordbrÃ¼ckeSÃ¼dseite_2018 = read.csv(file = "503_2018BNNordbrÃ¼ckeSÃ¼dseite.csv",sep=";")
-  countingData_NordbrÃ¼ckeNordseite_2018 = read.csv(file = "504_2018BNNordbrÃ¼ckeNordseite.csv",sep=";")
-  countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018 = read.csv(file = "505_2018BNSÃ¼dbrÃ¼ckeSÃ¼dseite.csv",sep=";")
-  countingData_SÃ¼dbrÃ¼ckeNordseite_2018 = read.csv(file = "506_2018BNSÃ¼dbrÃ¼ckeNordseite.csv",sep=";")
-  countingData_Estermannufer_2018 = read.csv(file = "507_2018BNEstermannufer.csv",sep=";")
-  countingData_VonSandtufer_2018 = read.csv(file = "508_2018BNVonSandtufer.csv",sep=";")
-  countingData_Rhenusallee_2018 = read.csv(file = "509_2018BNRhenusallee.csv",sep=";")
-  countingData_BrÃ¶hltalweg_2018 = read.csv(file = "510_2018BNBrÃ¶hltalweg.csv",sep=";")
-  countingData_BrÃ¼hlerStraÃŸe_2018 = read.csv(file = "511_2018BNBrÃ¼hlerStraÃŸe.csv",sep=";")
-  countingData_StraÃŸburgerWeg_2018 = read.csv(file = "512_2018BNStraÃŸburgerWeg.csv",sep=";")
-  countingData_WilhelmSpiritusUfer_2018 = read.csv(file = "513_2018BNWilhelmSpiritusUfer.csv",sep=";")
-  countingData_McCloyWeg_2018 = read.csv(file = "514_2018BNMcCloyWeg.csv",sep=";")
-  countingData_WegDammBonnBeuel_2018 = read.csv(file = "515_2018BNWegDammBonnBeuel.csv",sep=";")
+  countingData_KennedybrueckeNordseite_2018 = read.csv(file = "501_2018BNKennedybrückeNordseite.csv",sep=";", encoding="UTF-8")
+  countingData_KennedybrückeSüdseite_2018 = read.csv(file = "502_2018BNKennedybrückeSüdseite.csv",sep=";", encoding="UTF-8")
+  countingData_NordbrückeSüdseite_2018 = read.csv(file = "503_2018BNNordbrückeSüdseite.csv",sep=";", encoding="UTF-8")
+  countingData_NordbrückeNordseite_2018 = read.csv(file = "504_2018BNNordbrückeNordseite.csv",sep=";", encoding="UTF-8")
+  countingData_SüdbrückeSüdseite_2018 = read.csv(file = "505_2018BNSüdbrückeSüdseite.csv",sep=";", encoding="UTF-8")
+  countingData_SüdbrückeNordseite_2018 = read.csv(file = "506_2018BNSüdbrückeNordseite.csv",sep=";", encoding="UTF-8")
+  countingData_Estermannufer_2018 = read.csv(file = "507_2018BNEstermannufer.csv",sep=";", encoding="UTF-8")
+  countingData_VonSandtufer_2018 = read.csv(file = "508_2018BNVonSandtufer.csv",sep=";", encoding="UTF-8")
+  countingData_Rhenusallee_2018 = read.csv(file = "509_2018BNRhenusallee.csv",sep=";", encoding="UTF-8")
+  countingData_Bröhltalweg_2018 = read.csv(file = "510_2018BNBröhltalweg.csv",sep=";", encoding="UTF-8")
+  countingData_BrühlerStraße_2018 = read.csv(file = "511_2018BNBrühlerStraße.csv",sep=";", encoding="UTF-8")
+  countingData_StraßburgerWeg_2018 = read.csv(file = "512_2018BNStraßburgerWeg.csv",sep=";", encoding="UTF-8")
+  countingData_WilhelmSpiritusUfer_2018 = read.csv(file = "513_2018BNWilhelmSpiritusUfer.csv",sep=";", encoding="UTF-8")
+  countingData_McCloyWeg_2018 = read.csv(file = "514_2018BNMcCloyWeg.csv",sep=";", encoding="UTF-8")
+  countingData_WegDammBonnBeuel_2018 = read.csv(file = "515_2018BNWegDammBonnBeuel.csv",sep=";", encoding="UTF-8")
   
-  countingData_Bonn_2019 = read.csv(file = "ErgebnisseFahrradmessstellenBonn2019.csv",sep=";")
-  countingData_Bonn_2020_1 = read.csv(file = "fahrradzaehlungenbonnjanuarbismai2020.csv",sep=";")
-  countingData_Bonn_2020_2 = read.csv(file = "fahrradzaehlungenbonnjulibisdezember2020_1.csv",sep=";")
+  countingData_Bonn_2019 = read.csv(file = "ErgebnisseFahrradmessstellenBonn2019.csv",sep=";", encoding="UTF-8")
+  countingData_Bonn_2020_1 = read.csv(file = "fahrradzaehlungenbonnjanuarbismai2020.csv",sep=";", encoding="UTF-8")
+  countingData_Bonn_2020_2 = read.csv(file = "fahrradzaehlungenbonnjulibisdezember2020_1.csv",sep=";", encoding="UTF-8")
 
   #Change count frequency to hourly data----------------------------------------------
   
   names(countingData_KennedybrueckeNordseite_2018)
   countingData_KennedybrueckeNordseite_2018$Uhrzeit=paste(countingData_KennedybrueckeNordseite_2018$Datum,countingData_KennedybrueckeNordseite_2018$X, sep=" ")
   countingData_KennedybrueckeNordseite_2018$Uhrzeit=cut(strptime(countingData_KennedybrueckeNordseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S01KennedyBR_N_18=ddply(countingData_KennedybrueckeNordseite_2018,.(Uhrzeit),summarize,RichtungA=sum(X5.01.BN...KennedybrÃƒ.cke..Nordseite..Radfahrer.Ri..Innenstadt),
-                         RichtungB=sum(X5.01.BN...KennedybrÃƒ.cke..Nordseite..Radfahrer.Ri..Beuel))
+  S01KennedyBR_N_18=ddply(countingData_KennedybrueckeNordseite_2018,.(Uhrzeit),summarize,RichtungA=sum(X5.01.BN...Kennedybrücke..Nordseite..Radfahrer.Ri..Innenstadt),
+                         RichtungB=sum(X5.01.BN...Kennedybrücke..Nordseite..Radfahrer.Ri..Beuel))
   
   #This table didnt include a column for the summed up directions, so i have to calculate this
   
   S01KennedyBR_N_18=as.data.frame(cbind(S01KennedyBR_N_18[,'Uhrzeit',drop = FALSE],as.numeric(S01KennedyBR_N_18$RichtungA)+as.numeric(S01KennedyBR_N_18$RichtungB)))
   names(S01KennedyBR_N_18)[2]="Value"
   
-  names(countingData_KennedybrÃ¼ckeSÃ¼dseite_2018)
-  countingData_KennedybrÃ¼ckeSÃ¼dseite_2018$Uhrzeit=paste(countingData_KennedybrÃ¼ckeSÃ¼dseite_2018$Datum,countingData_KennedybrÃ¼ckeSÃ¼dseite_2018$X, sep=" ")
-  countingData_KennedybrÃ¼ckeSÃ¼dseite_2018$Uhrzeit=cut(strptime(countingData_KennedybrÃ¼ckeSÃ¼dseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S02KennedyBR_S_18=ddply(countingData_KennedybrÃ¼ckeSÃ¼dseite_2018,.(Uhrzeit),summarize,Value=sum(X5.02.BN...KennedybrÃƒ.cke..SÃƒ.dseite..Barometer))
+  names(countingData_KennedybrückeSüdseite_2018)
+  countingData_KennedybrückeSüdseite_2018$Uhrzeit=paste(countingData_KennedybrückeSüdseite_2018$Datum,countingData_KennedybrückeSüdseite_2018$X, sep=" ")
+  countingData_KennedybrückeSüdseite_2018$Uhrzeit=cut(strptime(countingData_KennedybrückeSüdseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S02KennedyBR_S_18=ddply(countingData_KennedybrückeSüdseite_2018,.(Uhrzeit),summarize,Value=sum(X5.02.BN...Kennedybrücke..Südseite..Barometer))
   
-  names(countingData_NordbrÃ¼ckeSÃ¼dseite_2018)
-  countingData_NordbrÃ¼ckeSÃ¼dseite_2018$Uhrzeit=paste(countingData_NordbrÃ¼ckeSÃ¼dseite_2018$Datum,countingData_NordbrÃ¼ckeSÃ¼dseite_2018$X, sep=" ")
-  countingData_NordbrÃ¼ckeSÃ¼dseite_2018$Uhrzeit=cut(strptime(countingData_NordbrÃ¼ckeSÃ¼dseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S03NordBR_S_18=ddply(countingData_NordbrÃ¼ckeSÃ¼dseite_2018,.(Uhrzeit),summarize,Value=sum(X5.03.BN...NordbrÃƒ.cke..SÃƒ.dseite.))
+  names(countingData_NordbrückeSüdseite_2018)
+  countingData_NordbrückeSüdseite_2018$Uhrzeit=paste(countingData_NordbrückeSüdseite_2018$Datum,countingData_NordbrückeSüdseite_2018$X, sep=" ")
+  countingData_NordbrückeSüdseite_2018$Uhrzeit=cut(strptime(countingData_NordbrückeSüdseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S03NordBR_S_18=ddply(countingData_NordbrückeSüdseite_2018,.(Uhrzeit),summarize,Value=sum(X5.03.BN...Nordbrücke..Südseite.))
   
-  names(countingData_NordbrÃ¼ckeNordseite_2018)
-  countingData_NordbrÃ¼ckeNordseite_2018$Uhrzeit=paste(countingData_NordbrÃ¼ckeNordseite_2018$Datum,countingData_NordbrÃ¼ckeNordseite_2018$X, sep=" ")
-  countingData_NordbrÃ¼ckeNordseite_2018$Uhrzeit=cut(strptime(countingData_NordbrÃ¼ckeNordseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S04NordBR_N_18=ddply(countingData_NordbrÃ¼ckeNordseite_2018,.(Uhrzeit),summarize,Value=sum(X5.04.BN...NordbrÃƒ.cke..Nordseite.))
+  names(countingData_NordbrückeNordseite_2018)
+  countingData_NordbrückeNordseite_2018$Uhrzeit=paste(countingData_NordbrückeNordseite_2018$Datum,countingData_NordbrückeNordseite_2018$X, sep=" ")
+  countingData_NordbrückeNordseite_2018$Uhrzeit=cut(strptime(countingData_NordbrückeNordseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S04NordBR_N_18=ddply(countingData_NordbrückeNordseite_2018,.(Uhrzeit),summarize,Value=sum(X5.04.BN...Nordbrücke..Nordseite.))
   
-  names(countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018)
-  countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018$Uhrzeit=paste(countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018$Datum,countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018$X, sep=" ")
-  countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018$Uhrzeit=cut(strptime(countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S05SuedBR_S_18=ddply(countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018,.(Uhrzeit),summarize,Value=sum(X5.05.BN...SÃƒ.dbrÃƒ.cke..SÃƒ.dseite.))
+  names(countingData_SüdbrückeSüdseite_2018)
+  countingData_SüdbrückeSüdseite_2018$Uhrzeit=paste(countingData_SüdbrückeSüdseite_2018$Datum,countingData_SüdbrückeSüdseite_2018$X, sep=" ")
+  countingData_SüdbrückeSüdseite_2018$Uhrzeit=cut(strptime(countingData_SüdbrückeSüdseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S05SuedBR_S_18=ddply(countingData_SüdbrückeSüdseite_2018,.(Uhrzeit),summarize,Value=sum(X5.05.BN...Südbrücke..Südseite.))
   
-  names(countingData_SÃ¼dbrÃ¼ckeNordseite_2018)
-  countingData_SÃ¼dbrÃ¼ckeNordseite_2018$Uhrzeit=paste(countingData_SÃ¼dbrÃ¼ckeNordseite_2018$Datum,countingData_SÃ¼dbrÃ¼ckeNordseite_2018$X, sep=" ")
-  countingData_SÃ¼dbrÃ¼ckeNordseite_2018$Uhrzeit=cut(strptime(countingData_SÃ¼dbrÃ¼ckeNordseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S06SuedBR_N_18=ddply(countingData_SÃ¼dbrÃ¼ckeNordseite_2018,.(Uhrzeit),summarize,Value=sum(X5.06.BN...SÃƒ.dbrÃƒ.cke..Nordseite.))
+  names(countingData_SüdbrückeNordseite_2018)
+  countingData_SüdbrückeNordseite_2018$Uhrzeit=paste(countingData_SüdbrückeNordseite_2018$Datum,countingData_SüdbrückeNordseite_2018$X, sep=" ")
+  countingData_SüdbrückeNordseite_2018$Uhrzeit=cut(strptime(countingData_SüdbrückeNordseite_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S06SuedBR_N_18=ddply(countingData_SüdbrückeNordseite_2018,.(Uhrzeit),summarize,Value=sum(X5.06.BN...Südbrücke..Nordseite.))
   
   names(countingData_Estermannufer_2018)
   countingData_Estermannufer_2018$Uhrzeit=paste(countingData_Estermannufer_2018$Datum,countingData_Estermannufer_2018$X, sep=" ")
@@ -94,20 +94,20 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   countingData_Rhenusallee_2018$Uhrzeit=cut(strptime(countingData_Rhenusallee_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
   S09Rhenusallee_18=ddply(countingData_Rhenusallee_2018,.(Uhrzeit),summarize,Value=sum(X5.09.BN...Rhenusallee))
   
-  names(countingData_BrÃ¶hltalweg_2018)
-  countingData_BrÃ¶hltalweg_2018$Uhrzeit=paste(countingData_BrÃ¶hltalweg_2018$Datum,countingData_BrÃ¶hltalweg_2018$X, sep=" ")
-  countingData_BrÃ¶hltalweg_2018$Uhrzeit=cut(strptime(countingData_BrÃ¶hltalweg_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S10Broehltalweg_18=ddply(countingData_BrÃ¶hltalweg_2018,.(Uhrzeit),summarize,Value=sum(X5.10.BN...BrÃƒ.hltalweg))
+  names(countingData_Bröhltalweg_2018)
+  countingData_Bröhltalweg_2018$Uhrzeit=paste(countingData_Bröhltalweg_2018$Datum,countingData_Bröhltalweg_2018$X, sep=" ")
+  countingData_Bröhltalweg_2018$Uhrzeit=cut(strptime(countingData_Bröhltalweg_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S10Broehltalweg_18=ddply(countingData_Bröhltalweg_2018,.(Uhrzeit),summarize,Value=sum(X5.10.BN...Bröhltalweg))
   
-  names(countingData_BrÃ¼hlerStraÃŸe_2018)
-  countingData_BrÃ¼hlerStraÃŸe_2018$Uhrzeit=paste(countingData_BrÃ¼hlerStraÃŸe_2018$Datum,countingData_BrÃ¼hlerStraÃŸe_2018$X, sep=" ")
-  countingData_BrÃ¼hlerStraÃŸe_2018$Uhrzeit=cut(strptime(countingData_BrÃ¼hlerStraÃŸe_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S11BruehlerStr_18=ddply(countingData_BrÃ¼hlerStraÃŸe_2018,.(Uhrzeit),summarize,Value=sum(X5.11.BN...BrÃƒ.hler.StraÃƒÅ¸e))
+  names(countingData_BrühlerStraße_2018)
+  countingData_BrühlerStraße_2018$Uhrzeit=paste(countingData_BrühlerStraße_2018$Datum,countingData_BrühlerStraße_2018$X, sep=" ")
+  countingData_BrühlerStraße_2018$Uhrzeit=cut(strptime(countingData_BrühlerStraße_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S11BruehlerStr_18=ddply(countingData_BrühlerStraße_2018,.(Uhrzeit),summarize,Value=sum(X5.11.BN...Brühler.Straße))
   
-  names(countingData_StraÃŸburgerWeg_2018)
-  countingData_StraÃŸburgerWeg_2018$Uhrzeit=paste(countingData_StraÃŸburgerWeg_2018$Datum,countingData_StraÃŸburgerWeg_2018$X, sep=" ")
-  countingData_StraÃŸburgerWeg_2018$Uhrzeit=cut(strptime(countingData_StraÃŸburgerWeg_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
-  S12StrassburgerWeg_18=ddply(countingData_StraÃŸburgerWeg_2018,.(Uhrzeit),summarize,Value=sum(X5.12.BN...StraÃƒÅ¸burger.Weg))
+  names(countingData_StraßburgerWeg_2018)
+  countingData_StraßburgerWeg_2018$Uhrzeit=paste(countingData_StraßburgerWeg_2018$Datum,countingData_StraßburgerWeg_2018$X, sep=" ")
+  countingData_StraßburgerWeg_2018$Uhrzeit=cut(strptime(countingData_StraßburgerWeg_2018$Uhrzeit,"%d/%m/%Y %H:%M"),"hour")
+  S12StrassburgerWeg_18=ddply(countingData_StraßburgerWeg_2018,.(Uhrzeit),summarize,Value=sum(X5.12.BN...Straßburger.Weg))
   
   names(countingData_WilhelmSpiritusUfer_2018)
   countingData_WilhelmSpiritusUfer_2018$Uhrzeit=paste(countingData_WilhelmSpiritusUfer_2018$Datum,countingData_WilhelmSpiritusUfer_2018$X, sep=" ")
@@ -127,17 +127,17 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   names(countingData_Bonn_2019)
   countingData_Bonn_2019$Uhrzeit=cut(strptime(countingData_Bonn_2019$Time,"%d.%m.%Y %H:%M"),"hour")
   countingData_Bonn_2019=ddply(countingData_Bonn_2019,.(Uhrzeit),summarize,
-                        S01KennedyBR_N=sum(X5.01.BN...KennedybrÅ¸cke..Nordseite.),
-                        S02KennedyBR_S=sum(X5.02.BN...KennedybrÅ¸cke..SÅ¸dseite..Barometer),
-                        S03NordBR_S=sum(X5.03.BN...NordbrÅ¸cke..SÅ¸dseite.),
-                        S04NordBR_N=sum(X5.04.BN...NordbrÅ¸cke..Nordseite.),
-                        S05SuedBR_S=sum(X5.05.BN...SÅ¸dbrÅ¸cke..SÅ¸dseite.),
-                        S06SuedBR_N=sum(X5.06.BN...SÅ¸dbrÅ¸cke..Nordseite.),
+                        S01KennedyBR_N=sum(X5.01.BN...Kennedybrücke..Nordseite.),
+                        S02KennedyBR_S=sum(X5.02.BN...Kennedybrücke..Südseite..Barometer),
+                        S03NordBR_S=sum(X5.03.BN...Nordbrücke..Südseite.),
+                        S04NordBR_N=sum(X5.04.BN...Nordbrücke..Nordseite.),
+                        S05SuedBR_S=sum(X5.05.BN...Südbrücke..Südseite.),
+                        S06SuedBR_N=sum(X5.06.BN...Südbrücke..Nordseite.),
                         S07Estermannufer=sum(X5.07.BN...Estermannufer),
                         S08VonSandtufer=sum(X5.08.BN...Von.Sandt.Ufer),
                         S09Rhenusallee=sum(X5.09.BN...Rhenusallee),
-                        S10Broehltalweg=sum(X5.10.BN...BrÅ¡hltalweg),
-                        S11BruehlerStr=sum(X5.11.BN...BrÅ¸hler.Stra.e),
+                        S10Broehltalweg=sum(X5.10.BN...Bröhltalweg),
+                        S11BruehlerStr=sum(X5.11.BN...Brühler.Straße),
                         S13WilhelmSpiritusUfer=sum(X5.13.BN...Wilhelm.Spiritus.Ufer),
                         S14McCloyWeg=sum(X5.14.BN...Mc.Cloy.Weg),
                         S15WegDammBonnBeuel=sum(X5.15.BN...Weg.auf.Damm.Neil))  
@@ -145,17 +145,17 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   names(countingData_Bonn_2020_1)
   countingData_Bonn_2020_1$Uhrzeit=cut(strptime(countingData_Bonn_2020_1$Time,"%d.%m.%Y %H:%M"),"hour")
   countingData_Bonn_2020_1=ddply(countingData_Bonn_2020_1,.(Uhrzeit),summarize,
-                               S01KennedyBR_N=sum(X5.01.BN...KennedybrÃƒ.cke..Nordseite.),
-                               S02KennedyBR_S=sum(X5.02.BN...KennedybrÃƒ.cke..SÃƒ.dseite..Barometer),
-                               S03NordBR_S=sum(X5.03.BN...NordbrÃƒ.cke..SÃƒ.dseite.),
-                               S04NordBR_N=sum(X5.04.BN...NordbrÃƒ.cke..Nordseite.),
-                               S05SuedBR_S=sum(X5.05.BN...SÃƒ.dbrÃƒ.cke..SÃƒ.dseite.),
-                               S06SuedBR_N=sum(X5.06.BN...SÃƒ.dbrÃƒ.cke..Nordseite.),
+                               S01KennedyBR_N=sum(X5.01.BN...Kennedybrücke..Nordseite.),
+                               S02KennedyBR_S=sum(X5.02.BN...Kennedybrücke..Südseite..Barometer),
+                               S03NordBR_S=sum(X5.03.BN...Nordbrücke..Südseite.),
+                               S04NordBR_N=sum(X5.04.BN...Nordbrücke..Nordseite.),
+                               S05SuedBR_S=sum(X5.05.BN...Südbrücke..Südseite.),
+                               S06SuedBR_N=sum(X5.06.BN...Südbrücke..Nordseite.),
                                S07Estermannufer=sum(X5.07.BN...Estermannufer),
                                S08VonSandtufer=sum(X5.08.BN...Von.Sandt.Ufer),
                                S09Rhenusallee=sum(X5.09.BN...Rhenusallee),
-                               S10Broehltalweg=sum(X5.10.BN...BrÃƒ.hltalweg),
-                               S11BruehlerStr=sum(X5.11.BN...BrÃƒ.hler.StraÃƒÅ¸e),
+                               S10Broehltalweg=sum(X5.10.BN...Bröhltalweg),
+                               S11BruehlerStr=sum(X5.11.BN...Brühler.Straße),
                                S13WilhelmSpiritusUfer=sum(X5.13.BN...Wilhelm.Spiritus.Ufer),
                                S14McCloyWeg=sum(X5.14.BN...Mc.Cloy.Weg),
                                S15WegDammBonnBeuel=sum(X5.15.BN...Weg.auf.Damm.Neil))  
@@ -163,15 +163,15 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   names(countingData_Bonn_2020_2)
   countingData_Bonn_2020_2$Uhrzeit=cut(strptime(countingData_Bonn_2020_2$Time,"%d.%m.%Y %H:%M"),"hour")
   countingData_Bonn_2020_2=ddply(countingData_Bonn_2020_2,.(Uhrzeit),summarize,
-                                 S01KennedyBR_N=sum(X5.01.BN...KennedybrÃƒ.cke..Nordseite.),
-                                 S02KennedyBR_S=sum(X5.02.BN...KennedybrÃƒ.cke..SÃƒ.dseite..Barometer),
-                                 S03NordBR_S=sum(X5.03.BN...NordbrÃƒ.cke..SÃƒ.dseite.),
-                                 S04NordBR_N=sum(X5.04.BN...NordbrÃƒ.cke..Nordseite.),
+                                 S01KennedyBR_N=sum(X5.01.BN...Kennedybrücke..Nordseite.),
+                                 S02KennedyBR_S=sum(X5.02.BN...Kennedybrücke..Südseite..Barometer),
+                                 S03NordBR_S=sum(X5.03.BN...Nordbrücke..Südseite.),
+                                 S04NordBR_N=sum(X5.04.BN...Nordbrücke..Nordseite.),
                                  S07Estermannufer=sum(X5.07.BN...Estermannufer),
                                  S08VonSandtufer=sum(X5.08.BN...Von.Sandt.Ufer),
                                  S09Rhenusallee=sum(X5.09.BN...Rhenusallee),
-                                 S10Broehltalweg=sum(X5.10.BN...BrÃƒ.hltalweg),
-                                 S11BruehlerStr=sum(X5.11.BN...BrÃƒ.hler.StraÃƒÅ¸e),
+                                 S10Broehltalweg=sum(X5.10.BN...Bröhltalweg),
+                                 S11BruehlerStr=sum(X5.11.BN...Brühler.Straße),
                                  S13WilhelmSpiritusUfer=sum(X5.13.BN...Wilhelm.Spiritus.Ufer),
                                  S14McCloyWeg=sum(X5.14.BN...Mc.Cloy.Weg),
                                  S15WegDammBonnBeuel=sum(X5.15.BN...Weg.auf.Damm.Neil))
@@ -205,7 +205,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   S07Estermannufer_20_2=as.data.frame(cbind(countingData_Bonn_2020_2[,'Uhrzeit',drop = FALSE],countingData_Bonn_2020_2$S07Estermannufer)) 
   
   S08VonSandtufer_19=as.data.frame(cbind(countingData_Bonn_2019[,'Uhrzeit',drop = FALSE],countingData_Bonn_2019$S08VonSandtufer))
-  S08VonSandtufer_1=as.data.frame(cbind(countingData_Bonn_2020_1[,'Uhrzeit',drop = FALSE],countingData_Bonn_2020_1$S08VonSandtufer)) 
+  S08VonSandtufer_20_1=as.data.frame(cbind(countingData_Bonn_2020_1[,'Uhrzeit',drop = FALSE],countingData_Bonn_2020_1$S08VonSandtufer)) 
   S08VonSandtufer_20_2=as.data.frame(cbind(countingData_Bonn_2020_2[,'Uhrzeit',drop = FALSE],countingData_Bonn_2020_2$S08VonSandtufer)) 
   
   S09Rhenusallee_19=as.data.frame(cbind(countingData_Bonn_2019[,'Uhrzeit',drop = FALSE],countingData_Bonn_2019$S09Rhenusallee))
@@ -503,7 +503,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
@@ -557,42 +557,11 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   
 #Add Weather Data (Source: Deutscher Wetterdienst)
   
-  rm(publicHolidays)
-  rm(schoolHolidays)
-  rm(sH)
-  rm(pH)
-  rm(x)
-  rm(i)
-  rm(countingData_Bonn_2019)
-  rm(countingData_Bonn_2020_1)
-  rm(countingData_Bonn_2020_2)
-  rm(countingData_BrÃ¶hltalweg_2018,countingData_BrÃ¼hlerStraÃŸe_2018,countingData_Estermannufer_2018)
-  rm(countingData_KennedybrÃ¼ckeSÃ¼dseite_2018,countingData_KennedybrueckeNordseite_2018,countingData_McCloyWeg_2018)
-  rm(countingData_NordbrÃ¼ckeNordseite_2018,countingData_NordbrÃ¼ckeSÃ¼dseite_2018,countingData_Rhenusallee_2018)
-  rm(countingData_StraÃŸburgerWeg_2018,countingData_SÃ¼dbrÃ¼ckeNordseite_2018,countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018)
-  rm(countingData_VonSandtufer_2018,countingData_WegDammBonnBeuel_2018,countingData_WilhelmSpiritusUfer_2018)
-  rm(S01KennedyBR,S01KennedyBR_N,S01KennedyBR_N_18,S01KennedyBR_N_19,S01KennedyBR_N_20_1,S01KennedyBR_N_20_2)
-  rm(S02KennedyBR_S,S02KennedyBR_S_18,S02KennedyBR_S_19,S02KennedyBR_S_20_1,S02KennedyBR_S_20_2)
-  rm(S03NordBR,S03NordBR_S_18,S03NordBR_S_19,S03NordBR_S_20_1,S03NordBR_S_20_2)
-  rm(S04NordBR_N,S04NordBR_N_18,S04NordBR_N_19,S04NordBR_N_20_1,S04NordBR_N_20_2)
-  rm(S05SuedBR,S05SuedBR_S,S05SuedBR_S_18,S05SuedBR_S_19,S05SuedBR_S_20_1)
-  rm(S06SuedBR_N,S06SuedBR_N_18,S06SuedBR_N_19,S06SuedBR_N_20_1)
-  rm(S07Estermannufer,S07Estermannufer_18,S07Estermannufer_19
-     ,S07Estermannufer_20_1,S07Estermannufer_20_2)
-  rm(S08VonSandtufer,S08VonSandtufer_1,S08VonSandtufer_18,S08VonSandtufer_19,S08VonSandtufer_20_2)
-  rm(S10Broehltalweg,S10Broehltalweg_18,S10Broehltalweg_19,S10Broehltalweg_20_1,S10Broehltalweg_20_2)
-  rm(S11BruehlerStr,S11BruehlerStr_18,S11BruehlerStr_19,S11BruehlerStr_20_1,S11BruehlerStr_20_2)
-  rm(S12StrassburgerWeg,S12StrassburgerWeg_18)
-  rm(S13WilhelmSpiritusUfer,S13WilhelmSpiritusUfer_18,S13WilhelmSpiritusUfer_19,S13WilhelmSpiritusUfer_20_1,S13WilhelmSpiritusUfer_20_2)
-  rm(S14McCloyWeg,S14McCloyWeg_18,S14McCloyWeg_19,S14McCloyWeg_20_1,S14McCloyWeg_20_2)
-  rm(S15WegDammBonnBeuel,S15WegDammBonnBeuel_18,S15WegDammBonnBeuel_19,S15WegDammBonnBeuel_20_1,S15WegDammBonnBeuel_20_2)
-  rm(S03NordBR_S,S09Rhenusallee,S09Rhenusallee_18,S09Rhenusallee_19,S09Rhenusallee_20_1,S09Rhenusallee_20_2)
-  rm(countingData_BrÃ¶hltalweg_2018,countingData_BrÃ¼hlerStraÃŸe_2018)
-  rm(countingData_KennedybrÃ¼ckeSÃ¼dseite_2018,countingData_NordbrÃ¼ckeNordseite_2018,countingData_NordbrÃ¼ckeSÃ¼dseite_2018)
-  rm(countingData_StraÃŸburgerWeg_2018,countingData_SÃ¼dbrÃ¼ckeNordseite_2018,countingData_SÃ¼dbrÃ¼ckeSÃ¼dseite_2018)
+  
+  rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bonn")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -720,7 +689,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Bonn.csv")
   
 # Adding ADFC-Fahrradklima Values
@@ -742,7 +711,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -757,6 +726,7 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   title=", Stadt" #This differs, there are cities and also hanseatic cities
   
   test12=as.data.frame(Destatis12[Destatis12$X.6 == paste(toString(rawData$Town[1]),title,sep=""),])
+  
   test12[17] <- NULL
   test12[17] <- NULL
   test12 <- test12 %>% mutate_all(na_if,"")
@@ -1455,6 +1425,100 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   rm(list=setdiff(ls(), "rawData"))
   
   available_tags("amenity")
+  
+  
+  #Get Data about public transport by OSM____________________________________________________________
+  
+  q <- getbb(toString(rawData$Town[1])) %>%
+    opq() %>%
+    add_osm_feature("highway", "bus_stop")
+  
+  str(q) #query structure
+  
+  cinema <- osmdata_sf(q)
+  
+  #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  
+  for(i in 1:length(cinema$osm_points$name)){
+    
+    cinmat[i,1]=cinema$osm_points$name[i]
+    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    
+  }
+  
+  cinmat=na.omit(cinmat)
+  cinmat=as.data.frame(cinmat)
+  names(cinmat)[1]="name"
+  names(cinmat)[2]="lon"
+  names(cinmat)[3]="lat"
+  cinmat$lon=as.numeric(cinmat$lon)
+  cinmat$lat=as.numeric(cinmat$lat)
+  
+  distmat_closest=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  distmat_1kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  distmat_3kmradius=matrix(1:2*nlevels(as.factor(rawData$Station)), nrow = nlevels(as.factor(rawData$Station)), ncol = 2)
+  
+  #divide in stations in a for loop
+  #Each Loop is for one station
+  #Than calculate distance to the closest cinema
+  for(i in 1:nlevels(as.factor(rawData$Station))){
+    d=rawData[rawData$Station %in% toString(levels(as.factor(rawData$Station))[i]),]
+    
+    distc=c(1:length(cinmat$name))
+    
+    #Start loops for each cinemar
+    for (j in 1:length(cinmat$name)) {
+      cindist=distm(c(d$Lon[i],d$Lat[i]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+      distc[j]=cindist
+    }
+    
+    
+    distmat_closest[i,1]=d[1,1]
+    distmat_closest[i,2]=min(distc)
+    
+    distmat_1kmradius[i,1]=d[1,1]
+    distmat_1kmradius[i,2]=sum(distc < 250)
+    
+    distmat_3kmradius[i,1]=d[1,1]
+    distmat_3kmradius[i,2]=sum(distc < 1000)
+    
+  }
+  
+  distmat_closest=as.data.frame(distmat_closest)
+  names(distmat_closest)[1]="Station"
+  names(distmat_closest)[2]="ClosestBusStop"
+  distmat_closest$ClosestBusStop=as.numeric(distmat_closest$ClosestBusStop)
+  
+  distmat_1kmradius=as.data.frame(distmat_1kmradius)
+  names(distmat_1kmradius)[1]="Station"
+  names(distmat_1kmradius)[2]="BusStop250mmRadius"
+  distmat_1kmradius$BusStop250mmRadius=as.numeric(distmat_1kmradius$BusStop250mmRadius)
+  
+  distmat_3kmradius=as.data.frame(distmat_3kmradius)
+  names(distmat_3kmradius)[1]="Station"
+  names(distmat_3kmradius)[2]="BusStop1kmRadius"
+  distmat_3kmradius$BusStop1kmRadius=as.numeric(distmat_3kmradius$BusStop1kmRadius)
+  
+  rawData = merge(x = rawData,y = distmat_closest,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  rawData = merge(x = rawData,y = distmat_1kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  rawData = merge(x = rawData,y = distmat_3kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  
+  
+  summary(rawData)
+  
+  rm(list=setdiff(ls(), "rawData"))
+  
   
   #Crossing Signals_______________________________________________________________
   
@@ -2175,5 +2239,5 @@ setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten/Bonn")
   
   
   rm(list=setdiff(ls(), "rawData"))
-  setwd("D:/STUDIUM/MÃ¼nster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))
