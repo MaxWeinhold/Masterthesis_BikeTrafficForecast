@@ -16,8 +16,8 @@ rm(list=ls())
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
 #files about 100 MB have to be excluded
-#D:\STUDIUM\Münster\7. Semester\Masterarbeit Daten\Berlin
-setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
+#D:\STUDIUM\M�nster\7. Semester\Masterarbeit Daten\Berlin
+setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/Berlin")
 
 #Read Bycicle Counting Data----------------------------------------------
   countingData12 = read.csv(file = "Daten2012.csv",sep=";")
@@ -381,7 +381,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   rawData$Night = ifelse(rawData$Hour<7,1,0)
   
   #Load data for public holidays
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
   
   pH=publicHolidays[publicHolidays$BER %in% TRUE,]
@@ -439,7 +439,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   rm(list=setdiff(ls(), "rawData"))
   
   #Import Weather Data
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/Berlin")
   Weather_Wind  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_F.csv",sep=",", skip = 1, header = F)
   Weather_CloudCover  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_N.csv",sep=",", skip = 1, header = F)
   Weather_Humidity  = read.csv(file = "Wetterdaten/data_OBS_DEU_PT1H_RF.csv",sep=",", skip = 1, header = F)
@@ -567,7 +567,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,"Berlin.csv")
   
 # Adding ADFC-Fahrradklima Values
@@ -588,7 +588,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   
   #Load data (source: Destatis)
   
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
   Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
   Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
   Destatis14 = read.csv(file = "31122014_Auszug_GV.csv",sep=";")
@@ -905,13 +905,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])
@@ -1007,13 +1007,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])
@@ -1111,13 +1111,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])
@@ -1213,13 +1213,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])
@@ -2111,6 +2111,6 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   summary(rawData)
   
   citation ("osmdata")
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  setwd("D:/STUDIUM/M�nster/7. Semester/Masterarbeit Daten")
   write.csv(rawData,paste(toString(rawData$Town[1]),".csv",sep=""))
   

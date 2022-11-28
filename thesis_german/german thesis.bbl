@@ -1,0 +1,286 @@
+\begin{thebibliography}{}
+
+\bibitem[Alattar et~al., 2021]{Alattar2021}
+Alattar, M.~A., Cottrill, C.~D., and Beecroft, M. (2021).
+\newblock Modelling cyclists’ route choice using strava and osmnx: A case
+  study of the city of glasgow.
+\newblock {\em Transportation Research Interdisciplinary Perspectives}.
+
+\bibitem[Awad and Khanna, 2015]{Awad2015}
+Awad, M. and Khanna, R. (2015).
+\newblock {\em Support Vector Regression}, pages 67--80.
+\newblock Apress, Berkeley, CA.
+
+\bibitem[BMDV, 2020]{VerkehrunddigitaleInfrastruktur2020}
+BMDV (2020).
+\newblock Verwaltungsvereinbarung sonderprogramm „stadt und land“.
+\newblock {\em über die Gewährung von Finanzhilfen des Bundes an die Länder
+  nach Artikel 104b desGrundgesetzes und aufgrund des Haushaltsgesetzes
+  2020für Investitionen in den Radverkehr durch das Sonderprogramm „Stadt
+  und Land“}.
+
+\bibitem[Broach et~al., 2012]{Broach2012}
+Broach, J., Dill, J., and Gliebe, J.~P. (2012).
+\newblock Where do cyclists ride? a route choice model developed with revealed
+  preference gps data.
+\newblock {\em Transportation Research Part A-policy and Practice},
+  46:1730--1740.
+
+\bibitem[Broucke et~al., 2019]{Broucke2019}
+Broucke, S.~V., Piña, L. M.~V., Do, T.~H., and Deligiannis, N. (2019).
+\newblock Brubike: A dataset of bicycle traffic and weather conditions for
+  predicting cycling flow.
+\newblock In {\em 2019 IEEE International Smart Cities Conference (ISC2)},
+  pages 432--437.
+
+\bibitem[Carl and Dror, 2015]{Carl2015}
+Carl, K. and Dror, M. (2015).
+\newblock Construction of a topographical road graph for bicycle tour routes.
+\newblock {\em Sports Technology}.
+
+\bibitem[Colace et~al., 2020]{Colace2020}
+Colace, F., De~Santo, M., Lombardi, M., Pascale, F., Santaniello, D., and
+  Tucker, A. (2020).
+\newblock A multilevel graph approach for predicting bicycle usage in london
+  area.
+\newblock In Yang, X.-S., Sherratt, S., Dey, N., and Joshi, A., editors, {\em
+  Fourth International Congress on Information and Communication Technology},
+  pages 353--362, Singapore. Springer Singapore.
+
+\bibitem[Eisenberger, 2015]{Eisenberger2015}
+Eisenberger, D. (2015).
+\newblock Pressemitteilung: Zahlen – daten – fakten zum deutschen
+  fahrradmarkt 2015sehr gutes jahr für die deutsche fahrradindustrie.
+\newblock {\em Zweirad-Industrie-Verband e.V.}
+
+\bibitem[Gao and Chen, 2022]{Gao2022}
+Gao, C. and Chen, Y. (2022).
+\newblock Using machine learning methods to predict demand for bike sharing.
+\newblock In Stienmetz, J.~L., Ferrer-Rosell, B., and Massimo, D., editors,
+  {\em Information and Communication Technologies in Tourism 2022}, pages
+  282--296, Cham. Springer International Publishing.
+
+\bibitem[Goldmann and Wessel, 2021]{Goldmann2021}
+Goldmann, K. and Wessel, J. (2021).
+\newblock Some people feel the rain, others just get wet: An analysis of
+  regional differences in the effects of weather on cycling.
+\newblock {\em Research in Transportation Business and Management}, 40:100541.
+\newblock Active Travel and Mobility Management.
+
+\bibitem[Harvey and Krizek, 2007]{Harvey2007}
+Harvey, F. and Krizek, K. (2007).
+\newblock Commuter bicyclist behavior and facility disruption.
+\newblock {\em Minnesota Department of Transportation, Research Services
+  Section}.
+
+\bibitem[Hausman et~al., 1984]{Hausman1984}
+Hausman, J., Hall, B.~H., and Griliches, Z. (1984).
+\newblock Econometric models for count data with an application to the
+  patents-r and d relationship.
+\newblock {\em Econometrica}, 52(4):909--938.
+
+\bibitem[Heinen et~al., 2010]{Heinen2010}
+Heinen, E., van Wee, B., and Maat, K. (2010).
+\newblock Commuting by bicycle: An overview of the literature.
+\newblock {\em Transport Reviews}, 30(1):59--96.
+
+\bibitem[Holmgren et~al., 2017]{Holmgren2017}
+Holmgren, J., Aspegren, S., and Dahlströma, J. (2017).
+\newblock Prediction of bicycle counter data using regression.
+\newblock {\em Procedia Computer Science}, 113:502--507.
+\newblock The 8th International Conference on Emerging Ubiquitous Systems and
+  Pervasive Networks (EUSPN 2017) / The 7th International Conference on Current
+  and Future Trends of Information and Communication Technologies in Healthcare
+  (ICTH-2017) / Affiliated Workshops.
+
+\bibitem[Hong~J, 2022]{Hong2022}
+Hong~J, McArthur~DP, S. J. K.~C. (2022).
+\newblock Did air pollution continue to affect bike share usage in seoul during
+  the covid-19 pandemic?
+\newblock {\em J Transp Health}.
+
+\bibitem[James et~al., 2013a]{James2013SVM}
+James, G., Witten, D., Hastie, T., and Tibshirani, R. (2013a).
+\newblock {\em An Introduction to Statistical Learning}, chapter Support Vector
+  Machines, pages 337--372.
+\newblock Springer New York, New York, NY.
+
+\bibitem[James et~al., 2013b]{James2013TBM}
+James, G., Witten, D., Hastie, T., and Tibshirani, R. (2013b).
+\newblock {\em An Introduction to Statistical Learning}, chapter Tree-Based
+  Methods, pages 303--335.
+\newblock Springer New York, New York, NY.
+
+\bibitem[James et~al., 2021]{James2013DL}
+James, G., Witten, D., Hastie, T., and Tibshirani, R. (2021).
+\newblock {\em An Introduction to Statistical Learning}, chapter Deep Learning,
+  pages 403--458.
+\newblock Springer New York, New York, NY.
+
+\bibitem[Kaltenbrunner et~al., 2010]{Kaltenbrunner2010}
+Kaltenbrunner, A., Meza, R., Grivolla, J., Codina, J., and Banchs, R. (2010).
+\newblock Urban cycles and mobility patterns: Exploring and predicting trends
+  in a bicycle-based public transport system.
+\newblock {\em Pervasive and Mobile Computing}, 6(4):455--466.
+\newblock Human Behavior in Ubiquitous Environments: Modeling of Human Mobility
+  Patterns.
+
+\bibitem[Kondo et~al., 2018]{Kondo2018}
+Kondo, M.~C., Morrison, C., Guerra, E., Kaufman, E.~J., and Wiebe, D.~J.
+  (2018).
+\newblock Where do bike lanes work best? a bayesian spatial model of bicycle
+  lanes and bicycle crashes.
+\newblock {\em Safety Science}, 103:225--233.
+
+\bibitem[Kursa and Rudnicki, 2010]{Kursa2010}
+Kursa, M.~B. and Rudnicki, W.~R. (2010).
+\newblock Feature selection with the boruta package.
+\newblock {\em Journal of Statistical Software}, 36(11):1–13.
+
+\bibitem[Lee and Sener, 2020]{Lee2020}
+Lee, K. and Sener, I.~N. (2020).
+\newblock Emerging data for pedestrian and bicycle monitoring: Sources and
+  applications.
+\newblock {\em Transportation Research Interdisciplinary Perspectives},
+  4:100095.
+
+\bibitem[Li et~al., 2022]{Li2022}
+Li, X., Xu, Y., Chen, Q., Wang, L., Zhang, X., and Shi, W. (2022).
+\newblock Short-term forecast of bicycle usage in bike sharing systems: A
+  spatial-temporal memory network.
+\newblock {\em IEEE Transactions on Intelligent Transportation Systems},
+  23(8):10923--10934.
+
+\bibitem[Li et~al., 2015]{Li2015}
+Li, Y., Zheng, Y., Zhang, H., and Chen, L. (2015).
+\newblock Traffic prediction in a bike-sharing system.
+\newblock In {\em Proceedings of the 23rd SIGSPATIAL International Conference
+  on Advances in Geographic Information Systems}, SIGSPATIAL '15, New York, NY,
+  USA. Association for Computing Machinery.
+
+\bibitem[Meng et~al., 2016]{Meng2016}
+Meng, M., Zhang, J., Wong, Y.~D., and Au, P.~H. (2016).
+\newblock Effect of weather conditions and weather forecast on cycling travel
+  behavior in singapore.
+\newblock {\em International Journal of Sustainable Transportation},
+  10(9):773--780.
+
+\bibitem[Menghini et~al., 2010]{Menghini2010}
+Menghini, G., Carrasco, N., Schüssler, N., and Axhausen, K. (2010).
+\newblock Route choice of cyclists in zurich.
+\newblock {\em Transportation Research Part A: Policy and Practice},
+  44(9):754--765.
+
+\bibitem[Mitchell, 2018]{Mitchell2018PredictingBT}
+Mitchell, P.~P. (2018).
+\newblock Predicting bike-sharing traffic flow using machine learning.
+
+\bibitem[Musakwa and Selala, 2016]{Musakwa2016}
+Musakwa, W. and Selala, K.~M. (2016).
+\newblock Mapping cycling patterns and trends using strava metro data in the
+  city of johannesburg, south africa.
+\newblock {\em Data in Brief}, 9:898--905.
+
+\bibitem[Möllers et~al., 2021]{Moellers2021}
+Möllers, A., Specht, S., and Wessel, J. (2021).
+\newblock The impact of the covid-19 pandemic and government intervention on
+  active mobility.
+\newblock Technical Report~34.
+\newblock Publication status: Published.
+
+\bibitem[Nankervis, 1999]{Nankervis1999}
+Nankervis, M. (1999).
+\newblock The effect of weather and climate on bicycle commuting.
+\newblock {\em Transportation Research Part A: Policy and Practice},
+  33(6):417--431.
+
+\bibitem[Pisner and Schnyer, 2020]{Pisner2020}
+Pisner, D.~A. and Schnyer, D.~M. (2020).
+\newblock Chapter 6 - support vector machine.
+\newblock In Mechelli, A. and Vieira, S., editors, {\em Machine Learning},
+  pages 101--121. Academic Press.
+
+\bibitem[Prati et~al., 2017]{PRATI201744}
+Prati, G., Pietrantoni, L., and Fraboni, F. (2017).
+\newblock Using data mining techniques to predict the severity of bicycle
+  crashes.
+\newblock {\em Accident Analysis and Prevention}, 101:44--54.
+
+\bibitem[Pritchard, 2018]{Pritchard2018}
+Pritchard, R. (2018).
+\newblock Revealed preference methods for studying bicycle route choice—a
+  systematic review.
+\newblock {\em International Journal of Environmental Research and Public
+  Health}, 15:470.
+
+\bibitem[Pucher et~al., 2010]{Pucher2010}
+Pucher, J., Dill, J., and Handy, S. (2010).
+\newblock Infrastructure, programs, and policies to increase bicycling: An
+  international review.
+\newblock {\em Preventive Medicine}, 50:S106--S125.
+
+\bibitem[Reddy et~al., 2010]{Reddy2010}
+Reddy, S., Shilton, K., Denisov, G., Cenizal, C., Estrin, D., and Srivastava,
+  M. (2010).
+\newblock Biketastic: Sensing and mapping for better biking.
+\newblock volume~3, pages 1817--1820.
+
+\bibitem[Rietveld and Daniel, 2004]{Rietveld2004}
+Rietveld, P. and Daniel, V. (2004).
+\newblock Determinants of bicycle use: do municipal policies matter?
+\newblock {\em Transportation Research Part A: Policy and Practice},
+  38(7):531--550.
+
+\bibitem[Romanillos et~al., 2016]{Romanillos2016}
+Romanillos, G., Austwick, M.~Z., Ettema, D., and Kruijf, J.~D. (2016).
+\newblock {Big Data and Cycling}.
+\newblock {\em Transport Reviews}, 36(1):114--133.
+
+\bibitem[Saha et~al., 2018]{Saha2018}
+Saha, D., Alluri, P., Gan, A., and Wu, W. (2018).
+\newblock Spatial analysis of macro-level bicycle crashes using the class of
+  conditional autoregressive models.
+\newblock {\em Accident Analysis and Prevention}, 118:166--177.
+
+\bibitem[Thomas and DeRobertis, 2013]{Thomas2013}
+Thomas, B. and DeRobertis, M. (2013).
+\newblock The safety of urban cycle tracks: A review of the literature.
+\newblock {\em Accident Analysis and Prevention}, 52:219--227.
+
+\bibitem[Vandenbulcke et~al., 2014]{Vandenbulcke2014}
+Vandenbulcke, G., Thomas, I., and {Int Panis}, L. (2014).
+\newblock Predicting cycling accident risk in brussels: A spatial
+  case–control approach.
+\newblock {\em Accident Analysis and Prevention}, 62:341--357.
+
+\bibitem[Wessel, 2020]{Wessel2020}
+Wessel, J. (2020).
+\newblock Using weather forecasts to forecast whether bikes are used.
+\newblock {\em Transportation Research Part A: Policy and Practice},
+  138:537--559.
+\newblock Publication status: Published.
+
+\bibitem[Winters et~al., 2010]{Winters2010}
+Winters, M., Davidson, G., Kao, D., and Teschke, K. (2010).
+\newblock Motivators and deterrents of bicycling: Comparing influences on
+  decisions to ride.
+\newblock {\em Transportation}, 38:153--168.
+
+\bibitem[Xu et~al., 2013]{Xu2013}
+Xu, H., Ying, J., Wu, H., and Lin, F. (2013).
+\newblock Public bicycle traffic flow prediction based on a hybrid model.
+\newblock {\em Applied Mathematics and Information Sciences}, 7:667--674.
+
+\bibitem[Zhao et~al., 2018]{ZHAO2018826}
+Zhao, P., Li, S., Li, P., Liu, J., and Long, K. (2018).
+\newblock How does air pollution influence cycling behaviour? evidence from
+  beijing.
+\newblock {\em Transportation Research Part D: Transport and Environment},
+  63:826--838.
+
+\bibitem[ZIV, 2022]{ZIV2022}
+ZIV (2022).
+\newblock Pressemitteilung: „freiheitsmobilität“ bleibt stark nachgefragt.
+\newblock {\em Der Zweirad-Industrie-Verband e.V.}
+
+\end{thebibliography}

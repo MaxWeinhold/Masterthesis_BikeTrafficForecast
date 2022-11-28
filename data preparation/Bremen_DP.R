@@ -697,13 +697,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bremen")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])
@@ -799,13 +799,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bremen")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])
@@ -903,13 +903,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bremen")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])
@@ -1005,13 +1005,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Bremen")
   #c1lat=cinema$osm_points$geometry[[7]][2]
   
   #create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
-  cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+  cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
   
-  for(i in 1:length(cinema$osm_points$name)){
+  for(i in 1:length(cinema$osm_polygons$osm_id)){
     
-    cinmat[i,1]=cinema$osm_points$name[i]
-    cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
-    cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+    cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+    cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+    cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
     
     #print(cinema$osm_points$name[i])
     #print(cinema$osm_points$geometry[[i]][])

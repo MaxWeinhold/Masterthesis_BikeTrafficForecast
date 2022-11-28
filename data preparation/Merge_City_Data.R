@@ -28,29 +28,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   Oberhausen = read.csv(file = "Oberhausen.csv",sep=",", encoding="ISO-8859-1")
   Rostock = read.csv(file = "Rostock.csv",sep=",", encoding="ISO-8859-1")
   Siegen = read.csv(file = "Siegen.csv",sep=",", encoding="ISO-8859-1")
-  
-  d1=names(Bremen)
-  d2=names(Bochum)
-  #names(Münster)
-  
-  for(i in 1:length(d1)){
-    
-    for(j in 1:length(d2)){
-      
-      if(d1[i]==d2[j]){
-        
-        d1[i]="is there"
-        
-      }
-      
-    }
-    
-  }
-  
-  d1
-  
-  
-  names(Bremen)
+  Leipzig = read.csv(file = "Leipzig.csv",sep=",", encoding="ISO-8859-1")
   
   #Merge Data--------------------------------------------------------------
   
@@ -66,6 +44,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   BikeData=rbind(BikeData,Oberhausen)
   BikeData=rbind(BikeData,Rostock)
   BikeData=rbind(BikeData,Siegen)
+  BikeData=rbind(BikeData,Leipzig)
   
   levels(as.factor(BikeData$Town))
   nlevels(as.factor(BikeData$Station))
@@ -79,6 +58,10 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   summary(BikeData)
   names(BikeData)
   
+  nrow(BikeData)
   
   write.csv(BikeData,"completeDataSet_1.csv")
+  
+  
+  rm(list=setdiff(ls(), "BikeData"))
   
