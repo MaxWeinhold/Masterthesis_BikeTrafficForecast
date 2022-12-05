@@ -29,6 +29,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   Rostock = read.csv(file = "Rostock.csv",sep=",", encoding="ISO-8859-1")
   Siegen = read.csv(file = "Siegen.csv",sep=",", encoding="ISO-8859-1")
   Leipzig = read.csv(file = "Leipzig.csv",sep=",", encoding="ISO-8859-1")
+  Erfurt = read.csv(file = "Erfurt.csv",sep=",", encoding="ISO-8859-1")
+  Tübingen = read.csv(file = "Tübingen.csv",sep=",", encoding="ISO-8859-1")
   
 #Merge Data--------------------------------------------------------------
   
@@ -45,12 +47,14 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   BikeData=rbind(BikeData,Rostock)
   BikeData=rbind(BikeData,Siegen)
   BikeData=rbind(BikeData,Leipzig)
+  BikeData=rbind(BikeData,Erfurt)
+  BikeData=rbind(BikeData,Tübingen)
 
 #print some informations-------------------------------------------------
   
   names(BikeData)
   levels(as.factor(BikeData$Town))
-  a = nlevels(as.factor(BikeData$Station))
+  nlevels(as.factor(BikeData$Station))
   levels(as.factor(BikeData$Station))
   levels(as.factor(BikeData$Year))
   levels(as.factor(BikeData$Density))
@@ -117,6 +121,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     else if(Altersgruppen$Town[i] == "Oberhausen, kreisfreie Stadt"){Altersgruppen$Town[i] = "Oberhausen"}
     else if(Altersgruppen$Town[i] == "Rostock, kreisfreie Stadt"){Altersgruppen$Town[i] = "Rostock"}
     else if(Altersgruppen$Town[i] == "Siegen-Wittgenstein, Landkreis"){Altersgruppen$Town[i] = "Siegen"}
+    else if(Altersgruppen$Town[i] == "Erfurt, kreisfreie Stadt"){Altersgruppen$Town[i] = "Erfurt"}
+    else if(Altersgruppen$Town[i] == "Tübingen, Landkreis"){Altersgruppen$Town[i] = "Tübingen"}
     else{Altersgruppen$Town[i] = NA}
   }
   Altersgruppen = na.omit(Altersgruppen)
@@ -217,6 +223,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     else if(Immigrants$Town[i] == "Oberhausen, kreisfreie Stadt"){Immigrants$Town[i] = "Oberhausen"}
     else if(Immigrants$Town[i] == "Rostock, kreisfreie Stadt"){Immigrants$Town[i] = "Rostock"}
     else if(Immigrants$Town[i] == "Siegen-Wittgenstein, Landkreis"){Immigrants$Town[i] = "Siegen"}
+    else if(Immigrants$Town[i] == "Erfurt, kreisfreie Stadt"){Immigrants$Town[i] = "Erfurt"}
+    else if(Immigrants$Town[i] == "Tübingen, Landkreis"){Immigrants$Town[i] = "Tübingen"}
     else{Immigrants$Town[i] = NA}
   }
   Immigrants = na.omit(Immigrants)
@@ -257,6 +265,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     else if(PKW$Town[i] == "Oberhausen, kreisfreie Stadt"){PKW$Town[i] = "Oberhausen"}
     else if(PKW$Town[i] == "Rostock, kreisfreie Stadt"){PKW$Town[i] = "Rostock"}
     else if(PKW$Town[i] == "Siegen-Wittgenstein, Landkreis"){PKW$Town[i] = "Siegen"}
+    else if(PKW$Town[i] == "Erfurt, kreisfreie Stadt"){PKW$Town[i] = "Erfurt"}
+    else if(PKW$Town[i] == "Tübingen, Landkreis"){PKW$Town[i] = "Tübingen"}
     else{PKW$Town[i] = NA}
   }
   PKW = na.omit(PKW)
@@ -277,8 +287,10 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   b = nlevels(as.factor(BikeData$Station))
   a -b
   nlevels(as.factor(BikeData$Town))
+  names(BikeData)
   
 #Save new data set-------------------------------------------------------
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   write.csv(BikeData,"completeDataSet_1.csv")
   
   
