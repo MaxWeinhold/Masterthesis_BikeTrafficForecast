@@ -115,7 +115,7 @@ Dazu beginnt diese Hausarbeit mit einem ausführlichen Einblick in die bestehend
 
 Die Auslastung von Fahrradwegen bzw. das Aufkommen von Fahrrädern beruht im Wesentlichen auf der individuellen Entscheidung eines jeden Fahrers, das Fahrrad einer anderen Transport Alternative vorzuziehen. Versteht man die Faktoren, aus denen sich diese Entscheidung zusammensetzt, dann kann man leichter eine solche Entscheidung vorhersagen. Mit einer Zusammenfassung der bisherigen Literatur wollen \cite{Heinen2010} diese Faktoren finden, wobei sie sich auf Pendler beschränken. Zum einem ist einer dieser Faktoren die bauliche Substanz, die nicht nur die Radwege sondern auch Abstellmöglichkeiten und Ampeln wie auch Verkehrsschilder beinhaltet. Zum anderem spielt das Wetter eine große Rolle. Einen negativen Effekt hat die Rate der Autobesitzer und natürlich auch die Verfügbarkeit anderer Transportmöglichkeiten.\\
 
-\section{Gegenstand der Forschung}
+\section{Erforschung des Radverkehrs}
 
 Seitdem erschienen zahlreiche weitere empirische Studien, die unser Bild konkretisieren. Diese Studien lassen sich nach Datenquellen und Methoden kategorisieren. Die meisten nutzen vier verschiedene Datengrundlagen zum Fahrradverkehr in Verbindung zu Daten mit anderen Faktoren wie dem Wetter. Die vier Datenquellen zum Fahrradverkehr stammen von Fahrradzählstation, einer Induktionsschleife die darüber fahrende Räder verifiziert, Daten von Bike Sharing Diensten, Daten verschiedener GPS und Handy Applikationen und auch Unfallstatistiken von Fahrrädern finden Beachtung in der empirischen Analyse.\\
 
@@ -164,11 +164,11 @@ Auf diese Daten kann nun eine Regression angewendet werden, deren erklärende Va
 Im Überblick zeigen sich häufige Schwächen von Studien, die Handy Applikationsdaten nutzen, wie den Strava Datensatz. Zunächst unterliegen solche Apps häufig einer Selbstauswahl der Probanden. So sind z.B. in dem Datensatz von \cite{Alattar2021} Frauen unterrepräsentiert. Häufig dienen diese Apps der sportlichen Betätigung und nicht der Anfahrt zum Arbeitsplatz. Zudem sind ihre Daten schwer zugänglich.
 
 
-\section{Aspekte der Forschung}
+\section{Faktoren des Radverkehrs}
 
 Die Prädikatoren eines Modells spielen eine große Rolle, denn mit der Auswahl der richtigen Prädikatoren steht und fällt die Validität des Modells. Deswegen klärt ein gesonderter Literaturüberblick die Tragweite einzelner Variablen, die möglicherweise das Aufkommen an urbanen Fahrradverkehr erklären können. Wichtiges Attribut eines Prädikators ist zudem die Datenverfügbarkeit. 
 
-\subsection{Aspekt zum Wetter}
+\subsection{Faktor Wetter}
 
 Wetter und Wetterelastizität
 
@@ -178,17 +178,18 @@ Jedoch während \cite{Meng2016} Daten einer Umfrage von 553 Fahrradfahrern in Si
 Aufbauend auf diesen Daten nutzt \cite{Wessel2020} ein log-lineares Regressionsmodell und ein negativ binomiales Regressions Modell. Das letztere Modell geht auf \cite{Hausman1984} zurück und ist im Besonderen für ganzzahlige Regressoren nützlich, wie es hier der Fall ist. Der Bestimmtheitswert dieser verschiedenen Modelle R$^2$, die teils abweichende Variablen verwenden, liegt zwischen 75,9 \% und 78,5 \%. Gerade der Schritt mehrere Städte in ein Modell zu bringen ist interessant. \cite{Saha2018} hat zwar eine Betrachtung für einen ganzen Bundestaat angefertigt, hat Vorhersagen jedoch nur auf Makro Ebene getroffen. Das Modell von \cite{Wessel2020} findet hingegen auf der Mikro Ebene der einzelnen Zählstationen statt, und zeigt, dass doch trotz Unterschiede in der städtischen Infrastruktur und Fahrkultur präzise Vorhersagen machbar sind, denn der Einfluss des Wetters ist einer der wesentlichen Prädikatoren und gehört auf jeden Fall in ein Modell, dass das Fahrrad Verkehrs Volumen vorhersagen möchte. Außerdem verwendet sein Modell auch Schul- und Semesterferien, sowie Feiertage als Prädikator, die ebenfalls stark ins Gewicht fallen.
 
 
-\subsection{Aspekt zur Feinstaubbelastung}
+\subsection{Faktor Feinstaubbelastung}
 
 Die Feinstaubbelastung ist ein weiterer möglicher Prädikator, das zeigen \cite{ZHAO2018826}, \cite{Gao2022} und \cite{Hong2022}. Im Speziellen setzt sich \cite{Hong2022} mit der Nutzung von Bike Sharing Systemen in Seoul unter der Aussetzung von Feinstaubbelastung auseinander. Er argumentiert, dass durch die Corona Krise, mehr Menschen vom öffentlichen Verkehr auf Fahrräder umgestiegen sind, um Menschenmassen in U-Bahnen aus dem Weg zu gehen, dabei aber einer höheren Feinstaubbelastung ausgesetzt waren. Ob Fahrradfahrer der Feinstaubbelastung aus dem Weg gehen untersucht er mit einer linearen Regression, in der das PM$_{2.5}$ Level als Maßstab der Feinstaubbelastung herangezogen wird. Daneben berücksichtigt er Wochentage, Jahreszeiten und Wetterdaten wie Wind, Bewölkung und Temperatur. Demnach hat das PM$_{2.5}$ Level einen negativen Effekt auf die gesamte Dauer aller Fahrrad Touren auf einem Signifikanz Level von $0.05$.\\
 Grundsätzlich sind Daten zur Feinstaubbelastung in Deutschland an vielen Stellen erhältlich durch die Seite \url{https://opensensemap.org} zugänglich, doch ist zu bezweifeln, dass hier der Aufwand im Verhältnis zum Nutzen stünde, denn in den allermeisten deutschen Städten dürften grundsätzlich andere Verhältnisse vorherrschen als in Seoul. So lag nach OECD Daten (\url{https://data.oecd.org/air/air-pollution-exposure.htm}) die durchschnittliche Feinstaubbelastung PM$_{2.5}$ 2019 in Südkorea bei $45.2$ und in Deutschland bei $11.9$ Mikrogramm per m$^3$. Zusätzlich ist zu bedenken, dass ohne öffentliche Smog Warnungen Fahrradfahrer keine Möglichkeit haben, auf gestiegene Feinstaubbelastungen zu reagieren, oder diese bei Auswahl ihrer Fahrradrouten zu berücksichtigen. Demnach dürfte die Feinstaubbelastung als Faktor zur Vorhersage des Fahrrads Verkehrsaufkommen in Deutschland irrelevant sein.
 
-\subsection{Aspekt der Corona Maßnahmen}
+\subsection{Faktor Corona Maßnahmen}
 
 Es ist vorstellbar, dass Corona Lockdowns zu einer Verzerrung des allgemeinen Verkehrs geführt hat, was ebenso für Fahrräder gelten wird. Diese Effekte untersuchen \cite{Moellers2021} mittels Daten von Zählstation 10 deutschen Städten. Während Lockdowns zu einer Reduzierung von Fußgängern führte, ist der Effekte auf Fahrradfahrer uneindeutig. Bei dieser Betrachtung konzentrierten sie sich auf die erste Welle. Für ihr Modell verwenden sie Daten des RKI, dass tägliche Daten über neue Fälle zur Verfügung stellt pro Region. Zusätzlich kontrollieren sie auch die örtlichen Maßnahmen durch die Öffnungszeiten örtlicher Geschäfte und Schulen. Ihre Analyse zeigt, dass die Anzahl der Fahrradfahrer unter der Woche abgenommen hat, aber an Wochenenden zu genommen hat.
 
-\subsection{Aspekt der Radverkehrsunfälle}
+\subsection{Faktor der städtischen Unterschiede}
 
+\subsection{Faktor Radverkehrsunfälle}
 
 Da diese Arbeit beabsichtigt die Auslastung von Fahrradwegen und das allgemeine Verkehrsaufkommen von Fahrrädern hervorsagen zu können, haben sich die vorherigen drei Abschnitte auf Literatur konzentriert, die Ähnliches versuchte mit unterschiedlichen Datengrundlagen. Interessant wäre es, die Erkenntnisse aus diesen Daten mit dem Aufkommen von Fahrradunfällen zu verbinden, um z.B. kritische Stellen im Stadtbild als potentielle Verkehrsunfallorte ausfindig zu machen. Um in Erfahrung zu bringen, ob man durch statistische Methoden eine Antwort auf diese Nebenfrage finden kann, ist es wichtig, Literatur zu betrachten, die Unfallstatistiken als Datengrundlage verwendet.\\
 Eine solche Studie stammte z.B. von \cite{Vandenbulcke2014}, die der Frage nachgehen, wie Infrastruktur Unfälle hervorruft. Dazu verfolgen sie einen räumlichen bayesianischen Modellierungsentwurf mit Daten aus Brüssel. Ergebnisse dieser Studie sind zB, dass das Gefahrenpotential für Fahrradfahrer steigt, wenn sich Straßenbahnschienen auf der Fahrspur befinden, Brücken ohne separate Fahrradwege, komplizierte Kreuzungen, die Nähe zu Einkaufszentren oder Garagen und ein erhöhtes Bus Aufkommen.\\
@@ -215,11 +216,13 @@ Genau dies machen \cite{Saha2018}, in dem Sie eine Analyse Floridas auf Zensus B
 Gerade die letzten zwei Studien zeigen, wie interessant die räumliche Verteilung von Fahrradunfällen ist und \cite{Kondo2018} zeigen auch das Verkehrsvolumen als Faktor der Unfallwahrscheinlichkeit.\\
 Neben all dem ist interessant, dass \cite{Kondo2018} darauf verweisen, dass Unfallsicherheit ein starker Prädikator sei für den Fahrradverkehr laut \cite{Pucher2010}, \cite{Thomas2013} und \cite{Winters2010}. Dies ist eine gute Überleitung auf das nächste Thema. Die bisherige Betrachtung beschäftigte sich mit den Daten, die man verwenden kann für die abhängige Variable des Modells, dass am Ende dieses Projekts entstehen soll. Doch für eine zuverlässige Vorhersage braucht es Prädikatoren. Diese sind in der Literatur zu finden.
 
-\subsection{Sonstige Aspekte}
+
+\subsection{Sonstige Faktoren}
 
 Eine weitere interessante Datenquelle, die wir z.B. schon bei \cite{Alattar2021} kennen gelernt haben, ist Open Street Map. Dies ist ein 2004 gegründetes gemeinnütziges Projekt, dass das Ziel verfolgt Kartenmaterial zu sammeln und online allen frei zur Verfügung zu stellen. Hier sind Daten über Straßen, Eisenbahnen, Flüsse, Wälder, Häuser und vielem weiteren zu finden. Auch \cite{Carl2015} nutzt die frei verfügbaren Daten zu Höhenmetern des Geländes von Open Street Map, um die Planung von mehrtägigen Fahrradtouren zu erleichtern, die der Erholung dienen. Deswegen ist dieses Paper für die Frage dieser Hausarbeit weniger interessant, die Idee, diese Art von Daten zu verwenden, aber könnte hilfreich sein. Dass aber die Topographie eine Rolle auch für den Pendler Verkehr spielt, zeigt \cite{Rietveld2004}.\\
 Vor allem nützlich aber ist diese Datenquelle, wenn man wie \cite{Goldmann2021} mehrere Städte untersuchen möchte und deren Unterschiede. Sie verwenden nicht nur Daten zur Demographie, sondern auch zur Topographie oder auch zur Dichte von Radwegen und Haltestopps des öffentlichen Nahverkehrs.
 
+\section{Ausblick auf eigene Forschung}
 
 \chapter{Zusammensetzung des Datensatz}
 
@@ -332,7 +335,7 @@ Auf diese Weise lässt sich ein Entscheidungsbaum erstellen. Bei den zuvor anges
 
 
 Deep Learning Algorithmen und die dazu gehörigen neuronalen Netzwerke sind mit die fortgeschrittenste Form im Bereich des Machine Learnings. Sie tauchen bei \cite{Broucke2019} und \cite{Mitchell2018PredictingBT} auf.
-\subsubsection{Aufbau eines neuronalen Netzes}
+\subsection{Aufbau eines neuronalen Netzes}
 Zur Verdeutlichung der Funktionsweise von neuronalen Netzwerken beschränkt sich diese Arbeit aufgrund von Übersichtlichkeit auf Single Layer Perceptrons, diese sind die einfachste Form eines neuronalen Netzes und bestehen nur aus einer Schicht von Neuronen. Eine graphische Darstellung eines solchen Netzwerkes ist in Abbildung \ref{NN1} zu sehen.
 \begin{figure}[!ht]
 	\centering
@@ -372,7 +375,7 @@ Ob und in welchem Umfang die Information, die ein Neuron passiert, weiter gereic
 	\label{NN2}
 \end{figure}\\
 Die Sigmoid Funktion wird z.B. auch für die logistische Regression genutzt. Der Vorteil der ReLU Funktion besteht darin, dass Neuronen ausgeschaltet werden, sollte $z$ zu klein sein, wodurch Rechenkraft gespart wird. Zu dem reagiert das Neuronale Netz stärker auf höhere Werte von $z$ und lernt damit schneller.
-\subsubsection{Entstehung eines neuronalen Netzes}
+\subsection{Berechnung eines neuronalen Netzes}
 Wichtig damit die Aktivierung eines Neurons zur richtigen Vorhersage führt, ist das richtig trainierte Gewicht $w_{kj}$. Sowohl die Parameter $\beta_0, ..., \beta_K$ als auch $w_{10}, ..., w_{Kp}$ müssen trainiert werden. Das Optimierungsproblem dazu besteht in:
 \begin{equation}
 	\label{NN:Optimization}
@@ -414,9 +417,11 @@ Die Ableitungen des Fehlerterms nach den Gewichten, die wir brauchen, um den Gra
 	\end{aligned} 
 \end{equation}
 
-\section{Feature conditional Validation Set Building}
+\section{Validation}
 
-\section{Cross Validation}
+\subsection{Conditional Validation Set Building}
+
+\subsection{Cross Validation}
 
 Statistische Modelle wie ein neuronales Netz machen erstaunlich präzise Vorhersagen. Doch wie kann man eine solche Präzession messen? Dafür verantwortlich ist die Validierung. Mittels Maße wie dem Bestimmtheitsmaß R$^2$ oder dem RMSE kann man die Performance der Vorhersagen im Vergleich mit den tatsächlichen Daten messen.\\
 Doch wie validiert man die Vorhersagekraft eines Modells auf Daten, mit denen das Modell selbst nicht trainiert worden ist, um zu testen ob das Modell die eigenen Daten nicht overfittet? Hierzu ließe sich der Validation Set Approach nutzen. Teilt man die Beobachtungen in zwei unterschiedlichen Sets zufälligerweise auf, erhält man ein Set, mit dem man ein Modell trainieren kann und eines mit dem man es testen kann.\\
@@ -424,6 +429,9 @@ Eine Weiterführung dieses Konzepts ist die Cross Validation. Hier wird der Date
 
 \chapter{Ergebnisse}
 
+\section{Validität der Ergebnisse}
+
+\section{Präzision der Ergebnisse}
 
 \chapter{Fazit}
 
