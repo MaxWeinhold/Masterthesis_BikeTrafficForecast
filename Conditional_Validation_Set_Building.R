@@ -1,13 +1,7 @@
 #Spatial prediction of urban bicycle traffic volume with machine learning
 #Maximilian Weinhold
 #------------------------------------------------------------------------
-#Data preperation: conditional Validation Set Building
-
-require(caret)
-
-#Regarding calculation power see following source: https://nceas.github.io/oss-lessons/parallel-computing-in-r/parallel-computing-in-r.html
-#Historically, R has only utilized one processor, which makes it single-threaded.
-
+#Conditional Validation Set Building
 
 #Clean up memory
 rm(list=ls())
