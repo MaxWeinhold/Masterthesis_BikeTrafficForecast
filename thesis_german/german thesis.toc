@@ -12,7 +12,7 @@
 \contentsline {subsection}{\numberline {2.2.4}Faktor der städtischen Unterschiede}{18}{subsection.2.2.4}%
 \contentsline {subsection}{\numberline {2.2.5}Faktor Radverkehrsunfälle}{18}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Sonstige Faktoren}{20}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Ausblick auf eigene Forschung}{22}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Forschungslücken}{22}{section.2.3}%
 \contentsline {chapter}{\numberline {3.}Zusammensetzung des Datensatz}{23}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Fahrradzähler}{23}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Wetterdaten}{24}{section.3.2}%
@@ -36,5 +36,7 @@
 \contentsline {chapter}{\numberline {5.}Ergebnisse}{37}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Validität der Ergebnisse}{37}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Präzision der Ergebnisse}{37}{section.5.2}%
-\contentsline {chapter}{\numberline {6.}Fazit}{38}{chapter.6}%
-\contentsline {chapter}{Literaturverzeichnis}{39}{chapter.6}%
+\contentsline {section}{\numberline {5.3}Verknüpfung mit Verkehrsunfällen}{37}{section.5.3}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{38}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{38}{section.6.1}%
+\contentsline {chapter}{Literaturverzeichnis}{39}{section.6.1}%
