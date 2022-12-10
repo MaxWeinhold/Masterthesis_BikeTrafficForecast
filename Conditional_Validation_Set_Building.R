@@ -14,6 +14,57 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 #Load Data Set
 BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
 
+#Clean Data from unneccesary Variables because of RAM limitations
+
+names(BikeData)
+BikeData$Day = NULL
+BikeData$Oneway = NULL
+BikeData$Weekday = NULL
+BikeData$City_Lon = NULL
+BikeData$City_Lat = NULL
+BikeData$ClosestCinema = NULL
+BikeData$Cinemas1kmRadius = NULL
+BikeData$InhDestrict = NULL
+BikeData$residential = NULL
+BikeData$living_street = NULL
+
+BikeData$SuperMarket500mmRadius = NULL
+BikeData$ClosestBusStop = NULL
+BikeData$Signals1kmRadius = NULL
+BikeData$UnmCross1kmRadius = NULL
+BikeData$TrainS1kmRadius = NULL
+BikeData$ClosestSubway = NULL
+BikeData$ClosestBikeShop = NULL
+BikeData$BikeShop1kmRadius = NULL
+BikeData$ClosestSignals = NULL
+BikeData$ClosestUnmCross = NULL
+BikeData$ClosestTram = NULL
+
+BikeData$Rain2 = BikeData$Rain^2
+BikeData$Temperature2 = BikeData$Temperature^2
+BikeData$Inhabitants2 = BikeData$Inhabitants^2
+BikeData$ADFC_Index2 = BikeData$ADFC_Index^2
+BikeData$UniBuild500mmRadius2 = BikeData$UniBuild500mmRadius^2
+BikeData$ClothesShop500mmRadius2 = BikeData$ClothesShop500mmRadius^2
+BikeData$ClosestTrainS2 = BikeData$ClosestTrainS^2
+BikeData$ClosestBridge2 = BikeData$ClosestBridge^2
+BikeData$young302 = BikeData$young30^2
+BikeData$PKWs2 = BikeData$PKWs^2
+
+BikeData$Rain3 = BikeData$Rain^3
+BikeData$Inhabitants3 = BikeData$Inhabitants^3
+BikeData$UniBuild500mmRadius3 = BikeData$UniBuild500mmRadius^3
+BikeData$ClothesShop500mmRadius3 = BikeData$ClothesShop500mmRadius^3
+BikeData$ClosestTrainS3 = BikeData$ClosestTrainS^3
+BikeData$ClosestBridge3 = BikeData$ClosestBridge3
+
+BikeData$SignalsRatio = BikeData$UnmCross250mmRadius/(BikeData$UnmCross250mmRadius + BikeData$Signals250mmRadius + 1)
+
+summary(BikeData)
+
+BikeData = BikeData %>%
+  mutate(Value = ifelse(Value == 0,1,Value))
+
 #Get all stations and how many observations each station offers
 
 Obs_perStation = as.data.frame(c(1:nlevels(as.factor(BikeData$Station))))
