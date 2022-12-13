@@ -60,7 +60,7 @@ plot25 = ggplot(svrtest,aes(x = Hour, y = Value)) +
 
 plot25
   
-setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/DataSet Plots")
+setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
   
 png(file="plot25.png",width=800, height=800)
 plot25
@@ -167,7 +167,8 @@ Evaluation_DF[6,]=c(mean(Evaluation_DF$Train_R),mean(Evaluation_DF$Train_RMSE),m
 Evaluation_DF$Sets=c("1","2","3","4","5","Mean")
 Evaluation_DF <- Evaluation_DF[, c(5,1,2,3,4)]
 
-beep("fanfare")
+beep("mario")
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
-write.csv(BikeData,"Modell2_SVR.csv")
+write.csv(Evaluation_DF,"Modell2_SVR.csv")
+save(model,file="Modell2_SVR.rdata")

@@ -3,6 +3,10 @@
 #------------------------------------------------------------------------
 #Model calculations: OLS Regression Modell
 
+#In order to make a notification sound to inform the user that calculations are finished
+if(!require("beepr")) install.packages("beepr")
+library(beepr)
+
 library(tidyverse)
 library(sandwich)
 library(caret)
@@ -36,7 +40,10 @@ names(Evaluation_DF)[2] = "Train_RMSE"
 names(Evaluation_DF)[3] = "Test_R"
 names(Evaluation_DF)[4] = "Test_RMSE"
 
+for_start_time <- Sys.time()
 for(i in 1:length(validation_set)){
+  
+  print(i)
   
   testSet = validation_set[[i]]
   sets = c(1:length(validation_set))
@@ -74,19 +81,32 @@ for(i in 1:length(validation_set)){
   test_predict <- model %>% predict(testSet)
   train_predict <- model %>% predict(trainSet)
   
-  Evaluation_DF$Test_RMSE[i] = sqrt(mean((testSet$Value - test_predict)^2))
-  Evaluation_DF$Train_RMSE[i] = sqrt(mean((trainSet$Value - train_predict)^2))
+  Evaluation_DF$Test_RMSE[i] = sqrt(mean((testSet$Value - exp(test_predict))^2))
+  Evaluation_DF$Train_RMSE[i] = sqrt(mean((trainSet$Value - exp(train_predict))^2))
   
   #cor(test_predict,testSet$Value) ^ 2
   #cor(train_predict,trainSet$Value) ^ 2
-  Evaluation_DF$Test_R[i]= postResample(test_predict, testSet$Value)[2]
-  Evaluation_DF$Train_R[i]= postResample(train_predict, trainSet$Value)[2]
+  Evaluation_DF$Test_R[i]= postResample(exp(test_predict), testSet$Value)[2]
+  Evaluation_DF$Train_R[i]= postResample(exp(train_predict), trainSet$Value)[2]
   
   #vcovHAC(model)
 }
+for_end_time <- Sys.time()
+print("The hole process took:")
+print(for_end_time - for_start_time)
 
 mean(Evaluation_DF$Train_R)
 mean(Evaluation_DF$Train_RMSE)
 
 mean(Evaluation_DF$Test_R)
 mean(Evaluation_DF$Test_RMSE)
+
+Evaluation_DF[6,]=c(mean(Evaluation_DF$Train_R),mean(Evaluation_DF$Train_RMSE),mean(Evaluation_DF$Test_R),mean(Evaluation_DF$Test_RMSE))
+Evaluation_DF$Sets=c("1","2","3","4","5","Mean")
+Evaluation_DF <- Evaluation_DF[, c(5,1,2,3,4)]
+
+beep("mario")
+
+setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
+write.csv(Evaluation_DF,"Modell1_OLS.csv")
+save(model,file="Modell1_OLS.rdata")

@@ -173,7 +173,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   
   plot8
   
-  setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/DataSet Plots")
+  
+  setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
   png(file="plot01.png",width=800, height=800)
   plot1
   dev.off()
