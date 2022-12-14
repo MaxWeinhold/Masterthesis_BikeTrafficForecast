@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.8)  8 DEC 2022 11:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.8)  14 DEC 2022 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1016,7 +1016,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Kapitel 1.
 [5
 
-] [6]
+]
 Kapitel 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 115--116
@@ -1028,64 +1028,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
-[7
+[6
 
 ]
-<Plots/Li2022.png, id=353, 861.2175pt x 608.2725pt>
+<Plots/Li2022.png, id=347, 861.2175pt x 608.2725pt>
 File: Plots/Li2022.png Graphic file (type png)
 <use Plots/Li2022.png>
 Package pdftex.def Info: Plots/Li2022.png  used on input line 138.
 (pdftex.def)             Requested size: 390.0pt x 275.45573pt.
- [8] [9] [10] [11 <./Plots/Li2022.png>]
-<Plots/Alattar2021.png, id=425, 773.13844pt x 674.52pt>
+ [7] [8] [9] [10 <./Plots/Li2022.png>]
+<Plots/Alattar2021.png, id=421, 773.13844pt x 674.52pt>
 File: Plots/Alattar2021.png Graphic file (type png)
 <use Plots/Alattar2021.png>
 Package pdftex.def Info: Plots/Alattar2021.png  used on input line 156.
 (pdftex.def)             Requested size: 390.0pt x 340.25424pt.
- [12] [13] [14 <./Plots/Alattar2021.png>] [15]
+ [11] [12] [13 <./Plots/Alattar2021.png>] [14]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 83.
  (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [16]
-<Plots/Kondor.png, id=515, 1081.79156pt x 572.1375pt>
+) [15]
+<Plots/Kondor.png, id=511, 1081.79156pt x 572.1375pt>
 File: Plots/Kondor.png Graphic file (type png)
 <use Plots/Kondor.png>
 Package pdftex.def Info: Plots/Kondor.png  used on input line 199.
 (pdftex.def)             Requested size: 390.0pt x 206.25743pt.
-<Plots/saha.png, id=527, 793.46437pt x 653.44125pt>
+<Plots/saha.png, id=523, 793.46437pt x 653.44125pt>
 File: Plots/saha.png Graphic file (type png)
 <use Plots/saha.png>
 Package pdftex.def Info: Plots/saha.png  used on input line 209.
 (pdftex.def)             Requested size: 390.0pt x 321.18608pt.
- [17] [18]
-[19 <./Plots/Kondor.png>] [20] [21 <./Plots/saha.png>] [22]
+ [16] [17]
+[18 <./Plots/Kondor.png>] [19] [20 <./Plots/saha.png>] [21]
 Kapitel 3.
-[23
+[22
 
-] [24]
+] [23]
 Kapitel 4.
-[25
+[24
 
 ]
-<Plots/SVM.png, id=628, 685.8122pt x 450.9347pt>
+<Plots/SVM.png, id=623, 685.8122pt x 450.9347pt>
 File: Plots/SVM.png Graphic file (type png)
 <use Plots/SVM.png>
 Package pdftex.def Info: Plots/SVM.png  used on input line 261.
 (pdftex.def)             Requested size: 390.0pt x 256.43683pt.
-<Plots/SVM2.png, id=633, 925.20656pt x 423.83344pt>
+<Plots/SVM2.png, id=628, 925.20656pt x 423.83344pt>
 File: Plots/SVM2.png Graphic file (type png)
 <use Plots/SVM2.png>
 Package pdftex.def Info: Plots/SVM2.png  used on input line 270.
 (pdftex.def)             Requested size: 390.0pt x 178.65553pt.
- [26] [27 <./Plots/SVM.png> <./Plots/SVM2.png>]
-<Plots/SVM3.png, id=658, 788.19469pt x 401.24907pt>
+ [25] [26 <./Plots/SVM.png> <./Plots/SVM2.png>]
+<Plots/SVM3.png, id=654, 788.19469pt x 401.24907pt>
 File: Plots/SVM3.png Graphic file (type png)
 <use Plots/SVM3.png>
 Package pdftex.def Info: Plots/SVM3.png  used on input line 295.
 (pdftex.def)             Requested size: 390.0pt x 198.53624pt.
- [28]
-<Plots/Entscheidungsbaum.png, id=693, 1026.08344pt x 685.05937pt>
+ [27]
+<Plots/Entscheidungsbaum.png, id=689, 1026.08344pt x 685.05937pt>
 File: Plots/Entscheidungsbaum.png Graphic file (type png)
 <use Plots/Entscheidungsbaum.png>
 Package pdftex.def Info: Plots/Entscheidungsbaum.png  used on input line 320.
@@ -1101,8 +1101,8 @@ Overfull \hbox (8.81203pt too wide) in paragraph at lines 316--327
 e-gio-nen $\OML/cmm/m/it/12 R[]; R[]; :::; R[]$\T1/cmr/m/n/12 .
  []
 
-[29 <./Plots/SVM3.png>] [30 <./Plots/Entscheidungsbaum.png>]
-<Plots/NN1.png, id=710, 495.35063pt x 426.84468pt>
+[28 <./Plots/SVM3.png>] [29 <./Plots/Entscheidungsbaum.png>]
+<Plots/NN1.png, id=706, 495.35063pt x 426.84468pt>
 File: Plots/NN1.png Graphic file (type png)
 <use Plots/NN1.png>
 Package pdftex.def Info: Plots/NN1.png  used on input line 341.
@@ -1113,14 +1113,14 @@ Overfull \hbox (6.81421pt too wide) in paragraph at lines 338--348
 etz-wer-ken be-schränkt
  []
 
-[31] [32 <./Plots/NN1.png>]
-<Plots/NN2.png, id=730, 767.86874pt x 462.97969pt>
+[30] [31 <./Plots/NN1.png>]
+<Plots/NN2.png, id=726, 767.86874pt x 462.97969pt>
 File: Plots/NN2.png Graphic file (type png)
 <use Plots/NN2.png>
 Package pdftex.def Info: Plots/NN2.png  used on input line 370.
 (pdftex.def)             Requested size: 284.52756pt x 171.55412pt.
- [33 <./Plots/NN2.png>]
-<Plots/NN3.png, id=742, 904.88063pt x 523.9575pt>
+ [32 <./Plots/NN2.png>]
+<Plots/NN3.png, id=738, 904.88063pt x 523.9575pt>
 File: Plots/NN3.png Graphic file (type png)
 <use Plots/NN3.png>
 Package pdftex.def Info: Plots/NN3.png  used on input line 391.
@@ -1130,23 +1130,23 @@ Overfull \hbox (8.33858pt too wide) in paragraph at lines 391--394
  [][] 
  []
 
-[34] [35 <./Plots/NN3.png>] [36]
+[33] [34 <./Plots/NN3.png>] [35]
 Kapitel 5.
-[37
+[36
 
 ]
 Kapitel 6.
-[38
+[37
 
-] (german thesis.bbl [39
+] (german thesis.bbl [38
 
-] [40] [41] [42] [43]) [44] (german thesis.aux)
+] [39] [40] [41] [42]) [43] (german thesis.aux)
 Package rerunfilecheck Info: File `"german thesis".out' has not changed.
 (rerunfilecheck)             Checksum: 88A76B682A339877B8713922F005CFCF;6899.
  ) 
 Here is how much of TeX's memory you used:
- 26405 strings out of 478582
- 487169 string characters out of 2854160
+ 26404 strings out of 478582
+ 487162 string characters out of 2854160
  758461 words of memory out of 3000000
  43921 multiletter control sequences out of 15000+600000
  487591 words of font info for 73 fonts, out of 8000000 for 9000
@@ -1161,8 +1161,8 @@ our/public/mathabx/dpi600\matha12.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\font
 s/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\MaxWe\AppData\Local\MiKTe
 X\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\MaxWe\AppData\Local
 \MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\MaxWe\AppData
-\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1440.pk> <C:\Users\MaxWe\A
-ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\M
+\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1095.pk> <C:\Users\MaxWe\A
+ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1440.pk> <C:\Users\M
 axWe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\U
 sers\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1200.pk>
  <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm14
@@ -1173,9 +1173,9 @@ iles/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmr8.pfb>
-Output written on "german thesis.pdf" (44 pages, 6529495 bytes).
+Output written on "german thesis.pdf" (43 pages, 6528398 bytes).
 PDF statistics:
- 1410 PDF objects out of 1440 (max. 8388607)
- 157 named destinations out of 1000 (max. 500000)
+ 1405 PDF objects out of 1440 (max. 8388607)
+ 156 named destinations out of 1000 (max. 500000)
  396 words of extra memory for PDF output out of 10000 (max. 10000000)
 
