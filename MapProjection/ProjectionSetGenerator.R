@@ -18,6 +18,13 @@ library(ggmap)
 library(lubridate)
 library(geosphere)#package for calculating distance using longitude and latitude
 
+library(foreach)
+library(doParallel)
+
+numCores <- detectCores()
+numCores
+registerDoParallel(5)  # use multicore, set to the number of our cores
+
 #Clean up memory
 rm(list=ls())
 
@@ -598,6 +605,7 @@ Immigrants$X8195 = NULL
 Immigrants$Timestamp = NULL
 names(Immigrants)[1]="Town"
 names(Immigrants)[2]="Immigrants"
+#foreach(i = 1: nrow(Immigrants))%dopar%{
 for(i in 1: nrow(Immigrants)){
   if(Immigrants$Town[i] == "Berlin, kreisfreie Stadt"){Immigrants$Town[i] = "Berlin"}
   else if(Immigrants$Town[i] == "Bochum, kreisfreie Stadt"){Immigrants$Town[i] = "Bochum"}
@@ -645,6 +653,7 @@ PKW$Timestamp = NULL
 PKW$X.1 = NULL
 names(PKW)[1]="Town"
 names(PKW)[2]="PKWs"
+#foreach (i = 1: nrow(PKW))%dopar%{
 for(i in 1: nrow(PKW)){
   if(PKW$Town[i] == "Berlin, kreisfreie Stadt"){PKW$Town[i] = "Berlin"}
   else if(PKW$Town[i] == "Bochum, kreisfreie Stadt"){PKW$Town[i] = "Bochum"}
@@ -692,8 +701,12 @@ Variables_you_need
 
 #Get all the streetpositions----------------------------------------------------
 
+#bounding box for our map
+#myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805)
+myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896)
+
 #building the query
-q <- getbb(Town) %>%
+q <- myLocation %>% 
   opq() %>%
   add_osm_feature("highway")
 
@@ -722,19 +735,19 @@ streetPositions$Station=NA
 
 k = 1
 
+#foreach (i = 1:length(streets$osm_lines$geometry))%dopar%{
 for(i in 1:length(streets$osm_lines$geometry)){
   
   l = length(streets$osm_lines$geometry[[i]])
   
   for(j in 1:(length(streets$osm_lines$geometry[[i]])/2 - 1)){
     
-    
     tryCatch({
       streetPositions$Lon[k]=streets$osm_lines$geometry[[i]][j]
       streetPositions$Lat[k]=streets$osm_lines$geometry[[i]][l/2+j]
       streetPositions$Lon2[k]=streets$osm_lines$geometry[[i]][j+1]
       streetPositions$Lat2[k]=streets$osm_lines$geometry[[i]][l/2+j+1]
-      streetPositions$Station=paste("Station_",k,sep="")
+      streetPositions$Station[k]=paste("Station_",k,sep="")
       
       k = k + 1
     })
@@ -753,35 +766,1413 @@ streetPositions = na.omit(streetPositions)
 ProjectionData = merge(x = ProjectionData,y = streetPositions,all = FALSE)
 
 summary(ProjectionData)
-rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
 #Distance to city center--------------------------------------------------------
 
 #create a matrix, that later will contaion needed information
 distmat=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
 
-#divide in stations in a for loop
-#Each Loop is for one station
-#Than calculate distance and add this in a data frame
-for(i in 1:nlevels(as.factor(ProjectionData$Station))){
-  print(levels(as.factor(ProjectionData$Station))[i])
+#Use dopar to increase speed by using multiple cpu cores
+Distance = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
   d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
-  
-  #calculate distance for station
-  dist=distm(c(d$Lon[i],d$Lat[i]), c(d$City_Lon[i],d$City_Lat[i]), fun=distGeo)
-  print(paste("Distance from",d[1,8]," station to city center is",dist,"meters"))
-  
-  distmat[i,1]=d[1,8]
-  distmat[i,2]=dist
-  
-  rm(d)
+  distm(c(d$Lon[1],d$Lat[1]), c(d$City_Lon[1],d$City_Lat[1]), fun=distGeo)
 }
 
-distmat=as.data.frame(distmat)
+Station = levels(as.factor(ProjectionData$Station))
+
+distmat=as.data.frame(cbind(Station,Distance))
 names(distmat)[1]="Station"
 names(distmat)[2]="Distance_to_Center"
 distmat$Distance_to_Center=as.numeric(distmat$Distance_to_Center)
 
-#ProjectionData = merge(x = ProjectionData,y = distmat,by = c("Station"), all = FALSE)
+beep("coin")
+
+ProjectionData = merge(x = ProjectionData,y = distmat
+                       ,by = c("Station")
+                       , all = FALSE)
 
 summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+#Reading POI from Open Street Map________________________________________________________________________________________________________________________________________-
+#Using the overpass API 
+
+#Build a query asking for cinemas
+#building the query
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("amenity", "cinema")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$name)){
+  
+  cinmat[i,1]=cinema$osm_points$name[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+  print(cinema$osm_points$name[i])
+  print(cinema$osm_points$geometry[[i]][])
+  
+}
+
+cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestCinema"
+distmat_closest$ClosestCinema=as.numeric(distmat_closest$ClosestCinema)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="Cinemas1kmRadius"
+distmat_1kmradius$Cinemas1kmRadius=as.numeric(distmat_1kmradius$Cinemas1kmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="Cinemas3kmRadius"
+distmat_3kmradius$Cinemas3kmRadius=as.numeric(distmat_3kmradius$Cinemas3kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#Get all schools________________________________________________________________
+
+#Build a query asking for cinemas
+#building the query
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("amenity", "school")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#c1lon=cinema$osm_points$geometry[[7]][1]
+#c1lat=cinema$osm_points$geometry[[7]][2]
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_polygons$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+  cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+  cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
+  
+  #print(cinema$osm_points$name[i])
+  #print(cinema$osm_points$geometry[[i]][])
+  
+}
+
+cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestSchool"
+distmat_closest$ClosestSchool=as.numeric(distmat_closest$ClosestSchool)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="Schools500mmRadius"
+distmat_1kmradius$Schools500mmRadius=as.numeric(distmat_1kmradius$Schools500mmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="Schools2kmRadius"
+distmat_3kmradius$Schools2kmRadius=as.numeric(distmat_3kmradius$Schools2kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+
+#Get university Buildings_______________________________________________________
+
+#Build a query asking for cinemas
+#building the query
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("amenity", "university")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#c1lon=cinema$osm_points$geometry[[7]][1]
+#c1lat=cinema$osm_points$geometry[[7]][2]
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_polygons$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+  cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+  cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
+  
+  #print(cinema$osm_points$name[i])
+  #print(cinema$osm_points$geometry[[i]][])
+  
+}
+
+cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestUniBuild"
+distmat_closest$ClosestUniBuild=as.numeric(distmat_closest$ClosestUniBuild)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="UniBuild500mmRadius"
+distmat_1kmradius$UniBuild500mmRadius=as.numeric(distmat_1kmradius$UniBuild500mmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="UniBuild2kmRadius"
+distmat_3kmradius$UniBuild2kmRadius=as.numeric(distmat_3kmradius$UniBuild2kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#Use Coordinates of Shops and Supermarkets___________________________________________________________________________________
+
+
+#Build a query asking for cinemas
+#building the query
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("shop", "supermarket")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#c1lon=cinema$osm_points$geometry[[7]][1]
+#c1lat=cinema$osm_points$geometry[[7]][2]
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_polygons$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+  cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+  cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
+  
+  #print(cinema$osm_points$name[i])
+  #print(cinema$osm_points$geometry[[i]][])
+  
+}
+
+cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestSuperMarket"
+distmat_closest$ClosestSuperMarket=as.numeric(distmat_closest$ClosestSuperMarket)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="SuperMarket500mmRadius"
+distmat_1kmradius$SuperMarket500mmRadius=as.numeric(distmat_1kmradius$SuperMarket500mmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="SuperMarket1kmRadius"
+distmat_3kmradius$SuperMarket1kmRadius=as.numeric(distmat_3kmradius$SuperMarket1kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#Clothingshops__________________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("shop", "clothes")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#c1lon=cinema$osm_points$geometry[[7]][1]
+#c1lat=cinema$osm_points$geometry[[7]][2]
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), nrow = length(cinema$osm_polygons$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_polygons$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+  cinmat[i,2]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,1]
+  cinmat[i,3]=as.data.frame(cinema$osm_polygons$geometry[[i]][1])[1,2]
+  
+  #print(cinema$osm_points$name[i])
+  #print(cinema$osm_points$geometry[[i]][])
+  
+}
+
+cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestClothesShop"
+distmat_closest$ClosestClothesShop=as.numeric(distmat_closest$ClosestClothesShop)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="ClothesShop500mmRadius"
+distmat_1kmradius$ClothesShop500mmRadius=as.numeric(distmat_1kmradius$ClothesShop500mmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="ClothesShop2kmRadius"
+distmat_3kmradius$ClothesShop2kmRadius=as.numeric(distmat_3kmradius$ClothesShop2kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#Get Data about public transport by OSM____________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("highway", "bus_stop")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$name), nrow = length(cinema$osm_points$name), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$name)){
+  
+  cinmat[i,1]=cinema$osm_points$name[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+}
+
+cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestBusStop"
+distmat_closest$ClosestBusStop=as.numeric(distmat_closest$ClosestBusStop)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="BusStop250mmRadius"
+distmat_1kmradius$BusStop250mmRadius=as.numeric(distmat_1kmradius$BusStop250mmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="BusStop1kmRadius"
+distmat_3kmradius$BusStop1kmRadius=as.numeric(distmat_3kmradius$BusStop1kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#Crossing Signals_______________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("highway", "traffic_signals")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$osm_id), nrow = length(cinema$osm_points$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_points$osm_id[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+}
+
+#cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestSignals"
+distmat_closest$ClosestSignals=as.numeric(distmat_closest$ClosestSignals)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="Signals250mmRadius"
+distmat_1kmradius$Signals250mmRadius=as.numeric(distmat_1kmradius$Signals250mmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="Signals1kmRadius"
+distmat_3kmradius$Signals1kmRadius=as.numeric(distmat_3kmradius$Signals1kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+
+#Crossing Unmarked_______________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("crossing", "unmarked")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#cinema$osm_points$osm_id
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$osm_id), nrow = length(cinema$osm_points$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_points$osm_id[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+}
+
+#cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+
+#Test für dopar
+Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+  #print(levels(as.factor(rawData$Station))[i])
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  distc=c(1:length(cinmat$name))
+  
+  #Start loops for each cinemar
+  for (j in 1:length(cinmat$name)) {
+    cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+    distc[j]=cindist
+    #print(cindist)
+  }
+  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+}
+distmat_closest[,1]=as.character(Test[,1])
+distmat_closest[,2]=as.numeric(Test[,2])
+distmat_1kmradius[,1]=as.character(Test[,1])
+distmat_1kmradius[,2]=as.numeric(Test[,3])
+distmat_3kmradius[,1]=as.character(Test[,1])
+distmat_3kmradius[,2]=as.numeric(Test[,4])
+
+distmat_closest=as.data.frame(distmat_closest)
+names(distmat_closest)[1]="Station"
+names(distmat_closest)[2]="ClosestUnmCross"
+distmat_closest$ClosestUnmCross=as.numeric(distmat_closest$ClosestUnmCross)
+
+distmat_1kmradius=as.data.frame(distmat_1kmradius)
+names(distmat_1kmradius)[1]="Station"
+names(distmat_1kmradius)[2]="UnmCross250mmRadius"
+distmat_1kmradius$UnmCross250mmRadius=as.numeric(distmat_1kmradius$UnmCross250mmRadius)
+
+distmat_3kmradius=as.data.frame(distmat_3kmradius)
+names(distmat_3kmradius)[1]="Station"
+names(distmat_3kmradius)[2]="UnmCross1kmRadius"
+distmat_3kmradius$UnmCross1kmRadius=as.numeric(distmat_3kmradius$UnmCross1kmRadius)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                by = c("Station"),
+                all = FALSE)
+
+
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#Get Tram Stattions_____________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("railway", "tram_stop")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#cinema$osm_points$osm_id
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$osm_id), nrow = length(cinema$osm_points$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_points$osm_id[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+}
+
+#cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+#Not every city has tramstations, so we make a if question for this
+
+if(length(cinmat$name)>0){
+  
+  distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  
+  
+  #Test für dopar
+  Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+    #print(levels(as.factor(rawData$Station))[i])
+    d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+    
+    distc=c(1:length(cinmat$name))
+    
+    #Start loops for each cinemar
+    for (j in 1:length(cinmat$name)) {
+      cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+      distc[j]=cindist
+      #print(cindist)
+    }
+    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+  }
+  distmat_closest[,1]=as.character(Test[,1])
+  distmat_closest[,2]=as.numeric(Test[,2])
+  distmat_1kmradius[,1]=as.character(Test[,1])
+  distmat_1kmradius[,2]=as.numeric(Test[,3])
+  distmat_3kmradius[,1]=as.character(Test[,1])
+  distmat_3kmradius[,2]=as.numeric(Test[,4])
+  
+  distmat_closest=as.data.frame(distmat_closest)
+  names(distmat_closest)[1]="Station"
+  names(distmat_closest)[2]="ClosestTram"
+  distmat_closest$ClosestTram=as.numeric(distmat_closest$ClosestTram)
+  
+  distmat_1kmradius=as.data.frame(distmat_1kmradius)
+  names(distmat_1kmradius)[1]="Station"
+  names(distmat_1kmradius)[2]="Tram250mmRadius"
+  distmat_1kmradius$Tram250mmRadius=as.numeric(distmat_1kmradius$Tram250mmRadius)
+  
+  distmat_3kmradius=as.data.frame(distmat_3kmradius)
+  names(distmat_3kmradius)[1]="Station"
+  names(distmat_3kmradius)[2]="Tram1kmRadius"
+  distmat_3kmradius$Tram1kmRadius=as.numeric(distmat_3kmradius$Tram1kmRadius)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  
+}else{
+  
+  ProjectionData$ClosestTram=50000
+  ProjectionData$Tram250mmRadius=0
+  ProjectionData$Tram1kmRadius=0
+}
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+
+
+#Get Subway Entrance_____________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("railway", "subway_entrance")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#cinema$osm_points$osm_id
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$osm_id), nrow = length(cinema$osm_points$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_points$osm_id[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+}
+
+#cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+#Not every city has tramstations, so we make a if question for this
+
+if(length(cinmat$name)>0){
+  
+  distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  
+  
+  #Test für dopar
+  Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+    #print(levels(as.factor(rawData$Station))[i])
+    d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+    
+    distc=c(1:length(cinmat$name))
+    
+    #Start loops for each cinemar
+    for (j in 1:length(cinmat$name)) {
+      cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+      distc[j]=cindist
+      #print(cindist)
+    }
+    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+  }
+  distmat_closest[,1]=as.character(Test[,1])
+  distmat_closest[,2]=as.numeric(Test[,2])
+  distmat_1kmradius[,1]=as.character(Test[,1])
+  distmat_1kmradius[,2]=as.numeric(Test[,3])
+  distmat_3kmradius[,1]=as.character(Test[,1])
+  distmat_3kmradius[,2]=as.numeric(Test[,4])
+  
+  
+  distmat_closest=as.data.frame(distmat_closest)
+  names(distmat_closest)[1]="Station"
+  names(distmat_closest)[2]="ClosestSubway"
+  distmat_closest$ClosestSubway=as.numeric(distmat_closest$ClosestSubway)
+  
+  distmat_1kmradius=as.data.frame(distmat_1kmradius)
+  names(distmat_1kmradius)[1]="Station"
+  names(distmat_1kmradius)[2]="Subway250mmRadius"
+  distmat_1kmradius$Subway250mmRadius=as.numeric(distmat_1kmradius$Subway250mmRadius)
+  
+  distmat_3kmradius=as.data.frame(distmat_3kmradius)
+  names(distmat_3kmradius)[1]="Station"
+  names(distmat_3kmradius)[2]="Subway1kmRadius"
+  distmat_3kmradius$Subway1kmRadius=as.numeric(distmat_3kmradius$Subway1kmRadius)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  
+}else{
+  
+  ProjectionData$ClosestSubway=50000
+  ProjectionData$Subway250mmRadius=0
+  ProjectionData$Subway1kmRadius=0
+}
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#Railway Station operated by the DB Netz AG_____________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("railway", "station")%>%
+  add_osm_feature("operator", "DB Netz AG")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#cinema$osm_points$osm_id
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$osm_id), nrow = length(cinema$osm_points$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_points$osm_id[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+}
+
+#cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+#Not every city has tramstations, so we make a if question for this
+
+if(length(cinmat$name)>0){
+  
+  distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  
+  ##Test für dopar
+  Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+    #print(levels(as.factor(rawData$Station))[i])
+    d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+    
+    distc=c(1:length(cinmat$name))
+    
+    #Start loops for each cinemar
+    for (j in 1:length(cinmat$name)) {
+      cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+      distc[j]=cindist
+      #print(cindist)
+    }
+    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
+  }
+  distmat_closest[,1]=as.character(Test[,1])
+  distmat_closest[,2]=as.numeric(Test[,2])
+  distmat_1kmradius[,1]=as.character(Test[,1])
+  distmat_1kmradius[,2]=as.numeric(Test[,3])
+  distmat_3kmradius[,1]=as.character(Test[,1])
+  distmat_3kmradius[,2]=as.numeric(Test[,4])
+  
+  distmat_closest=as.data.frame(distmat_closest)
+  names(distmat_closest)[1]="Station"
+  names(distmat_closest)[2]="ClosestTrainS"
+  distmat_closest$ClosestTrainS=as.numeric(distmat_closest$ClosestTrainS)
+  
+  distmat_1kmradius=as.data.frame(distmat_1kmradius)
+  names(distmat_1kmradius)[1]="Station"
+  names(distmat_1kmradius)[2]="TrainS1kmRadius"
+  distmat_1kmradius$TrainS1kmRadius=as.numeric(distmat_1kmradius$TrainS1kmRadius)
+  
+  distmat_3kmradius=as.data.frame(distmat_3kmradius)
+  names(distmat_3kmradius)[1]="Station"
+  names(distmat_3kmradius)[2]="TrainS3kmRadius"
+  distmat_3kmradius$TrainS3kmRadius=as.numeric(distmat_3kmradius$TrainS3kmRadius)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  
+}else{
+  
+  ProjectionData$ClosestTrainS=50000
+  ProjectionData$TrainS1kmRadius=0
+  ProjectionData$TrainS3kmRadius=0
+}
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+
+#Bike Shops_____________________________________________________________
+
+q <- getbb(toString(Town)) %>%
+  opq() %>%
+  add_osm_feature("shop", "bicycle")
+
+str(q) #query structure
+
+cinema <- osmdata_sf(q)
+
+#cinema$osm_points$osm_id
+
+#create a matrix, that later will contaion needed information about name, longitude and latitude of cinemas
+cinmat=matrix(1:3*length(cinema$osm_points$osm_id), nrow = length(cinema$osm_points$osm_id), ncol = 3)
+
+for(i in 1:length(cinema$osm_points$osm_id)){
+  
+  cinmat[i,1]=cinema$osm_points$osm_id[i]
+  cinmat[i,2]=cinema$osm_points$geometry[[i]][1]
+  cinmat[i,3]=cinema$osm_points$geometry[[i]][2]
+  
+}
+
+#cinmat=na.omit(cinmat)
+cinmat=as.data.frame(cinmat)
+names(cinmat)[1]="name"
+names(cinmat)[2]="lon"
+names(cinmat)[3]="lat"
+cinmat$lon=as.numeric(cinmat$lon)
+cinmat$lat=as.numeric(cinmat$lat)
+
+#Not every city has tramstations, so we make a if question for this
+
+if(length(cinmat$name)>0){
+  
+  distmat_closest=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_1kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  distmat_3kmradius=matrix(1:2*nlevels(as.factor(ProjectionData$Station)), nrow = nlevels(as.factor(ProjectionData$Station)), ncol = 2)
+  
+  ##Test für dopar
+  Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind, .packages='geosphere')%dopar%{
+    #print(levels(as.factor(rawData$Station))[i])
+    d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+    
+    distc=c(1:length(cinmat$name))
+    
+    #Start loops for each cinemar
+    for (j in 1:length(cinmat$name)) {
+      cindist=distm(c(d$Lon[1],d$Lat[1]), c(cinmat$lon[j],cinmat$lat[j]), fun=distGeo)
+      distc[j]=cindist
+      #print(cindist)
+    }
+    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
+  }
+  distmat_closest[,1]=as.character(Test[,1])
+  distmat_closest[,2]=as.numeric(Test[,2])
+  distmat_1kmradius[,1]=as.character(Test[,1])
+  distmat_1kmradius[,2]=as.numeric(Test[,3])
+  distmat_3kmradius[,1]=as.character(Test[,1])
+  distmat_3kmradius[,2]=as.numeric(Test[,4])
+  
+  distmat_closest=as.data.frame(distmat_closest)
+  names(distmat_closest)[1]="Station"
+  names(distmat_closest)[2]="ClosestBikeShop"
+  distmat_closest$ClosestBikeShop=as.numeric(distmat_closest$ClosestBikeShop)
+  
+  distmat_1kmradius=as.data.frame(distmat_1kmradius)
+  names(distmat_1kmradius)[1]="Station"
+  names(distmat_1kmradius)[2]="BikeShop1kmRadius"
+  distmat_1kmradius$BikeShop1kmRadius=as.numeric(distmat_1kmradius$BikeShop1kmRadius)
+  
+  distmat_3kmradius=as.data.frame(distmat_3kmradius)
+  names(distmat_3kmradius)[1]="Station"
+  names(distmat_3kmradius)[2]="BikeShop3kmRadius"
+  distmat_3kmradius$BikeShop3kmRadius=as.numeric(distmat_3kmradius$BikeShop3kmRadius)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_closest,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_1kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
+                  by = c("Station"),
+                  all = FALSE)
+  
+  #rm(list=setdiff(ls(), "rawData"))
+  
+}else{
+  
+  ProjectionData$ClosestTrainS=50000
+  ProjectionData$TrainS1kmRadius=0
+  ProjectionData$TrainS3kmRadius=0
+}
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+#RoadNetwork--------------------------------------------------------------------
+
+city=Town
+
+q1 <- getbb(city) %>%
+  opq() %>%
+  add_osm_feature("highway", "cycleway")
+q2 <- getbb(city) %>%
+  opq() %>%
+  add_osm_feature("highway", "residential")
+q3 <- getbb(city) %>%
+  opq() %>%
+  add_osm_feature("highway", "living_street")
+q4 <- getbb(city) %>%
+  opq() %>%
+  add_osm_feature("highway", "path")
+q5 <- getbb(city) %>%
+  opq() %>%
+  add_osm_feature("highway", "secondary")
+q6 <- getbb(city) %>%
+  opq() %>%
+  add_osm_feature("highway", "primary")
+q7 <- getbb(city) %>%
+  opq() %>%
+  add_osm_feature("bridge", "yes")
+
+#str(q1) #query structure
+
+cycleways <- osmdata_sf(q1)
+residential <- osmdata_sf(q2)
+living_street <- osmdata_sf(q3)
+path <- osmdata_sf(q4)
+secondary <- osmdata_sf(q5)
+primary <- osmdata_sf(q6)
+bridge <- osmdata_sf(q7)
+
+dist_mat=as.data.frame(levels(as.factor(ProjectionData$Station)))
+dist_mat$cycleways = 9999
+dist_mat$residential = 9999
+dist_mat$living_street = 9999
+dist_mat$path = 9999
+dist_mat$secondary = 9999
+dist_mat$primary = 9999
+
+bool_mat=as.data.frame(levels(as.factor(ProjectionData$Station)))
+bool_mat$cycleways = 0
+bool_mat$residential = 0
+bool_mat$living_street = 0
+bool_mat$path = 0
+bool_mat$secondary = 0
+bool_mat$primary = 0
+
+bridge_mat=levels(as.factor(ProjectionData$Station))
+bridge_mat=as.data.frame(bridge_mat)
+bridge_mat$ClosestBridge = 9999
+bridge_mat$isBridge = 0
+
+i=1
+
+for(i in 1:nlevels(as.factor(ProjectionData$Station))){
+  
+  d=ProjectionData[ProjectionData$Station %in% toString(levels(as.factor(ProjectionData$Station))[i]),]
+  
+  DT = as.data.frame(cbind(d$Lon[i],d$Lat[i]))
+  names(DT)[1]="long1"
+  names(DT)[2]="lat1"
+  DT2 = st_as_sf(DT, coords = c("long1","lat1"))
+  DT2 <- st_set_crs(DT2, 4269)
+  st_crs(DT2) <- 4269 
+  DT3cycleways = st_transform(cycleways$osm_lines$geometry,4269)
+  DT3residential = st_transform(residential$osm_lines$geometry,4269)
+  DT3living_street = st_transform(living_street$osm_lines$geometry,4269)
+  DT3path = st_transform(path$osm_lines$geometry,4269)
+  DT3secondary = st_transform(secondary$osm_lines$geometry,4269)
+  DT3primary = st_transform(primary$osm_lines$geometry,4269)
+  DT3bridge = st_transform(bridge$osm_lines$geometry,4269)
+  
+  dist_mat$cycleways[i]=min(st_distance(DT2$geometry, DT3cycleways))
+  dist_mat$residential[i]=min(st_distance(DT2$geometry, DT3residential))
+  dist_mat$living_street[i]=min(st_distance(DT2$geometry, DT3living_street))
+  dist_mat$path[i]=min(st_distance(DT2$geometry, DT3path))
+  dist_mat$secondary[i]=min(st_distance(DT2$geometry, DT3secondary))
+  dist_mat$primary[i]=min(st_distance(DT2$geometry, DT3primary))
+  
+  bridge_mat$ClosestBridge[i]=min(st_distance(DT2$geometry, DT3primary))
+  if(bridge_mat$ClosestBridge[i]<5){bridge_mat$isBridge[i]=1}
+  
+  if(dist_mat$cycleways[i]<5){bool_mat$cycleways[i]=1}
+  if(dist_mat$residential[i]<5){bool_mat$residential[i]=1}
+  if(dist_mat$living_street[i]<5){bool_mat$living_street[i]=1}
+  if(dist_mat$path[i]<5){bool_mat$path[i]=1}
+  if(dist_mat$secondary[i]<5){bool_mat$secondary[i]=1}
+  if(dist_mat$primary[i]<5){bool_mat$primary[i]=1}
+}
+
+dist_mat
+bool_mat
+bridge_mat
+
+names(bool_mat)[1]="Station"
+names(bridge_mat)[1]="Station"
+
+ProjectionData = merge(x = ProjectionData,y = bool_mat,
+                by = c("Station"),
+                all = FALSE)
+
+
+ProjectionData = merge(x = ProjectionData,y = bridge_mat,
+                by = c("Station"),
+                all = FALSE)
+
+summary(ProjectionData)
+rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+
+beep("coin")
+
+
+levels(as.factor(ProjectionData$Day))
+levels(as.factor(ProjectionData$Hour))
+
+streetPositions = ProjectionData[ProjectionData$secondary==1,]
+streetPositions = streetPositions[streetPositions$Day==14,]
+streetPositions = streetPositions[streetPositions$Hour==14,]
+
+names(streetPositions)
+summary(streetPositions)
+
+mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=14)
+ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2), color = "red", size = 1, alpha = 0.8, lineend = "round")
+
+
+# Straßentypen checken nochmal ändern!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+rm(list=setdiff(ls(), c("ProjectionData","myLocation")))
+
+#Add non linear effects---------------------------------------------------------
+
+ProjectionData$Rain2 = ProjectionData$Rain^2
+ProjectionData$Temperature2 = ProjectionData$Temperature^2
+ProjectionData$Inhabitants2 = ProjectionData$Inhabitants^2
+ProjectionData$ADFC_Index2 = ProjectionData$ADFC_Index^2
+ProjectionData$UniBuild500mmRadius2 = ProjectionData$UniBuild500mmRadius^2
+ProjectionData$ClothesShop500mmRadius2 = ProjectionData$ClothesShop500mmRadius^2
+ProjectionData$ClosestTrainS2 = ProjectionData$ClosestTrainS^2
+ProjectionData$ClosestBridge2 = ProjectionData$ClosestBridge^2
+ProjectionData$young302 = ProjectionData$young30^2
+ProjectionData$PKWs2 = ProjectionData$PKWs^2
+
+ProjectionData$Rain3 = ProjectionData$Rain^3
+ProjectionData$Inhabitants3 = ProjectionData$Inhabitants^3
+ProjectionData$UniBuild500mmRadius3 = ProjectionData$UniBuild500mmRadius^3
+ProjectionData$ClothesShop500mmRadius3 = ProjectionData$ClothesShop500mmRadius^3
+ProjectionData$ClosestTrainS3 = ProjectionData$ClosestTrainS^3
+ProjectionData$ClosestBridge3 = ProjectionData$ClosestBridge3
+
+ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData$UnmCross250mmRadius + ProjectionData$Signals250mmRadius + 1)
+
+#calculate Values --------------------------------------------------------------
+setwd("D:/STUDIUM/Münster/7. Semester")
+
+load("Modell2_SVR_radialFunction.rdata")
+
+summary(model)
+
+projection_pred <- model %>% predict(ProjectionData)
+
+summary(as.numeric(projection_pred))
+summary(exp(as.numeric(projection_pred)))
+
+ProjectionData$Value = exp(as.numeric(projection_pred))
+
+#Create Map
+
+for(i in 1:nlevels(as.factor(ProjectionData$Months))){
+  
+  for(j in 1:nlevels(as.factor(ProjectionData$Day))){
+    
+    for(k in 1:nlevels(as.factor(ProjectionData$Hour))){
+      
+      streetPositions = ProjectionData[ProjectionData$Months==levels(as.factor(ProjectionData$Months))[i],]
+      streetPositions = streetPositions[streetPositions$Day==levels(as.factor(ProjectionData$Day))[j],]
+      streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
+      
+      mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=14)
+      map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value)
+                                    , size = 1, alpha = 0.6, lineend = "round")
+      
+      setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults/Plots")
+      png(file=paste("map",ProjectionData$Town[1],"plot_SVR_Innenstadt_",i,"_",j,"_",k,".png",sep=""),width=800, height=800)
+      map_plot
+      dev.off()
+      
+    }
+    
+  }
+  
+}
+
+
+
+
+
+
+beep("mario")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Test für dopar
+#Test = as.data.frame(foreach (i = 1:10, .combine=rbind)%dopar%{
+#  c(Year = 2000 + i,Value = rnorm(1)/3 + i/2) 
+#})
+
+
