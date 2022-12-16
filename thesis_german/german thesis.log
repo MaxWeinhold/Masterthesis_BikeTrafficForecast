@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.8)  14 DEC 2022 16:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.8)  16 DEC 2022 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1031,13 +1031,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 119--120
 [6
 
 ]
-<Plots/Li2022.png, id=347, 861.2175pt x 608.2725pt>
+<Plots/Li2022.png, id=355, 861.2175pt x 608.2725pt>
 File: Plots/Li2022.png Graphic file (type png)
 <use Plots/Li2022.png>
 Package pdftex.def Info: Plots/Li2022.png  used on input line 138.
 (pdftex.def)             Requested size: 390.0pt x 275.45573pt.
  [7] [8] [9] [10 <./Plots/Li2022.png>]
-<Plots/Alattar2021.png, id=421, 773.13844pt x 674.52pt>
+<Plots/Alattar2021.png, id=429, 773.13844pt x 674.52pt>
 File: Plots/Alattar2021.png Graphic file (type png)
 <use Plots/Alattar2021.png>
 Package pdftex.def Info: Plots/Alattar2021.png  used on input line 156.
@@ -1048,107 +1048,133 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
  (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [15]
-<Plots/Kondor.png, id=511, 1081.79156pt x 572.1375pt>
+<Plots/Kondor.png, id=519, 1081.79156pt x 572.1375pt>
 File: Plots/Kondor.png Graphic file (type png)
 <use Plots/Kondor.png>
 Package pdftex.def Info: Plots/Kondor.png  used on input line 199.
 (pdftex.def)             Requested size: 390.0pt x 206.25743pt.
-<Plots/saha.png, id=523, 793.46437pt x 653.44125pt>
+<Plots/saha.png, id=531, 793.46437pt x 653.44125pt>
 File: Plots/saha.png Graphic file (type png)
 <use Plots/saha.png>
 Package pdftex.def Info: Plots/saha.png  used on input line 209.
 (pdftex.def)             Requested size: 390.0pt x 321.18608pt.
  [16] [17]
-[18 <./Plots/Kondor.png>] [19] [20 <./Plots/saha.png>] [21]
+[18 <./Plots/Kondor.png>] [19] [20 <./Plots/saha.png>] [21] [22]
 Kapitel 3.
-[22
-
-] [23]
-Kapitel 4.
-[24
+<Plots/plot22.png, id=599, 602.25pt x 803.0pt>
+File: Plots/plot22.png Graphic file (type png)
+<use Plots/plot22.png>
+Package pdftex.def Info: Plots/plot22.png  used on input line 241.
+(pdftex.def)             Requested size: 390.0pt x 520.02014pt.
+[23
 
 ]
-<Plots/SVM.png, id=623, 685.8122pt x 450.9347pt>
+
+LaTeX Warning: Text page 24 contains only floats.
+
+[24 <./Plots/plot22.png (PNG copy)>]
+<Plots/plot10.png, id=609, 803.0pt x 803.0pt>
+File: Plots/plot10.png Graphic file (type png)
+<use Plots/plot10.png>
+Package pdftex.def Info: Plots/plot10.png  used on input line 250.
+(pdftex.def)             Requested size: 390.0pt x 390.0059pt.
+ [25 <./Plots/plot10.png>]
+<Plots/plot23.png, id=618, 803.0pt x 803.0pt>
+File: Plots/plot23.png Graphic file (type png)
+<use Plots/plot23.png>
+Package pdftex.def Info: Plots/plot23.png  used on input line 263.
+(pdftex.def)             Requested size: 390.0pt x 390.0059pt.
+<Plots/plot24.png, id=619, 803.0pt x 803.0pt>
+File: Plots/plot24.png Graphic file (type png)
+<use Plots/plot24.png>
+Package pdftex.def Info: Plots/plot24.png  used on input line 270.
+(pdftex.def)             Requested size: 390.0pt x 390.0059pt.
+ [26] [27 <./Plots/plot23.png>] [28 <./Plots/plot24.png>]
+Kapitel 4.
+[29
+
+]
+<Plots/SVM.png, id=663, 685.8122pt x 450.9347pt>
 File: Plots/SVM.png Graphic file (type png)
 <use Plots/SVM.png>
-Package pdftex.def Info: Plots/SVM.png  used on input line 261.
+Package pdftex.def Info: Plots/SVM.png  used on input line 300.
 (pdftex.def)             Requested size: 390.0pt x 256.43683pt.
-<Plots/SVM2.png, id=628, 925.20656pt x 423.83344pt>
+<Plots/SVM2.png, id=668, 925.20656pt x 423.83344pt>
 File: Plots/SVM2.png Graphic file (type png)
 <use Plots/SVM2.png>
-Package pdftex.def Info: Plots/SVM2.png  used on input line 270.
+Package pdftex.def Info: Plots/SVM2.png  used on input line 309.
 (pdftex.def)             Requested size: 390.0pt x 178.65553pt.
- [25] [26 <./Plots/SVM.png> <./Plots/SVM2.png>]
-<Plots/SVM3.png, id=654, 788.19469pt x 401.24907pt>
+ [30] [31 <./Plots/SVM.png> <./Plots/SVM2.png>]
+<Plots/SVM3.png, id=694, 788.19469pt x 401.24907pt>
 File: Plots/SVM3.png Graphic file (type png)
 <use Plots/SVM3.png>
-Package pdftex.def Info: Plots/SVM3.png  used on input line 295.
+Package pdftex.def Info: Plots/SVM3.png  used on input line 334.
 (pdftex.def)             Requested size: 390.0pt x 198.53624pt.
- [27]
-<Plots/Entscheidungsbaum.png, id=689, 1026.08344pt x 685.05937pt>
+ [32]
+<Plots/Entscheidungsbaum.png, id=729, 1026.08344pt x 685.05937pt>
 File: Plots/Entscheidungsbaum.png Graphic file (type png)
 <use Plots/Entscheidungsbaum.png>
-Package pdftex.def Info: Plots/Entscheidungsbaum.png  used on input line 320.
+Package pdftex.def Info: Plots/Entscheidungsbaum.png  used on input line 359.
 (pdftex.def)             Requested size: 455.24408pt x 303.94626pt.
 
-Overfull \hbox (65.24408pt too wide) in paragraph at lines 320--323
+Overfull \hbox (65.24408pt too wide) in paragraph at lines 359--362
  [][] 
  []
 
 
-Overfull \hbox (8.81203pt too wide) in paragraph at lines 316--327
+Overfull \hbox (8.81203pt too wide) in paragraph at lines 355--366
 \T1/cmr/m/n/12 Präd-iak-to-ren-raum in di-stink-te sich nicht über-lap-pen-de R
 e-gio-nen $\OML/cmm/m/it/12 R[]; R[]; :::; R[]$\T1/cmr/m/n/12 .
  []
 
-[28 <./Plots/SVM3.png>] [29 <./Plots/Entscheidungsbaum.png>]
-<Plots/NN1.png, id=706, 495.35063pt x 426.84468pt>
+[33 <./Plots/SVM3.png>] [34 <./Plots/Entscheidungsbaum.png>]
+<Plots/NN1.png, id=746, 495.35063pt x 426.84468pt>
 File: Plots/NN1.png Graphic file (type png)
 <use Plots/NN1.png>
-Package pdftex.def Info: Plots/NN1.png  used on input line 341.
+Package pdftex.def Info: Plots/NN1.png  used on input line 380.
 (pdftex.def)             Requested size: 341.43306pt x 294.21053pt.
 
-Overfull \hbox (6.81421pt too wide) in paragraph at lines 338--348
+Overfull \hbox (6.81421pt too wide) in paragraph at lines 377--387
 \T1/cmr/m/n/12 Zur Ver-deut-li-chung der Funk-ti-ons-wei-se von neu-ro-na-len N
 etz-wer-ken be-schränkt
  []
 
-[30] [31 <./Plots/NN1.png>]
-<Plots/NN2.png, id=726, 767.86874pt x 462.97969pt>
+[35] [36 <./Plots/NN1.png>]
+<Plots/NN2.png, id=765, 767.86874pt x 462.97969pt>
 File: Plots/NN2.png Graphic file (type png)
 <use Plots/NN2.png>
-Package pdftex.def Info: Plots/NN2.png  used on input line 370.
+Package pdftex.def Info: Plots/NN2.png  used on input line 409.
 (pdftex.def)             Requested size: 284.52756pt x 171.55412pt.
- [32 <./Plots/NN2.png>]
-<Plots/NN3.png, id=738, 904.88063pt x 523.9575pt>
+ [37 <./Plots/NN2.png>]
+<Plots/NN3.png, id=778, 904.88063pt x 523.9575pt>
 File: Plots/NN3.png Graphic file (type png)
 <use Plots/NN3.png>
-Package pdftex.def Info: Plots/NN3.png  used on input line 391.
+Package pdftex.def Info: Plots/NN3.png  used on input line 430.
 (pdftex.def)             Requested size: 398.33858pt x 230.64595pt.
 
-Overfull \hbox (8.33858pt too wide) in paragraph at lines 391--394
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 430--433
  [][] 
  []
 
-[33] [34 <./Plots/NN3.png>] [35]
+[38] [39 <./Plots/NN3.png>] [40]
 Kapitel 5.
-[36
+[41
 
 ]
 Kapitel 6.
-[37
+[42
 
-] (german thesis.bbl [38
+] (german thesis.bbl [43
 
-] [39] [40] [41] [42]) [43] (german thesis.aux)
+] [44] [45] [46] [47]) [48] (german thesis.aux)
 Package rerunfilecheck Info: File `"german thesis".out' has not changed.
-(rerunfilecheck)             Checksum: 88A76B682A339877B8713922F005CFCF;6899.
+(rerunfilecheck)             Checksum: 7CBDA56FDCE4D03415BDAD788E704B89;7084.
  ) 
 Here is how much of TeX's memory you used:
- 26404 strings out of 478582
- 487162 string characters out of 2854160
- 758461 words of memory out of 3000000
- 43921 multiletter control sequences out of 15000+600000
+ 26445 strings out of 478582
+ 487841 string characters out of 2854160
+ 758719 words of memory out of 3000000
+ 43949 multiletter control sequences out of 15000+600000
  487591 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,90p,1804b,543s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1173,9 +1199,9 @@ iles/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmr8.pfb>
-Output written on "german thesis.pdf" (43 pages, 6528398 bytes).
+Output written on "german thesis.pdf" (48 pages, 7013903 bytes).
 PDF statistics:
- 1405 PDF objects out of 1440 (max. 8388607)
- 156 named destinations out of 1000 (max. 500000)
- 396 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1447 PDF objects out of 1728 (max. 8388607)
+ 165 named destinations out of 1000 (max. 500000)
+ 416 words of extra memory for PDF output out of 10000 (max. 10000000)
 

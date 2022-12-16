@@ -51,6 +51,8 @@ mins <- apply(svrtest, 2, min)
 scaled <- as.data.frame(scale(svrtest, center = mins, 
                               scale = maxs - mins))
 
+summary(scaled)
+
 # Create an svm regression model
 model2 <- neuralnet(Value ~ Hour, data=scaled, hidden = c(5, 3), 
                     linear.output = FALSE)
@@ -82,17 +84,17 @@ setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_g
 #plot25
 #dev.off()
 
-rm(plot25,model1,model2,predict1,predict2,svrtest)
+rm(plot25,model1,model2,predict1,predict2,svrtest,scaled)
 
 #Now the real Modell
 
-levels(as.factor(validation_set[[1]]$Town))
-levels(as.factor(validation_set[[2]]$Town))
-levels(as.factor(validation_set[[3]]$Town))
-levels(as.factor(validation_set[[4]]$Town))
-levels(as.factor(validation_set[[5]]$Town))
+#levels(as.factor(validation_set[[1]]$Town))
+#levels(as.factor(validation_set[[2]]$Town))
+#levels(as.factor(validation_set[[3]]$Town))
+#levels(as.factor(validation_set[[4]]$Town))
+#levels(as.factor(validation_set[[5]]$Town))
 
-length(validation_set)
+#length(validation_set)
 
 Evaluation_DF = as.data.frame( matrix(1:length(validation_set)*4, nrow = length(validation_set), ncol = 4) )
 names(Evaluation_DF)[1] = "Train_R"
@@ -115,8 +117,13 @@ validation_set[[4]]$Station = NULL
 validation_set[[5]]$Town = NULL
 validation_set[[5]]$Station = NULL
 
+i=2
+
 for_start_time <- Sys.time()
 for(i in 1:length(validation_set)){
+  
+  rm(model,trainSet,testSet,test_predict,train_predict,test.data,end_time,start_time)
+  rm(training.samples,train.data,maxs,mins,sets,for_end_time)
   
   print(i)
 
@@ -136,25 +143,45 @@ for(i in 1:length(validation_set)){
   
   trainSet$X = NULL
   testSet$X = NULL
-  names(testSet)
+  #names(testSet)
   
-  trainSet <- trainSet %>% mutate_at(names(trainSet), ~(scale(.) %>% as.vector))
-  testSet <- testSet %>% mutate_at(names(testSet), ~(scale(.) %>% as.vector))
+  #trainSet <- trainSet %>% mutate_at(names(trainSet), ~(scale(.) %>% as.vector))
+  #testSet <- testSet %>% mutate_at(names(testSet), ~(scale(.) %>% as.vector))
   
   # Split data to reduce duration of computation
   training.samples <- trainSet$Value %>%
-    createDataPartition(p = 0.001, list = FALSE)
+    createDataPartition(p = 0.005, list = FALSE)
   train.data  <- trainSet[training.samples, ]
   test.data <- trainSet[-training.samples, ]
   
   class(train.data)
+  
+  maxs <- apply(train.data, 2, max) 
+  mins <- apply(train.data, 2, min)
+  train.data <- as.data.frame(scale(train.data, center = mins, 
+                                  scale = maxs - mins))
+  
+  summary(train.data)
+  
+  maxs <- apply(testSet, 2, max) 
+  mins <- apply(testSet, 2, min)
+  testSet <- as.data.frame(scale(testSet, center = mins, 
+                                 scale = maxs - mins))
+  
+  summary(testSet)
   
   #Now do Model calculations
   start_time <- Sys.time()
   print("Starts to train the modell")
   print(start_time)
   
+  #train.data = train.data[is.na(train.data)] <- 0
+  #testSet = testSet[is.na(testSet)] <- 0
+  testSet = testSet %>% mutate_all(~replace(., is.na(.), 0))
+  train.data = train.data %>% mutate_all(~replace(., is.na(.), 0))
+  
   summary(train.data)
+  summary(testSet)
   
   model <- neuralnet(Value ~ Hour + Months + Weekend + Night + publicHoliday + schoolHoliday + 
                  Wind + CloudCover + Humidity + Rain + Temperature + Cinemas3kmRadius +
@@ -167,14 +194,11 @@ for(i in 1:length(validation_set)){
                  Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 + ClothesShop500mmRadius2 +
                  ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 + Rain3 +
                  Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3 + SignalsRatio, data =  train.data,
-                 hidden = c(5, 3), linear.output = FALSE)
+                 hidden = c(3, 2), linear.output = FALSE)
   
   end_time <- Sys.time()
   print(end_time - start_time)
   beep("coin")
-  
-  summary(model)
-  summary(testSet$Rain3)
   
   start_time <- Sys.time()
   print("Starts to calclulate test predictions")
@@ -202,6 +226,7 @@ for(i in 1:length(validation_set)){
   Evaluation_DF$Test_R[i]= postResample(test_predict, testSet$Value)[2]
   Evaluation_DF$Train_R[i]= postResample(train_predict, train.data$Value)[2]
   
+  print(Evaluation_DF)
   #vcovHAC(model)
 }
 for_end_time <- Sys.time()
@@ -224,4 +249,4 @@ setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/Validati
 write.csv(Evaluation_DF,"Modell4_NN.csv")
 save(model,file="Modell4_NN.rdata")
 
-
+warnings()

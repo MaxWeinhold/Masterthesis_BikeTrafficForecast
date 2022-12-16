@@ -795,6 +795,8 @@ ProjectionData = merge(x = ProjectionData,y = distmat
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
+
 #Reading POI from Open Street Map________________________________________________________________________________________________________________________________________-
 #Using the overpass API 
 
@@ -889,6 +891,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
 
 #Get all schools________________________________________________________________
 
@@ -983,7 +986,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
-
+Sys.sleep(120)
 
 #Get university Buildings_______________________________________________________
 
@@ -1081,6 +1084,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
 
 #Use Coordinates of Shops and Supermarkets___________________________________________________________________________________
 
@@ -1179,6 +1183,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
 
 #Clothingshops__________________________________________________________________
 
@@ -1275,6 +1280,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
 
 #Get Data about public transport by OSM____________________________________________________________
 
@@ -1363,6 +1369,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
 
 #Crossing Signals_______________________________________________________________
 
@@ -1451,7 +1458,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
-
+Sys.sleep(120)
 
 #Crossing Unmarked_______________________________________________________________
 
@@ -1542,6 +1549,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(240)
 
 #Get Tram Stattions_____________________________________________________________
 
@@ -1643,8 +1651,7 @@ if(length(cinmat$name)>0){
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
-
-
+Sys.sleep(240)
 
 #Get Subway Entrance_____________________________________________________________
 
@@ -1747,6 +1754,7 @@ if(length(cinmat$name)>0){
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(240)
 
 #Railway Station operated by the DB Netz AG_____________________________________________________________
 
@@ -1848,6 +1856,7 @@ if(length(cinmat$name)>0){
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
 
 
 #Bike Shops_____________________________________________________________
@@ -1950,6 +1959,7 @@ if(length(cinmat$name)>0){
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
+Sys.sleep(120)
 
 #RoadNetwork--------------------------------------------------------------------
 
@@ -1958,21 +1968,39 @@ city=Town
 q1 <- getbb(city) %>%
   opq() %>%
   add_osm_feature("highway", "cycleway")
+
+Sys.sleep(120)
+
 q2 <- getbb(city) %>%
   opq() %>%
   add_osm_feature("highway", "residential")
+
+Sys.sleep(120)
+
 q3 <- getbb(city) %>%
   opq() %>%
   add_osm_feature("highway", "living_street")
+
+Sys.sleep(120)
+
 q4 <- getbb(city) %>%
   opq() %>%
   add_osm_feature("highway", "path")
+
+Sys.sleep(120)
+
 q5 <- getbb(city) %>%
   opq() %>%
   add_osm_feature("highway", "secondary")
+
+Sys.sleep(120)
+
 q6 <- getbb(city) %>%
   opq() %>%
   add_osm_feature("highway", "primary")
+
+Sys.sleep(120)
+
 q7 <- getbb(city) %>%
   opq() %>%
   add_osm_feature("bridge", "yes")
@@ -2112,11 +2140,13 @@ ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
-load("Modell2_SVR_radialFunction.rdata")
+load("Modell3_RF_linear.rdata")
 
 summary(model)
 
-projection_pred <- model %>% predict(ProjectionData)
+library(randomForest)
+#projection_pred <- model %>% predict(ProjectionData, type='response')
+projection_pred <- predict(model, newdata = ProjectionData, type='response')
 
 summary(as.numeric(projection_pred))
 summary(exp(as.numeric(projection_pred)))
@@ -2136,13 +2166,29 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
       
       mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=14)
+      
+      mid = (mean(ProjectionData$Value))
       map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value)
-                                    , size = 1, alpha = 0.6, lineend = "round")
+                                               , size = 1.5, alpha = 0.8, lineend = "round") +
+        ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1], " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1], sep="")) + 
+        scale_color_gradient2(midpoint = mid, low = "green", mid = "red",
+                              high = "blue", limits = c(0, max(ProjectionData$Value)), space = "Lab" )+
+        labs(y = "Längengrad", x = "Breitengrad", color ="Fahrer summiert")
+      
+      
+      
+      
+      
+      
+      
       
       setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults/Plots")
-      png(file=paste("map",ProjectionData$Town[1],"plot_SVR_Innenstadt_",i,"_",j,"_",k,".png",sep=""),width=800, height=800)
+      png(file=paste("map",ProjectionData$Town[1],"plot_RF_Innenstadt_",i,"_",j,"_",k,".png",sep=""),width=800, height=800)
       map_plot
       dev.off()
+      
+      
+      #write.csv(ProjectionData,paste("map",ProjectionData$Town[1],"plot_RF_Innenstadt_",i,"_",j,"_",k,".csv",sep=""))
       
     }
     

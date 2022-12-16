@@ -6,13 +6,17 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces (a und b). Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{18}{figure.2.3}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011–2014) nach Zensus Blöcken in Florida.}}{20}{figure.2.4}%
 \addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.}}{24}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte}}{25}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Temperatur und Niederschlag}}{27}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Temperatur und Radfahrer}}{28}{figure.3.4}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support Vector Machines}}{26}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support Vector Machines}}{26}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{28}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{29}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Neural network with a single hidden layer}}{31}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Aktivierungsfunktionen}}{32}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Gradiemt Descent}}{34}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support Vector Machines}}{31}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support Vector Machines}}{31}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{33}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{34}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Neural network with a single hidden layer}}{36}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Aktivierungsfunktionen}}{37}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Gradiemt Descent}}{39}{figure.4.7}%
 \addvspace {10pt}
 \addvspace {10pt}

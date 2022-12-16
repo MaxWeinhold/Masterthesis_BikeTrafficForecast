@@ -6,6 +6,7 @@
 #In order to make a notification sound to inform the user that calculations are finished
 if(!require("beepr")) install.packages("beepr")
 library(beepr)
+library(randomForest)
 
 library(tidyverse)
 library(caret)
@@ -55,11 +56,11 @@ plot25 = ggplot(svrtest,aes(x = Hour, y = Value)) +
 
 plot25
 
-setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
+#setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
 
-png(file="plot25.png",width=800, height=800)
-plot25
-dev.off()
+#png(file="plot25.png",width=800, height=800)
+#plot25
+#dev.off()
 
 rm(plot25,model1,model2,predict1,predict2,svrtest)
 

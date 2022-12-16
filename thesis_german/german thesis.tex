@@ -221,19 +221,58 @@ Neben all dem ist interessant, dass \cite{Kondo2018} darauf verweisen, dass Unfa
 Eine weitere interessante Datenquelle, die wir z.B. schon bei \cite{Alattar2021} kennen gelernt haben, ist Open Street Map. Dies ist ein 2004 gegründetes gemeinnütziges Projekt, dass das Ziel verfolgt Kartenmaterial zu sammeln und online allen frei zur Verfügung zu stellen. Hier sind Daten über Straßen, Eisenbahnen, Flüsse, Wälder, Häuser und vielem weiteren zu finden. Auch \cite{Carl2015} nutzt die frei verfügbaren Daten zu Höhenmetern des Geländes von Open Street Map, um die Planung von mehrtägigen Fahrradtouren zu erleichtern, die der Erholung dienen. Deswegen ist dieses Paper für die Frage dieser Hausarbeit weniger interessant, die Idee, diese Art von Daten zu verwenden, aber könnte hilfreich sein. Dass aber die Topographie eine Rolle auch für den Pendler Verkehr spielt, zeigt \cite{Rietveld2004}.\\
 Vor allem nützlich aber ist diese Datenquelle, wenn man wie \cite{Goldmann2021} mehrere Städte untersuchen möchte und deren Unterschiede. Sie verwenden nicht nur Daten zur Demographie, sondern auch zur Topographie oder auch zur Dichte von Radwegen und Haltestopps des öffentlichen Nahverkehrs.
 
-\section{Forschungslücken}
+\section{Forschungslücken und Anknüpfungspunkte}
+
+Was die meisten der hier gezeigten Studien hier gemein haben, ist dass sie sich auf eine reine Zeitreihenanalyse beschränkt, jedoch die Daten nicht dazu nutzen die räumliche Verteilung der Daten zu untersuchen. Es gibt eine wenige Beispiele die das zwar tuen (Namen nennen), jedoch nie für den ganzen Verkehr, sondern nur für den Teil des Verkehrs, der im Rahmen von Leihradsystemen geschieht. Auch die Kontrolle der Routenwahl durch GPS Tracking, stellt immer nur einen verzerrten Teil des gesamten Verkehrs da, entweder durch zu geringe Stichprobengößen oder durch die Selbstselektion der Studienteilnehmer.\\
+Das lässt nur die Forschung übrig, die mit Daten von Zählstationen rechnet. Diese verfolgt aber meist das Ziel kausale Einflüsse auf den Radverkehr zu untersuchen wie bei (...). Andere Studien treffen zwar Vorhersagen, aber eben nicht in eine räumliche Dimension hinein, wie bei (Holmgren). Die Forschungsfrage dieser Masterarbeit erfordert aber eine räumliche Interpolation, um Vorhersagen für ein gesamtes Stadtgebiet zu treffen und nicht über einzelne Stationen, die vorher so beobachtet worden. Eine kausale Interpretation ist hierfür nicht zwangsläufig notwendig, wenn auch interessant. Außerdem würde eine kausale Interpretation die Verwendung von neuronalen Netzwerken ausschließen.\\
+Nur wenige Studien untersuchen die Daten mehr als einer Stadt, mit ausnahme von (...). Aber die Verwendung von mehreren Städten wäre zwingend notwendig. Denn wie man im Vergleich sieht, bieten Studien mit Radzählstellen oft weniger Beobachtungspunkte pro Stadt, als z.B. Studien die GPS Tracking Daten verwenden oder Daten von Leihsystemen. Um diesen Nachteil auszugleichen, ist es ratsam, Daten mehrere Städte zu verwenden. Die Studie von ... zeigte, wie man die Unterschiede zwischen Städten hervor heben kann ist. So ist es ratsam demographische und soziale Daten über die Stadtstrukturen in einen Datensatz mit aufzunehmen. Bei ... zeigten diese Daten Unterschiede in der Wetterelastizität des Fahrradverkehrs auf. In dieser Studie würden die stadtbezogenen Daten Unterschiede im Radverkehr selbst kenntlich machen.\\
+Zueletzt erfordert die Forschungsfrage Stationsbasierte Daten, möchte man Unterschiede im Radverkehrsaufkommen innerhalb der selben Stadt erkennen und auch vorhersagen können. Nur daraus ergeben sich räumliche Unterschiede im Stadtbild. Eine Studie, dient hier zB als Vorbild, in dem sie Daten von POIs in Google Streetview verwendet. ... Verwenden hierbei Bilderkennung. Soweit würde diese Masterarbeit nicht gehen. Allerdings könnte man Entfernung von Zählstationen und einigen POIs im Stadtbild mit in das Modell aufnehmen. Dies allgemein gibt einen guten Ausblick auf das kommende Kapitel im Allgemeinen. Anhand der bestehenden Literatur ließ sich festmachen, welche Datenstruktur notwendig ist, um die Forschungsfrage zu beantworten. Das kommende Kapitel gibt einen Einblick in den endgültigen Datensatz.
 
 \chapter{Zusammensetzung des Datensatz}
 
-Das vorherige Kapital zeigte den aktuellen Stand der Forschung zum Aufkommen des Fahrradverkehrs und endete mit einer Einschätzung, an welchen Studien sich diese Masterarbeit orientieren muss, um die gestellte Forschungsfrage zu beantworten. Darauf baute auch die Beschaffung von Daten für das Modell dieser Arbeit auf, angefangen über die Daten der Fahrradzähler, Daten zum Wetter, demographischen Daten und Daten der vorhandenen Infrastruktur erhoben durch Open Street Map. Einen tieferen Einblick über die Datenbeschaffung und die Verteilung von Daten mit zugehörigen Abbildung beinhaltet dieses Kapitel.\\
+Das vorherige Kapital zeigte den aktuellen Stand der Forschung zum Aufkommen des Fahrradverkehrs und endete mit einer Einschätzung, an welchen Studien sich diese Masterarbeit orientieren muss, um die gestellte Forschungsfrage zu beantworten. Darauf baute auch die Beschaffung von Daten für das Modell dieser Arbeit auf, angefangen über die Daten der Fahrradzähler, Daten zum Wetter, demographischen Daten und Daten der vorhandenen Infrastruktur erhoben durch Open Street Map und dazu gehörigen Points of Interest. Einen tieferen Einblick über die Datenbeschaffung und die Verteilung von Daten mit zugehörigen Abbildung beinhaltet dieses Kapitel.\\
 Die Datenbeschaffung an sich beschränkt sich allein auf Deutschland aus Gründen der Einfachheit. Bestimmte Daten wie Daten zum Wetter und zur Demographie lassen sich so allein von einer Datenquelle beschaffen in diesem Fall dem Deutschen Wetter Dienst und dem statistischen Bumdesamt DESTATIS. Der Nachteil davon ist, dass wiederum alle Aussagen des Modells allein für Deutschland gültig sind, da dieser Rahmen die Evaluierung für andere Regionen der Welt nicht zu lässt.
 
 \section{Fahrradzähler}
 
-Notwendige Grundlage der Forschung sind Daten von Fahrradzählstationen. Dankbarerweise stellen diese Daten viele Kommunen öffentlich zur Verfügung oder teilen diese auf Nachfrage. Insgesamt befinden sich Daten von 13 deutschen Städten im Datensatz, darunter Berlin, Bochum, Bonn, Bremen, Darmstadt, Düsseldorf, Hamburg, Mannheim, München, Münster, Oberhausen, Rostock und Siegen.
+Notwendige Grundlage der Forschung sind Daten von Fahrradzählstationen. Dankbarerweise stellen diese Daten viele Kommunen öffentlich zur Verfügung oder teilen diese auf Nachfrage. In welchen Städten sich Fahrradzähler finden ließen, die in das Modell aufgenommen werden konnten, zeigt die Abbildung \ref{Deutschlandkarte}. Alle Fahrraddaten sind stündlich aufgelöst. D.h. die Anzahl der Fahrradfahrer, die eine Zählstation passierten, wurde innerhalb einer vollen Stunde aufsummiert.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot22.png}
+	\caption{Städte die im Datensatz vertreten sind.}
+	\label{Deutschlandkarte}
+\end{figure}
+
+Ein grundsätzliches Problem des Datensatzes, dass sich so leicht auch nicht beheben lässt, dass zum einem Großstädte mehr Fahrradzähler errichten, zum anderem ihre Daten oft auch leichter zugänglich machen. Die Abbildung \ref{Einwohnergroese} zeigt deutlich, dass Großstädte mit mehr als 300 Tsd Einwohnern im Datensatz überrepräsentiert sind. Deshalb sollte man bei Vorhersagen für Städte mit weniger als 300 Tsd Einwohnern vorsichtig in der Interpretation sein.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot10.png}
+	\caption{Verteilung der Beobachtung nach Einwohnergröße der Städte}
+	\label{Einwohnergroese}
+\end{figure}
+
+Die Datenquelle sind die Kommunen selbst. Eine Veröffentlichung aller Daten ist dabei nicht möglich, weil die Kommunen unterschiedliche Bedingungen für die Verwendung der Daten gestellt haben. Der Betrachtungszeitraum der Daten reicht von 2012 bis 2022 in einigen Fällen. Einige wenige Zählstellen in Hamburg und Siegen wurden erst 2022 aufgestellt. In allen anderen Städten reichen die Beobachtungen aber nur bis 2021.
 
 \section{Wetterdaten}
-\section{Demographische Statistiken}
+
+Daten zum Wetter stammen einheitlich vom Deutschen Wetterdienst. Dabei wurden die Fahrraddaten einer Stadt immer mit den Wetterdaten der nächstgelegenen Stadt verwendet. Insgesamt wurden Daten in den Datensatz mit aufgenommen zum Niederschlag in mm, zur Lufttemperatur in 2 m Höhe in Grad Celsius, zur Wolkenbedeckung in Achteln, zur relativen Feuchte in \% und zur durchschnittlichen Windgeschwindigkeit. Genau wie die Fahrraddaten sind die Wetterdaten stündlich aufgelöst. Einen jährlichen Durchschnittsverlauf über alle Daten zeigt Abbildung \ref{TempNied}. Weiterhin zeigt Abbildung \ref{TempValue} den Zusammenhang zwischen Radfahrer und Monatstemperaturen.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot23.png}
+	\caption{Temperatur und Niederschlag}
+	\label{TempNied}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot24.png}
+	\caption{Temperatur und Radfahrer}
+	\label{TempValue}
+\end{figure}
+
+\section{Demographische und soziale Statistiken}
 \section{Open Street Map Daten}
 \subsection{Ausgewählte POIs}
 \subsection{Ausgestaltung des öffentlichen Verkehrs}
