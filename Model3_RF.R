@@ -120,7 +120,7 @@ for(i in 1:length(validation_set)){
                           ClosestSuperMarket + SuperMarket1kmRadius + ClosestClothesShop + ClothesShop500mmRadius + BusStop250mmRadius + ClothesShop2kmRadius + Signals250mmRadius +
                           BusStop250mmRadius + UnmCross250mmRadius + BusStop1kmRadius + Tram250mmRadius + Subway250mmRadius + ClosestTrainS + BikeShop3kmRadius + 
                           cycleways + path + secondary + primary + ClosestBridge + young18 + young25 + young30 + 
-                          older40 + older60 + Immigrants + PKWs + ain2 + 
+                          older40 + older60 + Immigrants + PKWs + Rain2 + 
                           Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 + ClothesShop500mmRadius2 +
                           ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 + Rain3 +
                           Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3 + SignalsRatio, data =  train.data, ntree=500, importance=TRUE)
