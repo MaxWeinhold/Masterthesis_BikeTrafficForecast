@@ -31,6 +31,21 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   Leipzig = read.csv(file = "Leipzig.csv",sep=",", encoding="ISO-8859-1")
   Erfurt = read.csv(file = "Erfurt.csv",sep=",", encoding="ISO-8859-1")
   Tübingen = read.csv(file = "Tübingen.csv",sep=",", encoding="ISO-8859-1")
+  Konstanz = read.csv(file = "Konstanz.csv",sep=",", encoding="ISO-8859-1")
+  Heidelberg = read.csv(file = "Heidelberg.csv",sep=",", encoding="ISO-8859-1")
+  Ulm = read.csv(file = "Ulm.csv",sep=",", encoding="ISO-8859-1")
+  Offenburg = read.csv(file = "Offenburg.csv",sep=",", encoding="ISO-8859-1")
+  Freiburg = read.csv(file = "Freiburg.csv",sep=",", encoding="ISO-8859-1")
+  Lörrach = read.csv(file = "Lörrach.csv",sep=",", encoding="ISO-8859-1")
+  Ludwigsburg = read.csv(file = "Ludwigsburg.csv",sep=",", encoding="ISO-8859-1")
+  
+#Small corrections-------------------------------------------------------
+  
+  Heidelberg$Oneway = FALSE
+  Ulm$Oneway = FALSE
+  Offenburg$Oneway = FALSE
+  Freiburg$Oneway = FALSE
+  Lörrach$Oneway = FALSE
   
 #Merge Data--------------------------------------------------------------
   
@@ -49,6 +64,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   BikeData=rbind(BikeData,Leipzig)
   BikeData=rbind(BikeData,Erfurt)
   BikeData=rbind(BikeData,Tübingen)
+  BikeData=rbind(BikeData,Konstanz)
+  BikeData=rbind(BikeData,Heidelberg)
+  BikeData=rbind(BikeData,Ulm)
+  BikeData=rbind(BikeData,Offenburg)
+  BikeData=rbind(BikeData,Freiburg)
+  BikeData=rbind(BikeData,Lörrach)
+  BikeData=rbind(BikeData,Ludwigsburg)
 
 #print some informations-------------------------------------------------
   
@@ -123,9 +145,18 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     else if(Altersgruppen$Town[i] == "Siegen-Wittgenstein, Landkreis"){Altersgruppen$Town[i] = "Siegen"}
     else if(Altersgruppen$Town[i] == "Erfurt, kreisfreie Stadt"){Altersgruppen$Town[i] = "Erfurt"}
     else if(Altersgruppen$Town[i] == "Tübingen, Landkreis"){Altersgruppen$Town[i] = "Tübingen"}
+    else if(Altersgruppen$Town[i] == "Konstanz, Landkreis"){Altersgruppen$Town[i] = "Konstanz"}
+    else if(Altersgruppen$Town[i] == "Heidelberg, kreisfreie Stadt"){Altersgruppen$Town[i] = "Heidelberg"}
+    else if(Altersgruppen$Town[i] == "Ulm, kreisfreie Stadt"){Altersgruppen$Town[i] = "Ulm"}
+    else if(Altersgruppen$Town[i] == "Ortenaukreis"){Altersgruppen$Town[i] = "Offenburg"}
+    else if(Altersgruppen$Town[i] == "Freiburg im Breisgau, kreisfreie Stadt"){Altersgruppen$Town[i] = "Freiburg"}
+    else if(Altersgruppen$Town[i] == "Lörrach, Landkreis"){Altersgruppen$Town[i] = "Lörrach"}
+    else if(Altersgruppen$Town[i] == "Ludwigsburg, Landkreis"){Altersgruppen$Town[i] = "Ludwigsburg"}
     else{Altersgruppen$Town[i] = NA}
   }
   Altersgruppen = na.omit(Altersgruppen)
+  
+  levels(as.factor(Altersgruppen$Town))
   
   names(Altersgruppen)
   Altersgruppen$young18 = (as.numeric(Altersgruppen$unter.3.Jahre) +
@@ -225,6 +256,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     else if(Immigrants$Town[i] == "Siegen-Wittgenstein, Landkreis"){Immigrants$Town[i] = "Siegen"}
     else if(Immigrants$Town[i] == "Erfurt, kreisfreie Stadt"){Immigrants$Town[i] = "Erfurt"}
     else if(Immigrants$Town[i] == "Tübingen, Landkreis"){Immigrants$Town[i] = "Tübingen"}
+    else if(Immigrants$Town[i] == "Konstanz, Landkreis"){Immigrants$Town[i] = "Konstanz"}
+    else if(Immigrants$Town[i] == "Heidelberg, kreisfreie Stadt"){Immigrants$Town[i] = "Heidelberg"}
+    else if(Immigrants$Town[i] == "Ulm, kreisfreie Stadt"){Immigrants$Town[i] = "Ulm"}
+    else if(Immigrants$Town[i] == "Ortenaukreis"){Immigrants$Town[i] = "Offenburg"}
+    else if(Immigrants$Town[i] == "Freiburg im Breisgau, kreisfreie Stadt"){Immigrants$Town[i] = "Freiburg"}
+    else if(Immigrants$Town[i] == "Lörrach, Landkreis"){Immigrants$Town[i] = "Lörrach"}
+    else if(Immigrants$Town[i] == "Ludwigsburg, Landkreis"){Immigrants$Town[i] = "Ludwigsburg"}
     else{Immigrants$Town[i] = NA}
   }
   Immigrants = na.omit(Immigrants)
@@ -267,6 +305,13 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     else if(PKW$Town[i] == "Siegen-Wittgenstein, Landkreis"){PKW$Town[i] = "Siegen"}
     else if(PKW$Town[i] == "Erfurt, kreisfreie Stadt"){PKW$Town[i] = "Erfurt"}
     else if(PKW$Town[i] == "Tübingen, Landkreis"){PKW$Town[i] = "Tübingen"}
+    else if(PKW$Town[i] == "Konstanz, Landkreis"){PKW$Town[i] = "Konstanz"}
+    else if(PKW$Town[i] == "Heidelberg, kreisfreie Stadt"){PKW$Town[i] = "Heidelberg"}
+    else if(PKW$Town[i] == "Ulm, kreisfreie Stadt"){PKW$Town[i] = "Ulm"}
+    else if(PKW$Town[i] == "Ortenaukreis"){PKW$Town[i] = "Offenburg"}
+    else if(PKW$Town[i] == "Freiburg im Breisgau, kreisfreie Stadt"){PKW$Town[i] = "Freiburg"}
+    else if(PKW$Town[i] == "Lörrach, Landkreis"){PKW$Town[i] = "Lörrach"}
+    else if(PKW$Town[i] == "Ludwigsburg, Landkreis"){PKW$Town[i] = "Ludwigsburg"}
     else{PKW$Town[i] = NA}
   }
   PKW = na.omit(PKW)

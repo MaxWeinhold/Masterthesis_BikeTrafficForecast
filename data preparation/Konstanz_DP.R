@@ -261,8 +261,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Konstanz")
   rawData=na.omit(rawData)
   rm(Weather_Temperature)
   summary(rawData)
-  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
-  write.csv(rawData,"Tübingen.csv")
+  #setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  #write.csv(rawData,"Tübingen.csv")
   
 # Adding ADFC-Fahrradklima Values
   
