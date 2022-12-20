@@ -34,7 +34,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   Konstanz = read.csv(file = "Konstanz.csv",sep=",", encoding="ISO-8859-1")
   Heidelberg = read.csv(file = "Heidelberg.csv",sep=",", encoding="ISO-8859-1")
   Ulm = read.csv(file = "Ulm.csv",sep=",", encoding="ISO-8859-1")
-  Offenburg = read.csv(file = "Offenburg.csv",sep=",", encoding="ISO-8859-1")
+  #Offenburg = read.csv(file = "Offenburg.csv",sep=",", encoding="ISO-8859-1")
   Freiburg = read.csv(file = "Freiburg.csv",sep=",", encoding="ISO-8859-1")
   Lörrach = read.csv(file = "Lörrach.csv",sep=",", encoding="ISO-8859-1")
   Ludwigsburg = read.csv(file = "Ludwigsburg.csv",sep=",", encoding="ISO-8859-1")
@@ -46,6 +46,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   Offenburg$Oneway = FALSE
   Freiburg$Oneway = FALSE
   Lörrach$Oneway = FALSE
+  Ludwigsburg$Oneway = FALSE
   
 #Merge Data--------------------------------------------------------------
   
@@ -67,7 +68,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   BikeData=rbind(BikeData,Konstanz)
   BikeData=rbind(BikeData,Heidelberg)
   BikeData=rbind(BikeData,Ulm)
-  BikeData=rbind(BikeData,Offenburg)
+  #BikeData=rbind(BikeData,Offenburg)
   BikeData=rbind(BikeData,Freiburg)
   BikeData=rbind(BikeData,Lörrach)
   BikeData=rbind(BikeData,Ludwigsburg)
@@ -331,8 +332,23 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   nlevels(as.factor(BikeData$Station))
   b = nlevels(as.factor(BikeData$Station))
   a -b
-  nlevels(as.factor(BikeData$Town))
+  levels(as.factor(BikeData$Town))
   names(BikeData)
+  summary(BikeData)
+  
+#Last corrections
+  
+  summary(BikeData$CloudCover)
+  levels(as.factor(BikeData$CloudCover))
+  
+  
+  BikeData = BikeData[!(BikeData$CloudCover==-1),]
+  
+  
+  summary(BikeData$CloudCover)
+  levels(as.factor(BikeData$CloudCover))
+  
+  BikeData = na.omit(BikeData)
   
 #Save new data set-------------------------------------------------------
   setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")

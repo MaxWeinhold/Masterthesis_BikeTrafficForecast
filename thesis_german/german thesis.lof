@@ -1,22 +1,24 @@
 \babel@toc {ngerman}{}\relax 
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Anzahl der Leihräder (A) Singapore zwischen 8-9 Uhr am 25. Juni 2017; (B) New Taipei City zwischen 18-19 Uhr am 1. August 2018; (C) Chicago zwischen 16-18 Uhr am 26. August 2019; (D) New York zwischen 17-18 Uhr am 9. Juni 2014.}}{10}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Fahrradaufkommen für Glasgow 2017}}{13}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces (a und b). Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{18}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011–2014) nach Zensus Blöcken in Florida.}}{20}{figure.2.4}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Anzahl der Leihräder (A) Singapore zwischen 8-9 Uhr am 25. Juni 2017; (B) New Taipei City zwischen 18-19 Uhr am 1. August 2018; (C) Chicago zwischen 16-18 Uhr am 26. August 2019; (D) New York zwischen 17-18 Uhr am 9. Juni 2014.}}{10}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Fahrradaufkommen für Glasgow 2017}}{13}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces (a und b). Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{18}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011–2014) nach Zensus Blöcken in Florida.}}{20}{figure.caption.7}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.}}{24}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte}}{25}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Temperatur und Niederschlag}}{27}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Temperatur und Radfahrer}}{28}{figure.3.4}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.\relax }}{24}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte\relax }}{25}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Verteilung der Beobachtung nach Jahren\relax }}{26}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Wettterdaten im Überblick\relax }}{27}{figure.caption.11}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Temperatur und Niederschlag}}}{27}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Temperatur und Radfahrer}}}{27}{subfigure.4.2}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support Vector Machines}}{31}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support Vector Machines}}{31}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{33}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{34}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Neural network with a single hidden layer}}{36}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Aktivierungsfunktionen}}{37}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Gradiemt Descent}}{39}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support Vector Machines}}{31}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support Vector Machines}}{31}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{33}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{34}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Neural network with a single hidden layer}}{36}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Aktivierungsfunktionen}}{37}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Gradiemt Descent}}{39}{figure.caption.18}%
 \addvspace {10pt}
 \addvspace {10pt}

@@ -117,14 +117,24 @@ for(i in 1:length(validation_set)){
   start_time <- Sys.time()
   print("Starts to train the modell")
   print(start_time)
-  model <- svm(log(Value) ~ Hour + Months + Weekend + Night + publicHoliday + schoolHoliday + 
-                Wind + CloudCover + Humidity + Rain + Temperature + Cinemas3kmRadius +
-                ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center + 
-                ClosestSchool + Schools500mmRadius + Schools2kmRadius + ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius + 
-                ClosestSuperMarket + SuperMarket1kmRadius + ClosestClothesShop + ClothesShop500mmRadius + BusStop250mmRadius + ClothesShop2kmRadius + Signals250mmRadius +
-                BusStop250mmRadius + UnmCross250mmRadius + BusStop1kmRadius + Tram250mmRadius + Subway250mmRadius + ClosestTrainS + BikeShop3kmRadius + 
-                cycleways + path + secondary + primary + ClosestBridge + young18 + young25 + young30 + 
-                older40 + older60 + Immigrants + PKWs + SignalsRatio, data =  train.data)
+  model <- svm(log(Value) ~ Year + Months + Hour + Weekend + Night + publicHoliday + schoolHoliday +
+                 Wind + CloudCover + Humidity + Rain + Temperature +
+                 ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center +
+                 ClosestCinema + Cinemas1kmRadius + Cinemas3kmRadius +
+                 ClosestSchool + Schools500mmRadius + Schools2kmRadius +
+                 ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius +
+                 ClosestSuperMarket + SuperMarket500mmRadius + SuperMarket1kmRadius +
+                 ClosestClothesShop + ClothesShop500mmRadius + ClothesShop2kmRadius +
+                 ClosestBusStop + BusStop250mmRadius + BusStop1kmRadius +
+                 ClosestSignals + Signals250mmRadius + Signals1kmRadius +
+                 ClosestUnmCross + UnmCross250mmRadius + UnmCross1kmRadius +
+                 ClosestTrainS + TrainS1kmRadius + TrainS3kmRadius +
+                 ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius +
+                 cycleways + path + secondary + primary + residential + ClosestBridge +
+                 young18 + young25 + older40 + older60 + Immigrants + PKWs +
+                 Rain2 + Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 +
+                 ClothesShop500mmRadius2 + ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 +
+                 Rain3 + Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3, data =  train.data)
   
   end_time <- Sys.time()
   print(end_time - start_time)

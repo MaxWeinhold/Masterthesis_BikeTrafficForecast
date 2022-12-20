@@ -72,6 +72,8 @@ names(rawData)[4] = "Station"
 names(rawData)[5] = "Lon"
 names(rawData)[6] = "Lat"
 
+summary(rawData$Value)
+
 levels(as.factor(rawData$Lon))
 levels(as.factor(rawData$Station))
 

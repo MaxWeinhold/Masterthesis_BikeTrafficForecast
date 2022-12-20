@@ -4,6 +4,7 @@
 
 \usepackage{blindtext}
 
+\usepackage{subfig}
 
 \usepackage[onehalfspacing]{setspace}
 
@@ -252,28 +253,41 @@ Ein grundsätzliches Problem des Datensatzes, dass sich so leicht auch nicht beh
 	\label{Einwohnergroese}
 \end{figure}
 
-Die Datenquelle sind die Kommunen selbst. Eine Veröffentlichung aller Daten ist dabei nicht möglich, weil die Kommunen unterschiedliche Bedingungen für die Verwendung der Daten gestellt haben. Der Betrachtungszeitraum der Daten reicht von 2012 bis 2022 in einigen Fällen. Einige wenige Zählstellen in Hamburg und Siegen wurden erst 2022 aufgestellt. In allen anderen Städten reichen die Beobachtungen aber nur bis 2021.
+Die Datenquelle sind die Kommunen selbst. Eine Veröffentlichung aller Daten ist dabei nicht möglich, weil die Kommunen unterschiedliche Bedingungen für die Verwendung der Daten gestellt haben. Der Betrachtungszeitraum der Daten reicht von 2012 bis 2022 in einigen Fällen. Einige wenige Zählstellen in Hamburg und Siegen wurden erst 2022 aufgestellt. In allen anderen Städten reichen die Beobachtungen aber nur bis 2021. Die Abbildungen \ref{Jahre} zeigt wie sich die Daten über die Zeit verteilen. Dabei ist festzustellen, dass je weiter wir in die Vergangenheit gehen, desto weniger Daten finden wir, da nur wenige Zählstationen seit 2012 im Betrieb sind. (An dieser Stelle könnte man noch über die Fahrradzähler in Hamburg schreiben)
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot28.png}
+	\caption{Verteilung der Beobachtung nach Jahren}
+	\label{Jahre}
+\end{figure}
 
 \section{Wetterdaten}
 
-Daten zum Wetter stammen einheitlich vom Deutschen Wetterdienst. Dabei wurden die Fahrraddaten einer Stadt immer mit den Wetterdaten der nächstgelegenen Stadt verwendet. Insgesamt wurden Daten in den Datensatz mit aufgenommen zum Niederschlag in mm, zur Lufttemperatur in 2 m Höhe in Grad Celsius, zur Wolkenbedeckung in Achteln, zur relativen Feuchte in \% und zur durchschnittlichen Windgeschwindigkeit. Genau wie die Fahrraddaten sind die Wetterdaten stündlich aufgelöst. Einen jährlichen Durchschnittsverlauf über alle Daten zeigt Abbildung \ref{TempNied}. Weiterhin zeigt Abbildung \ref{TempValue} den Zusammenhang zwischen Radfahrer und Monatstemperaturen.
+Daten zum Wetter stammen einheitlich vom Deutschen Wetterdienst. Dabei wurden die Fahrraddaten einer Stadt immer mit den Wetterdaten der nächstgelegenen Stadt verwendet. Nur Mannheim und Heidelberg teilen sich die Daten einer Wetterstation, da beide Städte sehr nah beieinander liegen. Insgesamt wurden Daten in den Datensatz mit aufgenommen zum Niederschlag in mm, zur Lufttemperatur in 2 m Höhe in Grad Celsius, zur Wolkenbedeckung in Achteln, zur relativen Feuchte in \% und zur durchschnittlichen Windgeschwindigkeit. Genau wie die Fahrraddaten sind die Wetterdaten stündlich aufgelöst. Einen jährlichen Durchschnittsverlauf über alle Daten zeigt Abbildung \ref{fig:TempNied}a. Weiterhin zeigt die Abbildung \ref{fig:TempNied}b den Zusammenhang zwischen Radfahrer und Monatstemperaturen.
 
-\begin{figure}[!ht]
+\begin{figure}%
 	\centering
-	\includegraphics[width=\textwidth]{Plots/plot23.png}
-	\caption{Temperatur und Niederschlag}
-	\label{TempNied}
+	\subfloat[\centering Temperatur und Niederschlag]{{\includegraphics[width=6cm]{Plots/plot23.png} }}%
+	\qquad
+	\subfloat[\centering Temperatur und Radfahrer]{{\includegraphics[width=6cm]{Plots/plot24.png} }}%
+	\caption{Wettterdaten im Überblick}%
+	\label{fig:TempNied}%
 \end{figure}
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=\textwidth]{Plots/plot24.png}
-	\caption{Temperatur und Radfahrer}
-	\label{TempValue}
-\end{figure}
 
 \section{Demographische und soziale Statistiken}
+
+In diesem Abschnitt sammeln sich verschiedene Daten, die Unterschiede in den Städten in ihrer sozialen und demographischen Struktur in ihrer Bevölkerung hervorheben. Daten dafür stammen aus zwei Quellen. Die meisten Variablen nutzen als Datenquelle das statistische Bundesamt. Eine Variable bezieht sich auf den ADFC Fahrradklimaindex. Für beide Quellen gilt, dass Daten für das Jahr 2022 noch nicht vorhanden waren, da das Jahr zum Zeitpunkt der Recherche noch nicht abgeschlossen war. Für die wenigen Beobachtungen aus Hamburg z.B., die aus dem Jahr 2022 in den Datensatz mit aufgenommen worden sind, gilt, dass für diese Beobachtungen angenommen wurde, dass Variablen, die nicht erneuert werden konnten, konstant blieben. Das betrifft insgesamt jedoch nur wenige Beobachtungen, wie auch Abbildung \ref{Jahre} zeigt.
+
+\subsection{Statistisches Bundesamt}
+
+
+
+\subsection{ADFC Fahrradindex}
+
 \section{Open Street Map Daten}
+
 \subsection{Ausgewählte POIs}
 \subsection{Ausgestaltung des öffentlichen Verkehrs}
 \subsection{Straßentypen}

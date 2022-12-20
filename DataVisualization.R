@@ -16,6 +16,10 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 #Load Data Set
   BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
   
+  summary(BikeData[BikeData$Town=="Offenburg",]$Value)
+  
+  
+  
   levels(as.factor(BikeData$Town))
   nlevels(as.factor(BikeData$Station))
   levels(as.factor(BikeData$Station))
@@ -79,11 +83,11 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=Inhabitants_Mean, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=Inhabitants_Mean, y=Value_Mean),method='lm') +
     geom_label_repel(aes(x = Inhabitants_Mean, y = Value_Mean, label = Town)) + 
-    labs(title = "Durchschnittlicher Radverkehr nach Einwohnergröße"
-         , y = "Radfahrer pro Stunde je Stadt"
+    labs(y = "Radfahrer pro Stunde je Stadt"
          , x = "Einwohnergröße") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot1
   
@@ -91,11 +95,11 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=MaleRatio_Mean, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=MaleRatio_Mean, y=Value_Mean),method='lm') +
     geom_label_repel(aes(x = MaleRatio_Mean, y = Value_Mean, label = Town)) + 
-    labs(title = "Durchschn. Radverkehr nach Geschlechterverhältnis"
-         , y = "Radfahrer pro Stunde je Stadt"
+    labs(y = "Radfahrer pro Stunde je Stadt"
          , x = "Anteil männl. Bevölker") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot2
   
@@ -103,11 +107,11 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=young30_Mean, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=young30_Mean, y=Value_Mean),method='lm') +
     geom_label_repel(aes(x = young30_Mean, y = Value_Mean, label = Town)) + 
-    labs(title = "Durchschn. Radverkehr nach Altersgruooen"
-         , y = "Radfahrer pro Stunde je Stadt"
+    labs(y = "Radfahrer pro Stunde je Stadt"
          , x = "Anteil der Bevölker unter 30 Jahre") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot3
   
@@ -117,11 +121,11 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=Inhabitants_Mean/Size, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=Inhabitants_Mean/Size, y=Value_Mean),method='lm') +
     geom_label_repel(aes(x = Inhabitants_Mean/Size, y = Value_Mean, label = Town)) + 
-    labs(title = "Durchschn. Radverkehr nach Bevölkerungsdichte"
-         , y = "Radfahrer pro Stunde je Stadt"
+    labs(y = "Radfahrer pro Stunde je Stadt"
          , x = "Einwohner je km²") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot4
   
@@ -129,11 +133,11 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=ADFC_Mean, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=ADFC_Mean, y=Value_Mean),method='lm') +
     geom_label_repel(aes(x = ADFC_Mean, y = Value_Mean, label = Town)) + 
-    labs(title = "Durchschn. Radverkehr nach ADFC Fahrradklima"
-         , y = "Radfahrer pro Stunde je Stadt"
+    labs(y = "Radfahrer pro Stunde je Stadt"
          , x = "ADFC Fahrradklima Index") + 
-    scale_x_continuous(labels = comma) + 
-    theme_classic()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot5
   
@@ -141,11 +145,11 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=PKWs_Mean, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=PKWs_Mean, y=Value_Mean),method='lm') +
     geom_label_repel(aes(x = PKWs_Mean, y = Value_Mean, label = Town)) + 
-    labs(title = "Durchschn. Radverkehr nach PKWs je Person"
-         , y = "Radfahrer pro Stunde je Stadt"
+    labs(y = "Radfahrer pro Stunde je Stadt"
          , x = "PKWs je Person") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot6
   
@@ -153,22 +157,22 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=Immigrants_Mean, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=Immigrants_Mean, y=Value_Mean),method='lm') +
     geom_label_repel(aes(x = Immigrants_Mean, y = Value_Mean, label = Town)) + 
-    labs(title = "Durchschn. Radverkehr nach Immigrantenanteil"
-         , y = "Radfahrer pro Stunde je Stadt"
+    labs(y = "Radfahrer pro Stunde je Stadt"
          , x = "Immigrantenanteil") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot7
   
   plot8 = ggplot(citties, aes(y=Value_Mean, x=Town, fill=Town)) + 
     geom_bar(position="dodge", stat="identity") +
     theme_bw() +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold")) +
     theme(axis.title.x=element_blank(),
           axis.text.x=element_blank(),
           axis.ticks.x=element_blank()) + 
-    labs(title = "Durchschnittlicher Radverkehr nach Städten"
-         , y = "Radfahrer pro Stunde je Zählstelle"
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
          , fill = "Städte")
   
   plot8
@@ -209,6 +213,37 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   
   rm(list=setdiff(ls(), "BikeData"))
 
+#share of observations per year
+  
+  years_shares = c(1:nlevels(as.factor(BikeData$Year)))
+  
+  for(i in 1: nlevels(as.factor(BikeData$Year))){
+    years_shares[i] = sum(BikeData$Year==levels(as.factor(BikeData$Year))[i])
+  }
+  years_shares = as.data.frame(cbind(years_shares,levels(as.factor(BikeData$Year))))
+  names(years_shares)[1]="Observations"
+  names(years_shares)[2]="Year"
+  years_shares$Observations = as.numeric(years_shares$Observations)
+  years_shares$Observations = years_shares$Observations/sum(years_shares$Observations)*100
+  
+  plot28 = ggplot(years_shares, aes(y=Observations, x=Year, fill = Year)) + 
+    geom_bar(position="dodge", stat="identity")+
+    theme_bw() +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold")) +
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.title.x=element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x=element_blank()) + 
+    labs(title = "Anteile des Datensatzes nach Jahren"
+         , y = "in %"
+         , fill = "Jahre")
+  
+  plot28
+  
+  png(file="plot28.png",width=800, height=800)
+  plot28
+  dev.off()
+  
 #share of observations per city
 
   city_shares = c(1:nlevels(as.factor(BikeData$Town)))
@@ -231,10 +266,12 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   plot9 = ggplot(data = city_shares2, aes(x = "", y = -Observations, 
                              fill = reorder(Town, -Observations))) + 
     geom_bar(stat = "identity", color = "black") + 
+    labs(fill = "Stadt",x="",y="") +
     #geom_label_repel(aes(x = "", y = -Observations, label = round(Observations))) +
-    labs(title = "Städte nach Anteil am Datensatz", fill = "") +
     coord_polar("y") +
-    theme_bw()
+    theme_void() +
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot9
   
@@ -260,11 +297,12 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   plot10 = ggplot(city_shares, aes(y=Observations, x=Title, fill = Population)) + 
     geom_bar(position="dodge", stat="identity")+
     theme_bw() +
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold")) +
     theme(axis.title.x=element_blank(),
           axis.text.x=element_blank(),
           axis.ticks.x=element_blank()) + 
-    labs(title = "Anteile des Datensatzes nach Einwohnergröße"
-         , y = "in %"
+    labs(y = "in %"
          , fill = "Einwohnerzahl")
   
   plot10
@@ -275,7 +313,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   
 #OSM Data per Counting Station
   
-  stations = as.data.frame(matrix(1:18*nlevels(as.factor(BikeData$Station)), nrow = nlevels(as.factor(BikeData$Station)), ncol = 21))
+  stations = as.data.frame(matrix(1:22*nlevels(as.factor(BikeData$Station)), nrow = nlevels(as.factor(BikeData$Station)), ncol = 22))
   
   names(stations)[1]="Distance_to_Center"
   names(stations)[2]="Cinemas1kmRadius"
@@ -295,9 +333,10 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   names(stations)[16]="residential"
   names(stations)[17]="living_street"
   names(stations)[18]="path"
-  names(stations)[19]="ClosestBridge"
-  names(stations)[20]="isBridge"
-  names(stations)[21]="Value_Mean"
+  names(stations)[19]="cycleways"
+  names(stations)[20]="ClosestBridge"
+  names(stations)[21]="isBridge"
+  names(stations)[22]="Value_Mean"
   stations$Station=levels(as.factor(BikeData$Station))
   
   for(i in 1:nlevels(as.factor(BikeData$Station))){
@@ -318,6 +357,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     stations$secondary[i]=d$secondary[1]
     stations$primary[i]=d$primary[1]
     stations$living_street[i]=d$living_street[1]
+    stations$cycleways[i]=d$cycleways[1]
+    stations$residential[i]=d$residential[1]
     stations$path[i]=d$path[1]
     stations$ClosestBridge[i]=d$ClosestBridge[1]
     stations$isBridge[i]=d$isBridge[1]
@@ -327,99 +368,108 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   plot11 = ggplot(data=stations)+
     geom_point(aes(x=Distance_to_Center, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=Distance_to_Center, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Entfernung zum Zentrum"
-         , y = "Radfahrer pro Stunde je Zählstelle"
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
          , x = "in M") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot11
   
   plot12 = ggplot(data=stations)+
     geom_point(aes(x=Cinemas1kmRadius, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=Cinemas1kmRadius, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Kinos im 1km Radius"
-         , y = "Radfahrer pro Stunde je Zählstelle"
-         , x = "Amzahl der Kinos") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
+         , x = "Anzahl der Kinos") + 
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot12
   
   plot13 = ggplot(data=stations)+
     geom_point(aes(x=ClosestUniBuild, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=ClosestUniBuild, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Entfernung zur Uni"
-         , y = "Radfahrer pro Stunde je Zählstelle"
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
          , x = "in M") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot13
   
   plot14 = ggplot(data=stations)+
     geom_point(aes(x=SuperMarket1kmRadius, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=SuperMarket1kmRadius, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Super Märkten im 1km Radius"
-         , y = "Radfahrer pro Stunde je Zählstelle"
-         , x = "Amzahl der Supermärkte") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
+         , x = "Anzahl der Supermärkte") + 
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot14
   
   plot15 = ggplot(data=stations)+
     geom_point(aes(x=ClothesShop2kmRadius, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=ClothesShop2kmRadius, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Kleidungsgeschäften im 2km Radius"
-         , y = "Radfahrer pro Stunde je Zählstelle"
-         , x = "Amzahl der Kleidungsgeschäfte") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
+         , x = "Anzahl der Kleidungsgeschäfte") + 
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot15
   
   plot16 = ggplot(data=stations)+
     geom_point(aes(x=BusStop1kmRadius, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=BusStop1kmRadius, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Bushaltestellen im 1km Radius"
-         , y = "Radfahrer pro Stunde je Zählstelle"
-         , x = "Amzahl der Bushaltestellen") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
+         , x = "Anzahl der Bushaltestellen") + 
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot16
   
   plot17 = ggplot(data=stations)+
     geom_point(aes(x=Signals1kmRadius, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=Signals1kmRadius, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Ampeln im 1km Radius"
-         , y = "Radfahrer pro Stunde je Zählstelle"
-         , x = "Amzahl der Ampeln") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
+         , x = "Anzahl der Ampeln") + 
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot17
   
   plot18 = ggplot(data=stations)+
     geom_point(aes(x=Tram1kmRadius, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=Tram1kmRadius, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach S-Bahnstationen im 1km Radius"
-         , y = "Radfahrer pro Stunde je Zählstelle"
-         , x = "Amzahl der S-Bahnstationen") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
+         , x = "Anzahl der S-Bahnstationen") + 
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot18
   
   plot19 = ggplot(data=stations)+
     geom_point(aes(x=ClosestTrainS, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=ClosestTrainS, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Entfernung zum nächsten Bahnhof"
-         , y = "Radfahrer pro Stunde je Zählstelle"
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
          , x = "in M") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot19
   
@@ -463,15 +513,16 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   
   a = sum(stations$secondary==1)
   b = sum(stations$primary==1)
-  sum(stations$residential==1)
-  c = sum(stations$living_street==1)
-  d = sum(stations$path==1)
+  c = sum(stations$residential==1)
+  d = sum(stations$living_street==1)
+  e = sum(stations$path==1)
+  f = sum(stations$cycleways==1)
   sum(stations$isBridge==1)
   
-  e = sum(stations$secondary==0 & stations$primary==0 & stations$living_street==0 & stations$path==0)
-  nrow(stations) -a -b -c -d -e
-  street_type1 = c(a,b,c,d,e)
-  street_type2 = as.data.frame(cbind(street_type1,c("secondary","primary","living street","path","unknown")))
+  g = sum(stations$secondary==0 & stations$primary==0 & stations$living_street==0 & stations$path==0 & stations$residential==0 & stations$cycleways==0)
+  nrow(stations) -a -b -c -d -e -f -g
+  street_type1 = c(a,b,c,d,e,f,g)
+  street_type2 = as.data.frame(cbind(street_type1,c("secondary","primary","residential","living street","path","cycleways","unknown")))
   names(street_type2)[1]="Numbers"
   names(street_type2)[2]="Type"
   street_type2$Numbers=as.numeric(street_type2$Numbers)
@@ -479,21 +530,24 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   plot20 = ggplot(data = street_type2, aes(x = "", y = -Numbers, 
                                           fill = reorder(Type, -Numbers))) + 
     geom_bar(stat = "identity", color = "black") +
-    geom_label_repel(aes(x = "", y = -Numbers, label = Numbers)) +
-    labs(title = "Stationen nach Straßentyp", fill = "") +
+    #geom_label_repel(aes(x = "", y = -Numbers, label = Numbers)) +
+    labs(fill = "Stadt",x="",y="") +
     coord_polar("y") +
-    theme_void()
+    theme_void() +
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot20
   
   plot21 = ggplot(data=stations)+
     geom_point(aes(x=ClosestBridge, y=Value_Mean), size = 2) +
     geom_smooth(aes(x=ClosestBridge, y=Value_Mean),method='lm') +
-    labs(title = "Durchschnittlicher Radverkehr nach Entfernung zur nächsten Brücke"
-         , y = "Radfahrer pro Stunde je Zählstelle"
+    labs(y = "Radfahrer pro Stunde je Zählstelle"
          , x = "in M") + 
-    scale_x_continuous(labels = comma) + 
-    theme_bw()
+    scale_x_continuous(labels = comma) +
+    theme_bw() + 
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
   
   plot21
   
@@ -527,7 +581,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   
   myLocation<-c(5, 46.5,   16, 55.5)
   
-  myMap <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=7)
+  myMap <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=9)
   
   #ggmap(myMap)
   
@@ -535,8 +589,9 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
     geom_point(aes(x=as.numeric(lon), y=as.numeric(lat), color = as.numeric(Value_Mean)), data=city_points, size = 4) + 
     geom_label_repel(data = city_points,aes(x = lon, y = lat, label = Town)) +
     theme_bw() +
-    labs(title = "Städte des Datensatzes"
-         , y = "Längengrad"
+    theme(legend.text=element_text(size=12)) +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold")) +
+    labs(y = "Längengrad"
          , x = "Breitengrad"
          , color = "Durchschnittl. \n Radverkehr")
   
@@ -570,7 +625,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   plot23 = ggplot(NULL, aes(v, p)) + 
     geom_bar(data=weather, aes(x = Months, y= Rain),stat="identity", fill = "lightblue", width=.5, position = "dodge") +
     theme_bw() +
-    ggtitle("Monatliche Temperatur und der Niederschlag") +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=12,face="bold")) +
     xlab("Monat") +
     geom_line(data=weather, mapping = aes(x = Months, y = Temperature, group = 1), size = 1 , color = "red") +
     scale_y_continuous(name = "durchschn. Temperatur in C°", 
@@ -584,7 +639,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   plot24 = ggplot(NULL, aes(v, p)) + 
     geom_line(data=weather, mapping = aes(x = Months, y = Value_Mean/5, group = 1), size = 1 , color = "blue") +
     theme_bw() +
-    ggtitle("Monatliche Temperatur und der Radverkehr") +
+    theme(axis.text=element_text(size=12),axis.title=element_text(size=12,face="bold")) +
     xlab("Monat") +
     geom_line(data=weather, mapping = aes(x = Months, y = Temperature, group = 1), size = 1 , color = "red") +
     scale_y_continuous(name = "durchschn. Temperatur in C°", 
@@ -595,11 +650,14 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   
   plot24
   
-  png(file="plot23.png",width=800, height=800)
+  png(file="plot23.png",width=400, height=400)
   plot23
   dev.off()
   
-  png(file="plot24.png",width=800, height=800)
+  png(file="plot24.png",width=400, height=400)
   plot24
   dev.off()
+  
+  summary(BikeData)
+  levels(as.factor(BikeData[BikeData$ClosestTrainS == 50000,]$Station))
   

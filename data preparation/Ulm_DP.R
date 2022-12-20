@@ -1517,7 +1517,7 @@ summary(rawData)
 q <- getbb(toString(rawData$Town[1])) %>%
   opq() %>%
   add_osm_feature("railway", "station")%>%
-  add_osm_feature("operator", "DB Netz AG")
+  add_osm_feature("operator", "DB Netz AG;DB Station&Service AG")
 
 str(q) #query structure
 

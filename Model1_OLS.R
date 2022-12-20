@@ -24,6 +24,49 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 
 load("ValidationSets.rdata")
 
+#Make a simple Test with the support vector regression to show the differences to the OLS regression
+
+svrtest = validation_set[[1]][1:500,]
+svrtest$Hour2 = svrtest$Hour^2
+svrtest$Hour3 = svrtest$Hour^3
+
+
+# Create an ols regression model
+model1 <- lm(Value ~ Hour, data=svrtest)
+predict1 <- as.data.frame(predict(model1,svrtest))
+predict1$Hour = svrtest$Hour
+names(predict1)[1]="Value"
+
+model2 <- lm(Value ~ Hour + Hour2, data=svrtest)
+predict2 <- as.data.frame(predict(model2,svrtest))
+predict2$Hour = svrtest$Hour
+names(predict2)[1]="Value"
+
+model3 <- lm(Value ~ Hour + Hour2 + Hour3, data=svrtest)
+predict3 <- as.data.frame(predict(model3,svrtest))
+predict3$Hour = svrtest$Hour
+names(predict3)[1]="Value"
+
+plot25 = ggplot(svrtest,aes(x = Hour, y = Value)) +
+  geom_point(size=1.5)+
+  labs(title = "Vergleich zwischen OLS und Support Vector Regression"
+       , color = "Methode") +
+  ggtitle("OLS Regression") +
+  xlab("Uhrzeit") +
+  ylab("Fahrradauufkommen") +
+  theme_bw() +
+  geom_line(data = predict1, aes(x = Hour, y = Value, color='1: linear'), size = 1.5) +
+  geom_line(data = predict2, aes(x = Hour, y = Value, color='2: quadratisch'), size = 1.5) +
+  geom_line(data = predict3, aes(x = Hour, y = Value, color='3: kubisch'), size = 1.5)
+
+plot25
+
+#setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
+
+#png(file="plot29.png",width=800, height=800)
+#plot25
+#dev.off()
+
 names(validation_set[[1]])
 
 levels(as.factor(validation_set[[1]]$Town))
@@ -64,19 +107,24 @@ for(i in 1:length(validation_set)){
   names(testSet)
   
   #Now do Model calculations
-  model <- lm(log(Value) ~ Hour + Months + Weekend + Night + publicHoliday + schoolHoliday + 
-                Wind + CloudCover + Humidity + Rain + Temperature + Cinemas3kmRadius +
-                ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center + 
-                ClosestSchool + Schools500mmRadius + Schools2kmRadius + ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius + 
-                ClosestSuperMarket + SuperMarket1kmRadius + ClosestClothesShop + ClothesShop500mmRadius + BusStop250mmRadius + ClothesShop2kmRadius + Signals250mmRadius +
-                BusStop250mmRadius + UnmCross250mmRadius + BusStop1kmRadius + Tram250mmRadius + Subway250mmRadius + ClosestTrainS + BikeShop3kmRadius + 
-                cycleways + path + secondary + primary + ClosestBridge + young18 + young25 + young30 + 
-                older40 + older60 + Immigrants + PKWs +
-                Rain2 + Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 + ClothesShop500mmRadius2 +
-                ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 + Rain3 +
-                Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3 + SignalsRatio, data = trainSet)
-  
-  summary(model)
+  model <- lm(log(Value) ~ Year + Months + Hour + Weekend + Night + publicHoliday + schoolHoliday +
+                Wind + CloudCover + Humidity + Rain + Temperature +
+                ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center +
+                ClosestCinema + Cinemas1kmRadius + Cinemas3kmRadius +
+                ClosestSchool + Schools500mmRadius + Schools2kmRadius +
+                ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius +
+                ClosestSuperMarket + SuperMarket500mmRadius + SuperMarket1kmRadius +
+                ClosestClothesShop + ClothesShop500mmRadius + ClothesShop2kmRadius +
+                ClosestBusStop + BusStop250mmRadius + BusStop1kmRadius +
+                ClosestSignals + Signals250mmRadius + Signals1kmRadius +
+                ClosestUnmCross + UnmCross250mmRadius + UnmCross1kmRadius +
+                ClosestTrainS + TrainS1kmRadius + TrainS3kmRadius +
+                ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius +
+                cycleways + path + secondary + primary + residential + ClosestBridge +
+                young18 + young25 + older40 + older60 + Immigrants + PKWs +
+                Rain2 + Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 +
+                ClothesShop500mmRadius2 + ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 +
+                Rain3 + Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3, data = trainSet)
   
   test_predict <- model %>% predict(testSet)
   train_predict <- model %>% predict(trainSet)

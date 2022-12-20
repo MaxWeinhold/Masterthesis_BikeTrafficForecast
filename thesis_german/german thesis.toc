@@ -15,13 +15,15 @@
 \contentsline {section}{\numberline {2.3}Forschungslücken und Anknüpfungspunkte}{21}{section.2.3}%
 \contentsline {chapter}{\numberline {3.}Zusammensetzung des Datensatz}{23}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Fahrradzähler}{23}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Wetterdaten}{26}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Demographische und soziale Statistiken}{26}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Open Street Map Daten}{26}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Ausgewählte POIs}{26}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Ausgestaltung des öffentlichen Verkehrs}{26}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Straßentypen}{26}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Sonstige}{26}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.2}Wetterdaten}{27}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Demographische und soziale Statistiken}{27}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Statistisches Bundesamt}{28}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}ADAFC Fahrradindex}{28}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Open Street Map Daten}{28}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Ausgewählte POIs}{28}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Ausgestaltung des öffentlichen Verkehrs}{28}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Straßentypen}{28}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Sonstige}{28}{subsection.3.4.4}%
 \contentsline {chapter}{\numberline {4.}Verwendete Methoden}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Problem zur Autokorrelation}{29}{section.4.1}%
 \contentsline {section}{\numberline {4.2}OLS Regression}{29}{section.4.2}%
@@ -30,9 +32,9 @@
 \contentsline {section}{\numberline {4.5}Neuronale Netze}{35}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{35}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{38}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Validation}{40}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Conditional Validation Set Building}{40}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Cross Validation}{40}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.6}Validation}{39}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Conditional Validation Set Building}{39}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Cross Validation}{39}{subsection.4.6.2}%
 \contentsline {chapter}{\numberline {5.}Ergebnisse}{41}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Validität der Ergebnisse}{41}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Präzision der Ergebnisse}{41}{section.5.2}%

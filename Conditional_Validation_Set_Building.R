@@ -25,7 +25,7 @@ BikeData$City_Lat = NULL
 #BikeData$ClosestCinema = NULL
 #BikeData$Cinemas1kmRadius = NULL
 BikeData$InhDestrict = NULL
-BikeData$residential = NULL
+#BikeData$residential = NULL
 BikeData$living_street = NULL
 
 #BikeData$SuperMarket500mmRadius = NULL
