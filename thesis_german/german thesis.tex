@@ -481,9 +481,39 @@ Eine Weiterführung dieses Konzepts ist die Cross Validation. Hier wird der Date
 
 \chapter{Ergebnisse}
 
-\section{Validität der Ergebnisse}
+Das vorherige Kapitel erklärte die funktionsweise verschiedener statistischen Methoden, die sich zur Vorhersage des Radverkehrs anwenden ließen. Viele haben ihre Vor- und Nachteile, alle wurden in der bisherigen Literatur, die mit diesem Thema verwandt ist, verwendet. Folglich wurden alle vier Methoden angewendet und mit der beschriebenen Methode der Cross Validation evaluiert und lassen sich in ihrer Vorhersagekraft vergleichen. (Hier vielleicht Validation Set Building Code einfügen und erklären)
 
-\section{Präzision der Ergebnisse}
+\section{OLS Regression}
+
+Du grundlegenste Methode, die an dem erarbeiteten Datensatz getestet wurde, ist die OLS Regression. Diese Methode benötigt nur wenig Rechenkraft und stößt somit nicht an technische Flaschenhälse wie andere Methoden, leistet dafür jedoch nur ungenau Vorhersagen, auch zu entnehmen der Abbildung \ref{OLS_ModelSelection}. Zum Vergleich wurden sechs unterschiedliche Log-Lin Regressionsmodelle erstellt und jeweils validiert, wobei jedes weitere Modell neue Variablen hinzufügt. Das erste Modell enthält nur zeitliche Variablen wie Jahr, Monat, Stunde, Wochenende, Nacht und Feiertage. Das zweite Modell fügt dem die fünf Wetter Variablen Regen, Temperatur, Bedeckung, relative Feuchte und Windgeschwindigkeit hinzu. Im dritten Modell demographische Daten hinzugefügt, im vierten Modell räumliche Variablen, im fünften quadrierte Variabeln und im letzten kubische Variabeln. Jedes Modell wurde fünf mal erstellt, für die fünf unterschiedlichen Trainings und Test Sets.\\
+Die roten Linien in der Abbildung \ref{OLS_ModelSelection} zeigen den Verlauf des Bestimmtheitsmaßes $R^2$ für die Trainingsdatensätze und zeigen, dass je mehr Variablen in das Modell aufgenommen werden, desto weiter steigt der erklärte Anteil des Modells, wobei ein abnehmender Grenzeffekt der Variabelnanzahl zu sehen ist. Die blauen Kurven hingegen zeigen den Verlauf des Bestimmtheitsmaßes in den Testdatensätzen. Damit zeigen sie die out of samples Validität der jeweiligen Modelle. Hier ist festzustellen, dass kein anhaltender steigender Trend nicht zu erkennen ist und sogar im Gegenteil, dass die Modelle mit mehr Variablen zu schlechteren Ergebnissen führen. Dies zeigt ganz klar, dass hier Overfitting stattfindet.\\
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot30.png}
+	\caption{Cross Validation Ergebnis der OLS Regression in 6 Modellen}
+	\label{OLS_ModelSelection}
+\end{figure}
+
+
+\section{Support Vector Regression}
+
+\section{Random Forest Regression}
+
+\begin{figure}%
+	\centering
+	\subfloat[\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil]{{\includegraphics[width=6cm]{Plots/plot32.png} }}%
+	\qquad
+	\subfloat[\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten]{{\includegraphics[width=6cm]{Plots/plot33.png} }}%
+	\caption{Random Forest Performance nach Anteil des Datensatzes}%
+	\label{fig:TrainingsShareValidation1}%
+\end{figure}
+
+\section{Neuronales Netzs}
+
+\section{Model Projektion}
+
+\section{Räumliche Korrelation zu Verkehrsunfällen}
 
 \section{Verknüpfung mit Verkehrsunfällen}
 
