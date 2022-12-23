@@ -38,11 +38,11 @@
 \contentsline {chapter}{\numberline {5.}Ergebnisse}{42}{chapter.5}%
 \contentsline {section}{\numberline {5.1}OLS Regression}{42}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Support Vector Regression}{44}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Random Forest Regression}{44}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Neuronales Netzs}{44}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Model Projektion}{44}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{44}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{44}{section.5.7}%
-\contentsline {chapter}{\numberline {6.}Diskussion}{45}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{45}{section.6.1}%
-\contentsline {chapter}{Literaturverzeichnis}{46}{section.6.1}%
+\contentsline {section}{\numberline {5.3}Random Forest Regression}{45}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Neuronales Netzs}{47}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Model Projektion}{47}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{47}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{47}{section.5.7}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{48}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{48}{section.6.1}%
+\contentsline {chapter}{Literaturverzeichnis}{49}{section.6.1}%

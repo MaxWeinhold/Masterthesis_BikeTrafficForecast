@@ -26,12 +26,6 @@ load("ValidationSets.rdata")
 
 #Now the real Modell
 
-levels(as.factor(validation_set[[1]]$Town))
-levels(as.factor(validation_set[[2]]$Town))
-levels(as.factor(validation_set[[3]]$Town))
-levels(as.factor(validation_set[[4]]$Town))
-levels(as.factor(validation_set[[5]]$Town))
-
 length(validation_set)
 
 Evaluation_DF = as.data.frame( matrix(1:length(validation_set)*4, nrow = length(validation_set), ncol = 4) )

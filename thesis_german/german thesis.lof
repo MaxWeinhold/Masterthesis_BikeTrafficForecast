@@ -21,8 +21,12 @@
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Aktivierungsfunktionen}}{38}{figure.caption.17}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Gradiemt Descent}}{40}{figure.caption.18}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Cross Validation Ergebnis der OLS Regression in 6 Modellen\relax }}{43}{figure.caption.19}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Random Forest Performance nach Anteil des Datensatzes\relax }}{44}{figure.caption.20}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{44}{subfigure.2.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{44}{subfigure.2.2}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature Selection Ergebnis der OLS Regression in 6 Modellen\relax }}{43}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{45}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Random Forest Performance nach Anteil des Datensatzes\relax }}{46}{figure.caption.22}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{46}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{46}{subfigure.3.2}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Random Forest Performance nach Anzahl der Zufallsbäume\relax }}{46}{figure.caption.23}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume}}}{46}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{46}{subfigure.4.2}%
 \addvspace {10pt}

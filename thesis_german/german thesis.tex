@@ -18,6 +18,7 @@
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
 \usepackage{longtable}
+\usepackage{csvsimple}
 %\usepackage{hyperref}
 
 \usepackage{setspace}
@@ -491,14 +492,31 @@ Die roten Linien in der Abbildung \ref{OLS_ModelSelection} zeigen den Verlauf de
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\textwidth]{Plots/plot30.png}
-	\caption{Cross Validation Ergebnis der OLS Regression in 6 Modellen}
+	\caption{Feature Selection  Ergebnis der OLS Regression in 6 Modellen}
 	\label{OLS_ModelSelection}
 \end{figure}
 
+Dass hier aber Overfitting auftritt ist kein Wunder, denn von dem Modell wird erwartet vorhersagen für, Vorhersagen für Stationen zu treffen, die im Trainingsdatensatz selbst nicht vorkommen und deswegen auch abweichende Charakteristiken aufweisen. Dies mach offensichlich, dass es ein leistungsfähigeres Modell braucht und bei allen folgenden Machine Learning Algorithmen muss berücksichtig werden, dass die Gefahr zum Overfitting relativ groß ist, und das vermutlich nie die Performance im Test Set erreicht wird, die sonst im Trainings Set erreicht wird. Die Abbildung \ref{tbl:OLS1} zeigt die Performance des endgültigen OLS Modells durch den Bestimmtheitswert und den root mean squarred error in jedem einzelnen Split. Split 3 zeigt die tatsächliche Tragweite des Overfitting, denn wo hier im Trainings Set ein RMSE 125 steht, nimmt der RMSE im Test Set astronomische Größen an. Dieses Beispiel zeigt auch den Vorteil der Cross Validation, denn dadurch, dass bei der Cross Validation 5 unterschiedliche Test Sets genutzt werden, steigt die Wahrscheinlichkeit, solche Modellfehler offenzulegen.\\
+Es wird also deutlich, dass sich ein Log Lineares OLS Modell nicht dazu eignet, Vorhersagen für einen ganzen Stadtbereich zu machen. Weiterhin lohnt es sich nicht, hier weitere Versuche zu unternehmen. Und damit bleiben noch drei weitere Algorithmen übrig, wobei der nächst folgende die Support Vector Regression ist.
+
+\begin{table}
+	\csvautotabular[separator=semicolon]{Tables/Modell1OLS.csv}
+	\caption{Performance des OLS Modells}
+	\label{tbl:OLS1}
+\end{table}
 
 \section{Support Vector Regression}
 
+Unter allen Methoden ist die Support Vector Regression jene, die noch die größten Ähnlichkeiten hat, zur herkömmlichen nicht linearen OLS Regression. Vorteile waren aber, dass die Support Vector Regression weniger stark auf Ausreißer reagiert als die OLS Regression. Kommt dieser Vorteil dem Modell zu Gute und minimiert die Gefahr des Overfittings?
+
 \section{Random Forest Regression}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot40.png}
+	\caption{Feature Selection Ergebnis der RF Regression in 6 Modellen}
+	\label{RF_ModelSelection}
+\end{figure}
 
 \begin{figure}%
 	\centering
@@ -507,6 +525,15 @@ Die roten Linien in der Abbildung \ref{OLS_ModelSelection} zeigen den Verlauf de
 	\subfloat[\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten]{{\includegraphics[width=6cm]{Plots/plot33.png} }}%
 	\caption{Random Forest Performance nach Anteil des Datensatzes}%
 	\label{fig:TrainingsShareValidation1}%
+\end{figure}
+
+\begin{figure}%
+	\centering
+	\subfloat[\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume]{{\includegraphics[width=6cm]{Plots/plot36.png} }}%
+	\qquad
+	\subfloat[\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten]{{\includegraphics[width=6cm]{Plots/plot37.png} }}%
+	\caption{Random Forest Performance nach Anzahl der Zufallsbäume}%
+	\label{fig:NTreeValidation1}%
 \end{figure}
 
 \section{Neuronales Netzs}
