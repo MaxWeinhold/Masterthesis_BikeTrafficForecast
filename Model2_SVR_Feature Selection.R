@@ -80,7 +80,8 @@ for(i in 1:length(validation_set)){
   
   loop_start_time1 <- Sys.time()
   #Now do Model calculations
-  model1 <- svm(log(Value) ~ Year + Months + Hour + Weekend + Night + publicHoliday + schoolHoliday, data =  train.data)
+  model1 <- svm(log(Value) ~ Year + Months + Hour + Weekend + Night + publicHoliday + schoolHoliday, 
+                data =  train.data, type = "eps-regression")
   
   test_predict <- model1 %>% predict(testSet)
   train_predict <- model1 %>% predict(test.data)
@@ -104,7 +105,8 @@ for(i in 1:length(validation_set)){
   
   loop_start_time2 <- Sys.time()
   model1 <- svm(log(Value) ~ Year + Months + Hour + Weekend + Night + publicHoliday + schoolHoliday +
-                 Wind + CloudCover + Humidity + Rain + Temperature, data =  train.data)
+                 Wind + CloudCover + Humidity + Rain + Temperature, 
+                 data =  train.data, type = "eps-regression")
   
   test_predict <- model1 %>% predict(testSet)
   train_predict <- model1 %>% predict(test.data)
@@ -130,7 +132,8 @@ for(i in 1:length(validation_set)){
   model1 <- svm(log(Value) ~ Year + Months + Hour + Weekend + Night + publicHoliday + schoolHoliday +
                  Wind + CloudCover + Humidity + Rain + Temperature +
                  ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center +
-                 young18 + young25 + older40 + older60 + Immigrants + PKWs, data =  train.data)
+                 young18 + young25 + older40 + older60 + Immigrants + PKWs, 
+                 data =  train.data, type = "eps-regression")
   
   test_predict <- model1 %>% predict(testSet)
   train_predict <- model1 %>% predict(test.data)
@@ -163,7 +166,8 @@ for(i in 1:length(validation_set)){
                  ClosestBusStop + BusStop250mmRadius + BusStop1kmRadius +
                  ClosestSignals + Signals250mmRadius + Signals1kmRadius +
                  ClosestTrainS + TrainS1kmRadius + TrainS3kmRadius +
-                 young18 + young25 + older40 + older60 + Immigrants + PKWs, data =  train.data)
+                 young18 + young25 + older40 + older60 + Immigrants + PKWs,
+                data =  train.data, type = "eps-regression")
   
   test_predict <- model1 %>% predict(testSet)
   train_predict <- model1 %>% predict(test.data)
@@ -200,7 +204,8 @@ for(i in 1:length(validation_set)){
                   ClosestTrainS + TrainS1kmRadius + TrainS3kmRadius +
                   ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius +
                   cycleways + path + secondary + primary + residential + ClosestBridge +
-                  young18 + young25 + older40 + older60 + Immigrants + PKWs, data =  train.data)
+                  young18 + young25 + older40 + older60 + Immigrants + PKWs,
+                  data =  train.data, type = "eps-regression")
   
   test_predict <- model1 %>% predict(testSet)
   train_predict <- model1 %>% predict(test.data)
@@ -239,7 +244,8 @@ for(i in 1:length(validation_set)){
                   cycleways + path + secondary + primary + residential + ClosestBridge +
                   young18 + young25 + older40 + older60 + Immigrants + PKWs +
                   Rain2 + Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 +
-                  ClothesShop500mmRadius2 + ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2, data =  train.data)
+                  ClothesShop500mmRadius2 + ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2,
+                  data =  train.data, type = "eps-regression")
   
   test_predict <- model1 %>% predict(testSet)
   train_predict <- model1 %>% predict(test.data)

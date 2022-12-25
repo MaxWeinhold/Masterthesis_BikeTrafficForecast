@@ -42,7 +42,7 @@ predict1$Hour = svrtest$Hour
 names(predict1)[1]="Value"
 
 # Create an svm regression model
-model2 <- svm(Value ~ Hour, data=svrtest)
+model2 <- svm(Value ~ Hour, data=svrtest, type = "eps-regression", kernel = "radial", epsilon = 0.0001)
 predict2 <- as.data.frame(predict(model2, svrtest))
 predict2$Hour = svrtest$Hour
 names(predict2)[1]="Value"
@@ -109,7 +109,7 @@ for(i in 1:length(validation_set)){
   
   # Split data to reduce duration of computation
   training.samples <- trainSet$Value %>%
-    createDataPartition(p = 0.005, list = FALSE)
+    createDataPartition(p = 0.0005, list = FALSE)
   train.data  <- trainSet[training.samples, ]
   test.data <- trainSet[-training.samples, ]
   
@@ -134,7 +134,8 @@ for(i in 1:length(validation_set)){
                  young18 + young25 + older40 + older60 + Immigrants + PKWs +
                  Rain2 + Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 +
                  ClothesShop500mmRadius2 + ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 +
-                 Rain3 + Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3, data =  train.data)
+                 Rain3 + Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3, 
+                 data =  train.data, type = "eps-regression", kernel = "radial", epsilon = 0.1)
   
   end_time <- Sys.time()
   print(end_time - start_time)
