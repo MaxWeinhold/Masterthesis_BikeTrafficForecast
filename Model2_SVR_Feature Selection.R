@@ -11,6 +11,9 @@ library(e1071)
 if(!require("beepr")) install.packages("beepr")
 library(beepr)
 
+library(parallel)
+citation("parallel")
+
 library(tidyverse)
 library(sandwich)
 library(caret)

@@ -47,6 +47,28 @@ Colace, F., De~Santo, M., Lombardi, M., Pascale, F., Santaniello, D., and
   Fourth International Congress on Information and Communication Technology},
   pages 353--362, Singapore. Springer Singapore.
 
+\bibitem[Corporation and Weston, 2022]{doParallel}
+Corporation, M. and Weston, S. (2022).
+\newblock {\em doParallel: Foreach Parallel Adaptor for the 'parallel'
+  Package}.
+\newblock R package version 1.0.17.
+
+\bibitem[Destatis, 2022a]{Destatis2022c}
+Destatis (2022a).
+\newblock Ausländer: Kreise, stichtag, geschlecht: Tabelle 12521-0040.
+\newblock {\em Statistisches Bundesamt}.
+
+\bibitem[Destatis, 2022b]{Destatis2022_a}
+Destatis (2022b).
+\newblock Bevölkerung: Kreise, stichtag, altersgruppen: Tabelle 12411-0017.
+\newblock {\em Statistisches Bundesamt}.
+
+\bibitem[Destatis, 2022c]{Destatis2022b}
+Destatis (2022c).
+\newblock Kraftfahrzeugbestand: Kreise, stichtag, kraftfahrzeugarten: Tabelle
+  46251-0020.
+\newblock {\em Statistisches Bundesamt}.
+
 \bibitem[Eisenberger, 2015]{Eisenberger2015}
 Eisenberger, D. (2015).
 \newblock Pressemitteilung: Zahlen – daten – fakten zum deutschen
@@ -83,6 +105,11 @@ Hausman, J., Hall, B.~H., and Griliches, Z. (1984).
 Heinen, E., van Wee, B., and Maat, K. (2010).
 \newblock Commuting by bicycle: An overview of the literature.
 \newblock {\em Transport Reviews}, 30(1):59--96.
+
+\bibitem[Hijmans, 2021]{Hijmans2021}
+Hijmans, R.~J. (2021).
+\newblock {\em geosphere: Spherical Trigonometry}.
+\newblock R package version 1.5-14.
 
 \bibitem[Holmgren et~al., 2017]{Holmgren2017}
 Holmgren, J., Aspegren, S., and Dahlströma, J. (2017).
@@ -171,6 +198,17 @@ Menghini, G., Carrasco, N., Schüssler, N., and Axhausen, K. (2010).
 \newblock {\em Transportation Research Part A: Policy and Practice},
   44(9):754--765.
 
+\bibitem[Meyer et~al., 2021]{e10712021}
+Meyer, D., Dimitriadou, E., Hornik, K., Weingessel, A., and Leisch, F. (2021).
+\newblock {\em e1071: Misc Functions of the Department of Statistics,
+  Probability Theory Group (Formerly: E1071), TU Wien}.
+\newblock R package version 1.7-9.
+
+\bibitem[{Microsoft} and Weston, 2022]{foreach}
+{Microsoft} and Weston, S. (2022).
+\newblock {\em foreach: Provides Foreach Looping Construct}.
+\newblock R package version 1.5.2.
+
 \bibitem[Mitchell, 2018]{Mitchell2018PredictingBT}
 Mitchell, P.~P. (2018).
 \newblock Predicting bike-sharing traffic flow using machine learning.
@@ -193,6 +231,17 @@ Nankervis, M. (1999).
 \newblock The effect of weather and climate on bicycle commuting.
 \newblock {\em Transportation Research Part A: Policy and Practice},
   33(6):417--431.
+
+\bibitem[Padgham et~al., 2017]{Padgham2017}
+Padgham, M., Rudis, B., Lovelace, R., and Salmon, M. (2017).
+\newblock osmdata.
+\newblock {\em The Journal of Open Source Software}, 2(14).
+
+\bibitem[Pebesma, 2018]{Pebesma2018}
+Pebesma, E. (2018).
+\newblock {Simple Features for R: Standardized Support for Spatial Vector
+  Data}.
+\newblock {\em {The R Journal}}, 10(1):439--446.
 
 \bibitem[Pisner and Schnyer, 2020]{Pisner2020}
 Pisner, D.~A. and Schnyer, D.~M. (2020).

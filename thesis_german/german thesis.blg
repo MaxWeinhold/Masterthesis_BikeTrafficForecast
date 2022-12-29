@@ -14,45 +14,45 @@ while executing---line 1098 of file apalike.bst
 Warning--empty booktitle in Mitchell2018PredictingBT
 Warning--empty institution in Moellers2021
 Warning--empty booktitle in Reddy2010
-You've used 45 entries,
+You've used 54 entries,
             1935 wiz_defined-function locations,
-            781 strings with 12690 characters,
-and the built_in function-call counts, 19401 in all, are:
-= -- 1876
-> -- 830
-< -- 33
-+ -- 292
-- -- 277
-* -- 1639
-:= -- 3325
-add.period$ -- 143
-call.type$ -- 45
-change.case$ -- 355
-chr.to.int$ -- 44
-cite$ -- 48
-duplicate$ -- 735
-empty$ -- 1351
-format.name$ -- 344
-if$ -- 3874
-int.to.chr$ -- 2
+            824 strings with 13858 characters,
+and the built_in function-call counts, 22212 in all, are:
+= -- 2143
+> -- 942
+< -- 40
++ -- 330
+- -- 313
+* -- 1854
+:= -- 3845
+add.period$ -- 170
+call.type$ -- 54
+change.case$ -- 414
+chr.to.int$ -- 51
+cite$ -- 57
+duplicate$ -- 853
+empty$ -- 1542
+format.name$ -- 393
+if$ -- 4400
+int.to.chr$ -- 4
 int.to.str$ -- 0
-missing$ -- 48
-newline$ -- 232
-num.names$ -- 141
-pop$ -- 321
+missing$ -- 53
+newline$ -- 277
+num.names$ -- 168
+pop$ -- 373
 preamble$ -- 1
-purify$ -- 359
+purify$ -- 422
 quote$ -- 0
-skip$ -- 562
+skip$ -- 659
 stack$ -- 0
-substring$ -- 1375
-swap$ -- 128
+substring$ -- 1508
+swap$ -- 141
 text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 262
+type$ -- 316
 warning$ -- 3
-while$ -- 145
+while$ -- 165
 width$ -- 0
-write$ -- 597
+write$ -- 707
 (There were 3 error messages)

@@ -20,6 +20,8 @@ library(geosphere)#package for calculating distance using longitude and latitude
 
 library(foreach)
 library(doParallel)
+citation("foreach")
+citation("doParallel")
 
 numCores <- detectCores()
 numCores

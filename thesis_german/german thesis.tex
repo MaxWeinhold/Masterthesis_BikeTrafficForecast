@@ -38,6 +38,15 @@
 
 \usepackage{csvsimple}
 
+\usepackage{listings}
+\lstset{
+	frame=single,
+	language=R,
+	keywordstyle=\color{blue},
+	commentstyle=\color{green},
+	numbers=left,
+}
+
 \usepackage[authoryear]{natbib}
 %\bibliographystyle{apalike}
 \usepackage[hidelinks]{hyperref}
@@ -188,7 +197,7 @@ Grundsätzlich sind Daten zur Feinstaubbelastung in Deutschland an vielen Stelle
 
 Es ist vorstellbar, dass Corona Lockdowns zu einer Verzerrung des allgemeinen Verkehrs geführt hat, was ebenso für Fahrräder gelten wird. Diese Effekte untersuchen \cite{Moellers2021} mittels Daten von Zählstation 10 deutschen Städten. Während Lockdowns zu einer Reduzierung von Fußgängern führte, ist der Effekte auf Fahrradfahrer uneindeutig. Bei dieser Betrachtung konzentrierten sie sich auf die erste Welle. Für ihr Modell verwenden sie Daten des RKI, dass tägliche Daten über neue Fälle zur Verfügung stellt pro Region. Zusätzlich kontrollieren sie auch die örtlichen Maßnahmen durch die Öffnungszeiten örtlicher Geschäfte und Schulen. Ihre Analyse zeigt, dass die Anzahl der Fahrradfahrer unter der Woche abgenommen hat, aber an Wochenenden zu genommen hat.
 
-\subsection{Faktor der städtischen Unterschiede}
+\subsection{Faktor der städtischen Unterschiede}\label{Faktor_Stadt}
 
 \subsection{Faktor Radverkehrsunfälle}
 
@@ -283,16 +292,157 @@ In diesem Abschnitt sammeln sich verschiedene Daten, die Unterschiede in den St�
 
 \subsection{Statistisches Bundesamt}
 
+Das statistische Bundesamt, stellt verschiedene Tabellen zur Verfügung, die wertvolle Einblicke in die Unterschiede der Gemeinden geben, in denen sich die verschiedenen Fahrradzählstationen befinden.\\
 
+\begin{figure}%
+	\centering
+	\subfloat[\centering Radverkehr nach Bevölkerungsgröße]{{\includegraphics[width=6cm]{Plots/plot01.png} }}%
+	\qquad
+	\subfloat[\centering Radverkehr nach Anteil der männl. Bev.]{{\includegraphics[width=6cm]{Plots/plot02.png} }}%
+	\caption{Verhältnis von Bevölkerung und Fahrradaufkommen}%
+	\label{fig:Gemeindevz}%
+\end{figure}
+
+Eine wichtige grundlegende Quelle ist das Gemeindeverzeichnis für alle politisch selbständigen Gemeinden (mit Gemeindeverband) in Deutschland, das jedes Jahr veröffentlicht wird. Dieses Verzeichnis beinhaltet nicht nur Landkreise und kreisfreie Städte, sondern hält auch Zahlen zu jeder Gemeinde bereit. Dabei sind Daten zur Fläche in km², zur Einwohneranzahl, sowohl männlich, weiblich wie auch insgesamt vorhanden. Diese fanden auch ihren Weg ins Modell. Wie sich Einwohnergröße und der Anteil an Männern in der Bevölkerung zum Aufkommen an Fahrradfahrern verhalten, kann man in der Abbildung \ref{fig:Gemeindevz} sehen. Außerdem verwendet das Modell die angegebenen Längen- und Breitengrade, aus denen der jeweilige Abstand der Farradzählstation zum Stadtzentrum berechnet wird, auch dargestellt in Abbildung \ref{Stadtzentrum}. Das Modell greift dabei auf das Gemeindeverzeichnis von 2012 bis 2021 zurück.\\
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot11.png}
+	\caption{Verteilung des Fahrradaufkommens in Entfernung zum Stadtzentrum}
+	\label{Stadtzentrum}
+\end{figure}
+
+Weitere Daten zur demographischen Verteilund der Bevölkerung in den jeweils betroffenen Landkreisen und kreisfreien Städten stammen aus der Tabelle 12411-0017 zur Bevölkerung nach Kreisen, Stichtag, Altersgruppen von \cite{Destatis2022_a}. Mit diesen Daten ließ sich der Anteil der Bevölkerung berechnen, der jünger als 18, 25, 30 und älter als 40 und 60 ist. Wie sich das Radverkehrsaufkommen zum Anteil der Bevölkerung unter 30 verhält nach Städten zeigt auch die Abbildung \ref{Alter} im Anhang.
+
+Auch eine wertvolle Statistik bietet die Tabelle 46251-0020 über den Kraftfahrzeugbestand nach Kreisen, Stichtag, Kraftfahrzeugarten von \cite{Destatis2022b}. Mithilfe der Einwohneranzahl je Kreis ließ sich die Quote an Kraftfahrzeugen je Person berechnen. Außerdem zeigt die Tabelle 12521-0040 über die Anzahl der Ausländer nach Kreisen, Stichtag und Geschlecht von \cite{Destatis2022c} ebenfalls wichtige Einblicke zu sehen in Abbildung \ref{fig:PKSundAusl}.
+
+\begin{figure}[!ht]%
+	\centering
+	\subfloat[\centering Radverkehr nach PKWs je Person]{{\includegraphics[width=6cm]{Plots/plot06.png} }}%
+	\qquad
+	\subfloat[\centering Radverkehr nach Immigrantenanteil]{{\includegraphics[width=6cm]{Plots/plot07.png} }}%
+	\caption{Verhältnis von Bevölkerung und Fahrradaufkommen}%
+	\label{fig:PKSundAusl}%
+\end{figure}
 
 \subsection{ADFC Fahrradindex}
 
+Neben den stadtspezifischen Daten, die von den Quellen des statistischen Bundesamtes stammen, nutzt der Datensatz die Daten zum ADFC Fahrradklimaindex. Der Allgemeiner Deutscher Fahrrad-Club ist ein eingetragener Verein mit Sitz in Berlin und Bremen, der sich für die Interessen von Fahrradfahrern einsetzt und stand 2022 220.000 Mitglieder in Deutschland zählt. Im Zweijahresrhytmus veröffentlicht der ADFC den per Umfrage ermittelten Fahrradklimaindex. 2022 wurden z.B. 238 Tsd Menschen befragt aus verschiedenen Städten. Neben Fragen zum persönlichen Fahrradfahren enthält der Fragebogen zum Fahrradklima Index Fragen betreffend des Fahrradklimas, dem Stellenwert des Radverkehrs in der jeweiligen Stadt, der Sicherheit, dem Komfort und der Infrastruktur sowie der Radverkehrsnetze. All diese Antworten fließen in eine Endnote, die sich zwischen 1 und 5 befindet, wobei 1 am Besten und 5 am schlechtesten ist. Wie sich das Fahrradklima ins Verhältnis zum aufgezeichneten Radverkehr ins Verhältnis nach Städten setzt, zeigt die Abbildung \ref{Fahrradklima} im Anhang.
+
 \section{Open Street Map Daten}
 
-\subsection{Ausgewählte POIs}
+Im vorherigen Abschnitt wurden die Datenquellen zu stadtspezifischen Daten erläutert. Variablen zur demographie oder dem Autobesitz nach Städten sind wertvoll, um die Unterschiede im Radverkehr zwischen den Städten einschätzen zu können. Dies hilft jedoch nicht bei der räumlichen Unterscheidung. Verwendet man keine räumlichen Merkmale, so erhält man eine einheitliche Vorhersage je Stadt. Die räumliche Verteilung des Radverkehrs innerhalb jeder Stadt, ließe sich so nicht abbilden. Die einzige räumliche Variable, die bisher erhoben wurde, ist die Entfernung zum Stadtzentrum, beruhend auf den Daten des Gemeindeverzeichnis von 2012 bis 2021. Doch selbst mit dieser Variablen, gingen Abweichungen durch lokale Anlaufpunkte wie bei Bahnhöfen verloren.\\
+Der daraus resultierende Schluss ist, Koordinaten zu solchen Anlaufpunkten oder auch Points of Interest (PoIs) dazu zu nutzen, Entfernungen zu den Radzählstationen zu berechnen, und die Anzahl nach Radius und Entfernung zum nächstgelegenen PoI mit in das Modell aufzunehmen. Die beste Datenquelle hierfür bietet Open Street Map (OMS). Wie schon im Kapitel \ref{Faktor_Stadt} beschrieben, handelt es sich bein Open Street Map um ein internationales Projekt, das in gemeinsamer Freiwilligenarbeit geographische Daten sammelt und öffentlich zur Verfügung stellt.\\
+
+\begin{lstlisting}[caption={OSM Daten Abfrage}]
+q <- getbb(toString(rawData$Town[1])) %>%
+opq() %>%
+add_osm_feature("amenity", "cinema")
+	
+cinema <- osmdata_sf(q)
+\end{lstlisting}
+\label{code:osmdata_query}
+
+Der Zugriff auf die OSM Daten funktioniert mit dem R-Paket \glqq osmdata\grqq von \cite{Padgham2017}. Dieses Paket bietet die Möglichkeit Daten verschiedener OSM Kategorien abzufragen über den Code \ref{code:osmdata_query}. Dabei bezeichnet \lstinline|rawData$Town[1]| den ersten Eintrag in der Variable \lstinline|Town| für den Grunddatensatz \lstinline|rawData|. Da jede Stadt ihr eigenes Skript hat, ist dies jeweils die relevante Stadt. Für diese Stadt wird eine Anfrage gestellt, die bestimmte Features erfüllen muss. Im Code Beispiel werden Kinos gesucht. Mithilfe des R-Pakets \glqq sf\grqq von \cite{Pebesma2018} werden die Daten der Anfrage in ein simple Feature Format gespeichert in \lstinline|cinema|. Dieses Format beinhaltet Koordinatenpunkten, mit jeweiliger ID und teils Namen und Adressen der verschiedenen Einrichtungen. Darüber hinaus aber auch Koordinaten der Linien, falls es sich z.B. um Straßennetze handelt, oder Koordinaten der jeweiligen Polygone der Gebäudegrundrisse.
+
+
+\subsection{Ausgewählte PoIs}
+
+Dieser öffentliche Zugang zu kategographischen Daten beinhaltet nicht nur Straßenverläufe, sondern auch Lageparameter zur öffentlichen Einrichtungen, Geschäften, Verkehrsknotenpunkten von Bus und Bahn, Ampeln und Straßenübergängen und vielem mehr. Es gibt also eine große Auswahl an Kategorien, die sich in das Modell aufnehmen ließen. Die Auswahl begrenzte sich dabei auf Kinos, Schulen, Universitätsgebäuden, Supermärkten, Kleidungsgeschäften und Fahrradwerkstätten. Die Auswahl dessen fand rein intuitiv statt. Schüler und Studenten sind häufiger Fahrradfahrer als der Rest der Bevölkerung. Kleidungsgeschäfte sind oft räumlich stark konzentriert im Stadtzentrum und bildern hierfür einen guten Indikator. Hat eine Stadt ein hohes Angebot an Fahrradwerkstätten, ist dies ein guter Hinweis darauf, dass hier ein hoher Radverkehr zu finden ist. Die Auswahl von Kinos und Supermärkten ist rein zufällig.\\
+
+Noch empfehlenswert wäre es den Datensatz um noch mehr Kategorien zu erweitern und genau zu evaluieren, welche Kategorien die Performance des Modells erhöhen. Jedoch hätte dies den Arbeitsumfang dieser Masterarbeit nochmals drastisch erhöht. In Abwägung des zeitlichen Aufwands und dem Nutzen für das Modell, beschränkt sich deswegen der Datensatz auf die erwähnten PoI's.\\
+In jeder Kategorie wurde jeweils die Entfernung der jeweiligen Radzählstation zum jeweiligen PoI berechnet. Darüber hinaus wurden in jeder Kategorie die Anzahl an Einreichtungen in zwei verschiedenen Radien berechnet. Für Kinos und Fahrradwerkstätten wurde ein ein Kilometer und ein drei Kilometer Radius gewählt. Für Schulen, Universitätsgebäude und Kleidungsgeschäfte wurde ein 500 Meter und ein zwei Kilometer Radius gewählt. Für Supermärkte wurde ein 500 Meter und ein ein Kilometer Radius genutzt. Die Auswahl dieser Berechnungsgrenzen sind wiederum rein zufällig. Eine genaue Evaluation dieser Auswahl fand nicht statt. Zu Universitätgebäuden, Supermärkten und Kleidungsgeschäften finden sich die Abbildungen \ref{UniBuild}, \ref{SuperMarket} und \ref{ClothesShop} im Anhang. Für Städte, die über keine Universität verfügen, wurde angenommen, dass die nächste Universität mindestens 50 km weit entfernt sei.
+
+\begin{lstlisting}[caption={Speichere die OSM Koordinaten}]
+cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), 
+	nrow = length(cinema$osm_polygons$osm_id), 
+	ncol = 3)
+	
+for(i in 1:length(cinema$osm_points$name)){
+   	cinmat[i,1]=cinema$osm_polygons$osm_id[i]
+	cinmat[i,2]=as.data.frame(
+		cinema$osm_polygons$
+		geometry[[i]][1])[1,1]
+	cinmat[i,3]=as.data.frame(
+		cinema$osm_polygons$
+		geometry[[i]][1])[1,2]
+}
+\end{lstlisting}
+\label{code:matrix}
+
+Der Code \ref{code:matrix} zeigt die Umwandlung der Daten. Von Interesse sind nur die ersten Koordinatenpunkte der jeweiligen Polygone der Kinogebäude. Dazu wird die Matrix \lstinline|cinmat| erstellt, die 3 Spalten hat und deren Reihenanzahl der Anzahl an ID's sind \lstinline|length(cinema$osm_polygons$osm_id)| entspricht, damit in diesem Fall alle Kinos berücksichtigt werden. Mittels einem \lstinline|for|-Loop werden alle Daten eingespeichert, so der Längengrad und Breitengrad in \lstinline|cinema$osm_polygons$geometry[[i]][1])[1,]|, der  und die jeweilige ID in \lstinline|cinema$osm_polygons$osm_id[i]|. Diese Matrix wird danach in ein Dataframe umgewandelt, um damit einfacher arbeiten zu können.\\
+
+Nun muss nur noch für jede einzelne Zählstation die jeweilige Distanz zu den verschiedenen Kinos berechnet werden. Dazu bietet das R-Paket \glqq geosphere\grqq von \cite{Hijmans2021} die Funktion \lstinline|distm|, mit deren Hilfe man mit zwei Koordination die Entfernung in Metern berechnen lassen kann. Pro Zählstation wird der \lstinline|For|-Loop im Code \ref{code:distc} ausgeführt. Im code sind zwei Indexnummern zu finden, dabei steht i für die jeweilige Zählstation und j für das jeweilige Kino. Im dataframe d sind die Koordinaten der jeweiligen Zählstationen gespeichert. Zusammen mit den Koordinaten der Kino im cinmat Datenframe kann die Funktion distm die Entfernung beider Koordinaten zueinander berechnen. Diese Entfernung wird dann im Vector distc gespeichert.
+
+\begin{lstlisting}[caption={Berechnung der Entfernung}]
+for (j in 1:length(cinmat$id)) {
+	cindist=distm(c(d$Lon[i],d$Lat[i]),
+		c(cinmat$lon[j],cinmat$lat[j]), 
+		fun=distGeo)
+	distc[j]=cindist
+}
+\end{lstlisting}
+\label{code:distc}
+
+Nun ist ein Vector vorhanden der alle Entfernungen gespeichert hat. Dieser kann nun dazu genutzt werden die benötigten Variablen zu berechnen. Zusammen mit dem Namen der aktuellen Station, der im Subset Datensatz \lstinline|d[1,1]| zu finden ist wird die jeweilige Variable gespeichert. Dabei lässt sich mit der Funktion \lstinline|min(distc)| die Entfernung zum nächstgelegenen Kino finden. Die Anzahl an Kinos in einem 1 km Radius findet sich mit der Funktion \lstinline|sum(distc < 1000)|.
+
+\begin{lstlisting}[caption={Berechnung der Entfernungsvariablen}]
+distmat_closest[i,1]=d[1,1]
+distmat_closest[i,2]=min(distc)
+
+distmat_1kmradius[i,1]=d[1,1]
+distmat_1kmradius[i,2]=sum(distc < 1000)
+\end{lstlisting}
+\label{code:dist_variables}
+
+Die so berechnet Variablen lassen sich einfach verbinden mit dem Befehl \lstinline|merge|.
+
+\begin{lstlisting}[caption={Füge neue Variablen dem Datensatz hinzu}]
+rawData = merge(x = rawData,y = distmat_closest,
+by = c("Station"),
+all = FALSE)
+
+rawData = merge(x = rawData,y = distmat_1kmradius,
+by = c("Station"),
+all = FALSE)
+\end{lstlisting}
+
 \subsection{Ausgestaltung des öffentlichen Verkehrs}
+
+Neben PoI's, die als Anlaufstellen des Radverkehrs dienen, ist der öffentliche Nahverkehr ein weiterer Faktor, der den Radverkehr beeinflussen sollte mit verschiedenen Effekten. Zum einem ist ein substitueller Effekt, dass je besser der öffentliche Nahverkehr ausgebaut wäre, desto mehr Fahrradfahrer weichen auf den Nahverkehr aus. Eine weitere interessante Variable hierfür wären auch Preistarife des Nahverkehrs. Darüber hinaus gibt es auch komplementäre Effekte vor allem zwischen Bahnhöfen und Fahrrädern.\\
+Im Datensatz vertreten sind Busstationen, Straßenbahnstationen, U-Bahn Stationen und Bahnhöfe. Darüber hinaus sind Daten zu Ampeln und Straßenübergänge ohne Ampeln im Datensatz vorhanden. Zu allen Daten ist wieder die nächstgelegende Entfernung angegeben, sowie die jeweilige Anzahl in zwei verschieden Radien. Für Ampeln, Straßenübergängen ohne Ampeln, Busstationen, Straßenbahnstationen und U-Bahn Stationen betragen die Radien jeweils 250 Meter und 1 km. Für Bahnhöfe betragen die Radien 1 und 3 km. Bei den Bahnhöfen wurden nur diejenigen ausgewählt, deren Betreiber die DB Netz AG ist. Im Anhang finden sich zu Busstationen, Ampeln, Straßenbahnstationen und Bahnhöfen die Abbildungen \ref{BusStops}, \ref{Signals}, \ref{Trams} und \ref{Train}. Für Städte, die nicht über Straßenbahnen oder U-Bahnen verfügen wurde angenommen, dass die nächsten Stationen jeweils mindestens 50 km weit entfernt seien.\\
+Im Code hier besteht kein großer Unterschied, außer dass nun einzelne OSM Punkte relevant sind und keine Polygone z.B. für die Ampeln.
+
 \subsection{Straßentypen}
+
+Neben Informationen zu Gebäuden, Einrichtungen und einzelnen Punkten wie Ampeln, bietet Open Street Map auch Daten zu Straßennetzen. Dabei wird jeder Straße eine Kategorie zugeteilt, von denen es zahlreiche gibt. Eine begrenzte Auswahl an Straßentypen wird im Datensatz berücksichtigt. Dazu zählen Radwege, Pfade, Wohngebietsstraßen, Straßen in einem verkehrsberuhigten Bereich oder auch Spielstraßen, sekundäre und primäre Hauptstraßen. Die Aufteilung von Straßentypen nach Stationen im Datensatz sieht man auch in der Abbildung \ref{Straßentypen}, wobei festzustellen ist, dass einige Stationen doppelt zugeteilt worden sind, durch sich kreuzende Straßen und Brücken. Auch Brücken wurden im Datensatz berücksichtigt und getestet, wie weit die nächstgelegene Brücke zur Zählstation entfernt ist. Eine Darstellung des Zusammenhangs zwischen dem Radverkehr und Brücken findet sich im Anhang in der Abbildung \ref{Bridge}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot20.png}
+	\caption{Verteilung von Straßentypen im Datensatz}
+	\label{Straßentypen}
+\end{figure}
+
+Ob eine Zählstation zu einem Straßentyp gehört oder nicht, wurde getestet, indem berechnet wurde, inwieweit eine Zählstation von einer Straße des betroffenen Straßentyp entfernt ist. Ist diese Entfernung geringer als 5 Meter, wurde angenommen, dass die Zählstation sich auf oder an einer solchen Straße befände. 
+
+\begin{lstlisting}[caption={Teste den Straßentyp}]
+for(i in 1:nlevels(as.factor(rawData$Station))){
+	dist_mat$cycleways[i] =
+		min(st_distance(DT2$geometry, 
+			DT3cycleways))
+	
+	if(dist_mat$cycleways[i]<5){
+		bool_mat$cycleways[i]=1
+	}
+}
+\end{lstlisting}
+
+Dazu muss die jeweils kürzeste Entfernung zwischen einem Punkt und einer Linie berechnet werden. Dies funktioniert mithilfe der \lstinline|st_distance| Funktion. Diese Funktion benutzt die Liste aller Koordinaten aller Straßenabschnitte des jeweiligen Straßentyps \lstinline|DT3cycleways| und der Koordinate der Zählstation \lstinline|DT2$geometry|, um daraus die Entfernung eines jedes Straßenabschnitts zum Punkt der Zählstation zu berechnen. Davon ist allein das Minimum interessant. Ist das Minimum geringer als 5 Meter, ist klar, dass die Zählstation nahe des jeweiligen Straßentyps liegt.
+
 \subsection{Sonstige}
+
+Weitere wichtige Variablen sind Feier und Ferientage. Dazu wurde eine Liste dieser Tage händisch für alle Bundesländer angelegt und diese automatisch in Datensatz übertragen.
 
 \chapter{Verwendete Methoden}
 
@@ -507,16 +657,40 @@ Es wird also deutlich, dass sich ein Log Lineares OLS Modell nicht dazu eignet, 
 
 \section{Support Vector Regression}
 
-Unter allen Methoden ist die Support Vector Regression jene, die noch die größten Ähnlichkeiten hat, zur herkömmlichen nicht linearen OLS Regression. Vorteile waren aber, dass die Support Vector Regression weniger stark auf Ausreißer reagiert als die OLS Regression. Kommt dieser Vorteil dem Modell zu Gute und minimiert die Gefahr des Overfittings?
+Unter allen Methoden ist die Support Vector Regression jene, die noch die größten Ähnlichkeiten hat zur herkömmlichen nicht linearen OLS Regression. Vorteile waren aber, dass die Support Vector Regression weniger stark auf Ausreißer reagiert als die OLS Regression. Neben diesen Vorteil hat die Support Vector Regression den Nachteil, dass die Berechnung des Modells deutlich mehr Zeit in Anspruch nimmt und deswegen leistungsfähige Hardware erfordert.\\
+Das R-Paket \glqq e1071\grqq, dass die passende Funktion bietet, stammte von \cite{e10712021}. R hat den Nachteil, dass es eine single threaded Sprache ist. Es spielt also keine Rolle, wie Leistungfähig die verwendete CPU ist, solange sich deren Leistung auf verschiedene CPU Kerne aufteilt. R nimmt zur Berechnung immer nur einen CPU Kern. Diese Limitation ließe sich umgehen mit dem Paket \glqq foreach\grqq von \cite{foreach} und \glqq doParallel\grqq auch von \cite{doParallel}, jedoch verhinderte das der zur Verfügung stehende RAM. R legt alle Daten mit denen ein Skript rechnet in den Arbeitsspeicher ab. Würden verschiedene Modelle gleichzeitig von verschiedenen CPU Kernen berechnet werden, dann müssten auch verschiedene Tests und Trainings Datensätze erstellt werden müssen und dies würde in Summe den zur Verfügung stehenden Arbeitsspeicher von nur 16 GB überlasten.\\
+Eine Möglichkeit dieses Problem zu umgehen, wäre es z.B. auf Amazon Web Service zurückzugreifen, die Server zum trainieren von Machine Learning Algorithmen anbieten. Einfacher ist es jedoch, nur einen kleinen zufällig ausgewählten Anteil des Datensatzes zu verwenden. Dabei besteht natürlich die Gefahr, dass die Vorhersagekraft des Modells leidet, wenn man zu wenig Datenpunkte des Datensatzes verwendet. Der Datensatz beinhaltet insgesamt $4.472.091$ Beobachtungen. Davon wurden bei der OLS Regression jeweils 80 \% zum trainieren des Modells genutzt. Reduziert man diese Trainingsdaten weiter und wählt zufällige Beobachtungen aus, dann verhält sich die Performance des Modells so, wie in der Abbildung \ref{fig:TrainingsShareValidation2} zu sehen.
 
-\section{Random Forest Regression}
+\begin{figure}%
+	\centering
+	\subfloat[\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil]{{\includegraphics[width=6cm]{Plots/plot48.png} }}%
+	\qquad
+	\subfloat[\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten]{{\includegraphics[width=6cm]{Plots/plot49.png} }}%
+	\caption{Support Vector Regression Performance nach Anteil des Datensatzes}%
+	\label{fig:TrainingsShareValidation2}%
+\end{figure}
+
+Dabei wurde das Modell einmal mit 0.001 \%, 0.01 \%, 0.1 \%, 0.25 \%, 0,5 \% und 1 \% getestet. Als erstes fällt auf, dass die Support Vector Regression bereits bessere Ergebnisse aufweist, als die OLS Regression, so steigt der Bestimmtheitswert für das Trainingsset auf bis zu 75 \% im Schnitt an, wo es zuvor noch um die 47 \% waren. Aber auch hier findet wieder Overfitting statt, denn der Bestimmtheitswert in den Test Sets steigt nur auf im Schnitt 25 \% an. Erhöht man den Anteil an Beobachtungen den man zum Training des Modells verwendet auf 0,25 \%, dann findet kaum noch eine nennenswerte Veränderung in der Performance statt. Nur die Dauer die zur Berechnung benötigt wird, steigt signifikant an. Nutzt man 0,25 \% der Daten zum Training, was ungefähr 9000 Beobachtungen entspricht, dann benötigt der Computer mit einer Intel Core i7-8750H CPU und 2,2 GHz Leistung im Schnitt 21 Minuten je Modell. Bei 1 \% verwendeter Daten, was ungefähr 37.800 Beobachtungen entspricht, benötigt die Berechnung bereits im Schnitt 90 Minuten pro Modell. Da jeweils 5 Modell trainiert werden auf 5 unterschiedlichen Cross Validation Sets und das das sechs mal zu unterschiedlichen Anteilen am Datensatz, hat die Erstellung der Ergebnisse in Abbildung \ref{fig:TrainingsShareValidation2} 14,2 Stunden benötigt.
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=\textwidth]{Plots/plot40.png}
-	\caption{Feature Selection Ergebnis der RF Regression in 6 Modellen}
-	\label{RF_ModelSelection}
+	\includegraphics[width=\textwidth]{Plots/plot44.png}
+	\caption{Support Vector Regression Ergebnis der RF Regression in 6 Modellen}
+	\label{SVR_ModelSelection}
 \end{figure}
+
+Darüber hinaus kann man auch hier die Performance des Modells anhand der Auswahl der Variablen im Modell vergleichen. Auch hier werden im ersten Modell ausschließlich zeitliche Variablen verwendet, im zweiten kommen die fünf Wettervariablen hinzu, im dritten Variablen, die Demographie, Stadtausdehnung, Autobesitz und Fahradklima beschreiben, im vierten räumliche Variablen von Open Street Map, im fünften Modell Variablen zu den Straßentypen und im sechsten nicht lineare Variablen. Kubische Variablen sind dieses Mal in keinem Modell enthalten, weil dies zu einer Überlastung des Arbeitsspeichers führte. Alle Modelle wurden mit einem Trainingsanteil von 0,05 \% berechnet, also ungefähr 17.900 Beobachtungen. Den Vergleich zwischen den Modellen zeigt die Abbildung \ref{SVR_ModelSelection}. Diese zeigt deutlich, dass das geringste Maß an Overfitting im dritten Modell stattfindet, erst danach nimmt das Overfitting zu. Das dritte Modell allein ist jedoch von wenig Nutzen, denn ohne die räumlichen Variablen, gibt es keine Möglichkeit räumliche Unterschiede in der Vorhersage hervor zu eben, was der eigentliche Nutzen des Modells sein soll. So ist auch die Support Vector Regression nur wenig dazu geeignet zur räumlichen Vorhersage des urbanen Fahrradverkehrs.\\
+Dies bestätigt auch ein weiterer Blick in die Tabelle \ref{tbl:SVR1}, die die Performance des endgültigen Support Vector Modells zeigt, mit allen Variablen, bis auf den kubischen. Im Vergleich zum OLS Modell sehen wir keine übermäßigen Ausreißer mehr im RMSE der Test Datensätze, aber die Performance verbessert sich nicht ausreichend genug, um damit vernünftige Aussagen treffen zu können.
+
+\begin{table}
+	\csvautotabular[separator=semicolon]{Tables/Modell2SVRradial.csv}
+	\caption{Performance des SVR Modells}
+	\label{tbl:SVR1}
+\end{table}
+
+\section{Random Forest Regression}
+
+Die bisherigen Versuche ein schlüssiges Modell förderten leider nur unzufrieden stellende Ergebnisse hervor. Deswegen wird es Zeit leistungsfähigere Methoden zu verwenden. Ähnlich wie Support Vector Regressionen sind Random Forest deutlich rechenintensiver als eine OLS Regression. 
 
 \begin{figure}%
 	\centering
@@ -527,6 +701,16 @@ Unter allen Methoden ist die Support Vector Regression jene, die noch die größ
 	\label{fig:TrainingsShareValidation1}%
 \end{figure}
 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot40.png}
+	\caption{Feature Selection Ergebnis der RF Regression in 6 Modellen}
+	\label{RF_ModelSelection}
+\end{figure}
+
+
+
 \begin{figure}%
 	\centering
 	\subfloat[\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume]{{\includegraphics[width=6cm]{Plots/plot36.png} }}%
@@ -536,7 +720,7 @@ Unter allen Methoden ist die Support Vector Regression jene, die noch die größ
 	\label{fig:NTreeValidation1}%
 \end{figure}
 
-\section{Neuronales Netzs}
+\section{Neuronales Netz}
 
 \section{Model Projektion}
 
@@ -548,7 +732,77 @@ Unter allen Methoden ist die Support Vector Regression jene, die noch die größ
 
 \section{Fazit}
 
-Test
+\chapter{Anhang}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot03.png}
+	\caption{Verteilung des Fahrradaufkommens nach Alter}
+	\label{Alter}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot05.png}
+	\caption{Zusammenhang von Fahrradklima und Radverkehr}
+	\label{Fahrradklima}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot13.png}
+	\caption{Zusammenhang von Anzahl der Uni-Gebäude in einem 500 M Radius und Radverkehr}
+	\label{UniBuild}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot14.png}
+	\caption{Zusammenhang von Anzahl der Supermärkte in einem 1 km Radius und Radverkehr}
+	\label{SuperMarket}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot15.png}
+	\caption{Zusammenhang von Anzahl der Kleidungsgeschäften in einem 2 km Radius und Radverkehr}
+	\label{ClothesShop}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot16.png}
+	\caption{Zusammenhang von Anzahl der Busstationen in einem 1 km Radius und Radverkehr}
+	\label{BusStops}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot17.png}
+	\caption{Zusammenhang von Anzahl der Ampeln in einem 1 km Radius und Radverkehr}
+	\label{Signals}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot18.png}
+	\caption{Zusammenhang von Anzahl der Straßenbahnstationen in einem 1 km Radius und Radverkehr}
+	\label{Trams}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot19.png}
+	\caption{Zusammenhang des nächsten Bahnhofes und dem Radverkehr}
+	\label{Train}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot21.png}
+	\caption{Entfernung zur nächsten Brücke und Radverkehr}
+	\label{Bridge}
+\end{figure}
 
 \newpage
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}

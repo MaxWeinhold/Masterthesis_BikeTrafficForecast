@@ -6,7 +6,8 @@
 #In order to make a notification sound to inform the user that calculations are finished
 if(!require("beepr")) install.packages("beepr")
 library(beepr)
-library(randomForest)
+library(e1071)
+citation("e1071")
 
 library(tidyverse)
 library(caret)

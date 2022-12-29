@@ -7,6 +7,8 @@ library(lubridate)
 library(dplyr)
 library(geosphere)#package for calculating distance using longitude and latitude
 
+citation("geosphere")
+
 #Clean up memory
 rm(list=ls())
 
@@ -782,6 +784,8 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Berlin")
   if(!require("tidyverse")) install.packages("tidyverse")
   if(!require("sf")) install.packages("sf")
   if(!require("ggmap")) install.packages("ggmap")
+  
+  citation("sf")
   
   #load packages
   library(tidyverse)
