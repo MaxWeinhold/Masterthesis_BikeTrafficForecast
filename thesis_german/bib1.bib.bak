@@ -766,4 +766,12 @@
   url     = {https://doi.org/10.32614/RJ-2018-009},
 }
 
+@Manual{Hijmans2021,
+  title  = {geosphere: Spherical Trigonometry},
+  author = {Robert J. Hijmans},
+  note   = {R package version 1.5-14},
+  year   = {2021},
+  url    = {https://CRAN.R-project.org/package=geosphere},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -52,15 +52,15 @@ ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
 
-Months = 6
+Months = c(1:12)
 ProjectionData = merge(x = ProjectionData,y = Months,all = FALSE)
 names(ProjectionData)[3] = "Months"
 
-Day = c(14,15)
+Day = c(1:31)
 ProjectionData = merge(x = ProjectionData,y = Day,all = FALSE)
 names(ProjectionData)[4] = "Day"
 
-Hour = c(12:14)
+Hour = c(12)
 ProjectionData = merge(x = ProjectionData,y = Hour,all = FALSE)
 names(ProjectionData)[5] = "Hour"
 
@@ -2142,7 +2142,7 @@ ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
-load("Modell3_RF_linear.rdata")
+load("Modell3_RF.rdata")
 
 summary(model)
 
@@ -2154,8 +2154,14 @@ summary(as.numeric(projection_pred))
 summary(exp(as.numeric(projection_pred)))
 
 ProjectionData$Value = exp(as.numeric(projection_pred))
-
+summary(ProjectionData$Value)
+nrow(ProjectionData)
 #Create Map
+
+mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=14)
+lower = mean(ProjectionData$Value)/2
+mid = mean(ProjectionData$Value)
+higher = mean(ProjectionData$Value) + mean(ProjectionData$Value)/2
 
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
@@ -2166,31 +2172,19 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       streetPositions = ProjectionData[ProjectionData$Months==levels(as.factor(ProjectionData$Months))[i],]
       streetPositions = streetPositions[streetPositions$Day==levels(as.factor(ProjectionData$Day))[j],]
       streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
+      nrow(streetPositions)
       
-      mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=14)
-      
-      mid = (mean(ProjectionData$Value))
-      map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value)
-                                               , size = 1.5, alpha = 0.8, lineend = "round") +
+      map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.5, alpha = 0.8, lineend = "round") +
         ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1], " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1], sep="")) + 
-        scale_color_gradient2(midpoint = mid, low = "green", mid = "red",
-                              high = "blue", limits = c(0, max(ProjectionData$Value)), space = "Lab" )+
+        scale_colour_gradientn(colours = rainbow(6), limits = c(0, max(ProjectionData$Value)), space = "Lab") +
         labs(y = "Längengrad", x = "Breitengrad", color ="Fahrer summiert")
-      
-      
-      
-      
-      
-      
-      
       
       setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults/Plots")
       png(file=paste("map",ProjectionData$Town[1],"plot_RF_Innenstadt_",i,"_",j,"_",k,".png",sep=""),width=800, height=800)
-      map_plot
+      print(map_plot)
       dev.off()
       
-      
-      #write.csv(ProjectionData,paste("map",ProjectionData$Town[1],"plot_RF_Innenstadt_",i,"_",j,"_",k,".csv",sep=""))
+      summary(streetPositions)
       
     }
     

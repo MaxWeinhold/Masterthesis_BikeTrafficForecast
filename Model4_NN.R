@@ -150,7 +150,7 @@ for(i in 1:length(validation_set)){
   
   # Split data to reduce duration of computation
   training.samples <- trainSet$Value %>%
-    createDataPartition(p = 0.005, list = FALSE)
+    createDataPartition(p = 0.025, list = FALSE)
   train.data  <- trainSet[training.samples, ]
   test.data <- trainSet[-training.samples, ]
   
@@ -180,21 +180,27 @@ for(i in 1:length(validation_set)){
   testSet = testSet %>% mutate_all(~replace(., is.na(.), 0))
   train.data = train.data %>% mutate_all(~replace(., is.na(.), 0))
   
-  summary(train.data)
-  summary(testSet)
-  
+  #print(summary(train.data))
+  #summary(testSet)
+  #
   model <- neuralnet(Value ~ Hour + Months + Weekend + Night + publicHoliday + schoolHoliday + 
-                 Wind + CloudCover + Humidity + Rain + Temperature + Cinemas3kmRadius +
-                 ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center + 
-                 ClosestSchool + Schools500mmRadius + Schools2kmRadius + ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius + 
-                 ClosestSuperMarket + SuperMarket1kmRadius + ClosestClothesShop + ClothesShop500mmRadius + BusStop250mmRadius + ClothesShop2kmRadius + Signals250mmRadius +
-                 BusStop250mmRadius + UnmCross250mmRadius + BusStop1kmRadius + Tram250mmRadius + Subway250mmRadius + ClosestTrainS + BikeShop3kmRadius + 
-                 cycleways + path + secondary + primary + ClosestBridge + young18 + young25 + young30 + 
-                 older40 + older60 + Immigrants + PKWs + Rain2 + 
-                 Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 + ClothesShop500mmRadius2 +
-                 ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 + Rain3 +
-                 Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3 + SignalsRatio, data =  train.data,
-                 hidden = c(3, 2), linear.output = FALSE)
+                       Wind + CloudCover + Humidity + Rain + Temperature + Cinemas3kmRadius +
+                       ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center + 
+                       ClosestSchool + Schools500mmRadius + Schools2kmRadius + ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius + 
+                       ClosestSuperMarket + SuperMarket1kmRadius + ClosestClothesShop + ClothesShop500mmRadius + BusStop250mmRadius + ClothesShop2kmRadius + Signals250mmRadius +
+                       BusStop250mmRadius + UnmCross250mmRadius + BusStop1kmRadius + Tram250mmRadius + Subway250mmRadius + ClosestTrainS + BikeShop3kmRadius + 
+                       cycleways + path + secondary + primary + ClosestBridge + young18 + young25 + young30 + 
+                       older40 + older60 + Immigrants + PKWs + Rain2 + 
+                       Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 + ClothesShop500mmRadius2 +
+                       ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 + Rain3 +
+                       Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3 + SignalsRatio, data =  train.data,
+                       hidden = c(48, 26, 16, 8, 4, 2), linear.output = FALSE, lifesign = 'full', rep=3, stepmax = 100000, threshold = 0.025)
+  
+  #plot(model,col.hidden = 'darkgreen',     
+  #     col.hidden.synapse = 'darkgreen',
+  #     show.weights = F,
+  #     information = F,
+  #     fill = 'lightblue')
   
   end_time <- Sys.time()
   print(end_time - start_time)

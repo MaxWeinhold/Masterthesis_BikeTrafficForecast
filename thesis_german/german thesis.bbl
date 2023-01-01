@@ -185,6 +185,11 @@ Li, Y., Zheng, Y., Zhang, H., and Chen, L. (2015).
   on Advances in Geographic Information Systems}, SIGSPATIAL '15, New York, NY,
   USA. Association for Computing Machinery.
 
+\bibitem[Liaw and Wiener, 2002]{Liaw2002}
+Liaw, A. and Wiener, M. (2002).
+\newblock Classification and regression by randomforest.
+\newblock {\em R News}, 2(3):18--22.
+
 \bibitem[Meng et~al., 2016]{Meng2016}
 Meng, M., Zhang, J., Wong, Y.~D., and Au, P.~H. (2016).
 \newblock Effect of weather conditions and weather forecast on cycling travel

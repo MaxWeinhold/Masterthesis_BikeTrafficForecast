@@ -622,13 +622,42 @@ Die Ableitungen des Fehlerterms nach den Gewichten, die wir brauchen, um den Gra
 
 \section{Validation}
 
-\subsection{Conditional Validation Set Building}
+Statistische Modelle wie ein neuronales Netz machen erstaunlich präzise Vorhersagen. Doch wie kann man eine solche Präzession messen? Dafür verantwortlich ist die Validierung. Mittels Maße wie dem Bestimmtheitsmaß R$^2$ oder dem RMSE kann man die Performance der Vorhersagen im Vergleich mit den tatsächlichen Daten messen.\\
+Doch wie validiert man die Vorhersagekraft eines Modells auf Daten, mit denen das Modell selbst nicht trainiert worden ist, um zu testen ob das Modell die eigenen Daten nicht overfittet? Hierzu ließe sich der Validation Set Approach nutzen. Teilt man die Beobachtungen in zwei unterschiedlichen Sets zufälligerweise auf, erhält man ein Set, mit dem man ein Modell trainieren kann und eines mit dem man es testen kann. Die Quote nach der man diese Beobachtungen aufteilt nennt man Split. Ein häufig verwendeter Split ist 80 \% für das Trainings Set und 20 \% für das Test Set.
 
 \subsection{Cross Validation}
 
-Statistische Modelle wie ein neuronales Netz machen erstaunlich präzise Vorhersagen. Doch wie kann man eine solche Präzession messen? Dafür verantwortlich ist die Validierung. Mittels Maße wie dem Bestimmtheitsmaß R$^2$ oder dem RMSE kann man die Performance der Vorhersagen im Vergleich mit den tatsächlichen Daten messen.\\
-Doch wie validiert man die Vorhersagekraft eines Modells auf Daten, mit denen das Modell selbst nicht trainiert worden ist, um zu testen ob das Modell die eigenen Daten nicht overfittet? Hierzu ließe sich der Validation Set Approach nutzen. Teilt man die Beobachtungen in zwei unterschiedlichen Sets zufälligerweise auf, erhält man ein Set, mit dem man ein Modell trainieren kann und eines mit dem man es testen kann.\\
 Eine Weiterführung dieses Konzepts ist die Cross Validation. Hier wird der Datensatz nicht in 2 sondern in $k$ viele und gleichgroße Sets unterteilt. Es werden dann $k$ viele Validierungen vorgenommen. Bei jedem Durchlauf wird eines der Sets zur Validierung und die restlichen Sets zum Training verwendet. Das bietet den Vorteil, dass der gesamte Datensatz zur Validierung und zum Training verwendet wird, während beim herkömmlichen Ansatz immer auf ein Teil der Daten verzichtet werden musste.
+
+\subsection{Conditional Validation Set Building}
+
+In dem Fall der Daten der Radzählstation gäbe es zusätzliches Problem, dass auch die Validierung mit dem Validation Set Approach Overfitting wahrscheinlich nicht richtig erkennen ließe. Denn durch eine rein zufällige Aufteilung der Daten in verschiedene Sets, ließe sich die wahre externe Validität des Modells nicht prüfen, denn auch dann träfe das Modell immer vorhersagen für fixe räumliche Punkte, die bereits auch im Trainings Datensatz vorkamen.\\
+Um dieses Problem zu umgehen, muss man die Aufteilung der Daten in die verschiedenen Sets auf die Ausprägung der Stationen kondititionieren. Das heißt jede Zählstation darf in jedem Set nur einmal vorkommen, damit im Test Set immer Orte vorhanden sind, die dem Modell unbekannt sind. Diese Aufgabe übernimmt der folgende Code:
+
+\begin{lstlisting}[caption={Aufteilung der Zählstationen}]
+while(length(stations_not_chosen)>0)
+{
+	x1 <- sample(1:length(stations_not_chosen), 1)
+	newStation = stations_not_chosen[x1]
+	
+	stations_splits[stations_splits$Station == 
+		newStation,]$Split = actual_split
+	
+	observations_per_splits$Observations[actual_split] = 				
+	observations_per_splits$Observations[actual_split] + 
+	Obs_perStation[Obs_perStation$Station == newStation,]$Observations
+	
+	stations_not_chosen = stations_not_chosen[-x1]
+	
+	if(median(observations_per_splits$Observations)
+	<=observations_per_splits$Observations[actual_split]){
+		
+		actual_split = actual_split + 1
+		if(actual_split>validation_splits){actual_split=1}
+		
+	}
+}
+\end{lstlisting}
 
 \chapter{Ergebnisse}
 
@@ -690,7 +719,7 @@ Dies bestätigt auch ein weiterer Blick in die Tabelle \ref{tbl:SVR1}, die die P
 
 \section{Random Forest Regression}
 
-Die bisherigen Versuche ein schlüssiges Modell förderten leider nur unzufrieden stellende Ergebnisse hervor. Deswegen wird es Zeit leistungsfähigere Methoden zu verwenden. Ähnlich wie Support Vector Regressionen sind Random Forest deutlich rechenintensiver als eine OLS Regression. 
+Die bisherigen Versuche ein schlüssiges Modell zu berechnen förderten leider nur unzufrieden stellende Ergebnisse hervor. Deswegen wird es Zeit leistungsfähigere Methoden zu verwenden. Das R Paket \glqq randomForest\grqq  von \cite{Liaw2002}. Ähnlich wie Support Vector Regressionen sind Random Forest deutlich rechenintensiver als eine OLS Regression. Deswegen wird auch hier nur ein Teil der Daten zum Training verwendet. Wie sich die Performance des Random Forest Models nach Anteil der zur Berechnung verwendeten Daten ändert, zeigt die Abbildung \ref{fig:TrainingsShareValidation1}, deren Berechnung insgesamt 9,35 Stunden benötigte. Dabei wird sichtbar, dass qualitativ wie auch quantitativ die Random Forests performanter sind, als die vorherhige Support Vector Regression. In Abbildung \ref{fig:TrainingsShareValidation2} war noch zu sehen, dass die Berechnung mit 1 \% der Daten ca 90 Minuten pro Modell benötigte. Hier sind es für 2 \% nur noch 80 Minuten.
 
 \begin{figure}%
 	\centering
@@ -701,15 +730,7 @@ Die bisherigen Versuche ein schlüssiges Modell förderten leider nur unzufriede
 	\label{fig:TrainingsShareValidation1}%
 \end{figure}
 
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=\textwidth]{Plots/plot40.png}
-	\caption{Feature Selection Ergebnis der RF Regression in 6 Modellen}
-	\label{RF_ModelSelection}
-\end{figure}
-
-
+Auch hier findet sich wieder Overfitting. Dennoch ist die Vorhersagesicherheit bedeutend besser als zuvor. Im Trainingsset erreicht das Random Forest Modell einen Bestimmtheitswert von 80 \% während die Support Vector Regression 75 \% maximal erreichte. Im Test Set sieht der Unterschied noch besser aus. Hier werden nun bis zu 60 \% erreicht. Zur Berechnung der Abbildung \ref{fig:TrainingsShareValidation1} wurden im Modell 500 Zufallsbäume verwendet. Diese Anzahl lässt sich variieren. Wie sich die Performance des Modells mit der Anzahl an verwendeten Zufallsbäumen verändert, zeigt die Abbildung \ref{fig:NTreeValidation1}, deren Berechnung 1,27 Stunden gebraucht hat. Dabei fällt schnell auf, dass das Maximum an Performance mit bereits relativ wenigen Zufallsbäumen bereits erreicht ist.
 
 \begin{figure}%
 	\centering
@@ -720,7 +741,26 @@ Die bisherigen Versuche ein schlüssiges Modell förderten leider nur unzufriede
 	\label{fig:NTreeValidation1}%
 \end{figure}
 
+Darüber hinaus bleibt nur noch der Vergleich von Modellen mit verschiedenen Variablen übrig. Dazu fand die selbe Modellauswahl wie im Abschnitt zur OLS Regression statt. Das heißt das Modell 1 greift auf Variablen zum Jahr, Monat, der Stunde, zum Wochenende, Nacht, und den Ferien- wie auch Feiertagen. Modell 2 fügt Wettervariablen hinzu. Modell 3 nutzt zusätzlich demographische Variabeln, Bevölkerungsanzahl, Fläche, Autobesitzrate, Immigrantenanteil und Fahrradklimaindex. Im Modell 4 kommen die Open Street Variablen hinzu. In den darauf folgenden Modellen kommen noch die nicht linearen Effekte hinzu. Zu sehen ist der Vergleich in der Performance der unterschiedlichen Modelle in der Abbildung \ref{RF_ModelSelection}. Einen ganz signifikanten Anstieg in der Performance ist zwischen Modell 2 und 3 zu sehen. Danach finden kaum große Änderungen in der Performance sowohl im Trainings Datensatz, als auch im Test Datensatz.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot40.png}
+	\caption{Feature Selection Ergebnis der RF Regression in 6 Modellen}
+	\label{RF_ModelSelection}
+\end{figure}
+
+\begin{table}
+	\csvautotabular[separator=semicolon]{Tables/Modell3RF.csv}
+	\caption{Performance des RF Modells}
+	\label{tbl:FR1}
+\end{table}
+
+Kombiniert man die so gewonnen Erkenntnisse zur Performance von Random Forest dann kommt man zu den Ergebnissen der Cross Validation in der Tabelle \ref{tbl:FR1}. Dieses Modell nutzte 0,5 \% der Trainingsdaten, 250 Zufallsbäume, verzichtet auf nicht lineare Variablen und benötigte zur Berechnung 24 Minuten. Im Test Datensatz erreicht das Random Forest Modell ein Bestimmtheitsmaß von 44,5 \%. Das ist mehr als dreimal so viel wie im OLS Modell und mehr als 1,5 mal so viel wie mit der Support Vector Regression. Auch wenn diese Werte bereits deutlich besser sind, als die der vorherigen Modelle, kann dies nicht darüber hinweg täuschen, dass sowohl die Höhe des Bestimmtheitsmaßes als auch des RMSE noch zu wünschen übrig lässt, doch in Anbetracht der schwierigen Aufgabe, die dieses Modell zu erfüllen hat, sind die Ergebnisse dennoch interessant, denn das Modell hat nur wenige Beobachtungsorte, auf deren Grundlage es Vorhersagen für ein ganzes Stadtgebiet treffen soll. Die letzte Methode, die nun noch übrig bleibt und die vielleicht in der Lage ist, noch bessere Vorhersagen zu treffen, ist das neuronale Netz.
+
 \section{Neuronales Netz}
+
+Im Vergleich zu den vorherigen Methoden sind neuronale Netze die populärste Methode, vor allem bekannt für die verblüffende Präzesion ihrer Vorhersagen. Doch verblüffen die neuronalen Netze auch bei der Vorhersage des urbanen Radverkehrs? Das hängt vor allem von den vielen Variablen ab, die man bei einem neuronalen Netz einstellen kann. Zum einem kann man festlegen, wie viele Ebenen ein neuronales Netz haben soll und wie viele Knotenpunkte jede Ebene haben darf, die Informationen an die nächste Ebene weiter geben.
 
 \section{Model Projektion}
 

@@ -33,17 +33,17 @@
 \contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{47}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{50}{subsection.4.5.2}%
 \contentsline {section}{\numberline {4.6}Validation}{51}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Conditional Validation Set Building}{51}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Cross Validation}{51}{subsection.4.6.2}%
-\contentsline {chapter}{\numberline {5.}Ergebnisse}{53}{chapter.5}%
-\contentsline {section}{\numberline {5.1}OLS Regression}{53}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Support Vector Regression}{55}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Random Forest Regression}{59}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Neuronales Netz}{59}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Model Projektion}{59}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{59}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{59}{section.5.7}%
-\contentsline {chapter}{\numberline {6.}Diskussion}{63}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{63}{section.6.1}%
-\contentsline {chapter}{\numberline {7.}Anhang}{64}{chapter.7}%
-\contentsline {chapter}{Literaturverzeichnis}{74}{figure.caption.40}%
+\contentsline {subsection}{\numberline {4.6.1}Cross Validation}{52}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Conditional Validation Set Building}{52}{subsection.4.6.2}%
+\contentsline {chapter}{\numberline {5.}Ergebnisse}{54}{chapter.5}%
+\contentsline {section}{\numberline {5.1}OLS Regression}{54}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Support Vector Regression}{56}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Random Forest Regression}{60}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Neuronales Netz}{64}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Model Projektion}{64}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{64}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{64}{section.5.7}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{65}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{65}{section.6.1}%
+\contentsline {chapter}{\numberline {7.}Anhang}{66}{chapter.7}%
+\contentsline {chapter}{Literaturverzeichnis}{76}{figure.caption.41}%

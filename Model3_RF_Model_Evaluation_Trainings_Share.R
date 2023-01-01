@@ -8,6 +8,8 @@ if(!require("beepr")) install.packages("beepr")
 library(beepr)
 library(randomForest)
 
+citation("randomForest")
+
 library(tidyverse)
 library(caret)
 
