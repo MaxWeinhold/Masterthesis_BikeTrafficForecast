@@ -36,13 +36,13 @@ rm(list=ls())
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 
 #Load Data Set
-BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
+#BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
 
-beep("coin")
+#beep("coin")
 
-Variables_you_need = names(BikeData)
-summaryBikeData = summary(BikeData)
-rm(BikeData)
+#Variables_you_need = names(BikeData)
+#summaryBikeData = summary(BikeData)
+#rm(BikeData)
 
 #Choose Values you are interested in -------------------------------------------
 
@@ -52,15 +52,15 @@ ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
 
-Months = c(1:12)
+Months = c(6)
 ProjectionData = merge(x = ProjectionData,y = Months,all = FALSE)
 names(ProjectionData)[3] = "Months"
 
-Day = c(1:31)
+Day = c(15)
 ProjectionData = merge(x = ProjectionData,y = Day,all = FALSE)
 names(ProjectionData)[4] = "Day"
 
-Hour = c(12)
+Hour = c(16)
 ProjectionData = merge(x = ProjectionData,y = Hour,all = FALSE)
 names(ProjectionData)[5] = "Hour"
 
@@ -444,11 +444,11 @@ if(Year %in% levels(as.factor(test$Year))){
   
   setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
   png(file=paste("Predictions_",Town,"_plot01.png",sep=""),width=800, height=800)
-  plot1
+  print(plot1)
   dev.off()
   
   png(file=paste("Predictions_",Town,"_plot02.png",sep=""),width=800, height=800)
-  plot2
+  print(plot2)
   dev.off()
   
 }
@@ -704,8 +704,8 @@ Variables_you_need
 #Get all the streetpositions----------------------------------------------------
 
 #bounding box for our map
-#myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805)
-myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896)
+myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805)
+#myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896)
 
 #building the query
 q <- myLocation %>% 
@@ -718,7 +718,15 @@ streets <- osmdata_sf(q)
 
 names(streets$osm_lines)
 
-#levels(as.factor(streets$osm_lines$maxspeed.type))
+streets$osm_lines$bicycle
+
+nrow(streets$osm_lines)
+
+levels(as.factor(streets$osm_lines$highway))
+
+streets$osm_lines$highway=="footway"
+
+streets$osm_lines$bridge
 
 streetPoints = 0
 
@@ -734,9 +742,17 @@ streetPositions$Lat=50
 streetPositions$Lon2=7
 streetPositions$Lat2=NA
 streetPositions$Station=NA
+streetPositions$Footway=NA
+streetPositions$pedestrian=NA
+streetPositions$cycleways=NA
+streetPositions$residential=NA
+streetPositions$living_street=NA
+streetPositions$path=NA
+streetPositions$secondary=NA
+streetPositions$primary=NA
 
 k = 1
-
+i=1
 #foreach (i = 1:length(streets$osm_lines$geometry))%dopar%{
 for(i in 1:length(streets$osm_lines$geometry)){
   
@@ -750,6 +766,14 @@ for(i in 1:length(streets$osm_lines$geometry)){
       streetPositions$Lon2[k]=streets$osm_lines$geometry[[i]][j+1]
       streetPositions$Lat2[k]=streets$osm_lines$geometry[[i]][l/2+j+1]
       streetPositions$Station[k]=paste("Station_",k,sep="")
+      streetPositions$Footway[k]=streets$osm_lines$highway[[i]]=="footway"
+      streetPositions$pedestrian[k]=streets$osm_lines$highway[[i]]=="pedestrian"
+      streetPositions$cycleways[k]=streets$osm_lines$highway[[i]]=="cycleways"
+      streetPositions$residential[k]=streets$osm_lines$highway[[i]]=="residential"
+      streetPositions$living_street[k]=streets$osm_lines$highway[[i]]=="living_street"
+      streetPositions$path[k]=streets$osm_lines$highway[[i]]=="path"
+      streetPositions$secondary[k]=streets$osm_lines$highway[[i]]=="secondary"
+      streetPositions$primary[k]=streets$osm_lines$highway[[i]]=="primary"
       
       k = k + 1
     })
@@ -766,6 +790,23 @@ streetPositions = na.omit(streetPositions)
 #ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2), color = "red", size = 1, alpha = 0.8, lineend = "round")
 
 ProjectionData = merge(x = ProjectionData,y = streetPositions,all = FALSE)
+
+summary(ProjectionData)
+
+ProjectionData<-ProjectionData[!(ProjectionData$Footway==TRUE),]
+ProjectionData<-ProjectionData[!(ProjectionData$pedestrian==TRUE),]
+
+summary(ProjectionData)
+
+ProjectionData$Footway = NULL
+ProjectionData$pedestrian = NULL
+
+ProjectionData$cycleways = as.integer(as.logical(ProjectionData$cycleways))
+ProjectionData$residential = as.integer(as.logical(ProjectionData$residential))
+ProjectionData$living_street = as.integer(as.logical(ProjectionData$living_street))
+ProjectionData$path = as.integer(as.logical(ProjectionData$path))
+ProjectionData$secondary = as.integer(as.logical(ProjectionData$secondary))
+ProjectionData$primary = as.integer(as.logical(ProjectionData$primary))
 
 summary(ProjectionData)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
@@ -1965,73 +2006,16 @@ Sys.sleep(120)
 
 #RoadNetwork--------------------------------------------------------------------
 
-city=Town
-
-q1 <- getbb(city) %>%
-  opq() %>%
-  add_osm_feature("highway", "cycleway")
-
 Sys.sleep(120)
 
-q2 <- getbb(city) %>%
-  opq() %>%
-  add_osm_feature("highway", "residential")
-
-Sys.sleep(120)
-
-q3 <- getbb(city) %>%
-  opq() %>%
-  add_osm_feature("highway", "living_street")
-
-Sys.sleep(120)
-
-q4 <- getbb(city) %>%
-  opq() %>%
-  add_osm_feature("highway", "path")
-
-Sys.sleep(120)
-
-q5 <- getbb(city) %>%
-  opq() %>%
-  add_osm_feature("highway", "secondary")
-
-Sys.sleep(120)
-
-q6 <- getbb(city) %>%
-  opq() %>%
-  add_osm_feature("highway", "primary")
-
-Sys.sleep(120)
-
-q7 <- getbb(city) %>%
+q7 <- getbb(Town) %>%
   opq() %>%
   add_osm_feature("bridge", "yes")
 
 #str(q1) #query structure
 
-cycleways <- osmdata_sf(q1)
-residential <- osmdata_sf(q2)
-living_street <- osmdata_sf(q3)
-path <- osmdata_sf(q4)
-secondary <- osmdata_sf(q5)
-primary <- osmdata_sf(q6)
 bridge <- osmdata_sf(q7)
 
-dist_mat=as.data.frame(levels(as.factor(ProjectionData$Station)))
-dist_mat$cycleways = 9999
-dist_mat$residential = 9999
-dist_mat$living_street = 9999
-dist_mat$path = 9999
-dist_mat$secondary = 9999
-dist_mat$primary = 9999
-
-bool_mat=as.data.frame(levels(as.factor(ProjectionData$Station)))
-bool_mat$cycleways = 0
-bool_mat$residential = 0
-bool_mat$living_street = 0
-bool_mat$path = 0
-bool_mat$secondary = 0
-bool_mat$primary = 0
 
 bridge_mat=levels(as.factor(ProjectionData$Station))
 bridge_mat=as.data.frame(bridge_mat)
@@ -2050,30 +2034,12 @@ for(i in 1:nlevels(as.factor(ProjectionData$Station))){
   DT2 = st_as_sf(DT, coords = c("long1","lat1"))
   DT2 <- st_set_crs(DT2, 4269)
   st_crs(DT2) <- 4269 
-  DT3cycleways = st_transform(cycleways$osm_lines$geometry,4269)
-  DT3residential = st_transform(residential$osm_lines$geometry,4269)
-  DT3living_street = st_transform(living_street$osm_lines$geometry,4269)
-  DT3path = st_transform(path$osm_lines$geometry,4269)
-  DT3secondary = st_transform(secondary$osm_lines$geometry,4269)
-  DT3primary = st_transform(primary$osm_lines$geometry,4269)
   DT3bridge = st_transform(bridge$osm_lines$geometry,4269)
   
-  dist_mat$cycleways[i]=min(st_distance(DT2$geometry, DT3cycleways))
-  dist_mat$residential[i]=min(st_distance(DT2$geometry, DT3residential))
-  dist_mat$living_street[i]=min(st_distance(DT2$geometry, DT3living_street))
-  dist_mat$path[i]=min(st_distance(DT2$geometry, DT3path))
-  dist_mat$secondary[i]=min(st_distance(DT2$geometry, DT3secondary))
-  dist_mat$primary[i]=min(st_distance(DT2$geometry, DT3primary))
   
-  bridge_mat$ClosestBridge[i]=min(st_distance(DT2$geometry, DT3primary))
+  bridge_mat$ClosestBridge[i]=min(st_distance(DT2$geometry, DT3bridge))
   if(bridge_mat$ClosestBridge[i]<5){bridge_mat$isBridge[i]=1}
   
-  if(dist_mat$cycleways[i]<5){bool_mat$cycleways[i]=1}
-  if(dist_mat$residential[i]<5){bool_mat$residential[i]=1}
-  if(dist_mat$living_street[i]<5){bool_mat$living_street[i]=1}
-  if(dist_mat$path[i]<5){bool_mat$path[i]=1}
-  if(dist_mat$secondary[i]<5){bool_mat$secondary[i]=1}
-  if(dist_mat$primary[i]<5){bool_mat$primary[i]=1}
 }
 
 dist_mat
@@ -2082,11 +2048,6 @@ bridge_mat
 
 names(bool_mat)[1]="Station"
 names(bridge_mat)[1]="Station"
-
-ProjectionData = merge(x = ProjectionData,y = bool_mat,
-                by = c("Station"),
-                all = FALSE)
-
 
 ProjectionData = merge(x = ProjectionData,y = bridge_mat,
                 by = c("Station"),
@@ -2139,6 +2100,9 @@ ProjectionData$ClosestBridge3 = ProjectionData$ClosestBridge3
 
 ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData$UnmCross250mmRadius + ProjectionData$Signals250mmRadius + 1)
 
+
+summary(ProjectionData)
+
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
@@ -2163,6 +2127,8 @@ lower = mean(ProjectionData$Value)/2
 mid = mean(ProjectionData$Value)
 higher = mean(ProjectionData$Value) + mean(ProjectionData$Value)/2
 
+#write.csv(ProjectionData,"Muenster_Ring.csv")
+
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
   for(j in 1:nlevels(as.factor(ProjectionData$Day))){
@@ -2174,17 +2140,22 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
       nrow(streetPositions)
       
-      map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.5, alpha = 0.8, lineend = "round") +
-        ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1], " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1], sep="")) + 
-        scale_colour_gradientn(colours = rainbow(6), limits = c(0, max(ProjectionData$Value)), space = "Lab") +
+      map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 0.8, lineend = "round") +
+        ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
+                      " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1],"\n", "Temp: ",
+                      streetPositions$Temperature[1]," C° , Regen: ", streetPositions$Rain[1], " mm, Wochenende: ",
+                      streetPositions$Weekend[1], sep="")) + 
+        scale_colour_gradientn(limits = c(0, max(ProjectionData$Value)), space = "Lab",
+                               colours = c("black","darkblue","blue","violet","red","orange", "yellow")) +
+        theme_bw() +
+        theme(text = element_text(size = 20))     +
         labs(y = "Längengrad", x = "Breitengrad", color ="Fahrer summiert")
       
       setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults/Plots")
-      png(file=paste("map",ProjectionData$Town[1],"plot_RF_Innenstadt_",i,"_",j,"_",k,".png",sep=""),width=800, height=800)
+      png(file=paste("map",ProjectionData$Town[1],"plot_RF_Innenstadt_",i,"_",j,"_",k,".png",sep=""),width=1200, height=1200)
       print(map_plot)
       dev.off()
-      
-      summary(streetPositions)
+      #summary(streetPositions)
       
     }
     
