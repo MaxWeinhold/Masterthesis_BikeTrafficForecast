@@ -47,7 +47,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 #Choose Values you are interested in -------------------------------------------
 
 Year = 2023
-Town = "Münster"
+Town = "Mannheim"
 ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
@@ -66,12 +66,12 @@ names(ProjectionData)[5] = "Hour"
 
 ProjectionData$Value = 1
 
-Bundesland = "NRW"
+
 
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
 
 #Ad the different Variables-----------------------------------------------------
-
+Bundesland = "BWB"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -85,7 +85,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
+pH=publicHolidays[publicHolidays$BWB %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -203,11 +203,11 @@ if(Year %in% levels(as.factor(Weather_Temperature$Year))){
   Weather_Rain = Weather_Rain[(Weather_Rain$Year==Year),]
   Weather_Temperature = Weather_Temperature[(Weather_Temperature$Year==Year),]
 }else {
-  Weather_Wind = Weather_Wind[(Weather_Wind$Year==2022),]
-  Weather_CloudCover = Weather_CloudCover[(Weather_CloudCover$Year==2022),]
-  Weather_Humidity = Weather_Humidity[(Weather_Humidity$Year==2022),]
-  Weather_Rain = Weather_Rain[(Weather_Rain$Year==2022),]
-  Weather_Temperature = Weather_Temperature[(Weather_Temperature$Year==2022),]
+  Weather_Wind = Weather_Wind[(Weather_Wind$Year==2020),]
+  Weather_CloudCover = Weather_CloudCover[(Weather_CloudCover$Year==2020),]
+  Weather_Humidity = Weather_Humidity[(Weather_Humidity$Year==2020),]
+  Weather_Rain = Weather_Rain[(Weather_Rain$Year==2020),]
+  Weather_Temperature = Weather_Temperature[(Weather_Temperature$Year==2020),]
   Weather_Wind$Year = Year
   Weather_CloudCover$Year = Year
   Weather_Humidity$Year = Year
@@ -254,7 +254,7 @@ rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData",
 
 #Destatis Data -----------------------------------------------------------------
 
-ProjectionData$ADFC_Index = 3.2
+ProjectionData$ADFC_Index = 3.9
 
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
 Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
@@ -268,7 +268,7 @@ Destatis19 = read.csv(file = "31122019_Auszug_GV.csv",sep=";")
 Destatis20 = read.csv(file = "31122020_Auszug_GV.csv",sep=";")
 Destatis21 = read.csv(file = "31122021_Auszug_GV.csv",sep=";")
 
-title=", Stadt" #This differs, there are cities and also hanseatic cities
+title=", Universitätsstadt" #This differs, there are cities and also hanseatic cities
 
 test12=as.data.frame(Destatis12[Destatis12$X.6 == paste(Town,title,sep=""),])
 test12[17] <- NULL
@@ -704,8 +704,12 @@ Variables_you_need
 #Get all the streetpositions----------------------------------------------------
 
 #bounding box for our map
-myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805)
-#myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896)
+myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Hamburg Innensatdt
+#myLocation <- c(9.968615748457593,53.539830498755265,   10.012409572679795,53.55974898224376) # Hamburg Innensatdt
+#myLocation <- c(6.833644830296469,51.460877236637465,  6.874634203344688,51.48078438095241) # Oberhausen Innensatdt
+#myLocation <- c(7.547877265931465,51.911200682602676,   7.689021424551272,52.0041202032665) # Muenster
+#myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring
+#myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896) # Muenster Innenstadt
 
 #building the query
 q <- myLocation %>% 
@@ -893,7 +897,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -931,7 +935,7 @@ ProjectionData = merge(x = ProjectionData,y = distmat_3kmradius,
 
 
 
-summary(ProjectionData)
+summary(ProjectionData2)
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
 Sys.sleep(120)
@@ -990,7 +994,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -1085,7 +1089,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -1185,7 +1189,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -1281,7 +1285,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 500),distmat_3kmradius=sum(distc < 2000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -1371,7 +1375,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -1460,7 +1464,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -1551,7 +1555,7 @@ Test = foreach (i = 1:nlevels(as.factor(ProjectionData$Station)), .combine=rbind
     distc[j]=cindist
     #print(cindist)
   }
-  c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+  c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
 }
 distmat_closest[,1]=as.character(Test[,1])
 distmat_closest[,2]=as.numeric(Test[,2])
@@ -1647,7 +1651,7 @@ if(length(cinmat$name)>0){
       distc[j]=cindist
       #print(cindist)
     }
-    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+    c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
   }
   distmat_closest[,1]=as.character(Test[,1])
   distmat_closest[,2]=as.numeric(Test[,2])
@@ -1749,7 +1753,7 @@ if(length(cinmat$name)>0){
       distc[j]=cindist
       #print(cindist)
     }
-    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
+    c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 250),distmat_3kmradius=sum(distc < 1000)) 
   }
   distmat_closest[,1]=as.character(Test[,1])
   distmat_closest[,2]=as.numeric(Test[,2])
@@ -1852,7 +1856,7 @@ if(length(cinmat$name)>0){
       distc[j]=cindist
       #print(cindist)
     }
-    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
+    c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
   }
   distmat_closest[,1]=as.character(Test[,1])
   distmat_closest[,2]=as.numeric(Test[,2])
@@ -1954,7 +1958,7 @@ if(length(cinmat$name)>0){
       distc[j]=cindist
       #print(cindist)
     }
-    c(Station = d[1,1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
+    c(Station = d$Station[1],distmat_closest = min(distc), distmat_1kmradius = sum(distc < 1000),distmat_3kmradius=sum(distc < 3000)) 
   }
   distmat_closest[,1]=as.character(Test[,1])
   distmat_closest[,2]=as.numeric(Test[,2])
@@ -2102,6 +2106,15 @@ ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData
 
 
 summary(ProjectionData)
+names(ProjectionData)
+summary(ProjectionData$Area)
+ProjectionData$Area=755.2
+ProjectionData$Inhabitants= 1841000
+ProjectionData$Male_Ratio= 0.5
+
+ProjectionData$Area=NULL
+ProjectionData$Inhabitants= NULL
+ProjectionData$Male_Ratio= NULL
 
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
@@ -2122,12 +2135,12 @@ summary(ProjectionData$Value)
 nrow(ProjectionData)
 #Create Map
 
-mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=14)
+mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=15)
 lower = mean(ProjectionData$Value)/2
 mid = mean(ProjectionData$Value)
 higher = mean(ProjectionData$Value) + mean(ProjectionData$Value)/2
 
-#write.csv(ProjectionData,"Muenster_Ring.csv")
+#write.csv(ProjectionData,"Mannheim_Innenstadt_Oststadt.csv")
 
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
@@ -2140,7 +2153,7 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
       nrow(streetPositions)
       
-      map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 0.8, lineend = "round") +
+      map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.8, alpha = 1.5, lineend = "round") +
         ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
                       " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1],"\n", "Temp: ",
                       streetPositions$Temperature[1]," C° , Regen: ", streetPositions$Rain[1], " mm, Wochenende: ",
