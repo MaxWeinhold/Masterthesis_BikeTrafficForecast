@@ -4,12 +4,17 @@
 #Model Map Projection: Map Projection Generator
 
 if(!require("beepr")) install.packages("beepr")
+if(!require("osmdata")) install.packages("osmdata")
 if(!require("tidyverse")) install.packages("tidyverse")
+if(!require("sf")) install.packages("sf")
 if(!require("ggmap")) install.packages("ggmap")
+
 
 #load packages
 library(beepr)
 library(tidyverse)
+library(osmdata)
+library(sf)
 library(ggmap)
 library(lubridate)
 library(geosphere)#package for calculating distance using longitude and latitude

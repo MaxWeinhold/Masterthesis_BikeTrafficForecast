@@ -3,6 +3,17 @@
 #------------------------------------------------------------------------
 #Data preperation: Readditon to Dataset
 
+
+if(!require("osmdata")) install.packages("osmdata")
+if(!require("tidyverse")) install.packages("tidyverse")
+if(!require("sf")) install.packages("sf")
+if(!require("ggmap")) install.packages("ggmap")
+
+library(tidyverse)
+library(osmdata)
+library(sf)
+library(ggmap)
+
 #Clean up memory
 rm(list=ls())
 
@@ -1045,10 +1056,224 @@ summary(BikeData$CorInz)
 
 summary(BikeData)
 
+kontaktbeschr=c(20200322:20200331,20200401:20200431,20200501:20200506,
+                20201102:20201131,20201201:20201231,20210101:20210131,20210201:20210214)
+kontaktbeschr = na.omit(kontaktbeschr)
 
+BikeData$Timestamp = as.POSIXct(as.character(paste(BikeData$Year,BikeData$Months,BikeData$Day,sep=".")), format="%Y.%m.%d")
 
+summary(BikeData$Timestamp)
 
+Kontaktbeschr = as.POSIXct(as.character(kontaktbeschr), format="%Y%m%d")
+BikeData$Lockdowns	= ifelse(BikeData$Timestamp %in% Kontaktbeschr,1,0)
+summary(BikeData$Lockdowns)
 
+#Street Type Redefinition-------------------------------------------------------------------------------------------------------------------
 
+stre_dist = as.data.frame(c(1:1:nlevels(as.factor(BikeData$Station))))
+stre_type = as.data.frame(c(1:1:nlevels(as.factor(BikeData$Station))))
+stre_density = as.data.frame(c(1:1:nlevels(as.factor(BikeData$Station))))
+stre_lengths = as.data.frame(c(1:1:nlevels(as.factor(BikeData$Station))))
 
+names(stre_dist)[1] = "stre_dist"
+names(stre_type)[1] = "stre_type"
+names(stre_density)[1] = "stre_density"
+names(stre_lengths)[1] = "stre_lengths"
 
+street_mat = as.data.frame(cbind(stre_dist,stre_type))
+street_mat = as.data.frame(cbind(street_mat,stre_density))
+street_mat = as.data.frame(cbind(street_mat,stre_lengths))
+street_mat$stre_type_spec = "empty"
+street_mat$stre_byc = "empty"
+street_mat$stre_surface = "empty"
+street_mat$stre_lanes = "empty"
+street_mat$stre_name = "empty"
+street_mat$stre_maxspeed = "empty"
+street_mat$stre_oneway = "empty"
+street_mat$bridge = "empty"
+street_mat$os_way_to_city = 0
+street_mat$cluster_way_to_city = 0
+#street_mat$street_lengths = 0
+#street_mat$street_way_to_city = 0
+street_mat$Station = "empty"
+
+for(i in 146:nlevels(as.factor(BikeData$Station))){
+  
+  print(paste("Processing Station",i,levels(as.factor(BikeData$Station))[i]))
+  
+  d=BikeData[BikeData$Station %in% toString(levels(as.factor(BikeData$Station))[i]),]
+  #print(d$Station[1])
+  
+  radius = 0.0012
+  
+  #radius*111.1
+  
+  myLocation <- c(d$Lon[1]-radius,d$Lat[1]-radius/1.8,   d$Lon[1]+radius,d$Lat[1]+radius/1.8)
+  
+  q <- myLocation %>% 
+    opq() %>%
+    add_osm_feature("highway")
+  
+  #str(q) #query structure
+  
+  streets <- osmdata_sf(q)
+  
+
+  count_point = as.data.frame(cbind(d$Lon[1],d$Lat[1]))
+  names(count_point)[1]="long1"
+  names(count_point)[2]="lat1"
+  count_point = st_as_sf(count_point, coords = c("long1","lat1"))
+  count_point <- st_set_crs(count_point, 4269)
+  st_crs(count_point) <- 4269 
+  
+  #street_Points = st_transform(streets$osm_lines$geometry,4269)
+  #nearest = which.min(st_distance(count_point$geometry, street_Points)) # Das hier funktioniert richtig!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  #length(streets$osm_lines)
+  
+  t = streets$osm_lines
+  
+  dist=0
+  
+  j=1
+  for(j in 1:nrow(streets$osm_lines)){
+    street_Points = st_transform(streets$osm_lines$geometry[j],4269)
+    dist[j] = min(st_distance(count_point$geometry, street_Points))
+  }
+  
+  nearest = which.min(dist)
+  
+  for(j in which(dist==min(dist))){
+    print(j)
+    print(streets$osm_lines$name[j])
+    if(length(streets$osm_lines$name[j])>0){if(!is.na(streets$osm_lines$name[j])){nearest=j}}
+  }
+  
+  #min(dist)
+  #street_Points = st_transform(streets$osm_lines$geometry,4269)
+  #print(min(dist) - as.numeric(min(st_distance(count_point$geometry, street_Points))))
+  
+  street_Points = st_transform(streets$osm_lines$geometry,4269)
+  street_mat$stre_dist[i] = min(dist)#min(st_distance(count_point$geometry, street_Points))#closest street
+  street_mat$stre_type[i] = streets$osm_lines$highway[nearest] #Street Type
+  street_type = streets$osm_lines$highway[nearest]
+  street_mat$stre_type_spec[i] = tryCatch({as.data.frame(select(streets$osm_lines[nearest,], street_type))[1,1]},
+    error=function(cond) {"empty"}) #specific streettype
+  if(length(streets$osm_lines$bicycle[nearest])>0){street_mat$stre_byc[i] = streets$osm_lines$bicycle[nearest]} else {street_mat$stre_byc[i] = "null"}
+  if(length(streets$osm_lines$surface[nearest])>0){street_mat$stre_surface[i] = streets$osm_lines$surface[nearest]} else {street_mat$stre_surface[i] = "null"}
+  if(length(streets$osm_lines$lanes[nearest])>0){street_mat$stre_lanes[i] = streets$osm_lines$lanes[nearest]} else {street_mat$stre_lanes[i] = "null"}
+  
+  if(length(streets$osm_lines$name[nearest])>0){street_mat$stre_name[i] = streets$osm_lines$name[nearest]} else {street_mat$stre_name[i] = "null"}
+  if(length(streets$osm_lines$maxspeed[nearest])>0){street_mat$stre_maxspeed[i] = streets$osm_lines$maxspeed[nearest]} else {street_mat$stre_maxspeed[i] = "null"}
+  if(length(streets$osm_lines$oneway[nearest])>0){street_mat$stre_oneway[i] = streets$osm_lines$oneway[nearest]} else {street_mat$stre_oneway[i] = "null"}
+  if(length(streets$osm_lines$bridge[nearest])>0){street_mat$bridge[i] = streets$osm_lines$bridge[nearest]} else {street_mat$bridge[i] = "null"}
+  street_mat$stre_density[i] = sum(st_length(street_Points))
+  street_mat$stre_lengths[i] = st_length(street_Points[nearest])
+  
+  street_mat$Station[i] = d$Station[1]
+  
+  #street direction (std)--------------------------------------------------------------------------------------------------------------
+  
+  city_point = as.data.frame(cbind(d$City_Lon[1],d$City_Lat[1]))
+  names(city_point)[1]="long1"
+  names(city_point)[2]="lat1"
+  city_point = st_as_sf(city_point, coords = c("long1","lat1"))
+  city_point <- st_set_crs(city_point, 4269)
+  
+  street_mat$os_way_to_city[i] = d$Distance_to_Center[1] - as.numeric(st_distance(city_point$geometry, street_Points[nearest]))
+  street_mat$cluster_way_to_city[i] = d$Distance_to_Center[1] - min(as.numeric(st_distance(city_point$geometry, street_Points)))
+  
+  #street_mat$street_lengths[i] = street_mat$stre_lengths[i]
+  #street_mat$street_way_to_city[i] = street_mat$os_way_to_city[i]
+  
+  #name = c(as.character(streets$osm_lines$name[nearest]))
+  
+  #if(!is.na(name)){
+  
+  #  q2 = NA
+    
+  #  q2 <- tryCatch({getbb(toString(d$Town[1])) %>%
+  #    opq() %>%
+  #    add_osm_feature("highway")%>%
+  #    add_osm_feature("name",name)})
+    
+  #  if(!is.na(q2)){
+    
+  #    street <- osmdata_sf(q2)
+      
+  #    street_mat$street_lengths[i] = sum(st_length(street$osm_lines$geometry))
+  #    street_Points = st_transform(street$osm_lines$geometry,4269)
+  #    street_mat$street_way_to_city[i] = d$Distance_to_Center[1] - min(as.numeric(st_distance(city_point$geometry, street_Points)))
+      
+  #    radius = 0.0012*7
+  #    myLocation2 <- c(d$Lon[1]-radius,d$Lat[1]-radius/1.8,   d$Lon[1]+radius,d$Lat[1]+radius/1.8)
+      
+  #    map = ggplot()+
+  #      geom_sf(data = streets$osm_lines,
+  #              inherit.aes = FALSE,
+  #              colour = "#238443",
+  #              fill = "#004529",
+  #              alpha = .5,
+  #              size = 4,
+  #              shape = 21)+
+  #      geom_sf(data = street$osm_lines,
+  #              inherit.aes = FALSE,
+  #              colour = "blue",
+  #              fill = "blue",
+  #              alpha = .5,
+  #              size = 4,
+  #              shape = 21)+
+  #      geom_sf(data = count_point,
+  #              inherit.aes = FALSE,
+  #              colour = "red",
+  #              fill="red",
+  #              size = 6,
+  #              shape = 21)+
+  #      geom_rect(aes(xmin = myLocation[1], xmax = myLocation[3], ymin = myLocation[2], ymax = myLocation[4]), color = "red", fill = NA)  +
+  #      labs(x = "", y = "")
+  #    
+  #    
+  #    setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/MapProjection/Plots")
+  #    png(file=paste("Station_",d$Station[1],"_",i,".png",sep=""),width=600, height=600)
+  #    print(map)
+  #    dev.off()
+  #  }
+  #}
+  Sys.sleep(30)
+  
+  print(paste("Process done at",round(i/nlevels(as.factor(BikeData$Station))*100),"%"))
+  
+}
+
+names(street_mat)
+street_mat$stre_name = NULL
+street_mat$stre_byc = NULL
+street_mat$stre_oneway = NULL
+
+for(i in which(is.na(street_mat$stre_type_spec))){street_mat$stre_type_spec[i]="empty"}
+for(i in which(is.na(street_mat$stre_surface))){street_mat$stre_surface[i]="unknown"}
+for(i in which(is.na(street_mat$stre_lanes))){street_mat$stre_lanes[i]=1}
+for(i in which(street_mat$stre_lanes == 'null')){street_mat$stre_lanes[i]=1}
+for(i in which(is.na(street_mat$stre_maxspeed))){street_mat$stre_maxspeed[i]=15}
+for(i in which(street_mat$stre_maxspeed == 'null')){street_mat$stre_maxspeed[i]=15}
+for(i in which(is.na(street_mat$bridge))){street_mat$bridge[i]=0}
+for(i in which(street_mat$bridge == 'null')){street_mat$bridge[i]=0}
+for(i in which(street_mat$bridge == 'yes')){street_mat$bridge[i]=1}
+
+sum(street_mat$bridge == 1)
+sum(street_mat$stre_type == "path")
+levels(as.factor(street_mat$stre_type))
+
+BikeData = merge(x = BikeData,y = street_mat,
+                 by = c("Station"),
+                 all = FALSE)
+
+BikeData$bridge = as.numeric(BikeData$bridge)
+BikeData$stre_maxspeed = as.numeric(BikeData$stre_maxspeed)
+BikeData$stre_lanes = as.numeric(BikeData$stre_lanes)
+summary(BikeData)
+
+rm(list=setdiff(ls(), c("BikeData")))
+
+#Save new data set-------------------------------------------------------
+setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+write.csv(BikeData,"completeDataSet_2.csv")
