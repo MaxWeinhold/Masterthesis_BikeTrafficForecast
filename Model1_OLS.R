@@ -22,7 +22,7 @@ rm(list=ls())
 #files about 100 MB have to be excluded
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 
-load("ValidationSets.rdata")
+load("ValidationSets2.rdata")
 
 #Make a simple Test with the support vector regression to show the differences to the OLS regression
 
@@ -60,6 +60,8 @@ plot25 = ggplot(svrtest,aes(x = Hour, y = Value)) +
   geom_line(data = predict3, aes(x = Hour, y = Value, color='3: kubisch'), size = 1.5)
 
 plot25
+
+rm(plot25,model1,model2,model3,predict1,predict2,predict3,svrtest)
 
 #setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
 
@@ -119,12 +121,19 @@ for(i in 1:length(validation_set)){
                 ClosestSignals + Signals250mmRadius + Signals1kmRadius +
                 ClosestUnmCross + UnmCross250mmRadius + UnmCross1kmRadius +
                 ClosestTrainS + TrainS1kmRadius + TrainS3kmRadius +
-                ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius +
-                cycleways + path + secondary + primary + residential + ClosestBridge +
+                ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius + ClosestBridge +
                 young18 + young25 + older40 + older60 + Immigrants + PKWs +
-                Rain2 + Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 +
-                ClothesShop500mmRadius2 + ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 +
-                Rain3 + Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3, data = trainSet)
+                CorInz + Lockdowns + stre_dist + stre_density + .data_footway + .data_living_street +
+                .data_motorway + .data_path + .data_pedestrian + .data_primary + .data_residential +
+                .data_secondary + .data_service + .data_steps + .data_tertiary + .data_track +
+                .data_trunk_link + .data_unclassified + .data_driveway + .data_empty + .data_sidepath +
+                .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
+                .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
+                .data_paved + .data_paving_stones + .data_pebblestone + .data_sett + .data_unknown +
+                stre_lengths + stre_lanes + stre_maxspeed + bridge + os_way_to_city + 
+                cluster_way_to_city + .data_cycleway + 
+                Rain2 + Temperature2 + Inhabitants2 + stre_lengths2 + 
+                os_way_to_city2 + cluster_way_to_city2, data = trainSet)
   
   test_predict <- model %>% predict(testSet)
   train_predict <- model %>% predict(trainSet)
@@ -154,6 +163,9 @@ Evaluation_DF$Sets=c("1","2","3","4","5","Mean")
 Evaluation_DF <- Evaluation_DF[, c(5,1,2,3,4)]
 
 beep("mario")
+
+sort( sapply(ls(),function(x){object.size(get(x))}))
+sum(sort( sapply(ls(),function(x){object.size(get(x))})))/1000000000
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
 write.csv(Evaluation_DF,"Modell1_OLS.csv")

@@ -21,7 +21,7 @@ library(geosphere)#package for calculating distance using longitude and latitude
 
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Hamburg_Innenstadt.csv",sep=",")
+mapData = read.csv(file = "Mannheim_Innenstadt_Oststadt_2.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -59,22 +59,25 @@ mapData$Density = NULL
 
 
 Year = 2023
-Town = "Hamburg"
+Town = "Mannheim"
 ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
 
-Months = c(1:12)
+Months = c(6)
 ProjectionData = merge(x = ProjectionData,y = Months,all = FALSE)
 names(ProjectionData)[3] = "Months"
 
-Day = c(1:31)
+Day = c(15)
 ProjectionData = merge(x = ProjectionData,y = Day,all = FALSE)
 names(ProjectionData)[4] = "Day"
 
 Hour = c(14)
 ProjectionData = merge(x = ProjectionData,y = Hour,all = FALSE)
 names(ProjectionData)[5] = "Hour"
+
+ProjectionData$CorInz = 0
+ProjectionData$Lockdowns = 0
 
 ProjectionData$Value = 1
 
@@ -94,7 +97,7 @@ ProjectionData = merge(x = ProjectionData,y = ADFC_Index,all = FALSE)
 names(ProjectionData)[ncol(ProjectionData)] = "ADFC_Index"
 
 #Ad the time Variables-----------------------------------------------------
-Bundesland = "HAM"
+Bundesland = "BWB"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -108,7 +111,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$HAM %in% TRUE,]
+pH=publicHolidays[publicHolidays$BWB %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -346,7 +349,7 @@ Destatis19 = read.csv(file = "31122019_Auszug_GV.csv",sep=";")
 Destatis20 = read.csv(file = "31122020_Auszug_GV.csv",sep=";")
 Destatis21 = read.csv(file = "31122021_Auszug_GV.csv",sep=";")
 
-title=", Freie und Hansestadt" #This differs, there are cities and also hanseatic cities
+title=", Universitätsstadt" #This differs, there are cities and also hanseatic cities
 
 test12=as.data.frame(Destatis12[Destatis12$X.6 == paste(Town,title,sep=""),])
 test12[17] <- NULL
@@ -779,11 +782,11 @@ ProjectionData = merge(x = ProjectionData,y = mapData,
                        by = c("Town"),
                        all = TRUE)
 
-
+names(ProjectionData)
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
-load("Modell3_RF.rdata")
+load("Modell3_RF_newDataset.rdata")
 
 summary(model)
 
@@ -800,8 +803,8 @@ nrow(ProjectionData)
 #Create Map
 
 #bounding box for our map
-#myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt
-myLocation <- c(9.968615748457593,53.539830498755265,   10.012409572679795,53.55974898224376) # Hamburg Innensatdt
+myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt
+#myLocation <- c(9.968615748457593,53.539830498755265,   10.012409572679795,53.55974898224376) # Hamburg Innensatdt
 #myLocation <- c(6.833644830296469,51.460877236637465,  6.874634203344688,51.48078438095241) # Oberhausen Innensatdt
 #myLocation <- c(7.547877265931465,51.911200682602676,   7.689021424551272,52.0041202032665) # Muenster
 #myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring

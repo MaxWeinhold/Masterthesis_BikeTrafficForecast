@@ -5,8 +5,11 @@
 
 #In order to make a notification sound to inform the user that calculations are finished
 if(!require("beepr")) install.packages("beepr")
+if(!require("Rcpp")) install.packages("Rcpp")
 library(beepr)
 library(randomForest)
+library(Rcpp)
+
 
 library(tidyverse)
 library(caret)
@@ -22,9 +25,11 @@ rm(list=ls())
 #files about 100 MB have to be excluded
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 
-load("ValidationSets.rdata")
+load("ValidationSets2.rdata")
 
 #Make a simple Test with the support vector regression to show the differences to the OLS regression
+
+names(validation_set[[1]])
 
 svrtest = validation_set[[1]][1:500,]
 svrtest$Hour2 = svrtest$Hour^2
@@ -105,7 +110,7 @@ for(i in 1:length(validation_set)){
   
   # Split data to reduce duration of computation
   training.samples <- trainSet$Value %>%
-    createDataPartition(p = 0.005, list = FALSE)
+    createDataPartition(p = 0.05, list = FALSE)
   train.data  <- trainSet[training.samples, ]
   test.data <- trainSet[-training.samples, ]
   
@@ -125,9 +130,19 @@ for(i in 1:length(validation_set)){
                           ClosestSignals + Signals250mmRadius + Signals1kmRadius +
                           ClosestUnmCross + UnmCross250mmRadius + UnmCross1kmRadius +
                           ClosestTrainS + TrainS1kmRadius + TrainS3kmRadius +
-                          ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius +
-                          cycleways + path + secondary + primary + residential + ClosestBridge +
-                          young18 + young25 + older40 + older60 + Immigrants + PKWs, data =  train.data, ntree=250, importance=TRUE)
+                          ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius + ClosestBridge +
+                          young18 + young25 + older40 + older60 + Immigrants + PKWs +
+                          CorInz + Lockdowns + stre_dist + .data_footway + .data_living_street +
+                          .data_motorway + .data_path + .data_pedestrian + .data_primary + .data_residential +
+                          .data_secondary + .data_service + .data_steps + .data_tertiary + .data_track +
+                          .data_trunk_link + .data_unclassified + .data_driveway + .data_empty + .data_sidepath +
+                          .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
+                          .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
+                          .data_paved + .data_paving_stones + .data_pebblestone + .data_sett + .data_unknown +
+                          stre_lengths + stre_lanes + stre_maxspeed + bridge + os_way_to_city + 
+                          cluster_way_to_city + .data_cycleway + 
+                          Rain2 + Temperature2 + Inhabitants2 + stre_lengths2 + 
+                          os_way_to_city2, data =  train.data, ntree=250, importance=TRUE)
   
   end_time <- Sys.time()
   print(end_time - start_time)
@@ -178,6 +193,6 @@ beep("mario")
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
 write.csv(Evaluation_DF,"Modell3_RF.csv")
-save(model,file="Modell2_RF.rdata")
+save(model,file="Modell2_RF_newDataset.rdata")
 
 

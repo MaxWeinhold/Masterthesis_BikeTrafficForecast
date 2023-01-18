@@ -329,6 +329,32 @@ Auch eine wertvolle Statistik bietet die Tabelle 46251-0020 über den Kraftfahrz
 
 Neben den stadtspezifischen Daten, die von den Quellen des statistischen Bundesamtes stammen, nutzt der Datensatz die Daten zum ADFC Fahrradklimaindex. Der Allgemeiner Deutscher Fahrrad-Club ist ein eingetragener Verein mit Sitz in Berlin und Bremen, der sich für die Interessen von Fahrradfahrern einsetzt und stand 2022 220.000 Mitglieder in Deutschland zählt. Im Zweijahresrhytmus veröffentlicht der ADFC den per Umfrage ermittelten Fahrradklimaindex. 2022 wurden z.B. 238 Tsd Menschen befragt aus verschiedenen Städten. Neben Fragen zum persönlichen Fahrradfahren enthält der Fragebogen zum Fahrradklima Index Fragen betreffend des Fahrradklimas, dem Stellenwert des Radverkehrs in der jeweiligen Stadt, der Sicherheit, dem Komfort und der Infrastruktur sowie der Radverkehrsnetze. All diese Antworten fließen in eine Endnote, die sich zwischen 1 und 5 befindet, wobei 1 am Besten und 5 am schlechtesten ist. Wie sich das Fahrradklima ins Verhältnis zum aufgezeichneten Radverkehr ins Verhältnis nach Städten setzt, zeigt die Abbildung \ref{Fahrradklima} im Anhang.
 
+\section{Corona Daten}
+
+Wie \cite{Moellers2021} bereits zeigten, hatten die Corona Maßnahmen unterschiedliche und nicht ganz eindeutige Auswirkungen auf den urbanen Radverkehr. Dennoch ist es ratsam, Variablen in das Modell mitaufzunehmen, die Ausprägung von Corona Maßnahmen berücksichtigen. Wie bei \cite{Moellers2021} ließen sich dafür die Corona Inzidenzzahlen verwenden, oder aber eine Dummy Variable für Lockdowns.\\
+Bei beiden Ansätzen stellen sich Probleme ein. War die Corona Inzidenz zu Beginn recht klein, waren die Auswirkungen für den Verkehr dennoch drastisch. Die Abbildung \ref{CoronaInzidenz} gibt darüber einen Überblick. Deswegen beinhaltet der Datensatz zusätzlich eine Dummy Variable für die zwei bundsweiten Corona Lockdowns vom 22.3.2020 bis zum 4.5.2020 und vom 2.11.2020 bis zum 14.2.2020. In diese Zeitphasnen fallen verschiedene Maßnahmen zur Kontaktbeschränkung, die jeweils bundesweit stattgefunden haben. Dabei kann es regional zu Abweichungen kommen, die sich im Nachhinein nicht ohne immensen Aufwand nachvollziehen lassen.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot62.png}
+	\caption{Verlauf der Corona Inzidenz und des Radverkehrs}
+	\label{CoronaInzidenz}
+\end{figure}
+
+Diese Schwäche sollen die Daten zur Corona Inzidenz ausgleichen, die lokal mit Maßnahmen zur Kontaktbeschränkung korrelieren. Die Daten dazu stammen vom Robert Koch Institut (Quelle: \url{https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Inzidenz-Tabellen.html?nn=2386228}). Leider reichen die Daten des RKIs nicht für alle einzelnen Kommunen bis zum Beginn der Pandemie zurück. Im Zeitraum 10.3.2020 bis zum 6.5.2020 sind die im Datensatz enthaltenen Daten zur Corona Inzidenz bundesweit. Danach und bis zum 18.11.2020 verwendetet der Datensatz die Inzidenzen der jeweiligen Bundesländer. Erst danach sind die Inzidenzen der jeweiligen Landkreise und die der kreisfreien Städte verfügbar.\\
+Bei der ersten Erstellung des Datensatz, waren die Corona Daten leider noch nicht mit inbegriffen und erste Modelle wurden ohne diese Daten berechnet. Daraufhin wurde ein zweiter Datensatz erstellt, der nicht nur die Corona Daten zusätzlich berücksichtigte, sondern auch neuere Daten zu Straßen anlegte, dazu mehr im Detail im folgenden Abschnitt. Im weiteren Verlauf des Textes wird kenntlich gemacht, mit welcher Version des Datensatzes Berechnungen gemacht wird, ob mit der alten ohne Corona Daten oder der neuen mit Corona Daten.\\
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/plot63.png}
+	\caption{Radverkehr im Lockdown}
+	\label{CoronaandBiking}
+\end{figure}
+
+Anders als bei \cite{Moellers2021} gibt es in dem neuen Datensatz kein zwiespältigen Effekt, wie die Abbildung \ref{CoronaandBiking} zeigt. Sowohl am Wochenende, als auch unter der Woche ist das Aufkommen des städtischen Radverkehrs gesunken.
+
+
+
 \section{Open Street Map Daten}
 
 Im vorherigen Abschnitt wurden die Datenquellen zu stadtspezifischen Daten erläutert. Variablen zur demographie oder dem Autobesitz nach Städten sind wertvoll, um die Unterschiede im Radverkehr zwischen den Städten einschätzen zu können. Dies hilft jedoch nicht bei der räumlichen Unterscheidung. Verwendet man keine räumlichen Merkmale, so erhält man eine einheitliche Vorhersage je Stadt. Die räumliche Verteilung des Radverkehrs innerhalb jeder Stadt, ließe sich so nicht abbilden. Die einzige räumliche Variable, die bisher erhoben wurde, ist die Entfernung zum Stadtzentrum, beruhend auf den Daten des Gemeindeverzeichnis von 2012 bis 2021. Doch selbst mit dieser Variablen, gingen Abweichungen durch lokale Anlaufpunkte wie bei Bahnhöfen verloren.\\
@@ -415,14 +441,7 @@ Im Code hier besteht kein großer Unterschied, außer dass nun einzelne OSM Punk
 
 \subsection{Straßentypen}
 
-Neben Informationen zu Gebäuden, Einrichtungen und einzelnen Punkten wie Ampeln, bietet Open Street Map auch Daten zu Straßennetzen. Dabei wird jeder Straße eine Kategorie zugeteilt, von denen es zahlreiche gibt. Eine begrenzte Auswahl an Straßentypen wird im Datensatz berücksichtigt. Dazu zählen Radwege, Pfade, Wohngebietsstraßen, Straßen in einem verkehrsberuhigten Bereich oder auch Spielstraßen, sekundäre und primäre Hauptstraßen. Die Aufteilung von Straßentypen nach Stationen im Datensatz sieht man auch in der Abbildung \ref{Straßentypen}, wobei festzustellen ist, dass einige Stationen doppelt zugeteilt worden sind, durch sich kreuzende Straßen und Brücken. Auch Brücken wurden im Datensatz berücksichtigt und getestet, wie weit die nächstgelegene Brücke zur Zählstation entfernt ist. Eine Darstellung des Zusammenhangs zwischen dem Radverkehr und Brücken findet sich im Anhang in der Abbildung \ref{Bridge}.
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=\textwidth]{Plots/plot20.png}
-	\caption{Verteilung von Straßentypen im Datensatz}
-	\label{Straßentypen}
-\end{figure}
+Neben Informationen zu Gebäuden, Einrichtungen und einzelnen Punkten wie Ampeln, bietet Open Street Map auch Daten zu Straßennetzen. Der Datensatz, der zur Berechnung der Vorhersagen genutzt werden soll, sollte Informationen zum jeweiligen Straßennetz berücksichtigen. Primär gehört dazu die Information zum Straßentyp, wobei es zahlreiche Kategorien gibt. Eine begrenzte Auswahl an Straßentypen wird im ersten Datensatz berücksichtigt. Dazu zählen Radwege, Pfade, Wohngebietsstraßen, Straßen in einem verkehrsberuhigten Bereich oder auch Spielstraßen, sekundäre und primäre Hauptstraßen. Die Aufteilung von Straßentypen nach Stationen im Datensatz sieht man auch in der Abbildung \ref{Straßentypen} links, wobei festzustellen ist, dass einige Stationen doppelt zugeteilt worden sind, durch sich kreuzende Straßen und Brücken. Auch Brücken wurden im Datensatz berücksichtigt und getestet, wie weit die nächstgelegene Brücke zur Zählstation entfernt ist. Eine Darstellung des Zusammenhangs zwischen dem Radverkehr und Brücken findet sich im Anhang in der Abbildung \ref{Bridge}.\\
 
 Ob eine Zählstation zu einem Straßentyp gehört oder nicht, wurde getestet, indem berechnet wurde, inwieweit eine Zählstation von einer Straße des betroffenen Straßentyp entfernt ist. Ist diese Entfernung geringer als 5 Meter, wurde angenommen, dass die Zählstation sich auf oder an einer solchen Straße befände. 
 
@@ -431,14 +450,68 @@ for(i in 1:nlevels(as.factor(rawData$Station))){
 	dist_mat$cycleways[i] =
 		min(st_distance(DT2$geometry, 
 			DT3cycleways))
-	
+			
 	if(dist_mat$cycleways[i]<5){
 		bool_mat$cycleways[i]=1
 	}
 }
 \end{lstlisting}
 
-Dazu muss die jeweils kürzeste Entfernung zwischen einem Punkt und einer Linie berechnet werden. Dies funktioniert mithilfe der \lstinline|st_distance| Funktion. Diese Funktion benutzt die Liste aller Koordinaten aller Straßenabschnitte des jeweiligen Straßentyps \lstinline|DT3cycleways| und der Koordinate der Zählstation \lstinline|DT2$geometry|, um daraus die Entfernung eines jedes Straßenabschnitts zum Punkt der Zählstation zu berechnen. Davon ist allein das Minimum interessant. Ist das Minimum geringer als 5 Meter, ist klar, dass die Zählstation nahe des jeweiligen Straßentyps liegt.
+\begin{figure}[!ht]%
+	\centering
+	\subfloat[\centering alte Aufstellung]{{\includegraphics[width=6cm]{Plots/plot20.png} }}%
+	\qquad
+	\subfloat[\centering neue Aufstellung]{{\includegraphics[width=6cm]{Plots/plot52.png} }}%
+	\caption{Verteilung von Straßentypen im Datensatz nach der alten Ermittlung}
+	\label{Straßentypen}%
+\end{figure}
+
+Dazu muss die jeweils kürzeste Entfernung zwischen einem Punkt und einer Linie berechnet werden. Dies funktioniert mithilfe der \lstinline|st_distance| Funktion. Diese Funktion benutzt die Liste aller Koordinaten aller Straßenabschnitte des jeweiligen Straßentyps \lstinline|DT3cycleways| und der Koordinate der Zählstation \lstinline|DT2$geometry|, um daraus die Entfernung eines jedes Straßenabschnitts zum Punkt der Zählstation zu berechnen. Davon ist allein das Minimum interessant. Ist das Minimum geringer als 5 Meter, ist klar, dass die Zählstation nahe des jeweiligen Straßentyps liegt.\\
+
+Im zweiten Datensatz, der erstmals auch Corona Daten inkludierte, wurde dieses Problem anders gelöst, dargestellt in der Abbildung \ref{Straßencheck}. In einem For Loop wurden alle Zählstationen betrachtet. Dabei wurden alle Straßen, die ein kleines Viereck (in der Abbildung \ref{Straßencheck} rot) um die Zählstation (blauer Punkt) herum berührten betrachtet. Die Zählstation wurde jeweils der nächstliegenden Straße (blaue Linie) zu geordnet. Das in der Abbildung gewählte Beispiel stammte von einer Zählstation in Hamburg. Auf diese Weise können aber nicht nur Daten zum Straßentyp festgestellt werden, sondern auch zur Straßenlänge, zum Straßenbelag, zur geltenden Höchstgeschwindigkeit und die Anzahl der Straßenspuren.\\
+
+Genauer beschrieben wird auch wie in \ref{code:street_variables} zu sehen in jedem Loop Durchgang der Datensatz gefiltert nach Zählstationen und die Beobachtungen einer Station landen im Dataframe \lstinline|d|. Für jede Station muss das rote Rechteck wie in der Abbildung \ref{Straßencheck} berechnet werden. Dies geschieht wie in \ref{code:street_variables} mittels der Variable \lstinline|radius| und den Koordinaten aus \lstinline|d|, also den Koordinaten der jeweiligen Zählstation. Die Koordinaten des Vierecks sind so in \lstinline|myLocation| gespeichert.
+
+\begin{lstlisting}[caption={Berechnung der Straßenvariablen}]
+d=BikeData[BikeData$Station %in% 
+	toString(levels(as.factor(
+	BikeData$Station))[i]),]
+
+radius = 0.0012
+myLocation <- c(d$Lon[1]-radius,d$Lat[1]-radius/1.8,   
+	d$Lon[1]+radius,d$Lat[1]+radius/1.8)
+\end{lstlisting}
+\label{code:street_variables}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/Station_5564_1.png}
+	\caption{Beispiel der Straßentypanalyse}
+	\label{Straßencheck}
+\end{figure}
+
+Mit diesen Koordinaten kann nun eine Abfrage von Open Street Map Daten zu der Klasse "highway" gestellt werden. Wie eine solche Abfrage gestellt wird, ist auch im Code \ref{code:osmdata_query} zu sehen. Darauf hin muss die Zählstation der nächstegelegnsten Straße zugeordnet werden. Dies passiert im Code \ref{code:street_variables2}. Dieser besteht aus zwei kürzeren For Schleifen. Die erste wandelt alle Koordinaten der Straßen in ein passendes GPS Format um und ermittelt die jeweils kürzeste Distanz der Straße zu den Koordinaten der Zählstation gespeichert in \lstinline|count_point$geometry|. Für den Fall, dass mehrere Straßen auf der selben Position liegen, ermittelt die Funktion \lstinline|which(dist==mind(dist))| welche dieser Straßen dies sind und wählt von diesen dann diejenige aus, bei der ein Straßenname angegeben ist.
+
+\begin{lstlisting}[caption={Zuordnung zur nächsten Straße}]
+j=1
+for(j in 1:nrow(streets$osm_lines)){
+	street_Points = st_transform(
+		streets$osm_lines$geometry[j],4269)
+	dist[j] = min(st_distance(
+		count_point$geometry, street_Points))
+}
+	
+for(j in which(dist==min(dist))){
+	if(length(streets$osm_lines$name[j])>0){
+		if(!is.na(streets$osm_lines$name[j])){
+			nearest=j
+		}
+	}
+}
+\end{lstlisting}
+\label{code:street_variables2}
+
+Die Variable \lstinline|nearest| gibt nun an, welche Straße die nächstgelegenste zur Zählstation ist und mit diesen Informationen lassen sich die weiteren notwendigen Variablen berechnen.
 
 \subsection{Sonstige}
 

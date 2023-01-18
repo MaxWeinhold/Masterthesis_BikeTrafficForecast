@@ -19,31 +19,32 @@
 \contentsline {section}{\numberline {3.3}Demographische und soziale Statistiken}{29}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Statistisches Bundesamt}{30}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}ADFC Fahrradindex}{31}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Open Street Map Daten}{33}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Ausgewählte PoIs}{34}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Ausgestaltung des öffentlichen Verkehrs}{37}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Straßentypen}{38}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Sonstige}{40}{subsection.3.4.4}%
-\contentsline {chapter}{\numberline {4.}Verwendete Methoden}{41}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Problem zur Autokorrelation}{41}{section.4.1}%
-\contentsline {section}{\numberline {4.2}OLS Regression}{41}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Support Vector Regression}{42}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Random Forests Regression}{45}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Neuronale Netze}{47}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{47}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{50}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Validation}{51}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Cross Validation}{52}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Conditional Validation Set Building}{52}{subsection.4.6.2}%
-\contentsline {chapter}{\numberline {5.}Ergebnisse}{54}{chapter.5}%
-\contentsline {section}{\numberline {5.1}OLS Regression}{54}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Support Vector Regression}{56}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Random Forest Regression}{60}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Neuronales Netz}{64}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Model Projektion}{64}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{64}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{64}{section.5.7}%
-\contentsline {chapter}{\numberline {6.}Diskussion}{65}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{65}{section.6.1}%
-\contentsline {chapter}{\numberline {7.}Anhang}{66}{chapter.7}%
-\contentsline {chapter}{Literaturverzeichnis}{76}{figure.caption.41}%
+\contentsline {section}{\numberline {3.4}Corona Daten}{33}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Open Street Map Daten}{36}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Ausgewählte PoIs}{37}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Ausgestaltung des öffentlichen Verkehrs}{40}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Straßentypen}{41}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Sonstige}{45}{subsection.3.5.4}%
+\contentsline {chapter}{\numberline {4.}Verwendete Methoden}{46}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Problem zur Autokorrelation}{46}{section.4.1}%
+\contentsline {section}{\numberline {4.2}OLS Regression}{46}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Support Vector Regression}{47}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Random Forests Regression}{50}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Neuronale Netze}{52}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{52}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{55}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Validation}{56}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Cross Validation}{57}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Conditional Validation Set Building}{57}{subsection.4.6.2}%
+\contentsline {chapter}{\numberline {5.}Ergebnisse}{59}{chapter.5}%
+\contentsline {section}{\numberline {5.1}OLS Regression}{59}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Support Vector Regression}{61}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Random Forest Regression}{65}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Neuronales Netz}{69}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Model Projektion}{69}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{69}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{69}{section.5.7}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{70}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{70}{section.6.1}%
+\contentsline {chapter}{\numberline {7.}Anhang}{71}{chapter.7}%
+\contentsline {chapter}{Literaturverzeichnis}{81}{figure.caption.44}%

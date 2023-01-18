@@ -12,44 +12,44 @@ rm(list=ls())
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 
 #Load Data Set
-BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
+BikeData = read.csv(file = "completeDataSet_3.csv",sep=",", encoding="ISO-8859-1")
 
 #Clean Data from unneccesary Variables because of RAM limitations
 
 names(BikeData)
 BikeData$Day = NULL
-BikeData$Oneway = NULL
-BikeData$Weekday = NULL
-BikeData$City_Lon = NULL
-BikeData$City_Lat = NULL
-#BikeData$ClosestCinema = NULL
-#BikeData$Cinemas1kmRadius = NULL
 BikeData$InhDestrict = NULL
-#BikeData$residential = NULL
-BikeData$living_street = NULL
-
-#BikeData$SuperMarket500mmRadius = NULL
-#BikeData$ClosestBusStop = NULL
-#BikeData$Signals1kmRadius = NULL
-#BikeData$UnmCross1kmRadius = NULL
-#BikeData$TrainS1kmRadius = NULL
-#BikeData$ClosestSubway = NULL
-#BikeData$ClosestBikeShop = NULL
-#BikeData$BikeShop1kmRadius = NULL
-#BikeData$ClosestSignals = NULL
-#BikeData$ClosestUnmCross = NULL
-#BikeData$ClosestTram = NULL
 
 BikeData$Rain2 = BikeData$Rain^2
 BikeData$Temperature2 = BikeData$Temperature^2
 BikeData$Inhabitants2 = BikeData$Inhabitants^2
 BikeData$ADFC_Index2 = BikeData$ADFC_Index^2
+
+BikeData$ClosestSchool2 = BikeData$ClosestSchool^2
+BikeData$Schools500mmRadius2 = BikeData$Schools500mmRadius^2
+BikeData$UniBuild2kmRadius2 = BikeData$UniBuild2kmRadius2^2
+
+BikeData$ClosestUniBuild2 = BikeData$ClosestUniBuild^2
 BikeData$UniBuild500mmRadius2 = BikeData$UniBuild500mmRadius^2
+BikeData$ClosestSchool2 = BikeData$ClosestSchool^2
+
+BikeData$ClosestClothesShop2 = BikeData$ClosestClothesShop^2
 BikeData$ClothesShop500mmRadius2 = BikeData$ClothesShop500mmRadius^2
+BikeData$ClothesShop2kmRadius2 = BikeData$ClothesShop2kmRadius^2
+
 BikeData$ClosestTrainS2 = BikeData$ClosestTrainS^2
 BikeData$ClosestBridge2 = BikeData$ClosestBridge^2
 BikeData$young302 = BikeData$young30^2
 BikeData$PKWs2 = BikeData$PKWs^2
+
+BikeData$CorInz2 = BikeData$CorInz^2
+BikeData$stre_dist2 = BikeData$stre_dist^2
+BikeData$stre_density2 = BikeData$stre_density^2
+BikeData$stre_lengths2 = BikeData$stre_lengths^2
+BikeData$stre_lanes2 = BikeData$stre_lanes^2
+BikeData$stre_maxspeed2 = BikeData$stre_maxspeed^2
+BikeData$os_way_to_city2 = BikeData$os_way_to_city^2
+BikeData$cluster_way_to_city2 = BikeData$cluster_way_to_city^2
 
 BikeData$Rain3 = BikeData$Rain^3
 BikeData$Inhabitants3 = BikeData$Inhabitants^3
@@ -57,6 +57,11 @@ BikeData$UniBuild500mmRadius3 = BikeData$UniBuild500mmRadius^3
 BikeData$ClothesShop500mmRadius3 = BikeData$ClothesShop500mmRadius^3
 BikeData$ClosestTrainS3 = BikeData$ClosestTrainS^3
 BikeData$ClosestBridge3 = BikeData$ClosestBridge3
+BikeData$stre_lengths3 = BikeData$stre_lengths^3
+BikeData$stre_lanes3 = BikeData$stre_lanes^3
+BikeData$stre_maxspeed3 = BikeData$stre_maxspeed^3
+BikeData$os_way_to_city3 = BikeData$os_way_to_city^3
+BikeData$cluster_way_to_city3 = BikeData$cluster_way_to_city^3
 
 BikeData$SignalsRatio = BikeData$UnmCross250mmRadius/(BikeData$UnmCross250mmRadius + BikeData$Signals250mmRadius + 1)
 

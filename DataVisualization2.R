@@ -9,6 +9,7 @@ library(tidyverse)
 library(scales)
 library(dplyr)
 library(plyr)
+library(lubridate)
 
 #Source storage location (outside the GitHub Repository)
 #Because of file size limitation
@@ -582,9 +583,9 @@ plot60 = ggplot(data=stations)+
                outlier.size=2) +
   labs(y = "Radfahrer pro Stunde je Z‰hlstelle",fill="Straﬂentyp",x="") + 
   theme_bw() + 
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank()) + 
+  #theme(axis.title.x=element_blank(),axis.text.x=element_blank(), axis.ticks.x=element_blank()) + 
+  theme(axis.text.x = element_text(angle=45)) +
+  theme(axis.text.x = element_text(margin = margin(t = 20, r = 0, b = -32, l = 0))) +
   theme(legend.text=element_text(size=12)) +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
 
@@ -595,9 +596,9 @@ plot61 = ggplot(data=stations)+
                outlier.size=2) +
   labs(y = "Radfahrer pro Stunde je Z‰hlstelle",fill="Straﬂenbelag",x="") + 
   theme_bw() + 
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank()) + 
+  #theme(axis.title.x=element_blank(),axis.text.x=element_blank(), axis.ticks.x=element_blank()) + 
+  theme(axis.text.x = element_text(angle=45)) +
+  theme(axis.text.x = element_text(margin = margin(t = 22, r = 0, b = -32, l = 0))) +
   theme(legend.text=element_text(size=12)) +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
 
@@ -882,18 +883,18 @@ CD = merge(x = CD,y = CoronaData3,
 
 rm(list=setdiff(ls(), c("BikeData","CD")))
 
-
 plot62 = ggplot(data = CD) + 
   theme_bw() +
   theme(axis.text=element_text(size=12),axis.title=element_text(size=12,face="bold")) +
   xlab("Jahre") +
-  geom_line(aes(x = Timestamp, y = CorInz/3),color="blue",alpha = 1, size = 1.4) + 
-  geom_line(aes(x = Timestamp, y = Value),color="red",alpha = .5, size = .9) +
+  geom_line(aes(x = Timestamp, y = CorInz/3, group = 1),color="blue",alpha = 1, size = 1.4) + 
+  geom_line(aes(x = Timestamp, y = Value, group = 1),color="red",alpha = .5, size = .9) +
   scale_y_continuous(name = "durchschn. Fahrradverkehr", 
                      sec.axis = sec_axis(~.*3, name = "Corona Inzidenz")) + 
   theme(
     axis.title.y = element_text(color = "red"),
-    axis.title.y.right = element_text(color = "blue"))
+    axis.title.y.right = element_text(color = "blue")) +theme(axis.text.x = element_text(angle=45))
+    #theme(axis.title.x=element_blank(),axis.text.x=element_blank(),axis.ticks.x=element_blank())
 
 png(file="plot62.png",width=800, height=800)
 plot62
@@ -923,3 +924,4 @@ png(file="plot63.png",width=800, height=800)
 plot63
 dev.off()
 
+rm(list=setdiff(ls(), c("BikeData")))
