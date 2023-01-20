@@ -49,7 +49,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 #Choose Values you are interested in -------------------------------------------
 
 Year = 2023
-Town = "Mannheim"
+Town = "Münster"
 ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
@@ -73,7 +73,7 @@ ProjectionData$Value = 1
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
 
 #Ad the different Variables-----------------------------------------------------
-Bundesland = "BWB"
+Bundesland = "NRW"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -87,7 +87,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$BWB %in% TRUE,]
+pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -270,7 +270,7 @@ Destatis19 = read.csv(file = "31122019_Auszug_GV.csv",sep=";")
 Destatis20 = read.csv(file = "31122020_Auszug_GV.csv",sep=";")
 Destatis21 = read.csv(file = "31122021_Auszug_GV.csv",sep=";")
 
-title=", Universitätsstadt" #This differs, there are cities and also hanseatic cities
+title=", Stadt" #This differs, there are cities and also hanseatic cities
 
 test12=as.data.frame(Destatis12[Destatis12$X.6 == paste(Town,title,sep=""),])
 test12[17] <- NULL
@@ -735,11 +735,11 @@ Variables_you_need
 #Get all the streetpositions----------------------------------------------------
 
 #bounding box for our map
-myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt und Oststadt
+#myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt und Oststadt
 #myLocation <- c(9.968615748457593,53.539830498755265,   10.012409572679795,53.55974898224376) # Hamburg Innensatdt
 #myLocation <- c(6.833644830296469,51.460877236637465,  6.874634203344688,51.48078438095241) # Oberhausen Innensatdt
 #myLocation <- c(7.547877265931465,51.911200682602676,   7.689021424551272,52.0041202032665) # Muenster
-#myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring
+myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring
 #myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896) # Muenster Innenstadt
 
 #building the query
@@ -2289,7 +2289,7 @@ lower = mean(ProjectionData$Value)/2
 mid = mean(ProjectionData$Value)
 higher = mean(ProjectionData$Value) + mean(ProjectionData$Value)/2
 
-write.csv(ProjectionData,"Mannheim_Innenstadt_Oststadt_2.csv")
+write.csv(ProjectionData,"Münster_Ring_2.csv")
 
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   

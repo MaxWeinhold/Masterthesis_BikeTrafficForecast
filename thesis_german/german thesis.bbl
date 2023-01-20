@@ -190,6 +190,12 @@ Liaw, A. and Wiener, M. (2002).
 \newblock Classification and regression by randomforest.
 \newblock {\em R News}, 2(3):18--22.
 
+\bibitem[Liu et~al., 2022]{LiuAutocorrelation2022}
+Liu, X., Kounadi, O., and Zurita-Milla, R. (2022).
+\newblock Incorporating spatial autocorrelation in machine learning models
+  using spatial lag and eigenvector spatial filtering features.
+\newblock {\em ISPRS International Journal of Geo-Information}, 11(4).
+
 \bibitem[Meng et~al., 2016]{Meng2016}
 Meng, M., Zhang, J., Wong, Y.~D., and Au, P.~H. (2016).
 \newblock Effect of weather conditions and weather forecast on cycling travel
@@ -295,6 +301,18 @@ Saha, D., Alluri, P., Gan, A., and Wu, W. (2018).
 \newblock Spatial analysis of macro-level bicycle crashes using the class of
   conditional autoregressive models.
 \newblock {\em Accident Analysis and Prevention}, 118:166--177.
+
+\bibitem[Stock and Watson, 2015a]{Stock2015b}
+Stock, J.~H. and Watson, M.~W. (2015a).
+\newblock {\em Introduction to Econometrics}, chapter Estimation of Dynamic
+  Causal Effects, pages 635--683.
+\newblock PEARSON, 3 edition.
+
+\bibitem[Stock and Watson, 2015b]{Stock2015a}
+Stock, J.~H. and Watson, M.~W. (2015b).
+\newblock {\em Introduction to Econometrics}, chapter Introduction to Time
+  Series Regression and Forecasting, pages 568--634.
+\newblock PEARSON, 3 edition.
 
 \bibitem[Thomas and DeRobertis, 2013]{Thomas2013}
 Thomas, B. and DeRobertis, M. (2013).

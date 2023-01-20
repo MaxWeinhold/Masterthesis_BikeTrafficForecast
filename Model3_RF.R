@@ -139,10 +139,8 @@ for(i in 1:length(validation_set)){
                           .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
                           .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
                           .data_paved + .data_paving_stones + .data_pebblestone + .data_sett + .data_unknown +
-                          stre_lengths + stre_lanes + stre_maxspeed + bridge + os_way_to_city + 
-                          cluster_way_to_city + .data_cycleway + 
-                          Rain2 + Temperature2 + Inhabitants2 + stre_lengths2 + 
-                          os_way_to_city2, data =  train.data, ntree=250, importance=TRUE)
+                          stre_lengths + stre_lanes + stre_maxspeed + bridge + .data_cycleway + 
+                          Rain2 + Temperature2 + Inhabitants2 + stre_lengths2, data =  train.data, ntree=250, importance=TRUE)
   
   end_time <- Sys.time()
   print(end_time - start_time)
@@ -193,6 +191,6 @@ beep("mario")
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
 write.csv(Evaluation_DF,"Modell3_RF.csv")
-save(model,file="Modell2_RF_newDataset.rdata")
+save(model,file="Modell3_RF_newDataset.rdata")
 
 

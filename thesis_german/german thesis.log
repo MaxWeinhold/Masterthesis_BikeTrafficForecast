@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.8)  18 JAN 2023 08:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.8)  20 JAN 2023 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1117,407 +1117,407 @@ Underfull \hbox (badness 10000) in paragraph at lines 130--131
 [8
 
 ]
-<Plots/Li2022.png, id=467, 861.2175pt x 608.2725pt>
+<Plots/Li2022.png, id=489, 861.2175pt x 608.2725pt>
 File: Plots/Li2022.png Graphic file (type png)
 <use Plots/Li2022.png>
 Package pdftex.def Info: Plots/Li2022.png  used on input line 149.
 (pdftex.def)             Requested size: 390.0pt x 275.45573pt.
  [9] [10] [11] [12 <./Plots/Li2022.png>]
-<Plots/Alattar2021.png, id=539, 773.13844pt x 674.52pt>
+<Plots/Alattar2021.png, id=561, 773.13844pt x 674.52pt>
 File: Plots/Alattar2021.png Graphic file (type png)
 <use Plots/Alattar2021.png>
 Package pdftex.def Info: Plots/Alattar2021.png  used on input line 167.
 (pdftex.def)             Requested size: 390.0pt x 340.25424pt.
- [13] [14] [15 <./Plots/Alattar2021.png>] [16]
+ [13] [14] [15 <./Plots/Alattar2021.png>] [16] [17]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-94.
+93.
  (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [17]
-<Plots/Kondor.png, id=630, 1081.79156pt x 572.1375pt>
+) [18]
+<Plots/Kondor.png, id=673, 1081.79156pt x 572.1375pt>
 File: Plots/Kondor.png Graphic file (type png)
 <use Plots/Kondor.png>
-Package pdftex.def Info: Plots/Kondor.png  used on input line 210.
+Package pdftex.def Info: Plots/Kondor.png  used on input line 212.
 (pdftex.def)             Requested size: 390.0pt x 206.25743pt.
-<Plots/saha.png, id=642, 793.46437pt x 653.44125pt>
+<Plots/saha.png, id=685, 793.46437pt x 653.44125pt>
 File: Plots/saha.png Graphic file (type png)
 <use Plots/saha.png>
-Package pdftex.def Info: Plots/saha.png  used on input line 220.
+Package pdftex.def Info: Plots/saha.png  used on input line 222.
 (pdftex.def)             Requested size: 390.0pt x 321.18608pt.
- [18]
-[19] [20 <./Plots/Kondor.png>] [21] [22 <./Plots/saha.png>] [23] [24]
+
+[19] [20] [21 <./Plots/Kondor.png>] [22] [23 <./Plots/saha.png>] [24] [25]
 Kapitel 3.
-<Plots/plot22.png, id=709, 602.25pt x 803.0pt>
+<Plots/plot22.png, id=747, 602.25pt x 803.0pt>
 File: Plots/plot22.png Graphic file (type png)
 <use Plots/plot22.png>
-Package pdftex.def Info: Plots/plot22.png  used on input line 252.
+Package pdftex.def Info: Plots/plot22.png  used on input line 253.
 (pdftex.def)             Requested size: 390.0pt x 520.02014pt.
-[25
+[26
 
-] [26 <./Plots/plot22.png (PNG copy)>]
-<Plots/plot10.png, id=720, 803.0pt x 803.0pt>
+] [27 <./Plots/plot22.png (PNG copy)>]
+<Plots/plot10.png, id=757, 803.0pt x 803.0pt>
 File: Plots/plot10.png Graphic file (type png)
 <use Plots/plot10.png>
-Package pdftex.def Info: Plots/plot10.png  used on input line 261.
+Package pdftex.def Info: Plots/plot10.png  used on input line 262.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
- [27 <./Plots/plot10.png>]
-<Plots/plot28.png, id=727, 803.0pt x 803.0pt>
+ [28 <./Plots/plot10.png>]
+<Plots/plot28.png, id=764, 803.0pt x 803.0pt>
 File: Plots/plot28.png Graphic file (type png)
 <use Plots/plot28.png>
-Package pdftex.def Info: Plots/plot28.png  used on input line 270.
+Package pdftex.def Info: Plots/plot28.png  used on input line 271.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
- [28 <./Plots/plot28.png>]
-<Plots/plot23.png, id=735, 401.5pt x 401.5pt>
+ [29 <./Plots/plot28.png>]
+<Plots/plot23.png, id=772, 401.5pt x 401.5pt>
 File: Plots/plot23.png Graphic file (type png)
 <use Plots/plot23.png>
-Package pdftex.def Info: Plots/plot23.png  used on input line 281.
+Package pdftex.def Info: Plots/plot23.png  used on input line 282.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
-<Plots/plot24.png, id=736, 401.5pt x 401.5pt>
+<Plots/plot24.png, id=773, 401.5pt x 401.5pt>
 File: Plots/plot24.png Graphic file (type png)
 <use Plots/plot24.png>
-Package pdftex.def Info: Plots/plot24.png  used on input line 283.
+Package pdftex.def Info: Plots/plot24.png  used on input line 284.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
- [29 <./Plots/plot23.png> <./Plots/plot24.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 295--296
+ [30 <./Plots/plot23.png> <./Plots/plot24.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 
  []
 
-<Plots/plot01.png, id=746, 803.0pt x 803.0pt>
+<Plots/plot01.png, id=783, 803.0pt x 803.0pt>
 File: Plots/plot01.png Graphic file (type png)
 <use Plots/plot01.png>
-Package pdftex.def Info: Plots/plot01.png  used on input line 299.
+Package pdftex.def Info: Plots/plot01.png  used on input line 300.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
-<Plots/plot02.png, id=747, 803.0pt x 803.0pt>
+<Plots/plot02.png, id=784, 803.0pt x 803.0pt>
 File: Plots/plot02.png Graphic file (type png)
 <use Plots/plot02.png>
-Package pdftex.def Info: Plots/plot02.png  used on input line 301.
+Package pdftex.def Info: Plots/plot02.png  used on input line 302.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
 
-[30 <./Plots/plot01.png> <./Plots/plot02.png>]
-<Plots/plot11.png, id=758, 803.0pt x 803.0pt>
+[31 <./Plots/plot01.png> <./Plots/plot02.png>]
+<Plots/plot11.png, id=796, 803.0pt x 803.0pt>
 File: Plots/plot11.png Graphic file (type png)
 <use Plots/plot11.png>
-Package pdftex.def Info: Plots/plot11.png  used on input line 310.
+Package pdftex.def Info: Plots/plot11.png  used on input line 311.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot06.png, id=767, 803.0pt x 803.0pt>
+<Plots/plot06.png, id=805, 803.0pt x 803.0pt>
 File: Plots/plot06.png Graphic file (type png)
 <use Plots/plot06.png>
-Package pdftex.def Info: Plots/plot06.png  used on input line 321.
+Package pdftex.def Info: Plots/plot06.png  used on input line 322.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
-<Plots/plot07.png, id=768, 803.0pt x 803.0pt>
+<Plots/plot07.png, id=806, 803.0pt x 803.0pt>
 File: Plots/plot07.png Graphic file (type png)
 <use Plots/plot07.png>
-Package pdftex.def Info: Plots/plot07.png  used on input line 323.
+Package pdftex.def Info: Plots/plot07.png  used on input line 324.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
- [31] [32 <./Plots/plot11.png>]
-<Plots/plot62.png, id=790, 803.0pt x 803.0pt>
+ [32] [33 <./Plots/plot11.png>]
+<Plots/plot62.png, id=827, 803.0pt x 803.0pt>
 File: Plots/plot62.png Graphic file (type png)
 <use Plots/plot62.png>
-Package pdftex.def Info: Plots/plot62.png  used on input line 339.
+Package pdftex.def Info: Plots/plot62.png  used on input line 340.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
 
-Overfull \hbox (30.29749pt too wide) in paragraph at lines 344--346
+Overfull \hbox (30.29749pt too wide) in paragraph at lines 345--347
 \T1/cmtt/m/n/12 Content / InfAZ / N / Neuartiges _ Coronavirus / Daten / Inzide
 nz-[]Tabellen . html ?
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--346
+Underfull \hbox (badness 10000) in paragraph at lines 345--347
 
  []
 
-[33 <./Plots/plot06.png> <./Plots/plot07.png>] [34 <./Plots/plot62.png>]
-<Plots/plot63.png, id=808, 803.0pt x 803.0pt>
+[34 <./Plots/plot06.png> <./Plots/plot07.png>] [35 <./Plots/plot62.png>]
+<Plots/plot63.png, id=845, 803.0pt x 803.0pt>
 File: Plots/plot63.png Graphic file (type png)
 <use Plots/plot63.png>
-Package pdftex.def Info: Plots/plot63.png  used on input line 349.
+Package pdftex.def Info: Plots/plot63.png  used on input line 350.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
 
-[35 <./Plots/plot63.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 360--362
+[36 <./Plots/plot63.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 361--363
 
  []
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 363.
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
-
- []
-
+nput line 364.
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 399--400
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 
  []
 
-[38] [39] [40]
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
-[41]
-<Plots/plot20.png, id=905, 803.0pt x 803.0pt>
+[39] [40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+[42]
+<Plots/plot20.png, id=942, 803.0pt x 803.0pt>
 File: Plots/plot20.png Graphic file (type png)
 <use Plots/plot20.png>
-Package pdftex.def Info: Plots/plot20.png  used on input line 462.
+Package pdftex.def Info: Plots/plot20.png  used on input line 463.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
-<Plots/plot52.png, id=906, 803.0pt x 803.0pt>
+<Plots/plot52.png, id=943, 803.0pt x 803.0pt>
 File: Plots/plot52.png Graphic file (type png)
 <use Plots/plot52.png>
-Package pdftex.def Info: Plots/plot52.png  used on input line 464.
+Package pdftex.def Info: Plots/plot52.png  used on input line 465.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 469--470
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
 
  []
 
-[42 <./Plots/plot20.png> <./Plots/plot52.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 471--472
+[43 <./Plots/plot20.png> <./Plots/plot52.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
 
  []
 
-<Plots/Station_5564_1.png, id=930, 602.25pt x 602.25pt>
+<Plots/Station_5564_1.png, id=968, 602.25pt x 602.25pt>
 File: Plots/Station_5564_1.png Graphic file (type png)
 <use Plots/Station_5564_1.png>
-Package pdftex.def Info: Plots/Station_5564_1.png  used on input line 488.
+Package pdftex.def Info: Plots/Station_5564_1.png  used on input line 489.
 (pdftex.def)             Requested size: 390.0pt x 390.01509pt.
-[43] [44 <./Plots/Station_5564_1.png>] [45]
+[44] [45 <./Plots/Station_5564_1.png>]
+<Plots/plot60.png, id=993, 803.0pt x 803.0pt>
+File: Plots/plot60.png Graphic file (type png)
+<use Plots/plot60.png>
+Package pdftex.def Info: Plots/plot60.png  used on input line 529.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+<Plots/plot61.png, id=994, 803.0pt x 803.0pt>
+File: Plots/plot61.png Graphic file (type png)
+<use Plots/plot61.png>
+Package pdftex.def Info: Plots/plot61.png  used on input line 531.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+ [46] [47 <./Plots/plot60.png> <./Plots/plot61.png>]
 Kapitel 4.
-[46
 
-]
-<Plots/SVM.png, id=1000, 685.8122pt x 450.9347pt>
+Underfull \hbox (badness 10000) in paragraph at lines 547--549
+
+ []
+
+[48
+
+] [49] [50] [51]
+<Plots/SVM.png, id=1085, 685.8122pt x 450.9347pt>
 File: Plots/SVM.png Graphic file (type png)
 <use Plots/SVM.png>
-Package pdftex.def Info: Plots/SVM.png  used on input line 538.
+Package pdftex.def Info: Plots/SVM.png  used on input line 584.
 (pdftex.def)             Requested size: 390.0pt x 256.43683pt.
-<Plots/SVM2.png, id=1005, 925.20656pt x 423.83344pt>
+<Plots/SVM2.png, id=1090, 925.20656pt x 423.83344pt>
 File: Plots/SVM2.png Graphic file (type png)
 <use Plots/SVM2.png>
-Package pdftex.def Info: Plots/SVM2.png  used on input line 547.
+Package pdftex.def Info: Plots/SVM2.png  used on input line 593.
 (pdftex.def)             Requested size: 390.0pt x 178.65553pt.
- [47] [48 <./Plots/SVM.png> <./Plots/SVM2.png>]
-<Plots/SVM3.png, id=1030, 788.19469pt x 401.24907pt>
+ [52]
+Overfull \vbox (88.34073pt too high) has occurred while \output is active []
+
+
+[53 <./Plots/SVM.png> <./Plots/SVM2.png>]
+<Plots/SVM3.png, id=1118, 788.19469pt x 401.24907pt>
 File: Plots/SVM3.png Graphic file (type png)
 <use Plots/SVM3.png>
-Package pdftex.def Info: Plots/SVM3.png  used on input line 572.
+Package pdftex.def Info: Plots/SVM3.png  used on input line 618.
 (pdftex.def)             Requested size: 390.0pt x 198.53624pt.
- [49]
-<Plots/Entscheidungsbaum.png, id=1066, 1026.08344pt x 685.05937pt>
+ [54 <./Plots/SVM3.png>]
+<Plots/Entscheidungsbaum.png, id=1148, 1026.08344pt x 685.05937pt>
 File: Plots/Entscheidungsbaum.png Graphic file (type png)
 <use Plots/Entscheidungsbaum.png>
-Package pdftex.def Info: Plots/Entscheidungsbaum.png  used on input line 597.
+Package pdftex.def Info: Plots/Entscheidungsbaum.png  used on input line 643.
 (pdftex.def)             Requested size: 455.24408pt x 303.94626pt.
 
-Overfull \hbox (65.24408pt too wide) in paragraph at lines 597--600
+Overfull \hbox (65.24408pt too wide) in paragraph at lines 643--646
  [][] 
  []
 
 
-Overfull \hbox (8.81203pt too wide) in paragraph at lines 593--604
+Overfull \hbox (8.81203pt too wide) in paragraph at lines 639--650
 \T1/cmr/m/n/12 Präd-iak-to-ren-raum in di-stink-te sich nicht über-lap-pen-de R
 e-gio-nen $\OML/cmm/m/it/12 R[]; R[]; :::; R[]$\T1/cmr/m/n/12 .
  []
 
-[50 <./Plots/SVM3.png>] [51 <./Plots/Entscheidungsbaum.png>]
-<Plots/NN1.png, id=1083, 495.35063pt x 426.84468pt>
+[55] [56 <./Plots/Entscheidungsbaum.png>]
+<Plots/NN1.png, id=1167, 495.35063pt x 426.84468pt>
 File: Plots/NN1.png Graphic file (type png)
 <use Plots/NN1.png>
-Package pdftex.def Info: Plots/NN1.png  used on input line 618.
+Package pdftex.def Info: Plots/NN1.png  used on input line 664.
 (pdftex.def)             Requested size: 341.43306pt x 294.21053pt.
 
-Overfull \hbox (6.81421pt too wide) in paragraph at lines 615--625
+Overfull \hbox (6.81421pt too wide) in paragraph at lines 661--671
 \T1/cmr/m/n/12 Zur Ver-deut-li-chung der Funk-ti-ons-wei-se von neu-ro-na-len N
 etz-wer-ken be-schränkt
  []
 
-[52] [53 <./Plots/NN1.png>]
-<Plots/NN2.png, id=1102, 767.86874pt x 462.97969pt>
+[57] [58 <./Plots/NN1.png>]
+<Plots/NN2.png, id=1186, 767.86874pt x 462.97969pt>
 File: Plots/NN2.png Graphic file (type png)
 <use Plots/NN2.png>
-Package pdftex.def Info: Plots/NN2.png  used on input line 647.
+Package pdftex.def Info: Plots/NN2.png  used on input line 693.
 (pdftex.def)             Requested size: 284.52756pt x 171.55412pt.
- [54 <./Plots/NN2.png>]
-<Plots/NN3.png, id=1114, 904.88063pt x 523.9575pt>
+ [59 <./Plots/NN2.png>]
+<Plots/NN3.png, id=1198, 904.88063pt x 523.9575pt>
 File: Plots/NN3.png Graphic file (type png)
 <use Plots/NN3.png>
-Package pdftex.def Info: Plots/NN3.png  used on input line 668.
+Package pdftex.def Info: Plots/NN3.png  used on input line 714.
 (pdftex.def)             Requested size: 398.33858pt x 230.64595pt.
 
-Overfull \hbox (8.33858pt too wide) in paragraph at lines 668--671
+Overfull \hbox (8.33858pt too wide) in paragraph at lines 714--717
  [][] 
  []
 
-[55] [56 <./Plots/NN3.png>] [57]
-Overfull \hbox (230.2539pt too wide) in paragraph at lines 719--720
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+[60 <./Plots/NN3.png>] [61] [62]
+Overfull \hbox (117.48047pt too wide) in paragraph at lines 766--767
+[][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (32.90039pt too wide) in paragraph at lines 720--721
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (131.57715pt too wide) in paragraph at lines 721--723
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (46.99707pt too wide) in paragraph at lines 726--728
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (75.19043pt too wide) in paragraph at lines 729--731
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[58]
+[63] [64] [65]
 Kapitel 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--743
+Underfull \hbox (badness 10000) in paragraph at lines 803--805
 
  []
 
-[59
+[66
 
 ]
-<Plots/plot30.png, id=1171, 803.0pt x 803.0pt>
+<Plots/plot30.png, id=1269, 803.0pt x 803.0pt>
 File: Plots/plot30.png Graphic file (type png)
 <use Plots/plot30.png>
-Package pdftex.def Info: Plots/plot30.png  used on input line 746.
+Package pdftex.def Info: Plots/plot30.png  used on input line 808.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
- [60 <./Plots/plot30.png>] [61]
-<Plots/plot48.png, id=1190, 602.25pt x 602.25pt>
+ [67 <./Plots/plot30.png>] [68]
+<Plots/plot48.png, id=1288, 602.25pt x 602.25pt>
 File: Plots/plot48.png Graphic file (type png)
 <use Plots/plot48.png>
-Package pdftex.def Info: Plots/plot48.png  used on input line 768.
+Package pdftex.def Info: Plots/plot48.png  used on input line 830.
 (pdftex.def)             Requested size: 170.71652pt x 170.71487pt.
-<Plots/plot49.png, id=1191, 602.25pt x 602.25pt>
+<Plots/plot49.png, id=1289, 602.25pt x 602.25pt>
 File: Plots/plot49.png Graphic file (type png)
 <use Plots/plot49.png>
-Package pdftex.def Info: Plots/plot49.png  used on input line 770.
+Package pdftex.def Info: Plots/plot49.png  used on input line 832.
 (pdftex.def)             Requested size: 170.71652pt x 170.71487pt.
- [62]
-<Plots/plot44.png, id=1201, 803.0pt x 803.0pt>
+ [69]
+<Plots/plot44.png, id=1299, 803.0pt x 803.0pt>
 File: Plots/plot44.png Graphic file (type png)
 <use Plots/plot44.png>
-Package pdftex.def Info: Plots/plot44.png  used on input line 779.
+Package pdftex.def Info: Plots/plot44.png  used on input line 841.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
- [63 <./Plots/plot48.png> <./Plots/plot49.png>] [64 <./Plots/plot44.png>]
-<Plots/plot32.png, id=1221, 602.25pt x 602.25pt>
+ [70 <./Plots/plot48.png> <./Plots/plot49.png>] [71 <./Plots/plot44.png>]
+<Plots/plot32.png, id=1319, 602.25pt x 602.25pt>
 File: Plots/plot32.png Graphic file (type png)
 <use Plots/plot32.png>
-Package pdftex.def Info: Plots/plot32.png  used on input line 799.
+Package pdftex.def Info: Plots/plot32.png  used on input line 861.
 (pdftex.def)             Requested size: 170.71652pt x 170.71487pt.
-<Plots/plot33.png, id=1222, 602.25pt x 602.25pt>
+<Plots/plot33.png, id=1320, 602.25pt x 602.25pt>
 File: Plots/plot33.png Graphic file (type png)
 <use Plots/plot33.png>
-Package pdftex.def Info: Plots/plot33.png  used on input line 801.
+Package pdftex.def Info: Plots/plot33.png  used on input line 863.
 (pdftex.def)             Requested size: 170.71652pt x 170.71487pt.
- [65]
-<Plots/plot36.png, id=1231, 602.25pt x 602.25pt>
+ [72]
+<Plots/plot36.png, id=1329, 602.25pt x 602.25pt>
 File: Plots/plot36.png Graphic file (type png)
 <use Plots/plot36.png>
-Package pdftex.def Info: Plots/plot36.png  used on input line 810.
+Package pdftex.def Info: Plots/plot36.png  used on input line 872.
 (pdftex.def)             Requested size: 170.71652pt x 170.71487pt.
-<Plots/plot37.png, id=1232, 602.25pt x 602.25pt>
+<Plots/plot37.png, id=1330, 602.25pt x 602.25pt>
 File: Plots/plot37.png Graphic file (type png)
 <use Plots/plot37.png>
-Package pdftex.def Info: Plots/plot37.png  used on input line 812.
+Package pdftex.def Info: Plots/plot37.png  used on input line 874.
 (pdftex.def)             Requested size: 170.71652pt x 170.71487pt.
- [66 <./Plots/plot32.png> <./Plots/plot33.png>]
-<Plots/plot40.png, id=1242, 803.0pt x 803.0pt>
+ [73 <./Plots/plot32.png> <./Plots/plot33.png>]
+<Plots/plot40.png, id=1341, 803.0pt x 803.0pt>
 File: Plots/plot40.png Graphic file (type png)
 <use Plots/plot40.png>
-Package pdftex.def Info: Plots/plot40.png  used on input line 821.
+Package pdftex.def Info: Plots/plot40.png  used on input line 883.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
- [67 <./Plots/plot36.png> <./Plots/plot37.png>] [68 <./Plots/plot40.png>] [69]
+ [74 <./Plots/plot36.png> <./Plots/plot37.png>] [75 <./Plots/plot40.png>] [76]
 Kapitel 6.
-[70
+[77
 
 ]
 Kapitel 7.
-<Plots/plot03.png, id=1266, 803.0pt x 803.0pt>
+<Plots/plot03.png, id=1364, 803.0pt x 803.0pt>
 File: Plots/plot03.png Graphic file (type png)
 <use Plots/plot03.png>
-Package pdftex.def Info: Plots/plot03.png  used on input line 852.
+Package pdftex.def Info: Plots/plot03.png  used on input line 914.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot05.png, id=1267, 803.0pt x 803.0pt>
+<Plots/plot05.png, id=1365, 803.0pt x 803.0pt>
 File: Plots/plot05.png Graphic file (type png)
 <use Plots/plot05.png>
-Package pdftex.def Info: Plots/plot05.png  used on input line 859.
+Package pdftex.def Info: Plots/plot05.png  used on input line 921.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot13.png, id=1268, 803.0pt x 803.0pt>
+<Plots/plot13.png, id=1366, 803.0pt x 803.0pt>
 File: Plots/plot13.png Graphic file (type png)
 <use Plots/plot13.png>
-Package pdftex.def Info: Plots/plot13.png  used on input line 866.
+Package pdftex.def Info: Plots/plot13.png  used on input line 928.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot14.png, id=1269, 803.0pt x 803.0pt>
+<Plots/plot14.png, id=1367, 803.0pt x 803.0pt>
 File: Plots/plot14.png Graphic file (type png)
 <use Plots/plot14.png>
-Package pdftex.def Info: Plots/plot14.png  used on input line 873.
+Package pdftex.def Info: Plots/plot14.png  used on input line 935.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot15.png, id=1270, 803.0pt x 803.0pt>
+<Plots/plot15.png, id=1368, 803.0pt x 803.0pt>
 File: Plots/plot15.png Graphic file (type png)
 <use Plots/plot15.png>
-Package pdftex.def Info: Plots/plot15.png  used on input line 880.
+Package pdftex.def Info: Plots/plot15.png  used on input line 942.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot16.png, id=1271, 803.0pt x 803.0pt>
+<Plots/plot16.png, id=1369, 803.0pt x 803.0pt>
 File: Plots/plot16.png Graphic file (type png)
 <use Plots/plot16.png>
-Package pdftex.def Info: Plots/plot16.png  used on input line 887.
+Package pdftex.def Info: Plots/plot16.png  used on input line 949.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot17.png, id=1272, 803.0pt x 803.0pt>
+<Plots/plot17.png, id=1370, 803.0pt x 803.0pt>
 File: Plots/plot17.png Graphic file (type png)
 <use Plots/plot17.png>
-Package pdftex.def Info: Plots/plot17.png  used on input line 894.
+Package pdftex.def Info: Plots/plot17.png  used on input line 956.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot18.png, id=1273, 803.0pt x 803.0pt>
+<Plots/plot18.png, id=1371, 803.0pt x 803.0pt>
 File: Plots/plot18.png Graphic file (type png)
 <use Plots/plot18.png>
-Package pdftex.def Info: Plots/plot18.png  used on input line 901.
+Package pdftex.def Info: Plots/plot18.png  used on input line 963.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot19.png, id=1274, 803.0pt x 803.0pt>
+<Plots/plot19.png, id=1372, 803.0pt x 803.0pt>
 File: Plots/plot19.png Graphic file (type png)
 <use Plots/plot19.png>
-Package pdftex.def Info: Plots/plot19.png  used on input line 908.
+Package pdftex.def Info: Plots/plot19.png  used on input line 970.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-<Plots/plot21.png, id=1275, 803.0pt x 803.0pt>
+<Plots/plot21.png, id=1373, 803.0pt x 803.0pt>
 File: Plots/plot21.png Graphic file (type png)
 <use Plots/plot21.png>
-Package pdftex.def Info: Plots/plot21.png  used on input line 915.
+Package pdftex.def Info: Plots/plot21.png  used on input line 977.
 (pdftex.def)             Requested size: 390.0pt x 390.0059pt.
-[71
+[78
 
- <./Plots/plot03.png>] (german thesis.bbl [72 <./Plots/plot05.png>] [73 <./Plot
-s/plot13.png>] [74 <./Plots/plot14.png>] [75 <./Plots/plot15.png>] [76 <./Plots
-/plot16.png>] [77 <./Plots/plot17.png>] [78 <./Plots/plot18.png>] [79 <./Plots/
-plot19.png>] [80 <./Plots/plot21.png>] [81
+ <./Plots/plot03.png>] (german thesis.bbl [79 <./Plots/plot05.png>] [80 <./Plot
+s/plot13.png>] [81 <./Plots/plot14.png>] [82 <./Plots/plot15.png>] [83 <./Plots
+/plot16.png>] [84 <./Plots/plot17.png>] [85 <./Plots/plot18.png>] [86 <./Plots/
+plot19.png>] [87 <./Plots/plot21.png>] [88
 
-] [82] [83] [84] [85]) [86]
-(german thesis.aux)
+] [89] [90] [91] [92] [93])
+[94] (german thesis.aux)
 Package rerunfilecheck Info: File `"german thesis".out' has not changed.
-(rerunfilecheck)             Checksum: F0E9CA250046389D1D2ACC51F00DF218;8285.
+(rerunfilecheck)             Checksum: 52958BCB975481D7DC878C26BE618234;8898.
  ) 
 Here is how much of TeX's memory you used:
- 30897 strings out of 478582
- 556943 string characters out of 2854160
- 895195 words of memory out of 3000000
- 48129 multiletter control sequences out of 15000+600000
+ 30967 strings out of 478582
+ 558092 string characters out of 2854160
+ 897195 words of memory out of 3000000
+ 48167 multiletter control sequences out of 15000+600000
  489510 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,14n,90p,1804b,1864s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 84i,14n,90p,1804b,1870s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti
 1200.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecrm0800.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljfour/public/math
-abx/dpi600\matha8.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljfour/publ
-ic/mathabx/dpi720\mathx10.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljf
+abx/dpi720\mathx10.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljfour/pub
+lic/mathabx/dpi600\matha8.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\fonts/pk/ljf
 our/public/mathabx/dpi600\matha12.pk> <C:\Users\MaxWe\AppData\Local\MiKTeX\font
 s/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\MaxWe\AppData\Local\MiKTe
 X\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\MaxWe\AppData\Local
@@ -1535,9 +1535,9 @@ gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr8.pfb>
-Output written on "german thesis.pdf" (86 pages, 7520297 bytes).
+Output written on "german thesis.pdf" (94 pages, 7570683 bytes).
 PDF statistics:
- 2063 PDF objects out of 2073 (max. 8388607)
- 359 named destinations out of 1000 (max. 500000)
- 630 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2172 PDF objects out of 2487 (max. 8388607)
+ 389 named destinations out of 1000 (max. 500000)
+ 672 words of extra memory for PDF output out of 10000 (max. 10000000)
 

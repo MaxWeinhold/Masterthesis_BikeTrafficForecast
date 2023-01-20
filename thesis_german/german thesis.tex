@@ -180,12 +180,11 @@ Die Prädikatoren eines Modells spielen eine große Rolle, denn mit der Auswahl 
 
 \subsection{Faktor Wetter}
 
-Wetter und Wetterelastizität
-
-
 Vielmals begegnet in der bisherigen Literatur Betrachtung sind Wetter Daten, so z.B. bei \cite{Holmgren2017}, \cite{Broucke2019}, \cite{Li2015}. Literatur, die sich speziell mit diesem Zusammenhang beschäftigt findet sich bei \cite{Wessel2020}. Dabei hat er sich z.B. im Gegensatz zu \cite{Nankervis1999}, der sich auch mit dem Zusammenhang von Wetter und Fahrrad Aufkommen beschäftigt, gezielt mit dem Zusammenhang von Wettervorhersagen beschäftigt. Auch \cite{Meng2016} untersucht diesen Zusammenhang.\\
 Jedoch während \cite{Meng2016} Daten einer Umfrage von 553 Fahrradfahrern in Singapore verwendet, stützt sich \cite{Wessel2020} auf umfangreichere Daten von 188 Fahrradzählstationen in 37 deutschen Städten, die stündlich zählen. Daten zum aktuellen Wetter stammen vom Deutschen Wetterdienst. Daten über Wettervorhersagen stammen aus der ARD Mediathek, der abendlichen Tagesschau um acht Uhr. Die Aufzeichnungen der Wettervorhersagen worden dabei manuell ausgewertet, wobei der deutsche Raum in sechs Hemisphäre Nordwest, Nordost, mittlerer Westen und mittlerer Osten so wie Südwest und Südost unterteilt wurde und die Städte in die korrespondierende Hemisphäre eingeteilt worden sind nach folgenden Wetter Klassifikationen: klarer Himmel, leichte Bewölkung, schwere Bewölkung, Regen, Schneefall, Gewitter und zusätzlich Wind, Rutschgefahr, Vereisungen, Überflutung und generelle Warnungen. Neben dieser manuellen Einschätzung der Bewölkung wurde zusätzlich eine digitale automatisierte Einschätzung verwendet, die sich auf die Dunkelheit der Pixel des Kartenmaterials bezieht.\\
-Aufbauend auf diesen Daten nutzt \cite{Wessel2020} ein log-lineares Regressionsmodell und ein negativ binomiales Regressions Modell. Das letztere Modell geht auf \cite{Hausman1984} zurück und ist im Besonderen für ganzzahlige Regressoren nützlich, wie es hier der Fall ist. Der Bestimmtheitswert dieser verschiedenen Modelle R$^2$, die teils abweichende Variablen verwenden, liegt zwischen 75,9 \% und 78,5 \%. Gerade der Schritt mehrere Städte in ein Modell zu bringen ist interessant. \cite{Saha2018} hat zwar eine Betrachtung für einen ganzen Bundestaat angefertigt, hat Vorhersagen jedoch nur auf Makro Ebene getroffen. Das Modell von \cite{Wessel2020} findet hingegen auf der Mikro Ebene der einzelnen Zählstationen statt, und zeigt, dass doch trotz Unterschiede in der städtischen Infrastruktur und Fahrkultur präzise Vorhersagen machbar sind, denn der Einfluss des Wetters ist einer der wesentlichen Prädikatoren und gehört auf jeden Fall in ein Modell, dass das Fahrrad Verkehrs Volumen vorhersagen möchte. Außerdem verwendet sein Modell auch Schul- und Semesterferien, sowie Feiertage als Prädikator, die ebenfalls stark ins Gewicht fallen.
+Aufbauend auf diesen Daten nutzt \cite{Wessel2020} ein log-lineares Regressionsmodell und ein negativ binomiales Regressions Modell. Das letztere Modell geht auf \cite{Hausman1984} zurück und ist im Besonderen für ganzzahlige Regressoren nützlich, wie es hier der Fall ist. Der Bestimmtheitswert dieser verschiedenen Modelle R$^2$, die teils abweichende Variablen verwenden, liegt zwischen 75,9 \% und 78,5 \%. Gerade der Schritt mehrere Städte in ein Modell zu bringen ist interessant. \cite{Saha2018} hat zwar eine Betrachtung für einen ganzen Bundestaat angefertigt, hat Vorhersagen jedoch nur auf Makro Ebene getroffen. Das Modell von \cite{Wessel2020} findet hingegen auf der Mikro Ebene der einzelnen Zählstationen statt, und zeigt, dass doch trotz Unterschiede in der städtischen Infrastruktur und Fahrkultur präzise Vorhersagen machbar sind, denn der Einfluss des Wetters ist einer der wesentlichen Prädikatoren und gehört auf jeden Fall in ein Modell, dass das Fahrrad Verkehrs Volumen vorhersagen möchte. Außerdem verwendet sein Modell auch Schul- und Semesterferien, sowie Feiertage als Prädikator, die ebenfalls stark ins Gewicht fallen.\\
+Auch wenn das Modell von \cite{Wessel2020} zu guten Vorhersagen das Radverkehrs führt, muss diese Masterarbeit darauf verzichten, Information der Wettervorhersagen händisch in Variablen zu übersetzen, da dies mit einem enormen Arbeitsaufwand verbunden wäre. Es ist bedeutend einfach Daten des deutschen Wetterdienstes zu nutzen, die sicherlich ähnlich gute Vorhersagen liefern, denn der Unterschied zwischen beiden Varianetn ist auch bei \cite{Wessel2020} nicht allzu groß.\\
+Zusätzlich beschäftigen sich \cite{Goldmann2021} mit der sogenannten Wetterelastizität des Radverkehrs. Diese beschreibt die Reaktion von Radfaheren auf Wettereignisse und unterscheidet sich in unterschiedlichen Städten. Ist der Radverkehr in einer Stadt inelastisch, so bedeutet das, dass selbst bei Regen noch relativ viele Radfahrer auf den Straßen unterwegs sind, wo in elastischen Städten unter selben Bedingungen bedeutend weniger Radfahrer unterwegs wären. Ein Beispiel für eine wetter inelastische Stadt ist z.B. Münster. 
 
 
 \subsection{Faktor Feinstaubbelastung}
@@ -198,6 +197,9 @@ Grundsätzlich sind Daten zur Feinstaubbelastung in Deutschland an vielen Stelle
 Es ist vorstellbar, dass Corona Lockdowns zu einer Verzerrung des allgemeinen Verkehrs geführt hat, was ebenso für Fahrräder gelten wird. Diese Effekte untersuchen \cite{Moellers2021} mittels Daten von Zählstation 10 deutschen Städten. Während Lockdowns zu einer Reduzierung von Fußgängern führte, ist der Effekte auf Fahrradfahrer uneindeutig. Bei dieser Betrachtung konzentrierten sie sich auf die erste Welle. Für ihr Modell verwenden sie Daten des RKI, dass tägliche Daten über neue Fälle zur Verfügung stellt pro Region. Zusätzlich kontrollieren sie auch die örtlichen Maßnahmen durch die Öffnungszeiten örtlicher Geschäfte und Schulen. Ihre Analyse zeigt, dass die Anzahl der Fahrradfahrer unter der Woche abgenommen hat, aber an Wochenenden zu genommen hat.
 
 \subsection{Faktor der städtischen Unterschiede}\label{Faktor_Stadt}
+
+Die Studien von \cite{Wessel2020}, \cite{Moellers2021} und \cite{Goldmann2021} zeigten bereits, dass die Verwendungen von Daten aus verschiedenen Städten immer noch zu guten Vorhersagen führen, selbst wenn Unterschiede in der Höhe des Fahrradverkehrs in diesen Städten existieren. Dieser Punkt spielt für diese Hausarbeit eine große Rolle, denn die Daten von verschiedenen Städten zu vereinen, wäre ein hilfreicher Weg, um mehr Stichproben zu erhalten.\\
+Damit die Aussagekraft des Modells jedoch in den Unterschieden der Städte nicht untergeht, empfiehlt es sich, Variablen in das Modell mit aufzunehmen, die diese Unterschiede erklären können. \cite{Goldmann2021} machen dies vor. Sie versuchen Unterschiede der Städte in der Wetterelastizität des Radverkehrs zu begründen. Dazu nutzen sie nicht nur Wetterdaten und Daten zu Feier- und Ferientagen sondern auch Daten zur demographischen Bevölkerungsstruktur der jeweiligen Stadt, Daten zum Autobesitz, die Unfallrate, die Verkehrsdichte, Radwegdichte und die Dichte des öffentlichen Nahverkehrs. Diese Auswahl ergibt einen guten Anhaltspunkt dafür, welche Variablen der Datensatz dieser Hausarbeit mit aufnehmen sollte. Weitere Angaben und Ergebnisse hierzu finden sich im Kapitel \ref{Daten_Stadt}.
 
 \subsection{Faktor Radverkehrsunfälle}
 
@@ -229,8 +231,7 @@ Neben all dem ist interessant, dass \cite{Kondo2018} darauf verweisen, dass Unfa
 
 \subsection{Sonstige Faktoren}
 
-Eine weitere interessante Datenquelle, die wir z.B. schon bei \cite{Alattar2021} kennen gelernt haben, ist Open Street Map. Dies ist ein 2004 gegründetes gemeinnütziges Projekt, dass das Ziel verfolgt Kartenmaterial zu sammeln und online allen frei zur Verfügung zu stellen. Hier sind Daten über Straßen, Eisenbahnen, Flüsse, Wälder, Häuser und vielem weiteren zu finden. Auch \cite{Carl2015} nutzt die frei verfügbaren Daten zu Höhenmetern des Geländes von Open Street Map, um die Planung von mehrtägigen Fahrradtouren zu erleichtern, die der Erholung dienen. Deswegen ist dieses Paper für die Frage dieser Hausarbeit weniger interessant, die Idee, diese Art von Daten zu verwenden, aber könnte hilfreich sein. Dass aber die Topographie eine Rolle auch für den Pendler Verkehr spielt, zeigt \cite{Rietveld2004}.\\
-Vor allem nützlich aber ist diese Datenquelle, wenn man wie \cite{Goldmann2021} mehrere Städte untersuchen möchte und deren Unterschiede. Sie verwenden nicht nur Daten zur Demographie, sondern auch zur Topographie oder auch zur Dichte von Radwegen und Haltestopps des öffentlichen Nahverkehrs.
+Eine weitere interessante Datenquelle, die wir z.B. schon bei \cite{Alattar2021} kennen gelernt haben, ist Open Street Map. Dies ist ein 2004 gegründetes gemeinnütziges Projekt, dass das Ziel verfolgt Kartenmaterial zu sammeln und online allen frei zur Verfügung zu stellen. Hier sind Daten über Straßen, Eisenbahnen, Flüsse, Wälder, Häuser und vielem weiteren zu finden. Auch \cite{Carl2015} nutzt die frei verfügbaren Daten zu Höhenmetern des Geländes von Open Street Map, um die Planung von mehrtägigen Fahrradtouren zu erleichtern, die der Erholung dienen. Deswegen ist dieses Paper für die Frage dieser Hausarbeit weniger interessant, die Idee, diese Art von Daten zu verwenden, aber könnte hilfreich sein. Dass aber die Topographie eine Rolle auch für den Pendler Verkehr spielt, zeigt \cite{Rietveld2004}.
 
 \section{Forschungslücken und Anknüpfungspunkte}
 
@@ -286,7 +287,7 @@ Daten zum Wetter stammen einheitlich vom Deutschen Wetterdienst. Dabei wurden di
 \end{figure}
 
 
-\section{Demographische und soziale Statistiken}
+\section{Demographische und soziale Statistiken}\label{Daten_Stadt}
 
 In diesem Abschnitt sammeln sich verschiedene Daten, die Unterschiede in den Städten in ihrer sozialen und demographischen Struktur in ihrer Bevölkerung hervorheben. Daten dafür stammen aus zwei Quellen. Die meisten Variablen nutzen als Datenquelle das statistische Bundesamt. Eine Variable bezieht sich auf den ADFC Fahrradklimaindex. Für beide Quellen gilt, dass Daten für das Jahr 2022 noch nicht vorhanden waren, da das Jahr zum Zeitpunkt der Recherche noch nicht abgeschlossen war. Für die wenigen Beobachtungen aus Hamburg z.B., die aus dem Jahr 2022 in den Datensatz mit aufgenommen worden sind, gilt, dass für diese Beobachtungen angenommen wurde, dass Variablen, die nicht erneuert werden konnten, konstant blieben. Das betrifft insgesamt jedoch nur wenige Beobachtungen, wie auch Abbildung \ref{Jahre} zeigt.
 
@@ -511,11 +512,30 @@ for(j in which(dist==min(dist))){
 \end{lstlisting}
 \label{code:street_variables2}
 
-Die Variable \lstinline|nearest| gibt nun an, welche Straße die nächstgelegenste zur Zählstation ist und mit diesen Informationen lassen sich die weiteren notwendigen Variablen berechnen.
+Die Variable \lstinline|nearest| gibt nun an, welche Straße die nächstgelegenste zur Zählstation ist und mit diesen Informationen lassen sich die weiteren notwendigen Variablen berechnen, wie auch in Code \ref{code:street_variables3} beschrieben wird. Wie sich die Straßentypen unter der Anzahl der Zählstationen verteilen, zeigt die Abbildung \ref{Straßentypen} links. Weiter zeigt die Abbildung \ref{VerkehrnachTypen} die Aufteilung des Radverkehrsaufkommens nach der jeweiligen Straßenbeschaffenheit nach Straßenbelag und Straßentyp, wobei die Beschreibungen dem englischen Original der Open Street Map Beschreibung entspricht, denen teils spezifische Definitionen zu Grunde liegen.
+
+\begin{lstlisting}[caption={Berechnung der Straßenvariablen}]
+street_type = streets$osm_lines$highway[nearest]
+surface = streets$osm_lines$surface[nearest]
+lanes = streets$osm_lines$lanes[nearest]
+maxspeed = streets$osm_lines$maxspeed[nearest]
+streetlengths = st_length(street_Points[nearest])
+\end{lstlisting}
+\label{code:street_variables3}
+
+
+\begin{figure}[!ht]%
+	\centering
+	\subfloat[\centering nach Straßentypen]{{\includegraphics[width=6cm]{Plots/plot60.png} }}%
+	\qquad
+	\subfloat[\centering nach Straßenbelag]{{\includegraphics[width=6cm]{Plots/plot61.png} }}%
+	\caption{Radverkehr nach Straßenbeschaffenheit}
+	\label{VerkehrnachTypen}%
+\end{figure}
 
 \subsection{Sonstige}
 
-Weitere wichtige Variablen sind Feier und Ferientage. Dazu wurde eine Liste dieser Tage händisch für alle Bundesländer angelegt und diese automatisch in Datensatz übertragen.
+Weitere wichtige Variablen sind Feier und Ferientage. Dazu wurde eine Liste dieser Tage händisch für alle Bundesländer angelegt und diese automatisch in den Datensatz übertragen. Informationen zu den Ferien- und Feiertagen seit 2012 nach den jeweiligen Bundesländern stammen von der Seite \url{www.kalenderpedia.de}.
 
 \chapter{Verwendete Methoden}
 
@@ -523,6 +543,32 @@ Das vorangegangene Kapitel gab einen genauen Überblick über die bestehende Lit
 Im Folgendem wird die Funktionsweise von Regressionssystemen, Support Vector Systemen, Entscheidungsbaum Varianten und neuronalen Netzwerken erklärt. Die Auswahl dieser Schwerpunkte beruht auf der Verwendung in der bisher dargestellten Literatur. Hat man ein geeignetes Modell ausgewählt, lässt sich dessen Effizienz mit dem richtigen Validierungsverfahren noch weiter steigern. Deswegen beinhaltet dieses Kapitell ebenfalls eine kurze Erläuterung der Cross Validation.
 
 \section{Problem zur Autokorrelation}
+
+Vorab muss das Problem der Autokorrelation erwähnt werden. Autokorrelation bezeichnet wie der Name fast sagt, die Korrelation innerhalb einer Variable und nicht wie sonst die Korrelation zweier verschiedener Variablen. Diese Autokorrelation kann räumlich und zeitlich auftreten. Bei der zeitlichen Autokorrelation ähneln sich Werte, die zeitlich nah bei einander liegen. Bei der räumlichen Autokorrelation ähneln sich Werte, die räumlich nah bei einander liegen.\\ 
+Dies kann zu Problemen führen. So beschreiben \cite{LiuAutocorrelation2022}, dass räumliche Autokorrelation die Annahme von unabhängig und identisch verteilte Zufallsvariablen verletzt. Dies kann zu Overfitting oder einem Bias der Vorhersagen führen. Im Fall von OLS Regressionen ist der Standardfehler nicht mehr konsistent, was Aussagen über die Signifikanz des Modells wertlos macht. So beschreibt es auch Stock and Watson \cite{Stock2015b}. Da das Ziel dieser Masterarbeit jedoch nur die Vorhersage ist, ist die Signifikanz nicht entscheiden. Um gute Vorhersagen zu treffen, ist es jedoch notwendig, das Risiko von Overfitting oder einer Verzerrung zu minimieren. Dazu gibt es drei Lösungsansätze. Diese wären die Verwendung von Lagged Variablen, Feature Engienering und Resampling.\\
+
+\subsection{Lagged Variablen}
+
+Der Begriff Lagged Variable bezeichnet die Aufnahme einer versetzten Beobachtung, die als zusätzliche Variable mit in das Modell aufgenommen wird. Im Bereich von Zeitreihendaten wird also eine zeitlich vorhergehende Beobachtung der eigentlich abhängigen Variable in das Modell aufgenommen. Im Fall der Regression nennt man ein solches Vorgehen Autoregression. Dies beschreiben z.B. \cite{Stock2015a}. Die mathematische Formulierung einer allgemeinen Autoregression lautet:
+
+\begin{equation}
+	\label{SVM:Autoregression}
+	y_t = \beta_0 + \beta_1 * y_{t-1} + \beta_2 * y_{t-2} + ... + \beta_p * y_{t-p} + u_t
+\end{equation}
+
+Diese Formulierung kann natürlich nicht nur in OLS Regressionen angewendet werden, sondern auch bei allen weiteren Machine Learning Algorithmen, über die hier noch beschrieben werden. Eine weiter Entwicklung dieses Ansatz ist die ARIMA-Modellierung, was die Abkürzung für Auto Regressive-Moving Average ist.\\
+Problem an diesem Ansatz ist, dass er für die Vorhersage an unbekannten out of sample Orten nicht anwendbar ist, weil an unbekannten Orten auch vorhergehende Beobachtungen unbekannt sind, die man in das Modell zur Vorhersage mit aufnehmen müsste. Deswegen ist die Aufnahme von Lagged Variablen nicht geeignet für diese Masterarbeit.
+
+\subsection{Erklärende Variablen}
+
+Eine weitere Möglichkeit Autokorrelation zu vermeiden ist es, Variablen in das Modell aufzunehmen, die die Autokorrelation erklären können. Nimmt man in einem zeitlichen Modell z.B. die Stunden als Variable auf, die erklären können, dass in der Mittagszeit viele Fahrradfahrer auf den Straßen sind und Nachts nur sehr wenige, dann erklärt das auch, warum zu zwei Zeitpunkten, die nah beieinander z.B. um die Mittagszeit herum, ähnlich hohe Werte aufzeigen. Dies funktioniert ähnlich auch für räumliche Autokorrelation. Nimmt man als Variable die Entfernung zum Stadtzentrum auf, dann erklärt dies nicht nur, dass nahe des Stadtzentrums viele Radfahrer unterwegs sind und dafür weniger Radfahrer außerhalb des Stadtzentrums, es ekrlärt auch, wieso sich zwei nahe beieinander liegende Punkte ähneln, weil beide weit weg vom Stadtzentrum liegen.\\
+Diesen Ansatz verfolgt auch die Studie von \cite{LiuAutocorrelation2022}, automatisiert jedoch diesen Prozess. Sie schlagen für Random Forest z.B. vor, Probleme mit Autokorrelation zu vermeiden, in dem gewichtete räumliche Variablen durch das LASSO Regressionsverfahren selektiert werden. Diese räumliche Variablen übernehmen die vorher besprochene Rolle. Die LASSO Regression ist neben der RIDGE Regression eines von zwei Regularisierungsverfahren. Dabei wird eine Regression aufgesetzt, in deren Optimierungsproblem nicht nur die quadrierte Summe der Fehlerterme steht, sondern dazu addiert die quadrierte (RIDGE) oder absolute (LASSO) Summe der Estimatoren selbst. Ziel einer solchen Optimierung ist es, die Estimatoren zu schrumpfen, wobei bei LASSO sogar Estimatoren auf null setzen kann und somit Feature Selection betreiben kann.\\
+Ein solches Modell aufzusetzen, übersteigt jedoch den Arbeitsumfang dieser Arbeit. Was die zeitliche Autokorrelation angeht, können die Variablen zur Stunde und zum jeweiligen Monat Auschluss geben. Was die räumliche Autokorrelation angeht, stehen so viele Variablen zur Auswahl, dass es hier durchaus Sinn machen könnte, eine genauere Feature Selektion zu betreiben. Ein solches Verfahren jedoch erfordert leistungsfähigere Hardware, würde aber gleichzeitig die Performance des Modells nicht drastisch erhöhen.
+
+\subsection{Resampling}
+
+Resampling bezeichnet eine Neuanordnung von Beobachtung eines Datensatzes, sodass dabei ein neuer Datensatz entsteht. Beispiele hierfür ist das Bootstraping, bei dem eine Mehrfachziehung zufällig ausgewählter Beobachtungen erlaubt ist. Daneben ist Resampling auch ohne Mehrfachziehung von Beobachtungen nötig. Diese führt dazu, dass man weniger Beobachtungsdaten zieht, als im Datensatz vorhanden sind. Dabei handelt es sich um Undersampling.\\
+Undersampling kann auch dabei helfen, Autokorrelation zu vermeiden, denn verringert man die Dichte an Beobachtungen, spielt die zeitliche oder räumliche Nähe einzelner Beobachtungen zu einander einer geringere Rolle. Der große Nachteil dieser Methode, ist dass durch ein Verzicht dieser Daten auch Informationen verloren gehen und das Modell durch die kleinere Sample Size eine schlechtere Performance vorweißt. Im Fall dieser Arbeit steht ein Datensatz zur Verfügung, der mehr als groß genung ist, um Undersampling zuzulassen. Zudem kommt hinzu, dass der der technische Flaschenhals im Arbeitsspeicher es notwendig machen wird, die Sample Size des Datensatzes zu verkleinern.
 
 \section{OLS Regression}
 
@@ -700,7 +746,7 @@ Doch wie validiert man die Vorhersagekraft eines Modells auf Daten, mit denen da
 
 \subsection{Cross Validation}
 
-Eine Weiterführung dieses Konzepts ist die Cross Validation. Hier wird der Datensatz nicht in 2 sondern in $k$ viele und gleichgroße Sets unterteilt. Es werden dann $k$ viele Validierungen vorgenommen. Bei jedem Durchlauf wird eines der Sets zur Validierung und die restlichen Sets zum Training verwendet. Das bietet den Vorteil, dass der gesamte Datensatz zur Validierung und zum Training verwendet wird, während beim herkömmlichen Ansatz immer auf ein Teil der Daten verzichtet werden musste.
+Eine Weiterführung dieses Konzepts ist die Cross Validation. Hier wird der Datensatz nicht in 2 sondern in $k$ viele und gleichgroße Sets unterteilt. Es werden dann $k$ viele Validierungen vorgenommen. Bei jedem Durchlauf wird eines der Sets zur Validierung und die restlichen Sets zum Training verwendet. Das bietet den Vorteil, dass der gesamte Datensatz zur Validierung und zum Training verwendet wird, während beim herkömmlichen Ansatz immer auf ein Teil der Daten verzichtet werden musste. Außerdem werden so mehr Stichproben erhoben. Man vergleicht nicht ein Modell sonder k-viele Modelle. Es kann immer vorkommen, dass viele Modelle solide performen, während eines der Modelle zeigt, dass es zu drastischen Fehlern kann. Das heißt die Wahrscheinlichkeit Overfitting aufzudecken ist größer.
 
 \subsection{Conditional Validation Set Building}
 
@@ -716,21 +762,37 @@ while(length(stations_not_chosen)>0)
 	stations_splits[stations_splits$Station == 
 		newStation,]$Split = actual_split
 	
-	observations_per_splits$Observations[actual_split] = 				
-	observations_per_splits$Observations[actual_split] + 
-	Obs_perStation[Obs_perStation$Station == newStation,]$Observations
+	observations_per_splits$
+		Observations[actual_split] = 				
+		observations_per_splits$
+		Observations[actual_split] + 
+		Obs_perStation[Obs_perStation$Station== 
+		newStation,]$Observations
 	
 	stations_not_chosen = stations_not_chosen[-x1]
 	
 	if(median(observations_per_splits$Observations)
-	<=observations_per_splits$Observations[actual_split]){
+	<=observations_per_splits$
+	Observations[actual_split]){
 		
 		actual_split = actual_split + 1
-		if(actual_split>validation_splits){actual_split=1}
+		if(actual_split>validation_splits)
+		{actual_split=1}
 		
 	}
 }
 \end{lstlisting}
+\label{code:valSetBui}
+
+In dem Code \ref{code:valSetBui} werden innerhalb einer \lstinline|while()| Schleife alle Stationen einem der k-vielen Sets hinzugefügt, bis die Schleife die Anzahl der zu verordnenden Zählstationen in \lstinline|stations_not_chosen| herunter gezählt hat. Die Anzahl von k ist 5 und ist in der Variable \lstinline|validation_splits| gespeichert. Damit alle Validierungssets ungefähr gleich viele Beobachtungen haben, zählt der Code \ref{code:valSetBui} mit, wie viele Beobachtungen mit jeder Station einem Set hinzugefügt werden. Diese Anzahl wurde zuvor in der Tabelle \lstinline|Obs_perStation| gespeichert. Ob im folgendem Durchlauf der \lstinline|while()| Schleife das nächste Validierungsset ausgewählt wird, oder nochmal dasselbe hängt an der Anzahl der Beobachtungen. Jedes Validierungsset wird solange mit Zählstationen befühlt, bis der Median an Beobachtungen aller Sets gleich ist oder überschritten wurde. Dies wird in der \lstinline|if()| Schleife abgefragt.\\
+Auf diese Weise erhält man fast gleichgroße unterschiedliche Validierungsset, in denen jede Zählstation nur einmal vergeben ist. Teilweise kommt es auch vor, dass ganze Städte nur in je einem Validierungsset vertreten sind, weil es Städte gibt, die nur eine Zählstation mit sich bringen.
+
+\subsection{Weighted Subset Building}
+
+Im Verlauf dieser Masterarbeit sind einige Probleme durch die Größe des Datensatzes entstanden. Da der Datensatz über vier Millionen Beobachtungen beinhaltet und viele Variablen inkludiert ist dessen Speicherplatz auf bis zu 2,7 GB angestiegen. Ein Problem von R ist es, dass alle Daten mit denen gerechnet wird, im Arbeitsspeicher passen müssen. Die Hardware mit deren Hilfe die Modelle der Arbeit entstanden ist, verfügt jedoch nur über 16 GB. Je komplexer die Modelle wurden, desto öfters versagten Skripte mit der Fehler Meldung "run out of memory". Es gäbe an dieser Stelle verschiedene Lösungsansätze. Einer wäre Cloud Computing oder High Performance Computing. Diese Lösungsansätze sind jedoch mit technischen Problemen verbunden.\\ 
+Der Amazon Web Service bietet z.B. Cloud Computing Dienste an, die auf das Machine Learning Training spezialisiert sind. Um diesen Dienst jedoch in Anspruch zu nehmen, ist eine Kreditkarte notwendig. Dies stellte sich als Problem heraus. Darüber hinaus bietet die Westfälische Wilhelms-Universität Münster High Performance Computing Ressourcen an, die über eine Linux Kommandozeile steuerbar sind. Jedoch müsste dafür erst der Umgang mit Linux vertraut sein.\\
+Beachtet man dies, ist die einfachste Lösung die Größe des Datensatzes zu reduzieren. Dies mag kontraintuitiv erscheinen, ist jedoch sogar mit Vorteilen verbunden. Denn erstellt man ein gutes Subset, dass den Datensatzes mit einem Teil von Beobachtungen darstellt, kann dies dabei helfen Overfitting zu verhindern oder besser zu entdecken.\\
+Der Ansatz, der hier dabei verfolgt wurde, war es, möglichst gleich viele Beobachtungen von allen Zählstationen zufällig auszuwählen, dabei aber die Größe jedes Validierungsset auf 200000 Beobachtungen zu begrenzen, sodass der Datensatz auf eine Million Beobachtungen schrumpft. Durch diese Vorgehensweise ist der Anteil an Beobachtung im Datensatz nach räumlicher Verteilung gleichverteilter als zuvor, was dabei helfen sollte Overfitting besser aufzudecken und auch zu verhindern.
 
 \chapter{Ergebnisse}
 
