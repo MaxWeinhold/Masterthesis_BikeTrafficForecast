@@ -49,15 +49,18 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume}}}{74}{subfigure.5.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{74}{subfigure.5.2}%
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{75}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Räumliche Modell Projektion: Modellvergleich\relax }}{80}{figure.caption.37}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Modell 1}}}{80}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Modell 2}}}{80}{subfigure.7.2}%
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Verteilung des Fahrradaufkommens nach Alter\relax }}{78}{figure.caption.36}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Zusammenhang von Fahrradklima und Radverkehr\relax }}{79}{figure.caption.37}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Zusammenhang von Anzahl der Uni-Gebäude in einem 500 M Radius und Radverkehr\relax }}{80}{figure.caption.38}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Zusammenhang von Anzahl der Supermärkte in einem 1 km Radius und Radverkehr\relax }}{81}{figure.caption.39}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Zusammenhang von Anzahl der Kleidungsgeschäften in einem 2 km Radius und Radverkehr\relax }}{82}{figure.caption.40}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Zusammenhang von Anzahl der Busstationen in einem 1 km Radius und Radverkehr\relax }}{83}{figure.caption.41}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Zusammenhang von Anzahl der Ampeln in einem 1 km Radius und Radverkehr\relax }}{84}{figure.caption.42}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Zusammenhang von Anzahl der Straßenbahnstationen in einem 1 km Radius und Radverkehr\relax }}{85}{figure.caption.43}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Zusammenhang des nächsten Bahnhofes und dem Radverkehr\relax }}{86}{figure.caption.44}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Entfernung zur nächsten Brücke und Radverkehr\relax }}{87}{figure.caption.45}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Verteilung des Fahrradaufkommens nach Alter\relax }}{83}{figure.caption.38}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Zusammenhang von Fahrradklima und Radverkehr\relax }}{84}{figure.caption.39}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Zusammenhang von Anzahl der Uni-Gebäude in einem 500 M Radius und Radverkehr\relax }}{85}{figure.caption.40}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Zusammenhang von Anzahl der Supermärkte in einem 1 km Radius und Radverkehr\relax }}{86}{figure.caption.41}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Zusammenhang von Anzahl der Kleidungsgeschäften in einem 2 km Radius und Radverkehr\relax }}{87}{figure.caption.42}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Zusammenhang von Anzahl der Busstationen in einem 1 km Radius und Radverkehr\relax }}{88}{figure.caption.43}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Zusammenhang von Anzahl der Ampeln in einem 1 km Radius und Radverkehr\relax }}{89}{figure.caption.44}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Zusammenhang von Anzahl der Straßenbahnstationen in einem 1 km Radius und Radverkehr\relax }}{90}{figure.caption.45}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Zusammenhang des nächsten Bahnhofes und dem Radverkehr\relax }}{91}{figure.caption.46}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Entfernung zur nächsten Brücke und Radverkehr\relax }}{92}{figure.caption.47}%

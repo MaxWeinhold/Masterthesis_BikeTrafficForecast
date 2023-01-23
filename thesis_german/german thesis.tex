@@ -36,7 +36,8 @@
 
 \usepackage{eurosym}
 
-\usepackage{csvsimple}
+
+\usepackage{acronym}
 
 \usepackage{listings}
 \lstset{
@@ -114,20 +115,30 @@ connection/.style={thick, dotted},
 \listoftables
 \endgroup
 
+\section{Abkürzungsverzeichnis}
+
+\begin{acronym}
+	\acro{ZIV}{Zweirad-Industrie-Verband}
+	\acro{OLS}{Ordinary Least Square}
+	\acro{bzw.}{beziehungsweise}
+	\acro{z.B.}{zum Beispiel}
+	\acro{u.a.}{unter anderem}
+\end{acronym}
+
 \chapter{Einleitung}
 
-Vielerorts erlebt der Individualverkehr eine Renaissance des Fahrrads, eingeleitet durch ein umweltbewusstes Umdenken. So ist laut \cite{Eisenberger2015} und dem Verband der Zweirad Industrie \cite{ZIV2022} der Bestand an Fahrrädern in Deutschland von 72 Mio. in 2015 auf 81 Mio. in 2021 angestiegen. Der anhaltende Boom hat viele Gründe. Im Vergleich zum Auto ist die bewegungsintensivere Fortbewegung auf dem Fahrrad gesünder, schont die Umwelt und das Portmonee. Zuletzt wurde dieser Boom weiter befeuert durch die Corona Pandemie. (Quelle hierfür einfügen) \\
-Doch mit einem Anstieg an Fahrrädern steigt auch der Bedarf nach ausgebauten Fahrradwegen. So unterstützt das Bundesministerium für Verkehr und digitale Infrastruktur \cite{VerkehrunddigitaleInfrastruktur2020} die Länder und Gemeinden durch eine direkte Hilfe in Höhe von 660 Mio. Euro bis 2023 beim Ausbau von Radwegen.\\
+Vielerorts erlebt der Individualverkehr eine Renaissance des Fahrrads. So ist laut \cite{Eisenberger2015} und dem Verband der Zweirad Industrie \cite{ZIV2022} der Bestand an Fahrrädern in Deutschland von 72 Mio. in 2015 auf 81 Mio. in 2021 angestiegen. Der anhaltende Boom hat viele Gründe. Im Vergleich zum Auto ist die bewegungsintensivere Fortbewegung auf dem Fahrrad gesünder, schont die Umwelt und das Portmonee.\\
+Viele Kommunen entscheiden sich u.a. aus diesen Gründen dafür, ihre Stadt fahrradfreundlicher zu gestalten. So unterstützt das Bundesministerium für Verkehr und digitale Infrastruktur \cite{VerkehrunddigitaleInfrastruktur2020} die Länder und Gemeinden beim Ausbau von Radwegen durch eine direkte Hilfe in Höhe von 660 Mio. Euro bis 2023.\\
 Dies sowie der genaue lokale Bedarf und die Auslastung von Fahrradwegen muss bei der Planung der Infrastruktur beachtet werden. Motiviert ist diese Arbeit mit dem Wunsch Antworten auf mögliche Fragen der Infrastrukturplanung bieten zu können. Die Forschungsfrage, die sich daraus ableitet, lautet: Ist es möglich ein räumliches Modell zu entwickeln, dass für ein vollständiges Straßennetz oder für ausgewählte flexible Knotenpunkte zu bestimmten Zeiten Vorhersagen zum Fahrradverkehr machen kann und lassen diese auch zusätzlich die gefährlichsten Stellen für Fahrradunfälle erkennen?\\
-Dazu beginnt diese Masterarbeit mit einem Einblick in die bestehende Literatur, kategorisiert nach Daten und Faktoren. Häufig verwendete Methoden werden im Nachgang näher beschrieben. Das erworbene Wissen dient dazu, ein Modell zu entwickeln, dass im Rahmen dieser Abschlussarbeit auch evaluiert wird.
+Dazu beginnt diese Masterarbeit mit einem Einblick in die bestehende Literatur, welcher kategorisiert ist nach Daten und Faktoren. Häufig verwendete Methoden werden im Nachgang näher beschrieben. Das erworbene Wissen dient dazu, ein Modell zu entwickeln, dass im Rahmen dieser Abschlussarbeit auch evaluiert wird. Im Anschluss wird analysiert, wie sehr das Radverkehrsaufkommen mit Radverkehrsunfällen räumlich korreliert.
 
 \chapter{Literaturüberblick}
 
-Die Auslastung von Fahrradwegen bzw. das Aufkommen von Fahrrädern beruht im Wesentlichen auf der individuellen Entscheidung eines jeden Fahrers, das Fahrrad einer anderen Transport Alternative vorzuziehen. Versteht man die Faktoren, aus denen sich diese Entscheidung zusammensetzt, dann kann man leichter eine solche Entscheidung vorhersagen. Mit einer Zusammenfassung der bisherigen Literatur wollen \cite{Heinen2010} diese Faktoren finden, wobei sie sich auf Pendler beschränken. Zum einem ist einer dieser Faktoren die bauliche Substanz, die nicht nur die Radwege sondern auch Abstellmöglichkeiten und Ampeln wie auch Verkehrsschilder beinhaltet. Zum anderem spielt das Wetter eine große Rolle. Einen negativen Effekt hat die Rate der Autobesitzer und natürlich auch die Verfügbarkeit anderer Transportmöglichkeiten.\\
+Die Auslastung von Fahrradwegen bzw. das Aufkommen von Fahrrädern beruht im Wesentlichen auf der individuellen Entscheidung eines jeden Fahrers, das Fahrrad einer anderen Transportalternative vorzuziehen. Versteht man die Faktoren, aus denen sich diese Entscheidung zusammensetzt, dann kann man leichter eine solche Entscheidung vorhersagen. Mit einer Zusammenfassung der bisherigen Literatur wollen \cite{Heinen2010} diese Faktoren finden, wobei sie sich auf Pendler beschränken. Zum einem ist einer dieser Faktoren die bauliche Substanz, die nicht nur die Radwege sondern auch Abstellmöglichkeiten und Ampeln wie auch Verkehrsschilder beinhaltet, zum anderem spielt auch das Wetter eine große Rolle. Einen negativen Effekt hat die Rate der Autobesitzer und natürlich auch die Verfügbarkeit anderer Transportmöglichkeiten.\\
 
 \section{Erforschung des Radverkehrs}
 
-Seitdem erschienen zahlreiche weitere empirische Studien, die unser Bild konkretisieren. Diese Studien lassen sich nach Datenquellen oder auch Methoden kategorisieren. Die meisten nutzen drei verschiedene Datengrundlagen zum Fahrradverkehr in Verbindung zu Daten mit anderen Faktoren wie dem Wetter. Die drei Datenquellen zum Fahrradverkehr stammen von Fahrradzählstation, einer Induktionsschleife die darüber fahrende Räder verifiziert, Daten von Bike Sharing Diensten und Daten verschiedener GPS und Handy Applikationen.\\
+Seitdem erschienen zahlreiche weitere empirische Studien, die unser Bild konkretisieren. Diese Studien lassen sich nach Datenquellen oder auch Methoden kategorisieren. Die meisten nutzen drei verschiedene Datengrundlagen zum Fahrradverkehr in Verbindung zu Daten mit anderen Faktoren, wie dem Wetter. Die drei Datenquellen zum Fahrradverkehr stammen von Fahrradzählstation, einer Induktionsschleife die darüber fahrende Räder verifiziert, Daten von Bike Sharing Diensten und Daten verschiedener GPS und Handy Applikationen.\\
 
 \subsection{Forschung mit Zählstationen}
 
@@ -240,7 +251,7 @@ Das lässt nur die Forschung übrig, die mit Daten von Zählstationen rechnet. D
 Nur wenige Studien untersuchen die Daten mehr als einer Stadt, mit ausnahme von (...). Aber die Verwendung von mehreren Städten wäre zwingend notwendig. Denn wie man im Vergleich sieht, bieten Studien mit Radzählstellen oft weniger Beobachtungspunkte pro Stadt, als z.B. Studien die GPS Tracking Daten verwenden oder Daten von Leihsystemen. Um diesen Nachteil auszugleichen, ist es ratsam, Daten mehrere Städte zu verwenden. Die Studie von ... zeigte, wie man die Unterschiede zwischen Städten hervor heben kann ist. So ist es ratsam demographische und soziale Daten über die Stadtstrukturen in einen Datensatz mit aufzunehmen. Bei ... zeigten diese Daten Unterschiede in der Wetterelastizität des Fahrradverkehrs auf. In dieser Studie würden die stadtbezogenen Daten Unterschiede im Radverkehr selbst kenntlich machen.\\
 Zueletzt erfordert die Forschungsfrage Stationsbasierte Daten, möchte man Unterschiede im Radverkehrsaufkommen innerhalb der selben Stadt erkennen und auch vorhersagen können. Nur daraus ergeben sich räumliche Unterschiede im Stadtbild. Eine Studie, dient hier zB als Vorbild, in dem sie Daten von POIs in Google Streetview verwendet. ... Verwenden hierbei Bilderkennung. Soweit würde diese Masterarbeit nicht gehen. Allerdings könnte man Entfernung von Zählstationen und einigen POIs im Stadtbild mit in das Modell aufnehmen. Dies allgemein gibt einen guten Ausblick auf das kommende Kapitel im Allgemeinen. Anhand der bestehenden Literatur ließ sich festmachen, welche Datenstruktur notwendig ist, um die Forschungsfrage zu beantworten. Das kommende Kapitel gibt einen Einblick in den endgültigen Datensatz.
 
-\chapter{Zusammensetzung des Datensatz}
+\chapter{Zusammensetzung des Datensatz}\label{Datensatz}
 
 Das vorherige Kapital zeigte den aktuellen Stand der Forschung zum Aufkommen des Fahrradverkehrs und endete mit einer Einschätzung, an welchen Studien sich diese Masterarbeit orientieren muss, um die gestellte Forschungsfrage zu beantworten. Darauf baute auch die Beschaffung von Daten für das Modell dieser Arbeit auf, angefangen über die Daten der Fahrradzähler, Daten zum Wetter, demographischen Daten und Daten der vorhandenen Infrastruktur erhoben durch Open Street Map und dazu gehörigen Points of Interest. Einen tieferen Einblick über die Datenbeschaffung und die Verteilung von Daten mit zugehörigen Abbildung beinhaltet dieses Kapitel.\\
 Die Datenbeschaffung an sich beschränkt sich allein auf Deutschland aus Gründen der Einfachheit. Bestimmte Daten wie Daten zum Wetter und zur Demographie lassen sich so allein von einer Datenquelle beschaffen in diesem Fall dem Deutschen Wetter Dienst und dem statistischen Bumdesamt DESTATIS. Der Nachteil davon ist, dass wiederum alle Aussagen des Modells allein für Deutschland gültig sind, da dieser Rahmen die Evaluierung für andere Regionen der Welt nicht zu lässt.
@@ -356,19 +367,18 @@ Anders als bei \cite{Moellers2021} gibt es in dem neuen Datensatz kein zwiespäl
 
 
 
-\section{Open Street Map Daten}
+\section{Open Street Map Daten}\label{OMSDATA}
 
 Im vorherigen Abschnitt wurden die Datenquellen zu stadtspezifischen Daten erläutert. Variablen zur demographie oder dem Autobesitz nach Städten sind wertvoll, um die Unterschiede im Radverkehr zwischen den Städten einschätzen zu können. Dies hilft jedoch nicht bei der räumlichen Unterscheidung. Verwendet man keine räumlichen Merkmale, so erhält man eine einheitliche Vorhersage je Stadt. Die räumliche Verteilung des Radverkehrs innerhalb jeder Stadt, ließe sich so nicht abbilden. Die einzige räumliche Variable, die bisher erhoben wurde, ist die Entfernung zum Stadtzentrum, beruhend auf den Daten des Gemeindeverzeichnis von 2012 bis 2021. Doch selbst mit dieser Variablen, gingen Abweichungen durch lokale Anlaufpunkte wie bei Bahnhöfen verloren.\\
 Der daraus resultierende Schluss ist, Koordinaten zu solchen Anlaufpunkten oder auch Points of Interest (PoIs) dazu zu nutzen, Entfernungen zu den Radzählstationen zu berechnen, und die Anzahl nach Radius und Entfernung zum nächstgelegenen PoI mit in das Modell aufzunehmen. Die beste Datenquelle hierfür bietet Open Street Map (OMS). Wie schon im Kapitel \ref{Faktor_Stadt} beschrieben, handelt es sich bein Open Street Map um ein internationales Projekt, das in gemeinsamer Freiwilligenarbeit geographische Daten sammelt und öffentlich zur Verfügung stellt.\\
 
-\begin{lstlisting}[caption={OSM Daten Abfrage}]
+\begin{lstlisting}[caption={OSM Daten Abfrage},label=code:osmdata_query]
 q <- getbb(toString(rawData$Town[1])) %>%
 opq() %>%
 add_osm_feature("amenity", "cinema")
 	
 cinema <- osmdata_sf(q)
 \end{lstlisting}
-\label{code:osmdata_query}
 
 Der Zugriff auf die OSM Daten funktioniert mit dem R-Paket \glqq osmdata\grqq von \cite{Padgham2017}. Dieses Paket bietet die Möglichkeit Daten verschiedener OSM Kategorien abzufragen über den Code \ref{code:osmdata_query}. Dabei bezeichnet \lstinline|rawData$Town[1]| den ersten Eintrag in der Variable \lstinline|Town| für den Grunddatensatz \lstinline|rawData|. Da jede Stadt ihr eigenes Skript hat, ist dies jeweils die relevante Stadt. Für diese Stadt wird eine Anfrage gestellt, die bestimmte Features erfüllen muss. Im Code Beispiel werden Kinos gesucht. Mithilfe des R-Pakets \glqq sf\grqq von \cite{Pebesma2018} werden die Daten der Anfrage in ein simple Feature Format gespeichert in \lstinline|cinema|. Dieses Format beinhaltet Koordinatenpunkten, mit jeweiliger ID und teils Namen und Adressen der verschiedenen Einrichtungen. Darüber hinaus aber auch Koordinaten der Linien, falls es sich z.B. um Straßennetze handelt, oder Koordinaten der jeweiligen Polygone der Gebäudegrundrisse.
 
@@ -380,7 +390,7 @@ Dieser öffentliche Zugang zu kategographischen Daten beinhaltet nicht nur Stra�
 Noch empfehlenswert wäre es den Datensatz um noch mehr Kategorien zu erweitern und genau zu evaluieren, welche Kategorien die Performance des Modells erhöhen. Jedoch hätte dies den Arbeitsumfang dieser Masterarbeit nochmals drastisch erhöht. In Abwägung des zeitlichen Aufwands und dem Nutzen für das Modell, beschränkt sich deswegen der Datensatz auf die erwähnten PoI's.\\
 In jeder Kategorie wurde jeweils die Entfernung der jeweiligen Radzählstation zum jeweiligen PoI berechnet. Darüber hinaus wurden in jeder Kategorie die Anzahl an Einreichtungen in zwei verschiedenen Radien berechnet. Für Kinos und Fahrradwerkstätten wurde ein ein Kilometer und ein drei Kilometer Radius gewählt. Für Schulen, Universitätsgebäude und Kleidungsgeschäfte wurde ein 500 Meter und ein zwei Kilometer Radius gewählt. Für Supermärkte wurde ein 500 Meter und ein ein Kilometer Radius genutzt. Die Auswahl dieser Berechnungsgrenzen sind wiederum rein zufällig. Eine genaue Evaluation dieser Auswahl fand nicht statt. Zu Universitätgebäuden, Supermärkten und Kleidungsgeschäften finden sich die Abbildungen \ref{UniBuild}, \ref{SuperMarket} und \ref{ClothesShop} im Anhang. Für Städte, die über keine Universität verfügen, wurde angenommen, dass die nächste Universität mindestens 50 km weit entfernt sei.
 
-\begin{lstlisting}[caption={Speichere die OSM Koordinaten}]
+\begin{lstlisting}[caption={Speichere die OSM Koordinaten},label=code:matrix]
 cinmat=matrix(1:3*length(cinema$osm_polygons$osm_id), 
 	nrow = length(cinema$osm_polygons$osm_id), 
 	ncol = 3)
@@ -395,13 +405,12 @@ for(i in 1:length(cinema$osm_points$name)){
 		geometry[[i]][1])[1,2]
 }
 \end{lstlisting}
-\label{code:matrix}
 
 Der Code \ref{code:matrix} zeigt die Umwandlung der Daten. Von Interesse sind nur die ersten Koordinatenpunkte der jeweiligen Polygone der Kinogebäude. Dazu wird die Matrix \lstinline|cinmat| erstellt, die 3 Spalten hat und deren Reihenanzahl der Anzahl an ID's sind \lstinline|length(cinema$osm_polygons$osm_id)| entspricht, damit in diesem Fall alle Kinos berücksichtigt werden. Mittels einem \lstinline|for|-Loop werden alle Daten eingespeichert, so der Längengrad und Breitengrad in \lstinline|cinema$osm_polygons$geometry[[i]][1])[1,]|, der  und die jeweilige ID in \lstinline|cinema$osm_polygons$osm_id[i]|. Diese Matrix wird danach in ein Dataframe umgewandelt, um damit einfacher arbeiten zu können.\\
 
 Nun muss nur noch für jede einzelne Zählstation die jeweilige Distanz zu den verschiedenen Kinos berechnet werden. Dazu bietet das R-Paket \glqq geosphere\grqq von \cite{Hijmans2021} die Funktion \lstinline|distm|, mit deren Hilfe man mit zwei Koordination die Entfernung in Metern berechnen lassen kann. Pro Zählstation wird der \lstinline|For|-Loop im Code \ref{code:distc} ausgeführt. Im code sind zwei Indexnummern zu finden, dabei steht i für die jeweilige Zählstation und j für das jeweilige Kino. Im dataframe d sind die Koordinaten der jeweiligen Zählstationen gespeichert. Zusammen mit den Koordinaten der Kino im cinmat Datenframe kann die Funktion distm die Entfernung beider Koordinaten zueinander berechnen. Diese Entfernung wird dann im Vector distc gespeichert.
 
-\begin{lstlisting}[caption={Berechnung der Entfernung}]
+\begin{lstlisting}[caption={Berechnung der Entfernung},label=code:distc]
 for (j in 1:length(cinmat$id)) {
 	cindist=distm(c(d$Lon[i],d$Lat[i]),
 		c(cinmat$lon[j],cinmat$lat[j]), 
@@ -409,22 +418,20 @@ for (j in 1:length(cinmat$id)) {
 	distc[j]=cindist
 }
 \end{lstlisting}
-\label{code:distc}
 
 Nun ist ein Vector vorhanden der alle Entfernungen gespeichert hat. Dieser kann nun dazu genutzt werden die benötigten Variablen zu berechnen. Zusammen mit dem Namen der aktuellen Station, der im Subset Datensatz \lstinline|d[1,1]| zu finden ist wird die jeweilige Variable gespeichert. Dabei lässt sich mit der Funktion \lstinline|min(distc)| die Entfernung zum nächstgelegenen Kino finden. Die Anzahl an Kinos in einem 1 km Radius findet sich mit der Funktion \lstinline|sum(distc < 1000)|.
 
-\begin{lstlisting}[caption={Berechnung der Entfernungsvariablen}]
+\begin{lstlisting}[caption={Berechnung der Entfernungsvariablen},label=code:dist_variables]
 distmat_closest[i,1]=d[1,1]
 distmat_closest[i,2]=min(distc)
 
 distmat_1kmradius[i,1]=d[1,1]
 distmat_1kmradius[i,2]=sum(distc < 1000)
 \end{lstlisting}
-\label{code:dist_variables}
 
 Die so berechnet Variablen lassen sich einfach verbinden mit dem Befehl \lstinline|merge|.
 
-\begin{lstlisting}[caption={Füge neue Variablen dem Datensatz hinzu}]
+\begin{lstlisting}[caption={Füge neue Variablen dem Datensatz hinzu},label=code:dist_variables2]
 rawData = merge(x = rawData,y = distmat_closest,
 by = c("Station"),
 all = FALSE)
@@ -446,7 +453,7 @@ Neben Informationen zu Gebäuden, Einrichtungen und einzelnen Punkten wie Ampeln
 
 Ob eine Zählstation zu einem Straßentyp gehört oder nicht, wurde getestet, indem berechnet wurde, inwieweit eine Zählstation von einer Straße des betroffenen Straßentyp entfernt ist. Ist diese Entfernung geringer als 5 Meter, wurde angenommen, dass die Zählstation sich auf oder an einer solchen Straße befände. 
 
-\begin{lstlisting}[caption={Teste den Straßentyp}]
+\begin{lstlisting}[caption={Teste den Straßentyp},label=code:streettype_a]
 for(i in 1:nlevels(as.factor(rawData$Station))){
 	dist_mat$cycleways[i] =
 		min(st_distance(DT2$geometry, 
@@ -473,7 +480,7 @@ Im zweiten Datensatz, der erstmals auch Corona Daten inkludierte, wurde dieses P
 
 Genauer beschrieben wird auch wie in \ref{code:street_variables} zu sehen in jedem Loop Durchgang der Datensatz gefiltert nach Zählstationen und die Beobachtungen einer Station landen im Dataframe \lstinline|d|. Für jede Station muss das rote Rechteck wie in der Abbildung \ref{Straßencheck} berechnet werden. Dies geschieht wie in \ref{code:street_variables} mittels der Variable \lstinline|radius| und den Koordinaten aus \lstinline|d|, also den Koordinaten der jeweiligen Zählstation. Die Koordinaten des Vierecks sind so in \lstinline|myLocation| gespeichert.
 
-\begin{lstlisting}[caption={Berechnung der Straßenvariablen}]
+\begin{lstlisting}[caption={Berechnung der Straßenvariablen},label=code:street_variables]
 d=BikeData[BikeData$Station %in% 
 	toString(levels(as.factor(
 	BikeData$Station))[i]),]
@@ -482,7 +489,6 @@ radius = 0.0012
 myLocation <- c(d$Lon[1]-radius,d$Lat[1]-radius/1.8,   
 	d$Lon[1]+radius,d$Lat[1]+radius/1.8)
 \end{lstlisting}
-\label{code:street_variables}
 
 \begin{figure}[!ht]
 	\centering
@@ -493,7 +499,7 @@ myLocation <- c(d$Lon[1]-radius,d$Lat[1]-radius/1.8,
 
 Mit diesen Koordinaten kann nun eine Abfrage von Open Street Map Daten zu der Klasse "highway" gestellt werden. Wie eine solche Abfrage gestellt wird, ist auch im Code \ref{code:osmdata_query} zu sehen. Darauf hin muss die Zählstation der nächstegelegnsten Straße zugeordnet werden. Dies passiert im Code \ref{code:street_variables2}. Dieser besteht aus zwei kürzeren For Schleifen. Die erste wandelt alle Koordinaten der Straßen in ein passendes GPS Format um und ermittelt die jeweils kürzeste Distanz der Straße zu den Koordinaten der Zählstation gespeichert in \lstinline|count_point$geometry|. Für den Fall, dass mehrere Straßen auf der selben Position liegen, ermittelt die Funktion \lstinline|which(dist==mind(dist))| welche dieser Straßen dies sind und wählt von diesen dann diejenige aus, bei der ein Straßenname angegeben ist.
 
-\begin{lstlisting}[caption={Zuordnung zur nächsten Straße}]
+\begin{lstlisting}[caption={Zuordnung zur nächsten Straße},label=code:street_variables2]
 j=1
 for(j in 1:nrow(streets$osm_lines)){
 	street_Points = st_transform(
@@ -510,18 +516,16 @@ for(j in which(dist==min(dist))){
 	}
 }
 \end{lstlisting}
-\label{code:street_variables2}
 
 Die Variable \lstinline|nearest| gibt nun an, welche Straße die nächstgelegenste zur Zählstation ist und mit diesen Informationen lassen sich die weiteren notwendigen Variablen berechnen, wie auch in Code \ref{code:street_variables3} beschrieben wird. Wie sich die Straßentypen unter der Anzahl der Zählstationen verteilen, zeigt die Abbildung \ref{Straßentypen} links. Weiter zeigt die Abbildung \ref{VerkehrnachTypen} die Aufteilung des Radverkehrsaufkommens nach der jeweiligen Straßenbeschaffenheit nach Straßenbelag und Straßentyp, wobei die Beschreibungen dem englischen Original der Open Street Map Beschreibung entspricht, denen teils spezifische Definitionen zu Grunde liegen.
 
-\begin{lstlisting}[caption={Berechnung der Straßenvariablen}]
+\begin{lstlisting}[caption={Berechnung der Straßenvariablen},label=code:street_variables3]
 street_type = streets$osm_lines$highway[nearest]
 surface = streets$osm_lines$surface[nearest]
 lanes = streets$osm_lines$lanes[nearest]
 maxspeed = streets$osm_lines$maxspeed[nearest]
 streetlengths = st_length(street_Points[nearest])
 \end{lstlisting}
-\label{code:street_variables3}
 
 
 \begin{figure}[!ht]%
@@ -753,7 +757,7 @@ Eine Weiterführung dieses Konzepts ist die Cross Validation. Hier wird der Date
 In dem Fall der Daten der Radzählstation gäbe es zusätzliches Problem, dass auch die Validierung mit dem Validation Set Approach Overfitting wahrscheinlich nicht richtig erkennen ließe. Denn durch eine rein zufällige Aufteilung der Daten in verschiedene Sets, ließe sich die wahre externe Validität des Modells nicht prüfen, denn auch dann träfe das Modell immer vorhersagen für fixe räumliche Punkte, die bereits auch im Trainings Datensatz vorkamen.\\
 Um dieses Problem zu umgehen, muss man die Aufteilung der Daten in die verschiedenen Sets auf die Ausprägung der Stationen kondititionieren. Das heißt jede Zählstation darf in jedem Set nur einmal vorkommen, damit im Test Set immer Orte vorhanden sind, die dem Modell unbekannt sind. Diese Aufgabe übernimmt der folgende Code:
 
-\begin{lstlisting}[caption={Aufteilung der Zählstationen}]
+\begin{lstlisting}[caption={Aufteilung der Zählstationen},label=code:valSetBui]
 while(length(stations_not_chosen)>0)
 {
 	x1 <- sample(1:length(stations_not_chosen), 1)
@@ -782,7 +786,6 @@ while(length(stations_not_chosen)>0)
 	}
 }
 \end{lstlisting}
-\label{code:valSetBui}
 
 In dem Code \ref{code:valSetBui} werden innerhalb einer \lstinline|while()| Schleife alle Stationen einem der k-vielen Sets hinzugefügt, bis die Schleife die Anzahl der zu verordnenden Zählstationen in \lstinline|stations_not_chosen| herunter gezählt hat. Die Anzahl von k ist 5 und ist in der Variable \lstinline|validation_splits| gespeichert. Damit alle Validierungssets ungefähr gleich viele Beobachtungen haben, zählt der Code \ref{code:valSetBui} mit, wie viele Beobachtungen mit jeder Station einem Set hinzugefügt werden. Diese Anzahl wurde zuvor in der Tabelle \lstinline|Obs_perStation| gespeichert. Ob im folgendem Durchlauf der \lstinline|while()| Schleife das nächste Validierungsset ausgewählt wird, oder nochmal dasselbe hängt an der Anzahl der Beobachtungen. Jedes Validierungsset wird solange mit Zählstationen befühlt, bis der Median an Beobachtungen aller Sets gleich ist oder überschritten wurde. Dies wird in der \lstinline|if()| Schleife abgefragt.\\
 Auf diese Weise erhält man fast gleichgroße unterschiedliche Validierungsset, in denen jede Zählstation nur einmal vergeben ist. Teilweise kommt es auch vor, dass ganze Städte nur in je einem Validierungsset vertreten sind, weil es Städte gibt, die nur eine Zählstation mit sich bringen.
@@ -852,7 +855,7 @@ Dies bestätigt auch ein weiterer Blick in die Tabelle \ref{tbl:SVR1}, die die P
 	\label{tbl:SVR1}
 \end{table}
 
-\section{Random Forest Regression}
+\section{Random Forest Regression}\label{RF}
 
 Die bisherigen Versuche ein schlüssiges Modell zu berechnen förderten leider nur unzufrieden stellende Ergebnisse hervor. Deswegen wird es Zeit leistungsfähigere Methoden zu verwenden. Das R Paket \glqq randomForest\grqq  von \cite{Liaw2002}. Ähnlich wie Support Vector Regressionen sind Random Forest deutlich rechenintensiver als eine OLS Regression. Deswegen wird auch hier nur ein Teil der Daten zum Training verwendet. Wie sich die Performance des Random Forest Models nach Anteil der zur Berechnung verwendeten Daten ändert, zeigt die Abbildung \ref{fig:TrainingsShareValidation1}, deren Berechnung insgesamt 9,35 Stunden benötigte. Dabei wird sichtbar, dass qualitativ wie auch quantitativ die Random Forests performanter sind, als die vorherhige Support Vector Regression. In Abbildung \ref{fig:TrainingsShareValidation2} war noch zu sehen, dass die Berechnung mit 1 \% der Daten ca 90 Minuten pro Modell benötigte. Hier sind es für 2 \% nur noch 80 Minuten.
 
@@ -891,19 +894,86 @@ Darüber hinaus bleibt nur noch der Vergleich von Modellen mit verschiedenen Var
 	\label{tbl:FR1}
 \end{table}
 
-Kombiniert man die so gewonnen Erkenntnisse zur Performance von Random Forest dann kommt man zu den Ergebnissen der Cross Validation in der Tabelle \ref{tbl:FR1}. Dieses Modell nutzte 0,5 \% der Trainingsdaten, 250 Zufallsbäume, verzichtet auf nicht lineare Variablen und benötigte zur Berechnung 24 Minuten. Im Test Datensatz erreicht das Random Forest Modell ein Bestimmtheitsmaß von 44,5 \%. Das ist mehr als dreimal so viel wie im OLS Modell und mehr als 1,5 mal so viel wie mit der Support Vector Regression. Auch wenn diese Werte bereits deutlich besser sind, als die der vorherigen Modelle, kann dies nicht darüber hinweg täuschen, dass sowohl die Höhe des Bestimmtheitsmaßes als auch des RMSE noch zu wünschen übrig lässt, doch in Anbetracht der schwierigen Aufgabe, die dieses Modell zu erfüllen hat, sind die Ergebnisse dennoch interessant, denn das Modell hat nur wenige Beobachtungsorte, auf deren Grundlage es Vorhersagen für ein ganzes Stadtgebiet treffen soll. Die letzte Methode, die nun noch übrig bleibt und die vielleicht in der Lage ist, noch bessere Vorhersagen zu treffen, ist das neuronale Netz.
+Kombiniert man die so gewonnen Erkenntnisse zur Performance von Random Forest dann kommt man zu den Ergebnissen der Cross Validation in der Tabelle \ref{tbl:FR1}. Dieses Modell nutzte 0,5 \% der Trainingsdaten, 250 Zufallsbäume, verzichtet auf nicht lineare Variablen und benötigte zur Berechnung 24 Minuten. Im Test Datensatz erreicht das Random Forest Modell ein Bestimmtheitsmaß von 44,5 \%. Das ist mehr als dreimal so viel wie im OLS Modell und mehr als 1,5 mal so viel wie mit der Support Vector Regression. Auch wenn diese Werte bereits deutlich besser sind, als die der vorherigen Modelle, kann dies nicht darüber hinweg täuschen, dass sowohl die Höhe des Bestimmtheitsmaßes als auch des RMSE noch zu wünschen übrig lässt, doch in Anbetracht der schwierigen Aufgabe, die dieses Modell zu erfüllen hat, sind die Ergebnisse dennoch interessant, denn das Modell hat nur wenige Beobachtungsorte, auf deren Grundlage es Vorhersagen für ein ganzes Stadtgebiet treffen soll. Die letzte Methode, die nun noch übrig bleibt und die vielleicht in der Lage ist, noch bessere Vorhersagen zu treffen, ist das neuronale Netz.\\
+
+Wendet man auf dieses Modell den zweiten Datensatz an, der Corona Daten beinhaltet und detailiertere Daten über die Straßenbeschaffenheit dann ändert sinkt das Bestimmtheitsmaß auf 41,16 \% im Test Set und der RMSE steigt leicht auf 137,43, während im Trainingsset die Werte besser aussehen mit einem Bestimmtheitsmaß von 81,52 \% und einem RMSE von 74,67. Das heißt hier ist das Overfitting sogar noch ein wenig größer. 
 
 \section{Neuronales Netz}
 
-Im Vergleich zu den vorherigen Methoden sind neuronale Netze die populärste Methode, vor allem bekannt für die verblüffende Präzesion ihrer Vorhersagen. Doch verblüffen die neuronalen Netze auch bei der Vorhersage des urbanen Radverkehrs? Das hängt vor allem von den vielen Variablen ab, die man bei einem neuronalen Netz einstellen kann. Zum einem kann man festlegen, wie viele Ebenen ein neuronales Netz haben soll und wie viele Knotenpunkte jede Ebene haben darf, die Informationen an die nächste Ebene weiter geben.
+Im Vergleich zu den vorherigen Methoden sind neuronale Netze die populärste Methode, vor allem bekannt für die verblüffende Präzesion ihrer Vorhersagen. Doch verblüffen die neuronalen Netze auch bei der Vorhersage des urbanen Radverkehrs? Das hängt vor allem von den vielen Variablen ab, die man bei einem neuronalen Netz einstellen kann. Zum einem kann man festlegen, wie viele Ebenen ein neuronales Netz haben soll und wie viele Knotenpunkte jede Ebene haben darf, die Informationen an die nächste Ebene weiter geben.\\
+Leider ist jeder Durchlauf eines neuronalen Netzes sehr zeitintensiv. Diese Limitation erschwert den Vergleich in der Performance vieler verschiedener Modelle. So dauerte die Durchlaufzeit des Modells aus der Tabelle \ref{tbl:NN1} ganze 25,7 Stunden mit einer Anzahl an Beobachtungen von 20000. Würde man die Anzahl an Beobachtungen erhöhen, könnte das neuronale Netz unter Umständen bessere Vorhersagen treffen, dies würde jedoch auch die Durchlaufzeit erhöhen.\\
+Grundsätzliche ist das Problem dieses Modells aber Overfitting. Von allen betrachteten Modellen ist hier das Overfitting am stärksten, betrachtet man die Unterschiede zwischen dem $R^2$ Wert im Trainings-Set der im Schnitt bei 93 \% liegt und im Test Set, wo der selbe Wert im Schnitt nur 9\% beträgt. Die Differenz könnte nicht größer sein.
+
+\begin{table}
+	\csvautotabular[separator=semicolon]{Tables/Modell4NN.csv}
+	\caption{Performance des neuronalen Netzes}
+	\label{tbl:NN1}
+\end{table}
+
+Das verwendete neuronale Netz nutzte sechs Neuronenreihen mit je 48, 26, 16, 8, 4 und 2 Neuronen. Hier müsste evaluiert werden, ob dieser Aufbau sich verbessern ließe. Die Anzahl von Trainingsschritten war auf 100000 begrenzt. Ein häufig auftretendes Problem war, dass das neuronale Netz keine Konvergenz zum Schwellenwert für die partielle Ableitung der Fehlerfunktion herstellen konnte, ganz gleich wie viele Trainingsschritte gemacht worden. Deswegen ist auch der Schwellenwert auf 0.025 hoch gesetzt. Dieser Wert ist zu hoch, war aber notwendig um überhaupt Ergebnisse hervor zu bringen. Je Modell wurden drei wiederholte Trainingsansätze genutzt. Diese Anzahl könnte man noch erhöhen um mehr Generalisierung zu erzielen.\\
+Im Vergleich aller Modelle brachte das Random Forest Modell die besten Vorhersagen hervor. Im weiteren Verlauf wird also immer von dem Random Forest Modell die Rede sein.
 
 \section{Model Projektion}
+
+In den vorangegangenen Sektionen wurden die Ergebnisse vier verschiedener Machine Learning Modelle vorgestellt. Dies waren die Ergebnisse der OLS Regression, der Support Vector Regression, von Random Forest und die Ergebnisse eines neuronalen Netzes. Dabei haben die Ergebnisse des Random Forests die Ergebnisse mit der höchsten Plausabilität geliefert getestet durch die Cross Validation.\\
+Dieses Modell lässt sich nun dazu nutzen, Vorhersagen auf ein ganzes Straßennetz zu projezieren. Die Daten des Straßennetzes stammen wiederum von Open Street Map. Der erste Schritt ist es, einen Kartenbereich auszuwählen mithilfe zweier Koordinaten wie in Code \ref{code:projection1}. Dabei ist anzumerken, je größer dieser Kartenausschnitt sein soll, desto höher ist natürlich auch die Datenlast. Bei ganzen Stadtgebieten ist es zu empfehlen, nur einzelne Straßentypen auszuwählen, oder den Prozess in mehrere Ausschnitte aufzuteilen. Die Koordinaten werden in \lstinline|myLocation| gespeichert. Der hier dargestellte Code würde einen Code Ausschnitt des Ringbereichs in Münster auswählen.
+
+\begin{lstlisting}[caption={Wahl des Kartenausschnitts},label=code:projection1]
+myLocation <- c(7.597514856738869,51.94573812395569,   
+		7.652382675482133,51.9756143280805)
+		
+q <- myLocation %>% 
+opq() %>%
+add_osm_feature("highway")
+
+streets <- osmdata_sf(q)
+\end{lstlisting}
+
+Danach wird eine Anfrage an Open Street Map gestellt, die Daten des Typs "highway" im angegebenen Kartenbereich zu downloaden. Dieser Prozess ähnelt dem Prozess, wie wir ihn im Abschnitt \ref{OMSDATA} kennen gelernt haben.\\
+Darauf folgend müssen die ausgelesenen Daten in einem Format gespeichert werden, die in einen Datensatz für das Modell und zur Kartenprojektion verwendet werden könnten. Zunächst bestehen die Open Street Map Daten aus verschiedenen Straßenlinien, deren Koordinaten in \lstinline|streets$osm_lines$geometry| gespeichert sind. Jede Straßelinie besteht aus mehreren und zusammenhängenden Vektoren, und diese Vektoren bestehen je aus zwei Koordinaten. Zunächst müssen die einzelnen Vektoren der Straßenlinien voneinander getrennt werden, damit jeder Vektor mit einem seiner beiden Koordinaten im Datensatz wie eine Zählstation behandelt werden kann. Dabei wird die erste Koordinate in \lstinline|streetPositions$Lon| und \lstinline|streetPositions$Lat| gespeichert und die zweite Koordinate in \lstinline|streetPositions$Lon2| und \lstinline|streetPositions$Lat2|. Aufgrundlage der ersten Koordinaten können dann Vorhersagen getroffen werden. Der Code \ref{code:projection2} zeigt diesen Prozess.\\
+Dabei werden zwei \lstinline|for|-Loops verwendet.
+
+\begin{lstlisting}[caption={Wahl des Kartenausschnitts},label=code:projection2]
+for(i in 1:length(streets$osm_lines$geometry)){
+	l = length(streets$osm_lines$geometry[[i]])
+	
+	for(j in 1:(length(streets$osm_lines$
+		geometry[[i]])/2 - 1)){
+	
+		streetPositions$Lon[k]=streets$osm_lines
+		$geometry[[i]][j]
+		streetPositions$Lat[k]=streets$osm_lines
+		$geometry[[i]][l/2+j]
+		streetPositions$Lon2[k]=streets
+		$osm_lines$geometry[[i]][j+1]
+		streetPositions$Lat2[k]=streets
+		$osm_lines$geometry[[i]][l/2+j+1]
+	}
+}
+	
+\end{lstlisting}
+
+Der erste \lstinline|for|-Loop geht alle Straßenlinien durch. Der zweite \lstinline|for|-Loop geht alle Vektoren innerhalb der jeweiligen Straßnenlinie durch. Innerhalb der zweiten Schleife werden dann die Einzelwerte der jeweiligen Koordinate in dem Dataframe \lstinline|streetPositions| gespeichert, dieser wird darauffolgend als Grundlage für die Vorhersagen genutzt. Die Variablen die zu Vorhersagen benötigt werden, werden ähnlich wie in Kapitell \ref{Datensatz} gebildet. Darüber hinaus kann man einzelne Faktoren auch überschreiben, um hypottetische Fälle zu betrachten.\\
+Hat man nun einen solchen Datensatz, der die Vorhersagen des jeweiligen Modells enthällt, ist die beste und anschaulichste Präsdentation dieser Ergebnisse eine graphische Übersicht des Straßennetzes mit farblicher Markierung der Fahrradauslastung, wie sie für die in Abschnitt \ref{RF} zwei verschiedenen Random Forest Modell in Abbildung \ref{fig:MunsterRing} zu sehen sind. Zusätzlich worden die im Datensatz enthaltenen Zählstellen als Ringe auf der Karte dargestellt, deren farblich die durchschnittliche Radauslastung an der jeweiligen Zählstation markiert.
+
+\begin{figure}%
+	\centering
+	\subfloat[\centering nach Modell 1]{{\includegraphics[width=10.5cm]{Plots/Münster_Ring_Modell1.png} }}%
+
+	\subfloat[\centering nach Modell 2]{{\includegraphics[width=10.5cm]{Plots/Münster_Ring_Modell2.png} }}%
+	\caption{Räumliche Modell Projektion: Modellvergleich}%
+	\label{fig:MunsterRing}%
+\end{figure}
 
 \section{Räumliche Korrelation zu Verkehrsunfällen}
 
 \section{Verknüpfung mit Verkehrsunfällen}
 
 \chapter{Diskussion}
+
+Zählstationen werden oft nicht zufällig gesetzt sondern mit Absicht an Stellen, wo man einen hohen Verkehr erwartet. Dies verletzt aber ebenfalls die Annahme von unabhängig und gleichverteilten Beobachtungen. Dies ist der Grund für das massive Overfitting, welches den Modellen allen zu Grunde liegt. Jedoch Ließ sich durch Cross Validation dieses Overfitting aufdecken. Der Wert der für die externe Validität bemessen wurde steht. Hinter ihm verstecken sich keine weitere Überraschungen von Verzerrungen, die einem in der Anwendung des Modells noch begegnen können. Das heißt mithilfe der Cross Validation lässt sich die Performance des Modells getreu beurteilen\\
+Die übrig bleibende Frage ist, ob diese Performance der Anwendung zur Verkehrsplanung und zur Unfallvermeidung ausreicht.
+
 
 \section{Fazit}
 

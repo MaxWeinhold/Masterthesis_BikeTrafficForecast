@@ -1,4 +1,5 @@
 \babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {0.1}Abkürzungsverzeichnis}{6}{section.0.1}%
 \contentsline {chapter}{\numberline {1.}Einleitung}{7}{chapter.1}%
 \contentsline {chapter}{\numberline {2.}Literaturüberblick}{8}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Erforschung des Radverkehrs}{8}{section.2.1}%
@@ -45,10 +46,10 @@
 \contentsline {section}{\numberline {5.2}Support Vector Regression}{68}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Random Forest Regression}{72}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Neuronales Netz}{76}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Model Projektion}{76}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{76}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{76}{section.5.7}%
-\contentsline {chapter}{\numberline {6.}Diskussion}{77}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{77}{section.6.1}%
-\contentsline {chapter}{\numberline {7.}Anhang}{78}{chapter.7}%
-\contentsline {chapter}{Literaturverzeichnis}{88}{figure.caption.45}%
+\contentsline {section}{\numberline {5.5}Model Projektion}{77}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{81}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{81}{section.5.7}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{82}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{82}{section.6.1}%
+\contentsline {chapter}{\numberline {7.}Anhang}{83}{chapter.7}%
+\contentsline {chapter}{Literaturverzeichnis}{93}{figure.caption.47}%

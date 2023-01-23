@@ -37,12 +37,12 @@ length(names(BikeData))
 names(BikeData)
 BikeData$X.1 = NULL
 BikeData$X = NULL
-BikeData$secondary = NULL
-BikeData$primary = NULL
-BikeData$path = NULL
-BikeData$living_street = NULL
-BikeData$residential = NULL
-BikeData$cycleways = NULL
+#BikeData$secondary = NULL
+#BikeData$primary = NULL
+#BikeData$path = NULL
+#BikeData$living_street = NULL
+#BikeData$residential = NULL
+#BikeData$cycleways = NULL
 BikeData$Timestamp = NULL
 BikeData$stre_type = NULL
 BikeData$stre_type_spec = NULL

@@ -57,6 +57,7 @@ mapData$Density = NULL
 
 #Adjust Values here
 
+StationDots = TRUE
 
 Year = 2023
 Town = "Münster"
@@ -332,7 +333,7 @@ if(weather_mode==3){
 }
 
 summary(ProjectionData)
-rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","StationDots")))
 
 #Destatis Data -----------------------------------------------------------------
 
@@ -545,7 +546,7 @@ ProjectionData$City_Lon = as.numeric(ProjectionData$City_Lon)
 ProjectionData$City_Lat = as.numeric(ProjectionData$City_Lat)
 summary(ProjectionData)
 
-rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","StationDots")))
 
 Variables_you_need
 
@@ -774,7 +775,7 @@ ProjectionData = merge(x = ProjectionData,y = PKW,
 ProjectionData$PKWs = ProjectionData$PKWs/ProjectionData$InhDestrict
 
 summary(ProjectionData)
-rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","StationDots")))
 
 ProjectionData = na.omit(ProjectionData)
 
@@ -791,12 +792,21 @@ if(is.null(ProjectionData$.data_sidewalk)){ProjectionData$.data_sidewalk = 0}
 if(is.null(ProjectionData$.data_pebblestone)){ProjectionData$.data_pebblestone = 0}
 if(is.null(ProjectionData$.data_trunk_link)){ProjectionData$.data_trunk_link = 0}
 if(is.null(ProjectionData$stre_lengths2)){ProjectionData$stre_lengths2 = ProjectionData$stre_lengths^2}
+if(is.null(ProjectionData$ClosestSchool2)){ProjectionData$ClosestSchool2 = ProjectionData$ClosestSchool^2}
+if(is.null(ProjectionData$ClosestUniBuild2)){ProjectionData$ClosestUniBuild2 = ProjectionData$ClosestUniBuild^2}
+if(is.null(ProjectionData$ClosestClothesShop2)){ProjectionData$ClosestClothesShop2 = ProjectionData$ClosestClothesShop^2}
+if(is.null(ProjectionData$stre_lanes2)){ProjectionData$stre_lanes2 = ProjectionData$stre_lanes^2}
+if(is.null(ProjectionData$stre_maxspeed2)){ProjectionData$stre_maxspeed2 = ProjectionData$stre_maxspeed^2}
+if(is.null(ProjectionData$stre_lengths3)){ProjectionData$stre_lengths3 = ProjectionData$stre_lengths^3}
+if(is.null(ProjectionData$stre_lanes3)){ProjectionData$stre_lanes3 = ProjectionData$stre_lanes^3}
+if(is.null(ProjectionData$stre_maxspeed3)){ProjectionData$stre_maxspeed3 = ProjectionData$stre_maxspeed^3}
+if(is.null(ProjectionData$stre_lanes2)){ProjectionData$stre_lanes2 = ProjectionData$stre_lanes^2}
 
 names(ProjectionData)
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
-load("Modell3_RF_newDataset.rdata")
+load("Modell3_RF_newDataset2.rdata")
 
 summary(model)
 
@@ -825,6 +835,19 @@ mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=15)
 
 #write.csv(ProjectionData,"Mannheim_Innenstadt_Oststadt.csv")
 
+if(StationDots==TRUE){
+  
+  setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
+  #Load Data Set
+  BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
+  names(BikeData)
+  BikeData[,1:7]=NULL
+  BikeData[,4:75]=NULL
+  
+  library(plyr)
+  BikeData=ddply(BikeData,.(Lon,Lat),summarize,Value=mean(Value))
+}
+
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
   for(j in 1:nlevels(as.factor(ProjectionData$Day))){
@@ -837,6 +860,7 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       nrow(streetPositions)
       
       map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 1, lineend = "round") +
+        geom_point(data = BikeData, aes(x =Lon, y= Lat, color = Value), shape = 21, fill = "white", size = 7, stroke = 4) +
         ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
                       " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1],"\n", "Temp: ",
                       streetPositions$Temperature[1]," C° , Regen: ", streetPositions$Rain[1], " mm, Wochenende: ",

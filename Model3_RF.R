@@ -110,7 +110,7 @@ for(i in 1:length(validation_set)){
   
   # Split data to reduce duration of computation
   training.samples <- trainSet$Value %>%
-    createDataPartition(p = 0.05, list = FALSE)
+    createDataPartition(p = 0.1, list = FALSE)
   train.data  <- trainSet[training.samples, ]
   test.data <- trainSet[-training.samples, ]
   
@@ -140,7 +140,12 @@ for(i in 1:length(validation_set)){
                           .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
                           .data_paved + .data_paving_stones + .data_pebblestone + .data_sett + .data_unknown +
                           stre_lengths + stre_lanes + stre_maxspeed + bridge + .data_cycleway + 
-                          Rain2 + Temperature2 + Inhabitants2 + stre_lengths2, data =  train.data, ntree=250, importance=TRUE)
+                          secondary + primary + path + living_street + residential + cycleways +
+                          Rain2 + Temperature2 + Inhabitants2 + ADFC_Index2 + ClosestSchool2 + 
+                          ClosestUniBuild2 + ClosestClothesShop2 + ClosestTrainS2 + young302 + PKWs2 +
+                          stre_lengths2 + stre_lanes2 + stre_maxspeed2 + UniBuild500mmRadius3 +
+                          ClothesShop500mmRadius3 + ClosestTrainS3 + stre_lengths3 + stre_lanes3 + stre_maxspeed3, 
+                          data =  train.data, ntree=400, importance=TRUE)
   
   end_time <- Sys.time()
   print(end_time - start_time)
@@ -190,7 +195,7 @@ Evaluation_DF <- Evaluation_DF[, c(5,1,2,3,4)]
 beep("mario")
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
-write.csv(Evaluation_DF,"Modell3_RF.csv")
-save(model,file="Modell3_RF_newDataset.rdata")
+write.csv(Evaluation_DF,"Modell3_RF_newDataset2.csv")
+save(model,file="Modell3_RF_newDataset2.rdata")
 
 

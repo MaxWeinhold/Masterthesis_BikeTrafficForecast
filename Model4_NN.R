@@ -27,7 +27,7 @@ rm(list=ls())
 #files about 100 MB have to be excluded
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 
-load("ValidationSets.rdata")
+load("ValidationSets2.rdata")
 
 #Make a simple Test with the support vector regression to show the differences to the OLS regression
 
@@ -183,17 +183,26 @@ for(i in 1:length(validation_set)){
   #print(summary(train.data))
   #summary(testSet)
   #
-  model <- neuralnet(Value ~ Hour + Months + Weekend + Night + publicHoliday + schoolHoliday + 
-                       Wind + CloudCover + Humidity + Rain + Temperature + Cinemas3kmRadius +
-                       ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center + 
-                       ClosestSchool + Schools500mmRadius + Schools2kmRadius + ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius + 
-                       ClosestSuperMarket + SuperMarket1kmRadius + ClosestClothesShop + ClothesShop500mmRadius + BusStop250mmRadius + ClothesShop2kmRadius + Signals250mmRadius +
-                       BusStop250mmRadius + UnmCross250mmRadius + BusStop1kmRadius + Tram250mmRadius + Subway250mmRadius + ClosestTrainS + BikeShop3kmRadius + 
-                       cycleways + path + secondary + primary + ClosestBridge + young18 + young25 + young30 + 
-                       older40 + older60 + Immigrants + PKWs + Rain2 + 
-                       Temperature2 + Inhabitants2 + ADFC_Index2 + UniBuild500mmRadius2 + ClothesShop500mmRadius2 +
-                       ClosestTrainS2 + ClosestBridge2 + young302 + PKWs2 + Rain3 +
-                       Inhabitants3 + UniBuild500mmRadius3 + ClothesShop500mmRadius3 + ClosestTrainS3 + SignalsRatio, data =  train.data,
+  model <- neuralnet(Value ~ Year + Months + Hour + Weekend + Night + publicHoliday + schoolHoliday +
+                       Wind + CloudCover + Humidity + Rain + Temperature +
+                       ADFC_Index + Area + Inhabitants + Male_Ratio + Distance_to_Center +
+                       ClosestCinema + Cinemas1kmRadius + Cinemas3kmRadius +
+                       ClosestSchool + Schools500mmRadius + Schools2kmRadius +
+                       ClosestUniBuild + UniBuild500mmRadius + UniBuild2kmRadius +
+                       ClosestSuperMarket + SuperMarket500mmRadius + SuperMarket1kmRadius +
+                       ClosestClothesShop + ClothesShop500mmRadius + ClothesShop2kmRadius +
+                       ClosestBusStop + BusStop250mmRadius + BusStop1kmRadius +
+                       ClosestSignals + Signals250mmRadius + Signals1kmRadius +
+                       ClosestUnmCross + UnmCross250mmRadius + UnmCross1kmRadius +
+                       ClosestTrainS + TrainS1kmRadius + TrainS3kmRadius +
+                       ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius + ClosestBridge +
+                       young18 + young25 + older40 + older60 + Immigrants + PKWs +
+                       CorInz + Lockdowns + stre_dist + #path + secondary + primary + residential + 
+                       .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
+                       .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
+                       .data_paved + .data_paving_stones + .data_pebblestone + .data_sett + .data_unknown +
+                       stre_lengths + stre_lanes + stre_maxspeed + bridge +
+                       Rain2 + Temperature2 + Inhabitants2 + stre_lengths2, data =  train.data,
                        hidden = c(48, 26, 16, 8, 4, 2), linear.output = FALSE, lifesign = 'full', rep=3, stepmax = 100000, threshold = 0.025)
   
   #plot(model,col.hidden = 'darkgreen',     
