@@ -47,9 +47,8 @@
 \contentsline {section}{\numberline {5.3}Random Forest Regression}{72}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Neuronales Netz}{76}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Model Projektion}{77}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{81}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Verknüpfung mit Verkehrsunfällen}{81}{section.5.7}%
-\contentsline {chapter}{\numberline {6.}Diskussion}{82}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{82}{section.6.1}%
-\contentsline {chapter}{\numberline {7.}Anhang}{83}{chapter.7}%
-\contentsline {chapter}{Literaturverzeichnis}{93}{figure.caption.47}%
+\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{85}{section.5.6}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{86}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{86}{section.6.1}%
+\contentsline {chapter}{\numberline {7.}Anhang}{87}{chapter.7}%
+\contentsline {chapter}{Literaturverzeichnis}{97}{figure.caption.51}%

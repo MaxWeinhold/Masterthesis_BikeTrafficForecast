@@ -127,9 +127,9 @@ connection/.style={thick, dotted},
 
 \chapter{Einleitung}
 
-Vielerorts erlebt der Individualverkehr eine Renaissance des Fahrrads. So ist laut \cite{Eisenberger2015} und dem Verband der Zweirad Industrie \cite{ZIV2022} der Bestand an Fahrrädern in Deutschland von 72 Mio. in 2015 auf 81 Mio. in 2021 angestiegen. Der anhaltende Boom hat viele Gründe. Im Vergleich zum Auto ist die bewegungsintensivere Fortbewegung auf dem Fahrrad gesünder, schont die Umwelt und das Portmonee.\\
+Vielerorts erlebt der Individualverkehr eine Renaissance des Fahrradfahrens. So ist laut \cite{Eisenberger2015} und dem Verband der Zweirad Industrie \cite{ZIV2022} der Bestand an Fahrrädern in Deutschland von 72 Mio. in 2015 auf 81 Mio. in 2021 angestiegen. Der anhaltende Boom hat viele Gründe. Im Vergleich zum Auto ist die bewegungsintensivere Fortbewegung auf dem Fahrrad gesünder, schont die Umwelt und das Portemonnaie.\\
 Viele Kommunen entscheiden sich u.a. aus diesen Gründen dafür, ihre Stadt fahrradfreundlicher zu gestalten. So unterstützt das Bundesministerium für Verkehr und digitale Infrastruktur \cite{VerkehrunddigitaleInfrastruktur2020} die Länder und Gemeinden beim Ausbau von Radwegen durch eine direkte Hilfe in Höhe von 660 Mio. Euro bis 2023.\\
-Dies sowie der genaue lokale Bedarf und die Auslastung von Fahrradwegen muss bei der Planung der Infrastruktur beachtet werden. Motiviert ist diese Arbeit mit dem Wunsch Antworten auf mögliche Fragen der Infrastrukturplanung bieten zu können. Die Forschungsfrage, die sich daraus ableitet, lautet: Ist es möglich ein räumliches Modell zu entwickeln, dass für ein vollständiges Straßennetz oder für ausgewählte flexible Knotenpunkte zu bestimmten Zeiten Vorhersagen zum Fahrradverkehr machen kann und lassen diese auch zusätzlich die gefährlichsten Stellen für Fahrradunfälle erkennen?\\
+Dies, sowie der genaue lokale Bedarf und die Auslastung von Fahrradwegen, muss bei der Planung der Infrastruktur beachtet werden. Motiviert ist diese Arbeit mit dem Wunsch, Antworten auf mögliche Fragen der Infrastrukturplanung bieten zu können. Die Forschungsfrage, die sich daraus ableitet, lautet: Ist es möglich ein räumliches Modell zu entwickeln, das für ein vollständiges Straßennetz oder für ausgewählte flexible Knotenpunkte zu bestimmten Zeiten Vorhersagen zum Fahrradverkehr machen kann und lassen diese auch zusätzlich die gefährlichsten Stellen für Fahrradunfälle erkennen? Ziel dabei ist es, eine Anleitung zu Erstellung solcher Modelle zu geben.\\
 Dazu beginnt diese Masterarbeit mit einem Einblick in die bestehende Literatur, welcher kategorisiert ist nach Daten und Faktoren. Häufig verwendete Methoden werden im Nachgang näher beschrieben. Das erworbene Wissen dient dazu, ein Modell zu entwickeln, dass im Rahmen dieser Abschlussarbeit auch evaluiert wird. Im Anschluss wird analysiert, wie sehr das Radverkehrsaufkommen mit Radverkehrsunfällen räumlich korreliert.
 
 \chapter{Literaturüberblick}
@@ -965,9 +965,44 @@ Hat man nun einen solchen Datensatz, der die Vorhersagen des jeweiligen Modells 
 	\label{fig:MunsterRing}%
 \end{figure}
 
-\section{Räumliche Korrelation zu Verkehrsunfällen}
+Wie in der Abbildung \ref{fig:MunsterRing} unterscheiden sich beide Modelle sehr stark. Während in der Abbildung zum ersten Modell zu sehen ist, dass das Aufkommen des Radverkehrs in der räumlichen Vorhersage flächenmäßig relativ gleichverteilt ist aber konzentriert auf das Stadtzentrum, ist die Vorhersage des zweiten Modells weniger gleichmäßig. In der zweiten Abbildung ist ein stärkeres Rauschen zu sehen. Dabei ergibt das Rauschen des Vorhersage an manchen Stellen Sinn, an anderen jedoch weniger Sinn. Was nützlich an Modell 2 ist, dass bestimmte einzelne Straßenzüge stärker betont werden, vorallem auch spezifische Kreuzungen im Bereich der Ringstraße Münsters. Es fallen z.B auf die Kreuzung Niedersachsenring/Bohlweg, Niedersachsenring/Gartenstraße, Kaiser-Wilhelm-Ring/Warendorfer Straße oder auch die Kreuzung Kolde-Ring/Weseler Straße. Dies sind jedoch auch wichtige Verkehrsadern der Stadt Münster, dass eine Radverkehrsdichte im Bereich der Ring Straßen herrschen muss, scheint trivial. Doch kann das Modell auf vorhersagen, dass dies nicht im ganzen Ring Bereich so sein muss. Für den Nordwesten des Ringbereichs sagen beide Modelle eine niedrige Radverkehrsdichte hervor. Ohne einer weiteren Zählstation lässt sich dies nicht abschließend prüfen, wir kennen jedoch auch die gemessene Validität der Modelle. Darüber hinaus macht das zweite Modell für einige Nebenstraßen sehr hohe Vorhersagen. Diese erscheinen nicht plausibel. Eine Möglichkeit wäre es, diese Nebenstraßen und Parkgassen in der Anzeige auszuschließen, so wie es z.B. auch mit Gehwegen und Fußgängerzonen geschehen ist. Die graphische Ausgabe der Modellvorhersagen lässt sich also noch verbessern.\\
+Mit der Absicht die Validität des Modells noch weiter zu erhöhen ist ein drittes Modell entstanden, dass alte und neue Straßentypen Variablen mit in das Modell aufnimmt, zusätzlich noch mehr nicht lineare Effekte und eine größere Stichprobenmenge von 80000 Beobachtung nutzt. Dieses dritte Modell hat in der Berechnung 28 Stunden benötigt. Die Ergebnisse zeigt die Tabelle \ref{tbl:RF3} und die Abbildung \ref{Munster}. Graphisch ist dieses Modell fast identisch zum zweiten Modell. Da Modell 2 und 3 brauchbarere Vorhersagen machen, weil beide einzelen Straßenzüge hervorheben und weil Modell 3 eine höhere Treffsicherheit als Modell 2 hat und mit mehr Beobachtungen trainiert worden ist, wird für weitere Vorhersagen Modell 3 verwendet.
 
-\section{Verknüpfung mit Verkehrsunfällen}
+\begin{table}
+	\csvautotabular[separator=semicolon]{Tables/Modell3RFnewDataset2.csv}
+	\caption{Performance des dritten RF Modells}
+	\label{tbl:RF3}
+\end{table}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/Münster_Ring_Modell3.png}
+	\caption{Feature Selection Ergebnis der RF Regression in 6 Modellen}
+	\label{Munster}
+\end{figure}
+
+\begin{figure}%
+	\centering
+	\subfloat[\centering Hamburg]{{\includegraphics[width=10.5cm]{Plots/Hamburg.png} }}%
+	
+	\subfloat[\centering Leipzig]{{\includegraphics[width=10.5cm]{Plots/Leipzig.png} }}%
+	\caption{Modellprojektionen in Hamburg und Leipzig}%
+	\label{fig:HamburgundLeipzig}%
+\end{figure}
+
+\begin{figure}%
+	\centering
+	\subfloat[\centering Mannheim]{{\includegraphics[width=10.5cm]{Plots/Mannheim.png} }}%
+	
+	\subfloat[\centering Oberhausen]{{\includegraphics[width=10.5cm]{Plots/Oberhausen.png} }}%
+	\caption{Modellprojektionen in Mannheim und Oberhausen}%
+	\label{fig:MannheimundOberhausen}%
+\end{figure}
+
+Die Abbildungen \ref{fig:HamburgundLeipzig} und \ref{fig:MannheimundOberhausen} zeigen beispielhaft die Verkehrsprognosen für Hamburg, Leipzig, Mannheim und Oberhausen. Es wird offensichtlich, dass das Modell sich dem Verkehrsniveau der Städte anpasst. An manchen Stellen scheint das Modell das Verkehrsaufkommen zu überschätzen, vergleicht man es zu den markierten Stationen. Die markierten Stationen zeigen jedoch nur den Durchschnitt über alle Messnungen hinweg an. Da die Modellprojektionen ein Datum in der Zukunft gewählt haben im Sommer, an dem Spitzenwerte auftreten ist hier ein Vergleich schwierig.\\
+Um das Modell einem besonderen Stresstest zu unterziehen, muss Vorhersagen für eine ganze Stadt machen, die dem Modell unbekannt ist, Messwerte zu dieser Stadt aber vorliegen. Weil im Verlauf der Masterarbeit die Zählwerte aus Dresden erst spät zugänglich waren, konnten diese Daten selbst nicht mit in das Modell einfließen, sind nun aber nützlich für eine zusätzliche Validierung.
+
+\section{Räumliche Korrelation zu Verkehrsunfällen}
 
 \chapter{Diskussion}
 

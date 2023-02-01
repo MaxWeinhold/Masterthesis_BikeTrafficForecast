@@ -49,7 +49,7 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 #Choose Values you are interested in -------------------------------------------
 
 Year = 2023
-Town = "Münster"
+Town = "Leipzig"
 ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
@@ -73,7 +73,7 @@ ProjectionData$Value = 1
 rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
 
 #Ad the different Variables-----------------------------------------------------
-Bundesland = "NRW"
+Bundesland = "SAC"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -87,7 +87,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
+pH=publicHolidays[publicHolidays$SAC %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -518,6 +518,7 @@ for(i in 1: nrow(Altersgruppen)){
   else if(Altersgruppen$Town[i] == "Siegen-Wittgenstein, Landkreis"){Altersgruppen$Town[i] = "Siegen"}
   else if(Altersgruppen$Town[i] == "Erfurt, kreisfreie Stadt"){Altersgruppen$Town[i] = "Erfurt"}
   else if(Altersgruppen$Town[i] == "Tübingen, Landkreis"){Altersgruppen$Town[i] = "Tübingen"}
+  else if(Altersgruppen$Town[i] == "Konstanz, Landkreis"){Altersgruppen$Town[i] = "Konstanz"}
   else{Altersgruppen$Town[i] = NA}
 }
 Altersgruppen = na.omit(Altersgruppen)
@@ -627,6 +628,7 @@ for(i in 1: nrow(Immigrants)){
   else if(Immigrants$Town[i] == "Siegen-Wittgenstein, Landkreis"){Immigrants$Town[i] = "Siegen"}
   else if(Immigrants$Town[i] == "Erfurt, kreisfreie Stadt"){Immigrants$Town[i] = "Erfurt"}
   else if(Immigrants$Town[i] == "Tübingen, Landkreis"){Immigrants$Town[i] = "Tübingen"}
+  else if(Immigrants$Town[i] == "Konstanz, Landkreis"){Immigrants$Town[i] = "Konstanz"}
   else{Immigrants$Town[i] = NA}
 }
 Immigrants = na.omit(Immigrants)
@@ -675,6 +677,7 @@ for(i in 1: nrow(PKW)){
   else if(PKW$Town[i] == "Siegen-Wittgenstein, Landkreis"){PKW$Town[i] = "Siegen"}
   else if(PKW$Town[i] == "Erfurt, kreisfreie Stadt"){PKW$Town[i] = "Erfurt"}
   else if(PKW$Town[i] == "Tübingen, Landkreis"){PKW$Town[i] = "Tübingen"}
+  else if(PKW$Town[i] == "Konstanz, Landkreis"){PKW$Town[i] = "Konstanz"}
   else{PKW$Town[i] = NA}
 }
 PKW = na.omit(PKW)
@@ -699,7 +702,7 @@ rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData",
 
 ProjectionData = na.omit(ProjectionData)
 
-Variables_you_need
+#Variables_you_need
 
 #ProjectionData=na.omit(ProjectionData)
 
@@ -735,11 +738,15 @@ Variables_you_need
 #Get all the streetpositions----------------------------------------------------
 
 #bounding box for our map
+myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
+#myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
+#myLocation <- c(9.141942175012497,47.65866154489606,   9.193741541590612,47.68387116622814) # Konstanz
+#myLocation <- c(9.948052762410784, 53.539459805323816, 10.026187913111105, 53.568930771301424)#Hamburg Innenstadt + Altona
 #myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt und Oststadt
 #myLocation <- c(9.968615748457593,53.539830498755265,   10.012409572679795,53.55974898224376) # Hamburg Innensatdt
 #myLocation <- c(6.833644830296469,51.460877236637465,  6.874634203344688,51.48078438095241) # Oberhausen Innensatdt
 #myLocation <- c(7.547877265931465,51.911200682602676,   7.689021424551272,52.0041202032665) # Muenster
-myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring
+#myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring
 #myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896) # Muenster Innenstadt
 
 #building the query
@@ -2281,6 +2288,7 @@ summary(exp(as.numeric(projection_pred)))
 
 ProjectionData$Value = exp(as.numeric(projection_pred))
 summary(ProjectionData$Value)
+summary(ProjectionData)
 nrow(ProjectionData)
 #Create Map
 
@@ -2289,7 +2297,7 @@ lower = mean(ProjectionData$Value)/2
 mid = mean(ProjectionData$Value)
 higher = mean(ProjectionData$Value) + mean(ProjectionData$Value)/2
 
-write.csv(ProjectionData,"Münster_Ring_2.csv")
+write.csv(ProjectionData,"Leipzig.csv")
 
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   

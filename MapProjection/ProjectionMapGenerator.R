@@ -21,7 +21,7 @@ library(geosphere)#package for calculating distance using longitude and latitude
 
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Münster_Ring_2.csv",sep=",")
+mapData = read.csv(file = "Leipzig.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -60,7 +60,7 @@ mapData$Density = NULL
 StationDots = TRUE
 
 Year = 2023
-Town = "Münster"
+Town = "Leipzig"
 ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
@@ -98,7 +98,7 @@ ProjectionData = merge(x = ProjectionData,y = ADFC_Index,all = FALSE)
 names(ProjectionData)[ncol(ProjectionData)] = "ADFC_Index"
 
 #Ad the time Variables-----------------------------------------------------
-Bundesland = "NRW"
+Bundesland = "SAC"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -112,7 +112,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
+pH=publicHolidays[publicHolidays$SAC %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -548,7 +548,7 @@ summary(ProjectionData)
 
 rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","StationDots")))
 
-Variables_you_need
+#Variables_you_need
 
 #Load data (source: Destatis)
 
@@ -806,7 +806,7 @@ names(ProjectionData)
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
-load("Modell3_RF_newDataset2.rdata")
+load("Modell3_RF_newDataset3.rdata")
 
 summary(model)
 
@@ -823,15 +823,18 @@ nrow(ProjectionData)
 #Create Map
 
 #bounding box for our map
+myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
+#myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
+#myLocation <- c(9.948052762410784, 53.539459805323816, 10.026187913111105, 53.568930771301424)#Hamburg Innenstadt + Altona
 #myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt
 #myLocation <- c(9.968615748457593,53.539830498755265,   10.012409572679795,53.55974898224376) # Hamburg Innensatdt
 #myLocation <- c(6.833644830296469,51.460877236637465,  6.874634203344688,51.48078438095241) # Oberhausen Innensatdt
 #myLocation <- c(7.547877265931465,51.911200682602676,   7.689021424551272,52.0041202032665) # Muenster
-myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring
+#myLocation <- c(7.597514856738869,51.94573812395569,   7.652382675482133,51.9756143280805) # Muenster Ring
 #myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896) # Muenster Innenstadt
 
 
-mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=15)
+mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=13)
 
 #write.csv(ProjectionData,"Mannheim_Innenstadt_Oststadt.csv")
 
@@ -841,12 +844,21 @@ if(StationDots==TRUE){
   #Load Data Set
   BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
   names(BikeData)
-  BikeData[,1:7]=NULL
-  BikeData[,4:75]=NULL
+  BikeData = BikeData[BikeData$Town==Town,]
+  BikeData2 = cbind(BikeData$Lat,BikeData$Lon)
+  BikeData2 = as.data.frame(cbind(BikeData2,BikeData$Value))
+  
+  names(BikeData2)[1]= "Lat"
+  names(BikeData2)[2]= "Lon"
+  names(BikeData2)[3]= "Value"
+  
+  rm(BikeData)
   
   library(plyr)
-  BikeData=ddply(BikeData,.(Lon,Lat),summarize,Value=mean(Value))
+  BikeData2=ddply(BikeData2,.(Lon,Lat),summarize,Value=mean(Value))
 }
+
+BikeData
 
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
@@ -860,7 +872,7 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       nrow(streetPositions)
       
       map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 1, lineend = "round") +
-        geom_point(data = BikeData, aes(x =Lon, y= Lat, color = Value), shape = 21, fill = "white", size = 7, stroke = 4) +
+        geom_point(data = BikeData2, aes(x =Lon, y= Lat, color = Value), shape = 21, fill = "white", size = 7, stroke = 4) +
         ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
                       " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1],"\n", "Temp: ",
                       streetPositions$Temperature[1]," C° , Regen: ", streetPositions$Rain[1], " mm, Wochenende: ",

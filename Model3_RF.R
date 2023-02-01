@@ -110,7 +110,7 @@ for(i in 1:length(validation_set)){
   
   # Split data to reduce duration of computation
   training.samples <- trainSet$Value %>%
-    createDataPartition(p = 0.1, list = FALSE)
+    createDataPartition(p = 0.05, list = FALSE)
   train.data  <- trainSet[training.samples, ]
   test.data <- trainSet[-training.samples, ]
   
@@ -133,10 +133,7 @@ for(i in 1:length(validation_set)){
                           ClosestBikeShop + BikeShop1kmRadius + BikeShop3kmRadius + ClosestBridge +
                           young18 + young25 + older40 + older60 + Immigrants + PKWs +
                           CorInz + Lockdowns + stre_dist + .data_footway + .data_living_street +
-                          .data_motorway + .data_path + .data_pedestrian + .data_primary + .data_residential +
-                          .data_secondary + .data_service + .data_steps + .data_tertiary + .data_track +
-                          .data_trunk_link + .data_unclassified + .data_driveway + .data_empty + .data_sidepath +
-                          .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
+                          .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
                           .data_sidewalk + .data_asphalt + .data_compacted + .data_concrete + .data_fine_gravel +
                           .data_paved + .data_paving_stones + .data_pebblestone + .data_sett + .data_unknown +
                           stre_lengths + stre_lanes + stre_maxspeed + bridge + .data_cycleway + 
@@ -195,7 +192,7 @@ Evaluation_DF <- Evaluation_DF[, c(5,1,2,3,4)]
 beep("mario")
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
-write.csv(Evaluation_DF,"Modell3_RF_newDataset2.csv")
-save(model,file="Modell3_RF_newDataset2.rdata")
+write.csv(Evaluation_DF,"Modell3_RF_newDataset3.csv")
+save(model,file="Modell3_RF_newDataset3.rdata")
 
 
