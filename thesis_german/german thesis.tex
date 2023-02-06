@@ -1000,9 +1000,19 @@ Mit der Absicht die Validität des Modells noch weiter zu erhöhen ist ein dritt
 \end{figure}
 
 Die Abbildungen \ref{fig:HamburgundLeipzig} und \ref{fig:MannheimundOberhausen} zeigen beispielhaft die Verkehrsprognosen für Hamburg, Leipzig, Mannheim und Oberhausen. Es wird offensichtlich, dass das Modell sich dem Verkehrsniveau der Städte anpasst. An manchen Stellen scheint das Modell das Verkehrsaufkommen zu überschätzen, vergleicht man es zu den markierten Stationen. Die markierten Stationen zeigen jedoch nur den Durchschnitt über alle Messnungen hinweg an. Da die Modellprojektionen ein Datum in der Zukunft gewählt haben im Sommer, an dem Spitzenwerte auftreten ist hier ein Vergleich schwierig.\\
-Um das Modell einem besonderen Stresstest zu unterziehen, muss Vorhersagen für eine ganze Stadt machen, die dem Modell unbekannt ist, Messwerte zu dieser Stadt aber vorliegen. Weil im Verlauf der Masterarbeit die Zählwerte aus Dresden erst spät zugänglich waren, konnten diese Daten selbst nicht mit in das Modell einfließen, sind nun aber nützlich für eine zusätzliche Validierung.
+Um das Modell einem besonderen Stresstest zu unterziehen, muss Vorhersagen für eine ganze Stadt machen, die dem Modell unbekannt ist, Messwerte zu dieser Stadt aber vorliegen. Weil im Verlauf der Masterarbeit die Zählwerte aus Dresden erst spät zugänglich waren, konnten diese Daten selbst nicht mit in das Modell einfließen, sind nun aber nützlich für eine zusätzliche Validierung. Diese Daten aus Dresden stammen von 8 verschiedenen Zählstationen von 2018 bis 2021 und umfassen insgesamt 261576 Beobachtungen. Das Modell schätzt hier in Dresden über alle Beobachtungen den Durchschnitt der Radfahrer auf 40.95. Der tatsächliche Durchschnitt entspricht jedoch 83.66 und ist somit doppelt so hoch. Der vorhergesagte Medianwert liegt bei 27.06 und der tatsächliche Medianwert liegt bei 43. Das Modell scheint also den Verkehr in Dresden zu unterschätzen. Der RMSE für diese Daten liegt bei 115.76, was im Bereich der vorherigen Evaluationen lag, jedoch liegt das Bestimmtheitsmaß $R^2$ nur noch bei 0.06.\\
+Dies sind Hinweise darauf, dass Modellprojektionen in unbekannten Städten unzuverlässig sind. Diese Vermutung bestätigt sich beim graphischen Modelloutput in Abbildung \ref{Dresden}. Dieser Modelloutput zeigt im Zentrum Dresdens wenig Verkehr in Randbezirken mehr und wirkt deswegen unglaubwürdig. In Verbindung mit den Validierungswerten des RMSE und des Bestimmtheitswertes sowie des unterschiedlichen Medians und Durchschnitts in vorhergesagten und tatsächlichen Verkehrsdaten, zeigt das Dresdner Beispiel die Grenzen des Modells. Wo die Modellprojektionen für dem Modell bekannte Stationen glaubwürdig validiert werden konnten, sind die Modellvorhersagen für die unbekannte Stadt Dresden unglaubwürdig.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{Plots/Dresden.png}
+	\caption{Modellprojektionen in Dresden}
+	\label{Dresden}
+\end{figure}
 
 \section{Räumliche Korrelation zu Verkehrsunfällen}
+
+Auch wenn wie im vorherigen Abschnitt dargestellt die Vorhersagen für unbekannte Städte unbrauchbar sind, ist die Verwendung für die 22 deutschen Städte, die im Modellsatz vorkommen denkbar. Eine weitere interessante Frage ist, ob die Modellvorhersagen räumlich mit Radverkehrsunfällen korrelieren.
 
 \chapter{Diskussion}
 

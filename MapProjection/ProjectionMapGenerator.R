@@ -17,11 +17,12 @@ library(osmdata)
 library(sf)
 library(ggmap)
 library(lubridate)
+library(plyr)
 library(geosphere)#package for calculating distance using longitude and latitude
 
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Leipzig.csv",sep=",")
+mapData = read.csv(file = "Dresden.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -59,8 +60,8 @@ mapData$Density = NULL
 
 StationDots = TRUE
 
-Year = 2023
-Town = "Leipzig"
+Year = 2021
+Town = "Dresden"
 ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
@@ -598,6 +599,7 @@ for(i in 1: nrow(Altersgruppen)){
   else if(Altersgruppen$Town[i] == "Siegen-Wittgenstein, Landkreis"){Altersgruppen$Town[i] = "Siegen"}
   else if(Altersgruppen$Town[i] == "Erfurt, kreisfreie Stadt"){Altersgruppen$Town[i] = "Erfurt"}
   else if(Altersgruppen$Town[i] == "Tübingen, Landkreis"){Altersgruppen$Town[i] = "Tübingen"}
+  else if(Altersgruppen$Town[i] == "Dresden, kreisfreie Stadt"){Altersgruppen$Town[i] = "Dresden"}
   else{Altersgruppen$Town[i] = NA}
 }
 Altersgruppen = na.omit(Altersgruppen)
@@ -707,6 +709,7 @@ for(i in 1: nrow(Immigrants)){
   else if(Immigrants$Town[i] == "Siegen-Wittgenstein, Landkreis"){Immigrants$Town[i] = "Siegen"}
   else if(Immigrants$Town[i] == "Erfurt, kreisfreie Stadt"){Immigrants$Town[i] = "Erfurt"}
   else if(Immigrants$Town[i] == "Tübingen, Landkreis"){Immigrants$Town[i] = "Tübingen"}
+  else if(Immigrants$Town[i] == "Dresden, kreisfreie Stadt"){Immigrants$Town[i] = "Dresden"}
   else{Immigrants$Town[i] = NA}
 }
 Immigrants = na.omit(Immigrants)
@@ -755,6 +758,7 @@ for(i in 1: nrow(PKW)){
   else if(PKW$Town[i] == "Siegen-Wittgenstein, Landkreis"){PKW$Town[i] = "Siegen"}
   else if(PKW$Town[i] == "Erfurt, kreisfreie Stadt"){PKW$Town[i] = "Erfurt"}
   else if(PKW$Town[i] == "Tübingen, Landkreis"){PKW$Town[i] = "Tübingen"}
+  else if(PKW$Town[i] == "Dresden, kreisfreie Stadt"){PKW$Town[i] = "Dresden"}
   else{PKW$Town[i] = NA}
 }
 PKW = na.omit(PKW)
@@ -783,6 +787,12 @@ ProjectionData = merge(x = ProjectionData,y = mapData,
                        by = c("Town"),
                        all = TRUE)
 
+length(names(ProjectionData))
+ProjectionData = cbind(ProjectionData,dummy_cols(ProjectionData$stre_type))
+ProjectionData = cbind(ProjectionData,dummy_cols(ProjectionData$stre_type_spec))
+ProjectionData = cbind(ProjectionData,dummy_cols(ProjectionData$stre_surface))
+length(names(ProjectionData))
+
 ProjectionData$.data_footway = 0
 ProjectionData$.data_pedestrian = 0
 if(is.null(ProjectionData$.data_motorway)){ProjectionData$.data_motorway = 0}
@@ -791,6 +801,53 @@ if(is.null(ProjectionData$.data_sidepath)){ProjectionData$.data_sidepath = 0}
 if(is.null(ProjectionData$.data_sidewalk)){ProjectionData$.data_sidewalk = 0}
 if(is.null(ProjectionData$.data_pebblestone)){ProjectionData$.data_pebblestone = 0}
 if(is.null(ProjectionData$.data_trunk_link)){ProjectionData$.data_trunk_link = 0}
+
+ProjectionData$Rain2 = ProjectionData$Rain^2
+ProjectionData$Temperature2 = ProjectionData$Temperature^2
+ProjectionData$Inhabitants2 = ProjectionData$Inhabitants^2
+ProjectionData$ADFC_Index2 = ProjectionData$ADFC_Index^2
+
+ProjectionData$ClosestSchool2 = ProjectionData$ClosestSchool^2
+ProjectionData$Schools500mmRadius2 = ProjectionData$Schools500mmRadius^2
+ProjectionData$UniBuild2kmRadius2 = ProjectionData$UniBuild2kmRadius2^2
+
+ProjectionData$ClosestUniBuild2 = ProjectionData$ClosestUniBuild^2
+ProjectionData$UniBuild500mmRadius2 = ProjectionData$UniBuild500mmRadius^2
+ProjectionData$ClosestSchool2 = ProjectionData$ClosestSchool^2
+
+ProjectionData$ClosestClothesShop2 = ProjectionData$ClosestClothesShop^2
+ProjectionData$ClothesShop500mmRadius2 = ProjectionData$ClothesShop500mmRadius^2
+ProjectionData$ClothesShop2kmRadius2 = DresdProjectionDataenData$ClothesShop2kmRadius^2
+
+ProjectionData$ClosestTrainS2 = ProjectionData$ClosestTrainS^2
+ProjectionData$ClosestBridge2 = ProjectionData$ClosestBridge^2
+ProjectionData$young302 = ProjectionData$young30^2
+ProjectionData$PKWs2 = ProjectionData$PKWs^2
+
+ProjectionData$CorInz2 = ProjectionData$CorInz^2
+ProjectionData$stre_dist2 = ProjectionData$stre_dist^2
+ProjectionData$stre_density2 = ProjectionData$stre_density^2
+ProjectionData$stre_lengths2 = ProjectionData$stre_lengths^2
+ProjectionData$stre_lanes2 = ProjectionData$stre_lanes^2
+ProjectionData$stre_maxspeed2 = ProjectionData$stre_maxspeed^2
+ProjectionData$os_way_to_city2 = ProjectionData$os_way_to_city^2
+ProjectionData$cluster_way_to_city2 = ProjectionData$cluster_way_to_city^2
+
+ProjectionData$Rain3 = ProjectionData$Rain^3
+ProjectionData$Inhabitants3 = ProjectionData$Inhabitants^3
+ProjectionData$UniBuild500mmRadius3 = ProjectionData$UniBuild500mmRadius^3
+ProjectionData$ClothesShop500mmRadius3 = ProjectionData$ClothesShop500mmRadius^3
+ProjectionData$ClosestTrainS3 = ProjectionData$ClosestTrainS^3
+ProjectionData$ClosestBridge3 = ProjectionData$ClosestBridge3
+ProjectionData$stre_lengths3 = ProjectionData$stre_lengths^3
+ProjectionData$stre_lanes3 = ProjectionData$stre_lanes^3
+ProjectionData$stre_maxspeed3 = ProjectionData$stre_maxspeed^3
+ProjectionData$os_way_to_city3 = ProjectionData$os_way_to_city^3
+ProjectionData$cluster_way_to_city3 = ProjectionData$cluster_way_to_city^3
+
+ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData$UnmCross250mmRadius + ProjectionData$Signals250mmRadius + 1)
+
+
 if(is.null(ProjectionData$stre_lengths2)){ProjectionData$stre_lengths2 = ProjectionData$stre_lengths^2}
 if(is.null(ProjectionData$ClosestSchool2)){ProjectionData$ClosestSchool2 = ProjectionData$ClosestSchool^2}
 if(is.null(ProjectionData$ClosestUniBuild2)){ProjectionData$ClosestUniBuild2 = ProjectionData$ClosestUniBuild^2}
@@ -823,7 +880,8 @@ nrow(ProjectionData)
 #Create Map
 
 #bounding box for our map
-myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
+myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.064814222798276) #Dresden
+#myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
 #myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
 #myLocation <- c(9.948052762410784, 53.539459805323816, 10.026187913111105, 53.568930771301424)#Hamburg Innenstadt + Altona
 #myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt
@@ -842,9 +900,10 @@ if(StationDots==TRUE){
   
   setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   #Load Data Set
-  BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
+  #BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
+  BikeData = read.csv(file = "Dresden_Daten_Komplett.csv",sep=",", encoding="ISO-8859-1")
   names(BikeData)
-  BikeData = BikeData[BikeData$Town==Town,]
+  #BikeData = BikeData[BikeData$Town==Town,] #Bei Dresden auskommandieren
   BikeData2 = cbind(BikeData$Lat,BikeData$Lon)
   BikeData2 = as.data.frame(cbind(BikeData2,BikeData$Value))
   
@@ -856,6 +915,7 @@ if(StationDots==TRUE){
   
   library(plyr)
   BikeData2=ddply(BikeData2,.(Lon,Lat),summarize,Value=mean(Value))
+  
 }
 
 BikeData
@@ -871,6 +931,17 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
       nrow(streetPositions)
       
+      #names(streetPositions)
+      #streetPositions$Lon
+      #streetPositions$Lon2
+      #streetPositions$Lat
+      #streetPositions$Lat2
+      #summary(streetPositions$Value)
+      
+      #summary(streetPositions)
+      
+      streetPositions <- streetPositions[, !duplicated(colnames(streetPositions))]
+      
       map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 1, lineend = "round") +
         geom_point(data = BikeData2, aes(x =Lon, y= Lat, color = Value), shape = 21, fill = "white", size = 7, stroke = 4) +
         ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
@@ -880,7 +951,7 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
         scale_colour_gradientn(limits = c(0, max(ProjectionData$Value)), space = "Lab",
                                colours = c("black","darkblue","blue","violet","red","orange", "yellow")) +
         theme_bw() +
-        theme(text = element_text(size = 20))     +
+        theme(text = element_text(size = 20)) +
         labs(y = "Längengrad", x = "Breitengrad", color ="Fahrer summiert")
       
       setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/MapProjection/Plots")
