@@ -1012,7 +1012,26 @@ Dies sind Hinweise darauf, dass Modellprojektionen in unbekannten Städten unzuv
 
 \section{Räumliche Korrelation zu Verkehrsunfällen}
 
-Auch wenn wie im vorherigen Abschnitt dargestellt die Vorhersagen für unbekannte Städte unbrauchbar sind, ist die Verwendung für die 22 deutschen Städte, die im Modellsatz vorkommen denkbar. Eine weitere interessante Frage ist, ob die Modellvorhersagen räumlich mit Radverkehrsunfällen korrelieren.
+Auch wenn wie im vorherigen Abschnitt dargestellt die Vorhersagen für unbekannte Städte unbrauchbar sind, ist die Verwendung für die 22 deutschen Städte, die im Modellsatz vorkommen denkbar. Eine weitere interessante Frage ist, ob die Modellvorhersagen räumlich mit Radverkehrsunfällen korrelieren. Sollte dies der Fall sein, könnte dies das Modell zum einem bestätigen, aber auch dabei helfen Straßenstellen ausfindig zu machen, die über ihr Verkehrsniveau hinaus gefährlich sind durch falsches Straßendesign.\\
+Für den Fall in Münster stellt die Organisation Code for Münster Verkehrsunfalldaten zur Verfügung (Quelle: \url{https://crashes.codeformuenster.org}, Stand: 9.2.2023). Diese Daten aus Münster reichen von 2008 bis 2018 und umfassen 6676 Unfälle bei denen Fahrräder inovolviert wurden und die Koordinaten mit aufgezeichent worden. Diese Daten lassen sich clustern, in dem man jedem Punkt im Straßennetz zu ordnet, wie viele Unfälle in einem gegebenen Radius geschehen sind. Für einen Radius von 64 Metern zeigt dies die Abbildung \ref{fig:Unfallkarten}b.
+
+\begin{figure}%
+	\centering
+	\subfloat[\centering Beobachtungen nach Unfällen und Radverkehr]{{\includegraphics[width=6cm]{Plots/Korrelationsgraf128.png} }}%
+	\qquad
+	\subfloat[\centering Korrelation nach Unfallradius]{{\includegraphics[width=6cm]{Plots/Korrelation.png} }}%
+	\caption{Räumliche Korrelation von Unfällen und Radverkehr}%
+	\label{fig:UnfallKorrelatoon}%
+\end{figure}
+
+\begin{figure}%
+	\centering
+	\subfloat[\centering Radverkehr und Unfälle]{{\includegraphics[width=10.5cm]{Plots/Korrelationskarte_Münster.png} }}%
+	
+	\subfloat[\centering Unfallkarte]{{\includegraphics[width=10.5cm]{Plots/Unfallkarte_Münster.png} }}%
+	\caption{Karten zu Unfällen und Radverkehr}%
+	\label{fig:Unfallkarten}%
+\end{figure}
 
 \chapter{Diskussion}
 

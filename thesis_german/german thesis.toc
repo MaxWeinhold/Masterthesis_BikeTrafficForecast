@@ -48,7 +48,7 @@
 \contentsline {section}{\numberline {5.4}Neuronales Netz}{76}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Model Projektion}{77}{section.5.5}%
 \contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{86}{section.5.6}%
-\contentsline {chapter}{\numberline {6.}Diskussion}{87}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{87}{section.6.1}%
-\contentsline {chapter}{\numberline {7.}Anhang}{88}{chapter.7}%
-\contentsline {chapter}{Literaturverzeichnis}{98}{figure.caption.52}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{89}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{89}{section.6.1}%
+\contentsline {chapter}{\numberline {7.}Anhang}{90}{chapter.7}%
+\contentsline {chapter}{Literaturverzeichnis}{100}{figure.caption.54}%
