@@ -20,9 +20,12 @@ library(lubridate)
 library(plyr)
 library(geosphere)#package for calculating distance using longitude and latitude
 
+#Clean up memory
+rm(list=ls())
+
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Dresden.csv",sep=",")
+mapData = read.csv(file = "Leipzig.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -60,17 +63,20 @@ mapData$Density = NULL
 
 StationDots = TRUE
 
-Year = 2021
-Town = "Dresden"
-ProjectionData = as.data.frame(cbind(Year,Town))
+Year = c(2023)
+Town = "Leipzig"
+#ProjectionData = as.data.frame(cbind(Year,Town))
+ProjectionData = merge(x = Year,y = Town,all = FALSE)
+names(ProjectionData)[1] = "Year"
+names(ProjectionData)[2] = "Town"
 
 #ProjectionData$Station = "Projection"
 
-Months = c(6)
+Months = c(4)
 ProjectionData = merge(x = ProjectionData,y = Months,all = FALSE)
 names(ProjectionData)[3] = "Months"
 
-Day = c(15)
+Day = c(5)
 ProjectionData = merge(x = ProjectionData,y = Day,all = FALSE)
 names(ProjectionData)[4] = "Day"
 
@@ -83,16 +89,16 @@ ProjectionData$Lockdowns = 0
 
 ProjectionData$Value = 1
 
-weather_mode = 2
+weather_mode = 3
 #in mode 1 weather will be selected by the reference year 2020
 #in mode 2 weather will be selected by the median in all years
 #in mode 3 weather will be selected by a manualy selected data
 
 Wind = c(0)
 CloudCover = c(0)
-Humidity = c(0)
-Rain = c(0)
-Temperature = c(-5:35)
+Humidity = c(50)
+Rain = c(0:50)
+Temperature = c(10)
 
 ADFC_Index = c(3.9)
 ProjectionData = merge(x = ProjectionData,y = ADFC_Index,all = FALSE)
@@ -787,12 +793,6 @@ ProjectionData = merge(x = ProjectionData,y = mapData,
                        by = c("Town"),
                        all = TRUE)
 
-length(names(ProjectionData))
-ProjectionData = cbind(ProjectionData,dummy_cols(ProjectionData$stre_type))
-ProjectionData = cbind(ProjectionData,dummy_cols(ProjectionData$stre_type_spec))
-ProjectionData = cbind(ProjectionData,dummy_cols(ProjectionData$stre_surface))
-length(names(ProjectionData))
-
 ProjectionData$.data_footway = 0
 ProjectionData$.data_pedestrian = 0
 if(is.null(ProjectionData$.data_motorway)){ProjectionData$.data_motorway = 0}
@@ -847,7 +847,6 @@ ProjectionData$cluster_way_to_city3 = ProjectionData$cluster_way_to_city^3
 
 ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData$UnmCross250mmRadius + ProjectionData$Signals250mmRadius + 1)
 
-
 if(is.null(ProjectionData$stre_lengths2)){ProjectionData$stre_lengths2 = ProjectionData$stre_lengths^2}
 if(is.null(ProjectionData$ClosestSchool2)){ProjectionData$ClosestSchool2 = ProjectionData$ClosestSchool^2}
 if(is.null(ProjectionData$ClosestUniBuild2)){ProjectionData$ClosestUniBuild2 = ProjectionData$ClosestUniBuild^2}
@@ -859,11 +858,18 @@ if(is.null(ProjectionData$stre_lanes3)){ProjectionData$stre_lanes3 = ProjectionD
 if(is.null(ProjectionData$stre_maxspeed3)){ProjectionData$stre_maxspeed3 = ProjectionData$stre_maxspeed^3}
 if(is.null(ProjectionData$stre_lanes2)){ProjectionData$stre_lanes2 = ProjectionData$stre_lanes^2}
 
+if(is.null(ProjectionData$Rain2)){ProjectionData$Rain2 = ProjectionData$Rain^2}
+if(is.null(ProjectionData$Temperature2)){ProjectionData$Temperature2 = ProjectionData$Temperature^2}
+if(is.null(ProjectionData$young302)){ProjectionData$young302 = ProjectionData$young30^2}
+if(is.null(ProjectionData$PKWs2)){ProjectionData$PKWs2 = ProjectionData$PKWs^2}
+
 names(ProjectionData)
+#ProjectionData = na.omit(ProjectionData)
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
 load("Modell3_RF_newDataset3.rdata")
+#load("Modell3_RF_newDataset2.rdata")
 
 summary(model)
 
@@ -880,8 +886,8 @@ nrow(ProjectionData)
 #Create Map
 
 #bounding box for our map
-myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.064814222798276) #Dresden
-#myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
+#myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.064814222798276) #Dresden
+myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
 #myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
 #myLocation <- c(9.948052762410784, 53.539459805323816, 10.026187913111105, 53.568930771301424)#Hamburg Innenstadt + Altona
 #myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt
@@ -892,7 +898,7 @@ myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.0648
 #myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896) # Muenster Innenstadt
 
 
-mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=13)
+mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=15)
 
 #write.csv(ProjectionData,"Mannheim_Innenstadt_Oststadt.csv")
 
@@ -900,8 +906,8 @@ if(StationDots==TRUE){
   
   setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
   #Load Data Set
-  #BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
-  BikeData = read.csv(file = "Dresden_Daten_Komplett.csv",sep=",", encoding="ISO-8859-1")
+  BikeData = read.csv(file = "completeDataSet_1.csv",sep=",", encoding="ISO-8859-1")
+  #BikeData = read.csv(file = "Dresden_Daten_Komplett.csv",sep=",", encoding="ISO-8859-1")
   names(BikeData)
   #BikeData = BikeData[BikeData$Town==Town,] #Bei Dresden auskommandieren
   BikeData2 = cbind(BikeData$Lat,BikeData$Lon)
@@ -924,11 +930,11 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
   for(j in 1:nlevels(as.factor(ProjectionData$Day))){
     
-    for(k in 1:nlevels(as.factor(ProjectionData$Hour))){
+    for(k in 1:nlevels(as.factor(ProjectionData$Rain))){
       
       streetPositions = ProjectionData[ProjectionData$Months==levels(as.factor(ProjectionData$Months))[i],]
       streetPositions = streetPositions[streetPositions$Day==levels(as.factor(ProjectionData$Day))[j],]
-      streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
+      streetPositions = streetPositions[streetPositions$Rain==levels(as.factor(ProjectionData$Rain))[k],]
       nrow(streetPositions)
       
       #names(streetPositions)
@@ -944,18 +950,24 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       
       map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 1, lineend = "round") +
         geom_point(data = BikeData2, aes(x =Lon, y= Lat, color = Value), shape = 21, fill = "white", size = 7, stroke = 4) +
-        ggtitle(paste("Fahradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
+        ggtitle(paste("Fahrradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
                       " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1],"\n", "Temp: ",
                       streetPositions$Temperature[1]," C° , Regen: ", streetPositions$Rain[1], " mm, Wochenende: ",
                       streetPositions$Weekend[1], sep="")) + 
         scale_colour_gradientn(limits = c(0, max(ProjectionData$Value)), space = "Lab",
+        #scale_colour_gradientn(limits = c(0, 550), space = "Lab",
                                colours = c("black","darkblue","blue","violet","red","orange", "yellow")) +
         theme_bw() +
-        theme(text = element_text(size = 20)) +
+        theme(text = element_text(size = 30)) +
         labs(y = "Längengrad", x = "Breitengrad", color ="Fahrer summiert")
       
+      hour = streetPositions$Hour[1]
+      months= streetPositions$Months[1]
+      day= streetPositions$Day[1]
+      year= streetPositions$Year[1]
+      
       setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/MapProjection/Plots")
-      png(file=paste("map",ProjectionData$Town[1],"plot_RF_Ring_",i,"_",j,"_",k,".png",sep=""),width=1200, height=1200)
+      png(file=paste("map",ProjectionData$Town[1],"plot_RF_",year,"_",months,"_",day,"_",k,".png",sep=""),width=1200, height=1200)
       print(map_plot)
       dev.off()
       #summary(streetPositions)
@@ -972,9 +984,6 @@ rm(map_plot)
 
 
 beep("mario")
-
-
-
 
 
 

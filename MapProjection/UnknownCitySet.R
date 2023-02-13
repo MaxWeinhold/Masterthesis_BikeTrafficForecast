@@ -34,8 +34,8 @@ rm(list=ls())
 
 #Choose Values you are interested in -------------------------------------------
 
-Year = 2021
-Town = "Gera"
+Year = 2023
+Town = "Magdeburg"
 ProjectionData = as.data.frame(cbind(Year,Town))
 
 #ProjectionData$Station = "Projection"
@@ -73,7 +73,7 @@ Destatis19 = read.csv(file = "31122019_Auszug_GV.csv",sep=";")
 Destatis20 = read.csv(file = "31122020_Auszug_GV.csv",sep=";")
 Destatis21 = read.csv(file = "31122021_Auszug_GV.csv",sep=";")
 
-title=", Stadt" #This differs, there are cities and also hanseatic cities
+title=", Landeshauptstadt" #This differs, there are cities and also hanseatic cities
 
 test12=as.data.frame(Destatis12[Destatis12$X.6 == paste(Town,title,sep=""),])
 test12[17] <- NULL
@@ -275,7 +275,8 @@ rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData",
 #Get all the streetpositions----------------------------------------------------
 
 #bounding box for our map
-myLocation <- c(12.059546605957424, 50.853394660133816, 12.102105555798238, 50.89322226565351) #Gera
+myLocation <- c(11.593206445496767, 52.10350358289593, 11.664600742535942, 52.1343396800126) #Mageburg
+#myLocation <- c(12.059546605957424, 50.853394660133816, 12.102105555798238, 50.89322226565351) #Gera
 #myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.064814222798276) #Dresden
 #myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
 #myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2

@@ -1004,3 +1004,8 @@ png(file="Korrelation.png",width=1000, height=1000)
 print(plot)
 dev.off()
 
+setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Tables")
+a = as.data.frame(cbind(c(16,32,65,128,256,512),c(c1,c2,c3,c4,c5,c6)))
+names(a)[1]="radius"
+names(a)[2]="correlation"
+write.csv(a,"CorrelationPerRadius.csv")
