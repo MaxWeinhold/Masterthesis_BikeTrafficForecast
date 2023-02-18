@@ -8,7 +8,7 @@ rm(list=ls())
 
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Leipzig.csv",sep=",")
+mapData = read.csv(file = "Münster_Ring_2.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -47,7 +47,7 @@ mapData$Density = NULL
 StationDots = TRUE
 
 Year = c(2012:2030)
-Town = "Leipzig"
+Town = "Münster"
 #ProjectionData = as.data.frame(cbind(Year,Town))
 ProjectionData = merge(x = Year,y = Town,all = FALSE)
 names(ProjectionData)[1] = "Year"
@@ -88,7 +88,7 @@ ProjectionData = merge(x = ProjectionData,y = ADFC_Index,all = FALSE)
 names(ProjectionData)[ncol(ProjectionData)] = "ADFC_Index"
 
 #Ad the time Variables-----------------------------------------------------
-Bundesland = "SAC"
+Bundesland = "NRW"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -102,7 +102,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$SAC %in% TRUE,]
+pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays

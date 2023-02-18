@@ -49,8 +49,10 @@ setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 #Choose Values you are interested in -------------------------------------------
 
 Year = 2023
-Town = "Leipzig"
+Town = "Berlin"
 ProjectionData = as.data.frame(cbind(Year,Town))
+
+only_large_Streets = FALSE
 
 #ProjectionData$Station = "Projection"
 
@@ -70,10 +72,10 @@ ProjectionData$Value = 1
 
 
 
-rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("only_large_Streets","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
 
 #Ad the different Variables-----------------------------------------------------
-Bundesland = "SAC"
+Bundesland = "BER"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -87,7 +89,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$SAC %in% TRUE,]
+pH=publicHolidays[publicHolidays$BER %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -252,7 +254,7 @@ ProjectionData = merge(x = ProjectionData,y = Weather_Temperature,
 ProjectionData=na.omit(ProjectionData)
 rm(Weather_Temperature)
 summary(ProjectionData)
-rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("only_large_Streets","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
 
 #Destatis Data -----------------------------------------------------------------
 
@@ -466,7 +468,7 @@ ProjectionData$City_Lon = as.numeric(ProjectionData$City_Lon)
 ProjectionData$City_Lat = as.numeric(ProjectionData$City_Lat)
 summary(ProjectionData)
 
-rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("only_large_Streets","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
 
 Variables_you_need
 
@@ -698,7 +700,7 @@ ProjectionData = merge(x = ProjectionData,y = PKW,
 ProjectionData$PKWs = ProjectionData$PKWs/ProjectionData$InhDestrict
 
 summary(ProjectionData)
-rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
+rm(list=setdiff(ls(), c("only_large_Streets","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland")))
 
 ProjectionData = na.omit(ProjectionData)
 
@@ -738,7 +740,9 @@ ProjectionData = na.omit(ProjectionData)
 #Get all the streetpositions----------------------------------------------------
 
 #bounding box for our map
-myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
+myLocation <- c(13.37382644656102, 52.50769458976971, 13.421956524036935, 52.52782329267116) #Berlin klein
+#myLocation <- c(13.347453465501058, 52.502773208754654, 13.423154875492763, 52.5310532932502) #Berlin Groß
+#myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
 #myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
 #myLocation <- c(9.141942175012497,47.65866154489606,   9.193741541590612,47.68387116622814) # Konstanz
 #myLocation <- c(9.948052762410784, 53.539459805323816, 10.026187913111105, 53.568930771301424)#Hamburg Innenstadt + Altona
@@ -934,9 +938,17 @@ ProjectionData$.data = NULL
 ProjectionData$.data = NULL
 
 summary(ProjectionData)
-rm(list=setdiff(ls(), c("ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+rm(list=setdiff(ls(), c("only_large_Streets","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
+
+if(only_large_Streets==TRUE){
+  
+  ProjectionData2<-ProjectionData[(ProjectionData$.data_primary==1 | ProjectionData$.data_secondary==1 | ProjectionData$.data_tertiary==1),]
+  ProjectionData = ProjectionData2
+  
+}
 
 ProjectionData = na.omit(ProjectionData)
+rm(list=setdiff(ls(), c("only_large_Streets","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","myLocation")))
 
 #Street Density--------------------------------------------------------------------------------------------------
 
@@ -2297,7 +2309,7 @@ lower = mean(ProjectionData$Value)/2
 mid = mean(ProjectionData$Value)
 higher = mean(ProjectionData$Value) + mean(ProjectionData$Value)/2
 
-write.csv(ProjectionData,"Leipzig.csv")
+write.csv(ProjectionData,"Berlin.csv")
 
 for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   

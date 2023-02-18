@@ -810,4 +810,15 @@
   edition   = {3},
 }
 
+@InBook{Stock2015b,
+  author    = {James H. Stock and Mark W. Watson},
+  chapter   = {Estimation of Dynamic Causal Effects},
+  editor    = {Trudy Kimber},
+  pages     = {635-683},
+  publisher = {PEARSON},
+  title     = {Introduction to Econometrics},
+  year      = {2015},
+  edition   = {3},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

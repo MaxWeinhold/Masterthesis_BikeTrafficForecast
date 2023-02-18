@@ -16,45 +16,45 @@ Warning--empty institution in Moellers2021
 Warning--empty booktitle in Reddy2010
 Warning--can't use both author and editor fields in Stock2015b
 Warning--can't use both author and editor fields in Stock2015a
-You've used 58 entries,
+You've used 61 entries,
             1935 wiz_defined-function locations,
-            848 strings with 14458 characters,
-and the built_in function-call counts, 23973 in all, are:
-= -- 2316
-> -- 999
-< -- 47
-+ -- 349
-- -- 331
-* -- 2003
-:= -- 4123
-add.period$ -- 182
-call.type$ -- 58
-change.case$ -- 443
-chr.to.int$ -- 54
-cite$ -- 63
-duplicate$ -- 930
-empty$ -- 1673
-format.name$ -- 421
-if$ -- 4773
+            863 strings with 14859 characters,
+and the built_in function-call counts, 25018 in all, are:
+= -- 2414
+> -- 1047
+< -- 49
++ -- 365
+- -- 347
+* -- 2087
+:= -- 4317
+add.period$ -- 191
+call.type$ -- 61
+change.case$ -- 466
+chr.to.int$ -- 57
+cite$ -- 66
+duplicate$ -- 970
+empty$ -- 1741
+format.name$ -- 442
+if$ -- 4970
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 59
-newline$ -- 297
-num.names$ -- 180
-pop$ -- 401
+missing$ -- 62
+newline$ -- 312
+num.names$ -- 189
+pop$ -- 420
 preamble$ -- 1
-purify$ -- 451
+purify$ -- 474
 quote$ -- 0
-skip$ -- 722
+skip$ -- 754
 stack$ -- 0
-substring$ -- 1627
-swap$ -- 167
+substring$ -- 1681
+swap$ -- 170
 text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 336
+type$ -- 354
 warning$ -- 5
-while$ -- 178
+while$ -- 185
 width$ -- 0
-write$ -- 761
+write$ -- 798
 (There were 3 error messages)

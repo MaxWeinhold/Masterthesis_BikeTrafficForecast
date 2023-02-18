@@ -25,7 +25,7 @@ rm(list=ls())
 
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Leipzig.csv",sep=",")
+mapData = read.csv(file = "Berlin.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -61,10 +61,10 @@ mapData$Density = NULL
 
 #Adjust Values here
 
-StationDots = TRUE
+StationDots = FALSE
 
 Year = c(2023)
-Town = "Leipzig"
+Town = "Berlin"
 #ProjectionData = as.data.frame(cbind(Year,Town))
 ProjectionData = merge(x = Year,y = Town,all = FALSE)
 names(ProjectionData)[1] = "Year"
@@ -72,11 +72,11 @@ names(ProjectionData)[2] = "Town"
 
 #ProjectionData$Station = "Projection"
 
-Months = c(4)
+Months = c(1:12)
 ProjectionData = merge(x = ProjectionData,y = Months,all = FALSE)
 names(ProjectionData)[3] = "Months"
 
-Day = c(5)
+Day = c(1:31)
 ProjectionData = merge(x = ProjectionData,y = Day,all = FALSE)
 names(ProjectionData)[4] = "Day"
 
@@ -89,7 +89,7 @@ ProjectionData$Lockdowns = 0
 
 ProjectionData$Value = 1
 
-weather_mode = 3
+weather_mode = 2
 #in mode 1 weather will be selected by the reference year 2020
 #in mode 2 weather will be selected by the median in all years
 #in mode 3 weather will be selected by a manualy selected data
@@ -100,12 +100,12 @@ Humidity = c(50)
 Rain = c(0:50)
 Temperature = c(10)
 
-ADFC_Index = c(3.9)
+ADFC_Index = c(4.1)
 ProjectionData = merge(x = ProjectionData,y = ADFC_Index,all = FALSE)
 names(ProjectionData)[ncol(ProjectionData)] = "ADFC_Index"
 
 #Ad the time Variables-----------------------------------------------------
-Bundesland = "SAC"
+Bundesland = "BER"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -119,7 +119,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$SAC %in% TRUE,]
+pH=publicHolidays[publicHolidays$BER %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -886,8 +886,10 @@ nrow(ProjectionData)
 #Create Map
 
 #bounding box for our map
+myLocation <- c(13.37382644656102, 52.50769458976971, 13.421956524036935, 52.52782329267116) #Berlin klein
+#myLocation <- c(13.347453465501058, 52.502773208754654, 13.423154875492763, 52.5310532932502) #Berlin Groß
 #myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.064814222798276) #Dresden
-myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
+#myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
 #myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
 #myLocation <- c(9.948052762410784, 53.539459805323816, 10.026187913111105, 53.568930771301424)#Hamburg Innenstadt + Altona
 #myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt
@@ -930,11 +932,11 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
   for(j in 1:nlevels(as.factor(ProjectionData$Day))){
     
-    for(k in 1:nlevels(as.factor(ProjectionData$Rain))){
+    for(k in 1:nlevels(as.factor(ProjectionData$Hour))){
       
       streetPositions = ProjectionData[ProjectionData$Months==levels(as.factor(ProjectionData$Months))[i],]
       streetPositions = streetPositions[streetPositions$Day==levels(as.factor(ProjectionData$Day))[j],]
-      streetPositions = streetPositions[streetPositions$Rain==levels(as.factor(ProjectionData$Rain))[k],]
+      streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
       nrow(streetPositions)
       
       #names(streetPositions)
@@ -946,16 +948,22 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       
       #summary(streetPositions)
       
+      #summary(ProjectionData$Value)
+      
+      #ProjectionData = na.omit(ProjectionData)
+      
+      #max(ProjectionData$Value)
+      
       streetPositions <- streetPositions[, !duplicated(colnames(streetPositions))]
       
       map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 1, lineend = "round") +
-        geom_point(data = BikeData2, aes(x =Lon, y= Lat, color = Value), shape = 21, fill = "white", size = 7, stroke = 4) +
+        #geom_point(data = BikeData2, aes(x =Lon, y= Lat, color = Value), shape = 21, fill = "white", size = 7, stroke = 4) +
         ggtitle(paste("Fahrradfahrer am ", streetPositions$Day[1],".", streetPositions$Months[1],".", streetPositions$Year[1],
                       " um ",streetPositions$Hour[1], " Uhr in: ",streetPositions$Town[1],"\n", "Temp: ",
                       streetPositions$Temperature[1]," C° , Regen: ", streetPositions$Rain[1], " mm, Wochenende: ",
                       streetPositions$Weekend[1], sep="")) + 
         scale_colour_gradientn(limits = c(0, max(ProjectionData$Value)), space = "Lab",
-        #scale_colour_gradientn(limits = c(0, 550), space = "Lab",
+        #scale_colour_gradientn(limits = c(0, 650), space = "Lab",
                                colours = c("black","darkblue","blue","violet","red","orange", "yellow")) +
         theme_bw() +
         theme(text = element_text(size = 30)) +
@@ -967,7 +975,7 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       year= streetPositions$Year[1]
       
       setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/MapProjection/Plots")
-      png(file=paste("map",ProjectionData$Town[1],"plot_RF_",year,"_",months,"_",day,"_",k,".png",sep=""),width=1200, height=1200)
+      png(file=paste("map",ProjectionData$Town[1],"plot_RF_",year,"_",months,"_",day,"_",hour,".png",sep=""),width=1200, height=1200)
       print(map_plot)
       dev.off()
       #summary(streetPositions)

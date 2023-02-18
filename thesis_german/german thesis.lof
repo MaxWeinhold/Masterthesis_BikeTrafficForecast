@@ -1,83 +1,97 @@
 \babel@toc {ngerman}{}\relax 
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Anzahl der Leihräder (A) Singapore zwischen 8-9 Uhr am 25. Juni 2017; (B) New Taipei City zwischen 18-19 Uhr am 1. August 2018; (C) Chicago zwischen 16-18 Uhr am 26. August 2019; (D) New York zwischen 17-18 Uhr am 9. Juni 2014.}}{13}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Fahrradaufkommen für Glasgow 2017}}{15}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces (a und b). Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{22}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011–2014) nach Zensus Blöcken in Florida.}}{23}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Anzahl der Leihräder (A) Singapore zwischen 8-9 Uhr am 25. Juni 2017; (B) New Taipei City zwischen 18-19 Uhr am 1. August 2018; (C) Chicago zwischen 16-18 Uhr am 26. August 2019; (D) New York zwischen 17-18 Uhr am 9. Juni 2014.}}{14}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Fahrradaufkommen für Glasgow 2017}}{16}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces (a und b). Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{23}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011–2014) nach Zensus Blöcken in Florida.}}{25}{figure.caption.7}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.\relax }}{27}{figure.caption.8}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte\relax }}{28}{figure.caption.9}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Verteilung der Beobachtung nach Jahren\relax }}{29}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Wettterdaten im Überblick\relax }}{30}{figure.caption.11}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Temperatur und Niederschlag}}}{30}{subfigure.4.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Temperatur und Radfahrer}}}{30}{subfigure.4.2}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Verhältnis von Bevölkerung und Fahrradaufkommen\relax }}{31}{figure.caption.12}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Radverkehr nach Bevölkerungsgröße}}}{31}{subfigure.5.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Radverkehr nach Anteil der männl. Bev.}}}{31}{subfigure.5.2}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Verteilung des Fahrradaufkommens in Entfernung zum Stadtzentrum\relax }}{33}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Verhältnis von Bevölkerung und Fahrradaufkommen\relax }}{34}{figure.caption.14}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Radverkehr nach PKWs je Person}}}{34}{subfigure.7.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Radverkehr nach Immigrantenanteil}}}{34}{subfigure.7.2}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Verlauf der Corona Inzidenz und des Radverkehrs\relax }}{35}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Radverkehr im Lockdown\relax }}{36}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Verteilung von Straßentypen im Datensatz nach der alten Ermittlung\relax }}{43}{figure.caption.17}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering alte Aufstellung}}}{43}{subfigure.10.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering neue Aufstellung}}}{43}{subfigure.10.2}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Beispiel der Straßentypanalyse\relax }}{45}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Radverkehr nach Straßenbeschaffenheit\relax }}{47}{figure.caption.19}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Straßentypen}}}{47}{subfigure.12.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Straßenbelag}}}{47}{subfigure.12.2}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.\relax }}{29}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte\relax }}{30}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Verteilung der Beobachtung nach Jahren\relax }}{32}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Wettterdaten im Überblick\relax }}{33}{figure.caption.11}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Temperatur und Niederschlag}}}{33}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Temperatur und Radfahrer}}}{33}{subfigure.4.2}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Verhältnis von Bevölkerung und Fahrradaufkommen\relax }}{34}{figure.caption.12}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Radverkehr nach Bevölkerungsgröße}}}{34}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Radverkehr nach Anteil der männl. Bev.}}}{34}{subfigure.5.2}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Verteilung des Fahrradaufkommens in Entfernung zum Stadtzentrum\relax }}{35}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Verhältnis von Bevölkerung und Fahrradaufkommen\relax }}{36}{figure.caption.14}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Radverkehr nach PKWs je Person}}}{36}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Radverkehr nach Immigrantenanteil}}}{36}{subfigure.7.2}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Verlauf der Corona Inzidenz und des Radverkehrs\relax }}{37}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Radverkehr im Lockdown\relax }}{39}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Verteilung von Straßentypen im Datensatz nach der alten Ermittlung\relax }}{46}{figure.caption.17}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering alte Aufstellung}}}{46}{subfigure.10.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering neue Aufstellung}}}{46}{subfigure.10.2}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Beispiel der Straßentypanalyse\relax }}{48}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Radverkehr nach Straßenbeschaffenheit\relax }}{50}{figure.caption.19}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Straßentypen}}}{50}{subfigure.12.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Straßenbelag}}}{50}{subfigure.12.2}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support Vector Machines}}{53}{figure.caption.20}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support Vector Machines}}{53}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{54}{figure.caption.22}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{56}{figure.caption.23}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Neural network with a single hidden layer}}{58}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Aktivierungsfunktionen}}{59}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Gradiemt Descent}}{60}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support-Vector-Machines}}{56}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support-Vector-Machines}}{56}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{57}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{59}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Beispiel eines Random Forests\relax }}{60}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Beispiel eines neuronalen Netzes\relax }}{62}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Aktivierungsfunktionen}}{63}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Gradiemt Descent}}{64}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Beispiel einer Cross Validation\relax }}{66}{figure.caption.28}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature Selection Ergebnis der OLS Regression in 6 Modellen\relax }}{67}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Support Vector Regression Performance nach Anteil des Datensatzes\relax }}{70}{figure.caption.29}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{70}{subfigure.2.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{70}{subfigure.2.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Support Vector Regression Ergebnis der RF Regression in 6 Modellen\relax }}{71}{figure.caption.30}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Random Forest Performance nach Anteil des Datensatzes\relax }}{73}{figure.caption.32}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{73}{subfigure.4.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{73}{subfigure.4.2}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Random Forest Performance nach Anzahl der Zufallsbäume\relax }}{74}{figure.caption.33}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume}}}{74}{subfigure.5.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{74}{subfigure.5.2}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{75}{figure.caption.34}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Räumliche Modell Projektion: Modellvergleich\relax }}{80}{figure.caption.37}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Modell 1}}}{80}{subfigure.7.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Modell 2}}}{80}{subfigure.7.2}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{82}{figure.caption.39}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Modellprojektionen in Hamburg und Leipzig\relax }}{83}{figure.caption.40}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Hamburg}}}{83}{subfigure.9.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Leipzig}}}{83}{subfigure.9.2}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Modellprojektionen in Mannheim und Oberhausen\relax }}{84}{figure.caption.41}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Mannheim}}}{84}{subfigure.10.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Oberhausen}}}{84}{subfigure.10.2}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Modellprojektionen in Dresden\relax }}{86}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Räumliche Korrelation von Unfällen und Radverkehr\relax }}{87}{figure.caption.43}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Beobachtungen nach Unfällen und Radverkehr}}}{87}{subfigure.12.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Korrelation nach Unfallradius}}}{87}{subfigure.12.2}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Karten zu Unfällen und Radverkehr\relax }}{89}{figure.caption.44}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Radverkehr und Unfälle}}}{89}{subfigure.13.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Unfallkarte}}}{89}{subfigure.13.2}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature Selection Ergebnis der OLS Regression in 6 Modellen\relax }}{73}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Support Vector Regression Performance nach Anteil des Datensatzes\relax }}{75}{figure.caption.31}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{75}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{75}{subfigure.2.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Support Vector Regression Ergebnis der RF Regression in 6 Modellen\relax }}{76}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Random Forest Performance nach Anteil des Datensatzes\relax }}{78}{figure.caption.34}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{78}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{78}{subfigure.4.2}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Random Forest Performance nach Anzahl der Zufallsbäume\relax }}{79}{figure.caption.35}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume}}}{79}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{79}{subfigure.5.2}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{80}{figure.caption.36}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Räumliche Modell Projektion: Modellvergleich\relax }}{87}{figure.caption.39}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Modell 1}}}{87}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Modell 2}}}{87}{subfigure.7.2}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{89}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Modellprojektionen in Hamburg und Leipzig\relax }}{90}{figure.caption.42}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Hamburg}}}{90}{subfigure.9.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Leipzig}}}{90}{subfigure.9.2}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Modellprojektionen in Mannheim und Oberhausen\relax }}{91}{figure.caption.43}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Mannheim}}}{91}{subfigure.10.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Oberhausen}}}{91}{subfigure.10.2}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Modellprojektionen in Dresden\relax }}{92}{figure.caption.44}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Stadtentwicklungsprognose\relax }}{93}{figure.caption.45}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Angenommene Bevölkerungsentwicklung in Hamburg}}}{93}{subfigure.12.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Angenommene demographische Entwicklung in Hamburg}}}{93}{subfigure.12.2}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Radverkehrsentwicklungsprognose für Hamburg\relax }}{94}{figure.caption.46}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Monatliche Radverkehrsprognose}}}{94}{subfigure.13.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Jährliche Radverkehrsprognose}}}{94}{subfigure.13.2}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Räumliche Korrelation von Unfällen und Radverkehr\relax }}{95}{figure.caption.47}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Beobachtungen nach Unfällen und Radverkehr}}}{95}{subfigure.14.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Korrelation nach Unfallradius}}}{95}{subfigure.14.2}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Karten zu Unfällen und Radverkehr\relax }}{97}{figure.caption.48}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Radverkehr und Unfälle}}}{97}{subfigure.15.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Unfallkarte}}}{97}{subfigure.15.2}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Modellvorhersagen nach Wetter\relax }}{92}{figure.caption.45}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Kalters Wetter}}}{92}{subfigure.1.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Warmes Wetter}}}{92}{subfigure.1.2}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Modellvorhersagen nach Wetter\relax }}{101}{figure.caption.49}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Kalters Wetter}}}{101}{subfigure.1.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Warmes Wetter}}}{101}{subfigure.1.2}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Verteilung des Fahrradaufkommens nach Alter\relax }}{96}{figure.caption.46}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Zusammenhang von Fahrradklima und Radverkehr\relax }}{97}{figure.caption.47}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Zusammenhang von Anzahl der Uni-Gebäude in einem 500 M Radius und Radverkehr\relax }}{98}{figure.caption.48}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Zusammenhang von Anzahl der Supermärkte in einem 1 km Radius und Radverkehr\relax }}{99}{figure.caption.49}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Zusammenhang von Anzahl der Kleidungsgeschäften in einem 2 km Radius und Radverkehr\relax }}{100}{figure.caption.50}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Zusammenhang von Anzahl der Busstationen in einem 1 km Radius und Radverkehr\relax }}{101}{figure.caption.51}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Zusammenhang von Anzahl der Ampeln in einem 1 km Radius und Radverkehr\relax }}{102}{figure.caption.52}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Zusammenhang von Anzahl der Straßenbahnstationen in einem 1 km Radius und Radverkehr\relax }}{103}{figure.caption.53}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Zusammenhang des nächsten Bahnhofes und dem Radverkehr\relax }}{104}{figure.caption.54}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Entfernung zur nächsten Brücke und Radverkehr\relax }}{105}{figure.caption.55}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Verteilung des Fahrradaufkommens nach Alter\relax }}{104}{figure.caption.50}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Zusammenhang von Fahrradklima und Radverkehr\relax }}{105}{figure.caption.51}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Zusammenhang von Anzahl der Uni-Gebäude in einem 500 M Radius und Radverkehr\relax }}{106}{figure.caption.52}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Zusammenhang von Anzahl der Supermärkte in einem 1 km Radius und Radverkehr\relax }}{107}{figure.caption.53}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Zusammenhang von Anzahl der Kleidungsgeschäften in einem 2 km Radius und Radverkehr\relax }}{108}{figure.caption.54}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Zusammenhang von Anzahl der Busstationen in einem 1 km Radius und Radverkehr\relax }}{109}{figure.caption.55}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Zusammenhang von Anzahl der Ampeln in einem 1 km Radius und Radverkehr\relax }}{110}{figure.caption.56}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Zusammenhang von Anzahl der Straßenbahnstationen in einem 1 km Radius und Radverkehr\relax }}{111}{figure.caption.57}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Zusammenhang des nächsten Bahnhofes und dem Radverkehr\relax }}{112}{figure.caption.58}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Entfernung zur nächsten Brücke und Radverkehr\relax }}{113}{figure.caption.59}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Kartendarstellung mit unterschiedlichen Details\relax }}{114}{figure.caption.60}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Berlin großer Zoom}}}{114}{subfigure.11.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Berin kleiner Zoom}}}{114}{subfigure.11.2}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Kartendarstellung mit unterschiedlichem Wetter\relax }}{115}{figure.caption.61}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Leipzig bei kaltem Wetter}}}{115}{subfigure.12.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Leipzig bei heißem Wetter}}}{115}{subfigure.12.2}%

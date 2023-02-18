@@ -1,54 +1,55 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {0.1}Abkürzungsverzeichnis}{5}{section.0.1}%
-\contentsline {chapter}{\numberline {1.}Einleitung}{7}{chapter.1}%
-\contentsline {chapter}{\numberline {2.}Literaturüberblick}{8}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Erforschung des Radverkehrs}{8}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Forschung mit Zählstationen}{9}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Forschung mit Bike-Sharing-Diensten}{10}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Forschung mit GPS- und Handy Daten}{13}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Faktoren des Radverkehrs}{16}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Faktor Wetter}{16}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Faktor Feinstaubbelastung}{18}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Faktor Corona Maßnahmen}{19}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Faktor der städtischen Unterschiede}{19}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Faktor Radverkehrsunfälle}{20}{subsection.2.2.5}%
+\contentsline {section}{\numberline {0.1}Abkürzungsverzeichnis}{6}{section.0.1}%
+\contentsline {chapter}{\numberline {1.}Einleitung}{8}{chapter.1}%
+\contentsline {chapter}{\numberline {2.}Literaturüberblick}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Erforschung des Radverkehrs}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Forschung mit Zählstationen}{10}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Forschung mit Bike-Sharing-Diensten}{11}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Forschung mit GPS- und Handy Daten}{14}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}Faktoren des Radverkehrs}{17}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Faktor Wetter}{18}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Faktor Feinstaubbelastung}{20}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Faktor Corona-Maßnahmen}{20}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Faktor der städtischen Unterschiede}{21}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Faktor Radverkehrsunfälle}{22}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Sonstige Faktoren}{24}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Forschungslücken und Anknüpfungspunkte}{24}{section.2.3}%
-\contentsline {chapter}{\numberline {3.}Zusammensetzung des Datensatz}{26}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Fahrradzähler}{26}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Wetterdaten}{30}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Demographische und soziale Statistiken}{30}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Statistisches Bundesamt}{31}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}ADFC Fahrradindex}{32}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Corona Daten}{34}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Open Street Map Daten}{37}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Ausgewählte PoIs}{38}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Ausgestaltung des öffentlichen Verkehrs}{41}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Straßentypen}{42}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Sonstige}{47}{subsection.3.5.4}%
-\contentsline {chapter}{\numberline {4.}Verwendete Methoden}{48}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Problem zur Autokorrelation}{48}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Lagged Variablen}{49}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Erklärende Variablen}{50}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Resampling}{51}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}OLS Regression}{51}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Support Vector Regression}{52}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Random Forests Regression}{55}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Neuronale Netze}{57}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{57}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{59}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Validation}{61}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Cross Validation}{62}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Conditional Validation Set Building}{62}{subsection.4.6.2}%
-\contentsline {subsection}{\numberline {4.6.3}Weighted Subset Building}{64}{subsection.4.6.3}%
-\contentsline {chapter}{\numberline {5.}Ergebnisse}{66}{chapter.5}%
-\contentsline {section}{\numberline {5.1}OLS Regression}{66}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Support Vector Regression}{68}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Random Forest Regression}{72}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Neuronales Netz}{76}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Model Projektion}{77}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Räumliche Korrelation zu Verkehrsunfällen}{86}{section.5.6}%
-\contentsline {chapter}{\numberline {6.}Diskussion}{90}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{94}{section.6.1}%
-\contentsline {chapter}{\numberline {7.}Anhang}{96}{chapter.7}%
-\contentsline {chapter}{Literaturverzeichnis}{106}{figure.caption.55}%
+\contentsline {section}{\numberline {2.3}Forschungslücken und Anknüpfungspunkte}{25}{section.2.3}%
+\contentsline {chapter}{\numberline {3.}Zusammensetzung des Datensatz}{28}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Fahrradzähler}{28}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Wetterdaten}{31}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Demographische und soziale Statistiken}{31}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Statistisches Bundesamt}{33}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}ADFC Fahrradindex}{34}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Corona-Daten}{36}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Open-Street-Map-Daten}{38}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Ausgewählte POIs}{40}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Ausgestaltung des öffentlichen Verkehrs}{44}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Straßentypen}{45}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Sonstige}{50}{subsection.3.5.4}%
+\contentsline {chapter}{\numberline {4.}Verwendete Methoden}{51}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Probleme zur Autokorrelation}{51}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Lagged Variablen}{52}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Erklärende Variablen}{53}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Resampling}{54}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}OLS-Regression}{54}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Support-Vector-Regression}{55}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Random-Forests-Regression}{58}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Neuronale Netze}{61}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{61}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{63}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Validation}{65}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Cross Validation}{65}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Conditional-Validation-Set-Building}{67}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Weighted-Subset-Building}{69}{subsection.4.6.3}%
+\contentsline {chapter}{\numberline {5.}Ergebnisse}{71}{chapter.5}%
+\contentsline {section}{\numberline {5.1}OLS-Regression}{71}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Support-Vector-Regression}{74}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Random-Forest-Regression}{78}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Neuronales Netz}{81}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modellprojektion}{83}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Modellprognosen}{92}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Räumliche Korrelation zu Verkehrsunfällen}{93}{section.5.7}%
+\contentsline {chapter}{\numberline {6.}Diskussion}{98}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fazit}{102}{section.6.1}%
+\contentsline {chapter}{\numberline {7.}Anhang}{104}{chapter.7}%
+\contentsline {chapter}{Literaturverzeichnis}{116}{figure.caption.61}%
