@@ -79,26 +79,26 @@ if(!require("ggrepel")) install.packages("ggrepel")
 library(ggrepel)
 
 plot1 = ggplot(data=citties)+
-  geom_point(aes(x=Inhabitants_Mean, y=Value_Mean), size = 2) +
-  geom_smooth(aes(x=Inhabitants_Mean, y=Value_Mean),method='lm') +
-  geom_label_repel(aes(x = Inhabitants_Mean, y = Value_Mean, label = Town)) + 
+  geom_point(aes(x=Inhabitants_Mean, y=Value_Mean), size = 4) +
+  geom_smooth(aes(x=Inhabitants_Mean, y=Value_Mean),method='lm', size = 4) +
+  geom_label_repel(aes(x = Inhabitants_Mean, y = Value_Mean, label = Town), size = 12) + 
   labs(y = "Radfahrer pro Stunde je Stadt"
        , x = "Einwohnergröße") + 
   scale_x_continuous(labels = comma) +
   theme_bw() + 
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=32),axis.title=element_text(size=32,face="bold"))
 
 plot1
 
 plot2 = ggplot(data=citties)+
-  geom_point(aes(x=MaleRatio_Mean, y=Value_Mean), size = 2) +
-  geom_smooth(aes(x=MaleRatio_Mean, y=Value_Mean),method='lm') +
-  geom_label_repel(aes(x = MaleRatio_Mean, y = Value_Mean, label = Town)) + 
+  geom_point(aes(x=MaleRatio_Mean, y=Value_Mean), size = 4) +
+  geom_smooth(aes(x=MaleRatio_Mean, y=Value_Mean),method='lm', size = 4) +
+  geom_label_repel(aes(x = MaleRatio_Mean, y = Value_Mean, label = Town), size = 12) + 
   labs(y = "Radfahrer pro Stunde je Stadt"
        , x = "Anteil männl. Bevölker") + 
   scale_x_continuous(labels = comma) +
   theme_bw() + 
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=32),axis.title=element_text(size=32,face="bold"))
 
 plot2
 
@@ -110,7 +110,7 @@ plot3 = ggplot(data=citties)+
        , x = "Anteil der Bevölker unter 30 Jahre") + 
   scale_x_continuous(labels = comma) +
   theme_bw() + 
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=12),axis.title=element_text(size=24,face="bold"))
 
 plot3
 
@@ -124,7 +124,7 @@ plot4 = ggplot(data=citties)+
        , x = "Einwohner je km²") + 
   scale_x_continuous(labels = comma) +
   theme_bw() + 
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=12),axis.title=element_text(size=24,face="bold"))
 
 plot4
 
@@ -136,31 +136,31 @@ plot5 = ggplot(data=citties)+
        , x = "ADFC Fahrradklima Index") + 
   scale_x_continuous(labels = comma) +
   theme_bw() + 
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=12),axis.title=element_text(size=24,face="bold"))
 
 plot5
 
 plot6 = ggplot(data=citties)+
-  geom_point(aes(x=PKWs_Mean, y=Value_Mean), size = 2) +
-  geom_smooth(aes(x=PKWs_Mean, y=Value_Mean),method='lm') +
-  geom_label_repel(aes(x = PKWs_Mean, y = Value_Mean, label = Town)) + 
+  geom_point(aes(x=PKWs_Mean, y=Value_Mean), size = 4) +
+  geom_smooth(aes(x=PKWs_Mean, y=Value_Mean),method='lm', size = 4) +
+  geom_label_repel(aes(x = PKWs_Mean, y = Value_Mean, label = Town), size = 12) + 
   labs(y = "Radfahrer pro Stunde je Stadt"
        , x = "PKWs je Person") + 
   scale_x_continuous(labels = comma) +
   theme_bw() + 
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=32),axis.title=element_text(size=32,face="bold"))
 
 plot6
 
 plot7 = ggplot(data=citties)+
-  geom_point(aes(x=Immigrants_Mean, y=Value_Mean), size = 2) +
-  geom_smooth(aes(x=Immigrants_Mean, y=Value_Mean),method='lm') +
-  geom_label_repel(aes(x = Immigrants_Mean, y = Value_Mean, label = Town)) + 
+  geom_point(aes(x=Immigrants_Mean, y=Value_Mean), size = 4) +
+  geom_smooth(aes(x=Immigrants_Mean, y=Value_Mean),method='lm', size = 4) +
+  geom_label_repel(aes(x = Immigrants_Mean, y = Value_Mean, label = Town), size = 12) + 
   labs(y = "Radfahrer pro Stunde je Stadt"
        , x = "Immigrantenanteil") + 
   scale_x_continuous(labels = comma) +
   theme_bw() + 
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=32),axis.title=element_text(size=32,face="bold"))
 
 plot7
 
@@ -235,7 +235,8 @@ plot28 = ggplot(years_shares, aes(y=Observations, x=Year, fill = Year)) +
         axis.ticks.x=element_blank()) + 
   labs(title = "Anteile des Datensatzes nach Jahren"
        , y = "in %"
-       , fill = "Jahre")
+       , fill = "Jahre") +
+  theme(text = element_text(size = 24))
 
 plot28
 
@@ -269,8 +270,7 @@ plot9 = ggplot(data = city_shares2, aes(x = "", y = -Observations,
   #geom_label_repel(aes(x = "", y = -Observations, label = round(Observations))) +
   coord_polar("y") +
   theme_void() +
-  theme(legend.text=element_text(size=12)) +
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(legend.text=element_text(size=12))
 
 plot9
 
@@ -302,7 +302,8 @@ plot10 = ggplot(city_shares, aes(y=Observations, x=Title, fill = Population)) +
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank()) + 
   labs(y = "in %"
-       , fill = "Einwohnerzahl")
+       , fill = "Einwohnerzahl") +
+  theme(text = element_text(size = 20))
 
 plot10
 
@@ -581,26 +582,26 @@ plot59
 plot60 = ggplot(data=stations)+
   geom_boxplot(aes(x=stre_type, y=Value_Mean,fill=stre_type), outlier.colour="black", outlier.shape=16,
                outlier.size=2) +
-  labs(y = "Radfahrer pro Stunde je Zählstelle",fill="Straßentyp",x="") + 
+  labs(y = "Radfahrer pro Stunde je Zählstelle",fill="",x="") + 
   theme_bw() + 
   #theme(axis.title.x=element_blank(),axis.text.x=element_blank(), axis.ticks.x=element_blank()) + 
   theme(axis.text.x = element_text(angle=45)) +
   theme(axis.text.x = element_text(margin = margin(t = 20, r = 0, b = -32, l = 0))) +
-  theme(legend.text=element_text(size=12)) +
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=24),axis.title=element_text(size=14,face="bold")) +
+  theme(legend.text=element_text(size=32))
 
 plot60
 
 plot61 = ggplot(data=stations)+
   geom_boxplot(aes(x=stre_surface, y=Value_Mean,fill=stre_surface), outlier.colour="black", outlier.shape=16,
                outlier.size=2) +
-  labs(y = "Radfahrer pro Stunde je Zählstelle",fill="Straßenbelag",x="") + 
+  labs(y = "Radfahrer pro Stunde je Zählstelle",fill="",x="") + 
   theme_bw() + 
   #theme(axis.title.x=element_blank(),axis.text.x=element_blank(), axis.ticks.x=element_blank()) + 
   theme(axis.text.x = element_text(angle=45)) +
   theme(axis.text.x = element_text(margin = margin(t = 22, r = 0, b = -32, l = 0))) +
-  theme(legend.text=element_text(size=12)) +
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(axis.text=element_text(size=24),axis.title=element_text(size=14,face="bold")) +
+  theme(legend.text=element_text(size=32))
 
 plot61
 
@@ -697,11 +698,10 @@ plot20 = ggplot(data = street_type2, aes(x = "", y = -Numbers,
                                          fill = reorder(Type, -Numbers))) + 
   geom_bar(stat = "identity", color = "black") +
   #geom_label_repel(aes(x = "", y = -Numbers, label = Numbers)) +
-  labs(fill = "Stadt",x="",y="") +
+  labs(fill = "",x="",y="") +
   coord_polar("y") +
   theme_void() +
-  theme(legend.text=element_text(size=12)) +
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(legend.text=element_text(size=32))
 
 plot20
 
@@ -791,28 +791,29 @@ weather$Months = c("01","02","03","04","05","06","07","08","09","10","11","12")
 plot23 = ggplot(NULL, aes(v, p)) + 
   geom_bar(data=weather, aes(x = Months, y= Rain),stat="identity", fill = "lightblue", width=.5, position = "dodge") +
   theme_bw() +
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=12,face="bold")) +
+  theme(axis.text=element_text(size=12),axis.title=element_text(size=24,face="bold")) +
   xlab("Monat") +
   geom_line(data=weather, mapping = aes(x = Months, y = Temperature, group = 1), size = 1 , color = "red") +
   scale_y_continuous(name = "durchschn. Temperatur in C°", 
                      sec.axis = sec_axis(~.*1, name = "maximaler Niederschlag in mm")) + 
   theme(
     axis.title.y = element_text(color = "red"),
-    axis.title.y.right = element_text(color = "blue"))  
+    axis.title.y.right = element_text(color = "blue")) +
+  theme(text = element_text(size = 46))
 
 plot23
 
 plot24 = ggplot(NULL, aes(v, p)) + 
   geom_line(data=weather, mapping = aes(x = Months, y = Value_Mean/5, group = 1), size = 1 , color = "blue") +
   theme_bw() +
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=12,face="bold")) +
+  theme(axis.text=element_text(size=12),axis.title=element_text(size=24,face="bold")) +
   xlab("Monat") +
   geom_line(data=weather, mapping = aes(x = Months, y = Temperature, group = 1), size = 1 , color = "red") +
   scale_y_continuous(name = "durchschn. Temperatur in C°", 
-                     sec.axis = sec_axis(~.*5, name = "Durchschnitt des Radverkehrs je Stunde")) + 
+                     sec.axis = sec_axis(~.*5, name = "Radverkehr je Stunde")) + 
   theme(
     axis.title.y = element_text(color = "red"),
-    axis.title.y.right = element_text(color = "blue"))  
+    axis.title.y.right = element_text(color = "blue"))
 
 plot24
 
@@ -850,12 +851,11 @@ pie(city_shares2$Observations, labels = city_shares2$stre_type)
 plot52 = ggplot(data = city_shares2, aes(x = "", y = -Observations, 
                                         fill = reorder(stre_type, -Observations))) + 
   geom_bar(stat = "identity", color = "black") + 
-  labs(fill = "Stadt",x="",y="") +
+  labs(fill = "",x="",y="") +
   #geom_label_repel(aes(x = "", y = -Observations, label = round(Observations))) +
   coord_polar("y") +
   theme_void() +
-  theme(legend.text=element_text(size=12)) +
-  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))
+  theme(legend.text=element_text(size=32))
 
 plot52
 
@@ -881,6 +881,9 @@ CD = merge(x = CD,y = CoronaData3,
            by = c("Timestamp"),
            all = FALSE)
 
+CD$Timestamp = as.Date(CD$Timestamp)
+class(CD$Timestamp)
+
 rm(list=setdiff(ls(), c("BikeData","CD")))
 
 plot62 = ggplot(data = CD) + 
@@ -893,7 +896,8 @@ plot62 = ggplot(data = CD) +
                      sec.axis = sec_axis(~.*3, name = "Corona Inzidenz")) + 
   theme(
     axis.title.y = element_text(color = "red"),
-    axis.title.y.right = element_text(color = "blue")) +theme(axis.text.x = element_text(angle=45))
+    axis.title.y.right = element_text(color = "blue"))
+
     #theme(axis.title.x=element_blank(),axis.text.x=element_blank(),axis.ticks.x=element_blank())
 
 png(file="plot62.png",width=800, height=800)

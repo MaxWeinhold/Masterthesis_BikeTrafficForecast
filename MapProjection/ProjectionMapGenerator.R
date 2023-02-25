@@ -64,7 +64,7 @@ mapData$Density = NULL
 StationDots = FALSE
 
 Year = c(2023)
-Town = "Berlin"
+Town = "Oberhausen"
 #ProjectionData = as.data.frame(cbind(Year,Town))
 ProjectionData = merge(x = Year,y = Town,all = FALSE)
 names(ProjectionData)[1] = "Year"
@@ -72,7 +72,7 @@ names(ProjectionData)[2] = "Town"
 
 #ProjectionData$Station = "Projection"
 
-Months = c(1:12)
+Months = c(1)
 ProjectionData = merge(x = ProjectionData,y = Months,all = FALSE)
 names(ProjectionData)[3] = "Months"
 
@@ -105,7 +105,7 @@ ProjectionData = merge(x = ProjectionData,y = ADFC_Index,all = FALSE)
 names(ProjectionData)[ncol(ProjectionData)] = "ADFC_Index"
 
 #Ad the time Variables-----------------------------------------------------
-Bundesland = "BER"
+Bundesland = "NRW"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -119,7 +119,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$BER %in% TRUE,]
+pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays

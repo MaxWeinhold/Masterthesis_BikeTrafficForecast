@@ -8,7 +8,7 @@ rm(list=ls())
 
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Münster_Ring_2.csv",sep=",")
+mapData = read.csv(file = "Hamburg_Innenstadt_Altona.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -47,7 +47,7 @@ mapData$Density = NULL
 StationDots = TRUE
 
 Year = c(2012:2030)
-Town = "Münster"
+Town = "Hamburg"
 #ProjectionData = as.data.frame(cbind(Year,Town))
 ProjectionData = merge(x = Year,y = Town,all = FALSE)
 names(ProjectionData)[1] = "Year"
@@ -88,7 +88,7 @@ ProjectionData = merge(x = ProjectionData,y = ADFC_Index,all = FALSE)
 names(ProjectionData)[ncol(ProjectionData)] = "ADFC_Index"
 
 #Ad the time Variables-----------------------------------------------------
-Bundesland = "NRW"
+Bundesland = "HAM"
 ProjectionData$Timestamp = as.POSIXlt(paste(ProjectionData$Day,".",ProjectionData$Months,".",ProjectionData$Year,sep=""),format="%d.%m.%Y")
 
 ProjectionData$Oneway = FALSE
@@ -102,7 +102,7 @@ ProjectionData$Night = ifelse(ProjectionData$Hour<7,1,0)
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten")
 publicHolidays = read.csv(file = "Feiertage.csv",sep=";")
 
-pH=publicHolidays[publicHolidays$NRW %in% TRUE,]
+pH=publicHolidays[publicHolidays$HAM %in% TRUE,]
 ProjectionData$publicHoliday = ifelse(as.Date(ProjectionData$Timestamp) %in% as.Date(pH$Datum,format="%d.%m.%y"),1,0)
 
 #Load data for school holidays
@@ -287,7 +287,7 @@ Destatis19 = read.csv(file = "31122019_Auszug_GV.csv",sep=";")
 Destatis20 = read.csv(file = "31122020_Auszug_GV.csv",sep=";")
 Destatis21 = read.csv(file = "31122021_Auszug_GV.csv",sep=";")
 
-title=", Stadt" #This differs, there are cities and also hanseatic cities
+title=", Freie und Hansestadt" #This differs, there are cities and also hanseatic cities
 
 test12=as.data.frame(Destatis12[Destatis12$X.6 == paste(Town,title,sep=""),])
 test12[17] <- NULL
@@ -452,30 +452,30 @@ fc$Area = predict3$Area
 plot1 = ggplot(data = test,aes(x = Year, y = Inhabitants)) +
   geom_line(data = predict1, aes(x = Year, y = Inhabitants),color = "red", size = 1.5) +
   geom_point(size=1.5)+
-  labs(title = paste("Prognose zur Stadtentwicklung:",Town),color="Formel:") +
+  labs(title = paste("Prognose zur \n Stadtentwicklung:",Town),color="Formel:") +
   xlab("Jahr") +
   ylab("Einwohneranzahl") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   xlim(2012, max(ProjectionData$Year))
 
 plot2 = ggplot(data = test,aes(x = Year, y = Male_Ratio)) +
   geom_point(size=1.5)+
-  labs(title = paste("Prognose zur Stadtentwicklung:",Town),color="Formel:") +
+  labs(title = paste("Prognose zur \n Stadtentwicklung:",Town),color="Formel:") +
   xlab("Jahr") +
   ylab("Geschlechterverhältnis") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   xlim(2012, max(ProjectionData$Year)) +
   geom_line(data = predict2, aes(x = Year, y = Male_Ratio),color = "red", size = 1.5)
 
 plot3 = ggplot(data = test,aes(x = Year, y = Area)) +
   geom_point(size=1.5)+
-  labs(title = paste("Prognose zur Stadtentwicklung:",Town),color="Formel:") +
+  labs(title = paste("Prognose zur \n Stadtentwicklung:",Town),color="Formel:") +
   xlab("Jahr") +
   ylab("Fläche in km²") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   xlim(2012, max(ProjectionData$Year)) +
   geom_line(data = predict3, aes(x = Year, y = Area),color = "red", size = 1.5)
 
@@ -697,12 +697,12 @@ plot3 = ggplot() +
   geom_line(data = Altersgruppen,aes(x = Year, y = young30, color = "unter 30"),size=1.5)+
   geom_line(data = Altersgruppen,aes(x = Year, y = older40, color = "Über 40"),size=1.5)+
   geom_line(data = Altersgruppen,aes(x = Year, y = older60, color = "Über 60"),size=1.5)+
-  labs(title = paste("Prognose zur Stadtentwicklung:",Town),color="Formel:") +
+  labs(title = paste("Prognose zur \n Stadtentwicklung:",Town),color="Formel:") +
   labs(x = "Jahr",
-       y = "Prozentanteil an der Gesamtbevölerung",
+       y = "Prozentanteil an \n der Gesamtbevölerung",
        color = "Altersgruppen") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   xlim(2012, max(ProjectionData$Year))
 
 
@@ -777,11 +777,11 @@ fc$Immigrants = predict1$Immigrants
 plot1 = ggplot(data = Immigrants,aes(x = Year, y = as.numeric(Immigrants))) +
   geom_line(data = predict1, aes(x = Year, y = Immigrants),color = "red", size = 1.5) +
   geom_point(size=1.5)+
-  labs(title = paste("Prognose zur Stadtentwicklung:",Town),color="Formel:") +
+  labs(title = paste("Prognose zur \n Stadtentwicklung:",Town),color="Formel:") +
   xlab("Jahr") +
   ylab("Anzahl der Immigranten") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   xlim(2012, max(ProjectionData$Year))
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
@@ -851,11 +851,11 @@ fc$PKWs = predict1$PKWs
 plot1 = ggplot(data = PKW,aes(x = Year, y = as.numeric(PKWs))) +
   geom_line(data = predict1, aes(x = Year, y = PKWs),color = "red", size = 1.5) +
   geom_point(size=1.5)+
-  labs(title = paste("Prognose zur Stadtentwicklung:",Town),color="Formel:") +
+  labs(title = paste("Prognose zur \n Stadtentwicklung:",Town),color="Formel:") +
   xlab("Jahr") +
   ylab("Anzahl der Autos") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   xlim(2012, max(ProjectionData$Year))
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
@@ -904,7 +904,7 @@ ProjectionData$ADFC_Index2 = ProjectionData$ADFC_Index^2
 
 ProjectionData$ClosestSchool2 = ProjectionData$ClosestSchool^2
 ProjectionData$Schools500mmRadius2 = ProjectionData$Schools500mmRadius^2
-ProjectionData$UniBuild2kmRadius2 = ProjectionData$UniBuild2kmRadius2^2
+ProjectionData$UniBuild2kmRadius2 = ProjectionData$UniBuild2kmRadius^2
 
 ProjectionData$ClosestUniBuild2 = ProjectionData$ClosestUniBuild^2
 ProjectionData$UniBuild500mmRadius2 = ProjectionData$UniBuild500mmRadius^2
@@ -912,7 +912,7 @@ ProjectionData$ClosestSchool2 = ProjectionData$ClosestSchool^2
 
 ProjectionData$ClosestClothesShop2 = ProjectionData$ClosestClothesShop^2
 ProjectionData$ClothesShop500mmRadius2 = ProjectionData$ClothesShop500mmRadius^2
-ProjectionData$ClothesShop2kmRadius2 = DresdProjectionDataenData$ClothesShop2kmRadius^2
+ProjectionData$ClothesShop2kmRadius2 = ProjectionData$ClothesShop2kmRadius^2
 
 ProjectionData$ClosestTrainS2 = ProjectionData$ClosestTrainS^2
 ProjectionData$ClosestBridge2 = ProjectionData$ClosestBridge^2
@@ -921,12 +921,9 @@ ProjectionData$PKWs2 = ProjectionData$PKWs^2
 
 ProjectionData$CorInz2 = ProjectionData$CorInz^2
 ProjectionData$stre_dist2 = ProjectionData$stre_dist^2
-ProjectionData$stre_density2 = ProjectionData$stre_density^2
 ProjectionData$stre_lengths2 = ProjectionData$stre_lengths^2
 ProjectionData$stre_lanes2 = ProjectionData$stre_lanes^2
 ProjectionData$stre_maxspeed2 = ProjectionData$stre_maxspeed^2
-ProjectionData$os_way_to_city2 = ProjectionData$os_way_to_city^2
-ProjectionData$cluster_way_to_city2 = ProjectionData$cluster_way_to_city^2
 
 ProjectionData$Rain3 = ProjectionData$Rain^3
 ProjectionData$Inhabitants3 = ProjectionData$Inhabitants^3
@@ -937,8 +934,6 @@ ProjectionData$ClosestBridge3 = ProjectionData$ClosestBridge3
 ProjectionData$stre_lengths3 = ProjectionData$stre_lengths^3
 ProjectionData$stre_lanes3 = ProjectionData$stre_lanes^3
 ProjectionData$stre_maxspeed3 = ProjectionData$stre_maxspeed^3
-ProjectionData$os_way_to_city3 = ProjectionData$os_way_to_city^3
-ProjectionData$cluster_way_to_city3 = ProjectionData$cluster_way_to_city^3
 
 ProjectionData$SignalsRatio = ProjectionData$UnmCross250mmRadius/(ProjectionData$UnmCross250mmRadius + ProjectionData$Signals250mmRadius + 1)
 
@@ -962,6 +957,8 @@ names(ProjectionData)
 #ProjectionData = na.omit(ProjectionData)
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
+
+summary(ProjectionData)
 
 load("Modell3_RF_newDataset3.rdata")
 #load("Modell3_RF_newDataset2.rdata")
@@ -996,11 +993,11 @@ plot1 = ggplot() +
   geom_line(data = ProjectionData3, aes(x = Timestamp, y = Value,color = "median"), size = 1.2) +
   geom_line(data = ProjectionData4, aes(x = Timestamp, y = Value,color = "min"), size = 1.2) +
   geom_line(data = ProjectionData5, aes(x = Timestamp, y = Value,color = "max"), size = 1.2) +
-  labs(title = paste("Prognose zur Entwicklung des Radverkehrs in ",Town),color="Legende:") +
+  labs(title = paste("Prognose zur Entwicklung \n des Radverkehrs in ",Town),color="Legende:") +
   xlab("Jahr") +
   ylab("Anzahl der Fahrräder Im Schnitt") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   ylim(0, max(ProjectionData5$Value)*1.05)
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
@@ -1025,11 +1022,11 @@ plot1 = ggplot() +
   geom_line(data = ProjectionData3, aes(x = Timestamp, y = Value,color = "median"), size = 1.2) +
   geom_line(data = ProjectionData4, aes(x = Timestamp, y = Value,color = "min"), size = 1.2) +
   geom_line(data = ProjectionData5, aes(x = Timestamp, y = Value,color = "max"), size = 1.2) +
-  labs(title = paste("Prognose zur Entwicklung des Radverkehrs in ",Town),color="Legende:") +
+  labs(title = paste("Prognose zur Entwicklung \n des Radverkehrs in ",Town),color="Legende:") +
   xlab("Jahr") +
   ylab("Anzahl der Fahrräder Im Schnitt") +
   theme_bw() +
-  theme(text = element_text(size = 22)) +
+  theme(text = element_text(size = 32)) +
   ylim(0, max(ProjectionData5$Value)*1.05)
 
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/thesis_german/Plots")
