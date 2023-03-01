@@ -6,8 +6,8 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces (a und b). Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{23}{figure.caption.6}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011–2014) nach Zensus Blöcken in Florida.}}{25}{figure.caption.7}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.\relax }}{29}{figure.caption.8}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte\relax }}{30}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.\relax }}{30}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte\relax }}{31}{figure.caption.9}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Verteilung der Beobachtung nach Jahren\relax }}{32}{figure.caption.10}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Wettterdaten im Überblick\relax }}{33}{figure.caption.11}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Temperatur und Niederschlag}}}{33}{subfigure.4.1}%
@@ -19,25 +19,25 @@
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Verhältnis von Bevölkerung und Fahrradaufkommen\relax }}{36}{figure.caption.14}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Radverkehr nach PKWs je Person}}}{36}{subfigure.7.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Radverkehr nach Immigrantenanteil}}}{36}{subfigure.7.2}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Verlauf der Corona Inzidenz und des Radverkehrs\relax }}{37}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Verlauf der Corona Inzidenz und des Radverkehrs\relax }}{38}{figure.caption.15}%
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Radverkehr im Lockdown\relax }}{39}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Verteilung von Straßentypen im Datensatz nach der alten Ermittlung\relax }}{46}{figure.caption.17}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering alte Aufstellung}}}{46}{subfigure.10.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering neue Aufstellung}}}{46}{subfigure.10.2}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Verteilung von Straßentypen im Datensatz nach der Version\relax }}{47}{figure.caption.17}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering alte Aufstellung}}}{47}{subfigure.10.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering neue Aufstellung}}}{47}{subfigure.10.2}%
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Beispiel der Straßentypanalyse\relax }}{48}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Radverkehr nach Straßenbeschaffenheit\relax }}{50}{figure.caption.19}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Straßentypen}}}{50}{subfigure.12.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Straßenbelag}}}{50}{subfigure.12.2}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Radverkehr nach Straßenbeschaffenheit\relax }}{51}{figure.caption.19}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Straßentypen}}}{51}{subfigure.12.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Straßenbelag}}}{51}{subfigure.12.2}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support-Vector-Machines}}{56}{figure.caption.20}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support-Vector-Machines}}{56}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{57}{figure.caption.22}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{59}{figure.caption.23}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Beispiel eines Random Forests\relax }}{60}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Beispiel eines neuronalen Netzes\relax }}{62}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Aktivierungsfunktionen}}{63}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Gradiemt Descent}}{64}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Beispiel einer Cross Validation\relax }}{66}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support-Vector-Machines}}{57}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support-Vector-Machines}}{57}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{58}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{60}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Beispiel eines Random Forests\relax }}{61}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Beispiel eines neuronalen Netzes\relax }}{63}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Aktivierungsfunktionen}}{64}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Gradiemt Descent}}{65}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Beispiel einer Cross Validation\relax }}{68}{figure.caption.28}%
 \addvspace {10pt}
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Feature Selection Ergebnis der OLS Regression in 6 Modellen\relax }}{73}{figure.caption.29}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Support Vector Regression Performance nach Anteil des Datensatzes\relax }}{75}{figure.caption.31}%
@@ -51,7 +51,7 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume}}}{79}{subfigure.5.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{79}{subfigure.5.2}%
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{80}{figure.caption.36}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Räumliche Modell Projektion: Modellvergleich\relax }}{87}{figure.caption.39}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Räumliche Modellprojektion: Modellvergleich\relax }}{87}{figure.caption.39}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Modell 1}}}{87}{subfigure.7.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Modell 2}}}{87}{subfigure.7.2}%
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{89}{figure.caption.41}%
@@ -61,10 +61,10 @@
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Modellprojektionen in Mannheim und Oberhausen\relax }}{91}{figure.caption.43}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Mannheim}}}{91}{subfigure.10.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Oberhausen}}}{91}{subfigure.10.2}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Modellprojektionen in Dresden\relax }}{92}{figure.caption.44}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Stadtentwicklungsprognose\relax }}{93}{figure.caption.45}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Angenommene Bevölkerungsentwicklung in Hamburg}}}{93}{subfigure.12.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Angenommene demographische Entwicklung in Hamburg}}}{93}{subfigure.12.2}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Modellprojektionen in Dresden\relax }}{93}{figure.caption.44}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Stadtentwicklungsprognose\relax }}{94}{figure.caption.45}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Angenommene Bevölkerungsentwicklung in Hamburg}}}{94}{subfigure.12.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Angenommene demographische Entwicklung in Hamburg}}}{94}{subfigure.12.2}%
 \contentsline {figure}{\numberline {5.13}{\ignorespaces Radverkehrsentwicklungsprognose für Hamburg\relax }}{94}{figure.caption.46}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Monatliche Radverkehrsprognose}}}{94}{subfigure.13.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Jährliche Radverkehrsprognose}}}{94}{subfigure.13.2}%

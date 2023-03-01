@@ -13,38 +13,38 @@
 \contentsline {subsection}{\numberline {2.2.4}Faktor der städtischen Unterschiede}{21}{subsection.2.2.4}%
 \contentsline {subsection}{\numberline {2.2.5}Faktor Radverkehrsunfälle}{22}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Sonstige Faktoren}{24}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Forschungslücken und Anknüpfungspunkte}{25}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Forschungslücken und Anknüpfungspunkte}{26}{section.2.3}%
 \contentsline {chapter}{\numberline {3.}Zusammensetzung des Datensatz}{28}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Fahrradzähler}{28}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Fahrradzähler}{29}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Wetterdaten}{31}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Demographische und soziale Statistiken}{31}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Demographische und soziale Statistiken}{33}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Statistisches Bundesamt}{33}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}ADFC Fahrradindex}{34}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Corona-Daten}{36}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Open-Street-Map-Daten}{38}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Ausgewählte POIs}{40}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.3.2}ADFC Fahrradindex}{36}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Corona-Daten}{37}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Open-Street-Map-Daten}{40}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Ausgewählte POIs}{41}{subsection.3.5.1}%
 \contentsline {subsection}{\numberline {3.5.2}Ausgestaltung des öffentlichen Verkehrs}{44}{subsection.3.5.2}%
 \contentsline {subsection}{\numberline {3.5.3}Straßentypen}{45}{subsection.3.5.3}%
 \contentsline {subsection}{\numberline {3.5.4}Sonstige}{50}{subsection.3.5.4}%
-\contentsline {chapter}{\numberline {4.}Verwendete Methoden}{51}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Probleme zur Autokorrelation}{51}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Lagged Variablen}{52}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Erklärende Variablen}{53}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Resampling}{54}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}OLS-Regression}{54}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Support-Vector-Regression}{55}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Random-Forests-Regression}{58}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Neuronale Netze}{61}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{61}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{63}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Validation}{65}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Cross Validation}{65}{subsection.4.6.1}%
+\contentsline {chapter}{\numberline {4.}Verwendete Methoden}{52}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Probleme zur Autokorrelation}{52}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Lagged Variablen}{53}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Erklärende Variablen}{54}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Resampling}{55}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}OLS-Regression}{55}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Support-Vector-Regression}{56}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Random-Forests-Regression}{59}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Neuronale Netze}{62}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Aufbau eines neuronalen Netzes}{62}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Berechnung eines neuronalen Netzes}{64}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Validation}{66}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Cross Validation}{67}{subsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.6.2}Conditional-Validation-Set-Building}{67}{subsection.4.6.2}%
 \contentsline {subsection}{\numberline {4.6.3}Weighted-Subset-Building}{69}{subsection.4.6.3}%
 \contentsline {chapter}{\numberline {5.}Ergebnisse}{71}{chapter.5}%
 \contentsline {section}{\numberline {5.1}OLS-Regression}{71}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Support-Vector-Regression}{74}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Random-Forest-Regression}{78}{section.5.3}%
+\contentsline {section}{\numberline {5.3}Random-Forest-Regression}{77}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Neuronales Netz}{81}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Modellprojektion}{83}{section.5.5}%
 \contentsline {section}{\numberline {5.6}Modellprognosen}{92}{section.5.6}%

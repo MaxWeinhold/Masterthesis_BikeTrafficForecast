@@ -47,12 +47,6 @@ Colace, F., De~Santo, M., Lombardi, M., Pascale, F., Santaniello, D., and
   Fourth International Congress on Information and Communication Technology},
   pages 353--362, Singapore. Springer Singapore.
 
-\bibitem[Corporation and Weston, 2022]{doParallel}
-Corporation, M. and Weston, S. (2022).
-\newblock {\em doParallel: Foreach Parallel Adaptor for the 'parallel'
-  Package}.
-\newblock R package version 1.0.17.
-
 \bibitem[Destatis, 2022a]{Destatis2022c}
 Destatis (2022a).
 \newblock Ausländer: Kreise, stichtag, geschlecht: Tabelle 12521-0040.
@@ -231,6 +225,12 @@ Meyer, D., Dimitriadou, E., Hornik, K., Weingessel, A., and Leisch, F. (2021).
 \newblock {\em e1071: Misc Functions of the Department of Statistics,
   Probability Theory Group (Formerly: E1071), TU Wien}.
 \newblock R package version 1.7-9.
+
+\bibitem[Microsoft and Weston, 2022]{doParallel}
+Microsoft and Weston, S. (2022).
+\newblock {\em doParallel: Foreach Parallel Adaptor for the 'parallel'
+  Package}.
+\newblock R package version 1.0.17.
 
 \bibitem[{Microsoft} and Weston, 2022]{foreach}
 {Microsoft} and Weston, S. (2022).

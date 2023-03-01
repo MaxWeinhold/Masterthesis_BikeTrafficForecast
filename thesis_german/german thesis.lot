@@ -5,7 +5,7 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \contentsline {table}{\numberline {5.1}{\ignorespaces Performance des OLS-Modells\relax }}{74}{table.caption.30}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Performance des SVR-Modells\relax }}{77}{table.caption.33}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Performance des SVR-Modells\relax }}{78}{table.caption.33}%
 \contentsline {table}{\numberline {5.3}{\ignorespaces Performance des RF Modells\relax }}{81}{table.caption.37}%
 \contentsline {table}{\numberline {5.4}{\ignorespaces Performance des neuronalen Netzes\relax }}{82}{table.caption.38}%
 \contentsline {table}{\numberline {5.5}{\ignorespaces Performance des dritten RF Modells\relax }}{88}{table.caption.40}%
