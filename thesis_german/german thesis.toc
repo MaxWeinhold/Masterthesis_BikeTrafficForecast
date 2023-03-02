@@ -40,7 +40,7 @@
 \contentsline {section}{\numberline {4.6}Validation}{66}{section.4.6}%
 \contentsline {subsection}{\numberline {4.6.1}Cross Validation}{67}{subsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.6.2}Conditional-Validation-Set-Building}{67}{subsection.4.6.2}%
-\contentsline {subsection}{\numberline {4.6.3}Weighted-Subset-Building}{69}{subsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.6.3}Weighted-Subset-Building}{70}{subsection.4.6.3}%
 \contentsline {chapter}{\numberline {5.}Ergebnisse}{71}{chapter.5}%
 \contentsline {section}{\numberline {5.1}OLS-Regression}{71}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Support-Vector-Regression}{74}{section.5.2}%
@@ -50,6 +50,6 @@
 \contentsline {section}{\numberline {5.6}Modellprognosen}{92}{section.5.6}%
 \contentsline {section}{\numberline {5.7}Räumliche Korrelation zu Verkehrsunfällen}{93}{section.5.7}%
 \contentsline {chapter}{\numberline {6.}Diskussion}{98}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Fazit}{102}{section.6.1}%
-\contentsline {chapter}{\numberline {7.}Anhang}{104}{chapter.7}%
-\contentsline {chapter}{Literaturverzeichnis}{116}{figure.caption.61}%
+\contentsline {section}{\numberline {6.1}Fazit}{103}{section.6.1}%
+\contentsline {chapter}{\numberline {7.}Anhang}{105}{chapter.7}%
+\contentsline {chapter}{Literaturverzeichnis}{117}{figure.caption.61}%
