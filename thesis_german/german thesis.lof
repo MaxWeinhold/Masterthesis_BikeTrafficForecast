@@ -1,10 +1,10 @@
 \babel@toc {ngerman}{}\relax 
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Anzahl der Leihräder (A) Singapore zwischen 8-9 Uhr am 25. Juni 2017; (B) New Taipei City zwischen 18-19 Uhr am 1. August 2018; (C) Chicago zwischen 16-18 Uhr am 26. August 2019; (D) New York zwischen 17-18 Uhr am 9. Juni 2014.}}{14}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Anzahl der Leihräder }}{13}{figure.caption.4}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Fahrradaufkommen für Glasgow 2017}}{16}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces (a und b). Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{23}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011–2014) nach Zensus Blöcken in Florida.}}{25}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Berechnete Wahrscheinlichkeiten für Radunfälle in Philadelphia}}{23}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Räumliche Verteilung aller Fahrradunfälle (2011 bis 2014) nach Zensus Blöcken in Florida.}}{24}{figure.caption.7}%
 \addvspace {10pt}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Städte die im Datensatz vertreten sind.\relax }}{30}{figure.caption.8}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Verteilung der Beobachtung nach Einwohnergröße der Städte\relax }}{31}{figure.caption.9}%
@@ -31,30 +31,30 @@
 \addvspace {10pt}
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperebenen (Hyperplanes) in Support-Vector-Machines}}{57}{figure.caption.20}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Soft Margins in Support-Vector-Machines}}{57}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare SVR}}{58}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Eindimensionale lineare Support-Vector-Regression}}{58}{figure.caption.22}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Entscheidungsbaum basierend auf Daten von Fahrradzählstationen in Mannheim und Daten des DWD 2016 bis 2022.}}{60}{figure.caption.23}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Beispiel eines Random Forests\relax }}{61}{figure.caption.24}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Beispiel eines neuronalen Netzes\relax }}{63}{figure.caption.25}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Aktivierungsfunktionen}}{64}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Gradiemt Descent}}{65}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Gradient Descent}}{65}{figure.caption.27}%
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Beispiel einer Cross Validation\relax }}{68}{figure.caption.28}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature Selection Ergebnis der OLS Regression in 6 Modellen\relax }}{73}{figure.caption.29}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Support Vector Regression Performance nach Anteil des Datensatzes\relax }}{75}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature Selection Ergebnis der OLS-Regression in 6 Modellen\relax }}{73}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Support-Vector-Regression-Performance nach Anteil des Datensatzes\relax }}{75}{figure.caption.31}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{75}{subfigure.2.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{75}{subfigure.2.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Support Vector Regression Ergebnis der RF Regression in 6 Modellen\relax }}{76}{figure.caption.32}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Random Forest Performance nach Anteil des Datensatzes\relax }}{78}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Support-Vector-Regression Ergebnis in 6 Modellen\relax }}{76}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Random-Forest-Performance nach Anteil des Datensatzes\relax }}{78}{figure.caption.34}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach zum Training verwendeten Datensatzanteil}}}{78}{subfigure.4.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{78}{subfigure.4.2}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Random Forest Performance nach Anzahl der Zufallsbäume\relax }}{79}{figure.caption.35}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Random-Forest-Performance nach Anzahl der Zufallsbäume\relax }}{79}{figure.caption.35}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Bestimmtheitsmaß nach Anzahl der Zufallsbäume}}}{79}{subfigure.5.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Bestimmtheitsmaß nach Trainingsdauer in Minuten}}}{79}{subfigure.5.2}%
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{80}{figure.caption.36}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Räumliche Modellprojektion: Modellvergleich\relax }}{87}{figure.caption.39}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering nach Modell 1}}}{87}{subfigure.7.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering nach Modell 2}}}{87}{subfigure.7.2}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Feature Selection Ergebnis der RF Regression in 6 Modellen\relax }}{89}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Feature-Selection-Ergebnis der RF Regression in 6 Modellen\relax }}{89}{figure.caption.41}%
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Modellprojektionen in Hamburg und Leipzig\relax }}{90}{figure.caption.42}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Hamburg}}}{90}{subfigure.9.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Leipzig}}}{90}{subfigure.9.2}%
