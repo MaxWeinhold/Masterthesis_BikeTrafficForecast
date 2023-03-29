@@ -6,7 +6,7 @@ Alattar, M.~A., Cottrill, C.~D., and Beecroft, M. (2021).
   study of the city of glasgow.
 \newblock {\em Transportation Research Interdisciplinary Perspectives}.
 
-\bibitem[Awad and Khanna, 2015]{Awad2015}
+\bibitem[Awad und Khanna, 2015]{Awad2015}
 Awad, M. and Khanna, R. (2015).
 \newblock {\em Support Vector Regression}, pages 67--80.
 \newblock Apress, Berkeley, CA.
@@ -33,7 +33,7 @@ Broucke, S.~V., Piña, L. M.~V., Do, T.~H., and Deligiannis, N. (2019).
 \newblock In {\em 2019 IEEE International Smart Cities Conference (ISC2)},
   pages 432--437.
 
-\bibitem[Carl and Dror, 2015]{Carl2015}
+\bibitem[Carl und Dror, 2015]{Carl2015}
 Carl, K. and Dror, M. (2015).
 \newblock Construction of a topographical road graph for bicycle tour routes.
 \newblock {\em Sports Technology}.
@@ -69,14 +69,14 @@ Eisenberger, D. (2015).
   fahrradmarkt 2015sehr gutes jahr für die deutsche fahrradindustrie.
 \newblock {\em Zweirad-Industrie-Verband e.V.}
 
-\bibitem[Gao and Chen, 2022]{Gao2022}
+\bibitem[Gao und Chen, 2022]{Gao2022}
 Gao, C. and Chen, Y. (2022).
 \newblock Using machine learning methods to predict demand for bike sharing.
 \newblock In Stienmetz, J.~L., Ferrer-Rosell, B., and Massimo, D., editors,
   {\em Information and Communication Technologies in Tourism 2022}, pages
   282--296, Cham. Springer International Publishing.
 
-\bibitem[Goldmann and Wessel, 2021]{Goldmann2021}
+\bibitem[Goldmann und Wessel, 2021]{Goldmann2021}
 Goldmann, K. and Wessel, J. (2021).
 \newblock Some people feel the rain, others just get wet: An analysis of
   regional differences in the effects of weather on cycling.
@@ -90,7 +90,7 @@ Hankey, S., Zhang, W., Le, H.~T., Hystad, P., and James, P. (2021).
 \newblock {\em Transportation Research Part D: Transport and Environment},
   90:102651.
 
-\bibitem[Harvey and Krizek, 2007]{Harvey2007}
+\bibitem[Harvey und Krizek, 2007]{Harvey2007}
 Harvey, F. and Krizek, K. (2007).
 \newblock Commuter bicyclist behavior and facility disruption.
 \newblock {\em Minnesota Department of Transportation, Research Services
@@ -158,7 +158,7 @@ Kodzo, J. (2022).
 \newblock Wie verlief der erste lockdown in deutschland?
 \newblock {\em Wirtschafts Woche}.
 
-\bibitem[Kodzo and Imöhl, 2022]{Kodzo2022a}
+\bibitem[Kodzo und Imöhl, 2022]{Kodzo2022a}
 Kodzo, J. and Imöhl, S. (2022).
 \newblock So ist der zweite lockdown in deutschland verlaufen.
 \newblock {\em Wirtschafts Woche}.
@@ -170,12 +170,12 @@ Kondo, M.~C., Morrison, C., Guerra, E., Kaufman, E.~J., and Wiebe, D.~J.
   lanes and bicycle crashes.
 \newblock {\em Safety Science}, 103:225--233.
 
-\bibitem[Kursa and Rudnicki, 2010]{Kursa2010}
+\bibitem[Kursa und Rudnicki, 2010]{Kursa2010}
 Kursa, M.~B. and Rudnicki, W.~R. (2010).
 \newblock Feature selection with the boruta package.
 \newblock {\em Journal of Statistical Software}, 36(11):1–13.
 
-\bibitem[Lee and Sener, 2020]{Lee2020}
+\bibitem[Lee und Sener, 2020]{Lee2020}
 Lee, K. and Sener, I.~N. (2020).
 \newblock Emerging data for pedestrian and bicycle monitoring: Sources and
   applications.
@@ -196,7 +196,7 @@ Li, Y., Zheng, Y., Zhang, H., and Chen, L. (2015).
   on Advances in Geographic Information Systems}, SIGSPATIAL '15, New York, NY,
   USA. Association for Computing Machinery.
 
-\bibitem[Liaw and Wiener, 2002]{Liaw2002}
+\bibitem[Liaw und Wiener, 2002]{Liaw2002}
 Liaw, A. and Wiener, M. (2002).
 \newblock Classification and regression by randomforest.
 \newblock {\em R News}, 2(3):18--22.
@@ -226,13 +226,13 @@ Meyer, D., Dimitriadou, E., Hornik, K., Weingessel, A., and Leisch, F. (2021).
   Probability Theory Group (Formerly: E1071), TU Wien}.
 \newblock R package version 1.7-9.
 
-\bibitem[Microsoft and Weston, 2022]{doParallel}
+\bibitem[Microsoft und Weston, 2022]{doParallel}
 Microsoft and Weston, S. (2022).
 \newblock {\em doParallel: Foreach Parallel Adaptor for the 'parallel'
   Package}.
 \newblock R package version 1.0.17.
 
-\bibitem[{Microsoft} and Weston, 2022]{foreach}
+\bibitem[{Microsoft} und Weston, 2022]{foreach}
 {Microsoft} and Weston, S. (2022).
 \newblock {\em foreach: Provides Foreach Looping Construct}.
 \newblock R package version 1.5.2.
@@ -241,7 +241,7 @@ Microsoft and Weston, S. (2022).
 Mitchell, P.~P. (2018).
 \newblock Predicting bike-sharing traffic flow using machine learning.
 
-\bibitem[Musakwa and Selala, 2016]{Musakwa2016}
+\bibitem[Musakwa und Selala, 2016]{Musakwa2016}
 Musakwa, W. and Selala, K.~M. (2016).
 \newblock Mapping cycling patterns and trends using strava metro data in the
   city of johannesburg, south africa.
@@ -271,7 +271,7 @@ Pebesma, E. (2018).
   Data}.
 \newblock {\em {The R Journal}}, 10(1):439--446.
 
-\bibitem[Pisner and Schnyer, 2020]{Pisner2020}
+\bibitem[Pisner und Schnyer, 2020]{Pisner2020}
 Pisner, D.~A. and Schnyer, D.~M. (2020).
 \newblock Chapter 6 - support vector machine.
 \newblock In Mechelli, A. and Vieira, S., editors, {\em Machine Learning},
@@ -302,7 +302,7 @@ Reddy, S., Shilton, K., Denisov, G., Cenizal, C., Estrin, D., and Srivastava,
 \newblock Biketastic: Sensing and mapping for better biking.
 \newblock volume~3, pages 1817--1820.
 
-\bibitem[Rietveld and Daniel, 2004]{Rietveld2004}
+\bibitem[Rietveld und Daniel, 2004]{Rietveld2004}
 Rietveld, P. and Daniel, V. (2004).
 \newblock Determinants of bicycle use: do municipal policies matter?
 \newblock {\em Transportation Research Part A: Policy and Practice},
@@ -319,19 +319,19 @@ Saha, D., Alluri, P., Gan, A., and Wu, W. (2018).
   conditional autoregressive models.
 \newblock {\em Accident Analysis and Prevention}, 118:166--177.
 
-\bibitem[Stock and Watson, 2015a]{Stock2015b}
+\bibitem[Stock und Watson, 2015a]{Stock2015b}
 Stock, J.~H. and Watson, M.~W. (2015a).
 \newblock {\em Introduction to Econometrics}, chapter Estimation of Dynamic
   Causal Effects, pages 635--683.
 \newblock PEARSON, 3 edition.
 
-\bibitem[Stock and Watson, 2015b]{Stock2015a}
+\bibitem[Stock und Watson, 2015b]{Stock2015a}
 Stock, J.~H. and Watson, M.~W. (2015b).
 \newblock {\em Introduction to Econometrics}, chapter Introduction to Time
   Series Regression and Forecasting, pages 568--634.
 \newblock PEARSON, 3 edition.
 
-\bibitem[Thomas and DeRobertis, 2013]{Thomas2013}
+\bibitem[Thomas und DeRobertis, 2013]{Thomas2013}
 Thomas, B. and DeRobertis, M. (2013).
 \newblock The safety of urban cycle tracks: A review of the literature.
 \newblock {\em Accident Analysis and Prevention}, 52:219--227.

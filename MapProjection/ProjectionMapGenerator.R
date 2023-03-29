@@ -25,7 +25,7 @@ rm(list=ls())
 
 #Load pre generated map data and combine it with adjustable values
 setwd("D:/STUDIUM/Münster/7. Semester/BikeProjections")
-mapData = read.csv(file = "Berlin.csv",sep=",")
+mapData = read.csv(file = "Oberhausen3.csv",sep=",")
 mapData$Hour = NULL
 mapData$Months = NULL
 mapData$Day = NULL
@@ -72,11 +72,11 @@ names(ProjectionData)[2] = "Town"
 
 #ProjectionData$Station = "Projection"
 
-Months = c(1)
+Months = c(6)
 ProjectionData = merge(x = ProjectionData,y = Months,all = FALSE)
 names(ProjectionData)[3] = "Months"
 
-Day = c(1:31)
+Day = c(15)
 ProjectionData = merge(x = ProjectionData,y = Day,all = FALSE)
 names(ProjectionData)[4] = "Day"
 
@@ -886,11 +886,11 @@ nrow(ProjectionData)
 #Create Map
 
 #bounding box for our map
-myLocation <- c(13.37382644656102, 52.50769458976971, 13.421956524036935, 52.52782329267116) #Berlin klein
+#myLocation <- c(13.37382644656102, 52.50769458976971, 13.421956524036935, 52.52782329267116) #Berlin klein
 #myLocation <- c(13.347453465501058, 52.502773208754654, 13.423154875492763, 52.5310532932502) #Berlin Groß
 #myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.064814222798276) #Dresden
 #myLocation <- c(12.354394062873975, 51.32818719589893, 12.400956572541,51.35298495927908) #Leipzig
-#myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
+myLocation <- c(6.808134941665549, 51.4642336514862, 6.897937268789374, 51.50006589136935) #Oberhausen2
 #myLocation <- c(9.948052762410784, 53.539459805323816, 10.026187913111105, 53.568930771301424)#Hamburg Innenstadt + Altona
 #myLocation <- c(8.45440628005673,49.47735485105553,   8.497814937261264,49.49986824573402) # Mannheim Innensatdt
 #myLocation <- c(9.968615748457593,53.539830498755265,   10.012409572679795,53.55974898224376) # Hamburg Innensatdt
@@ -900,7 +900,7 @@ myLocation <- c(13.37382644656102, 52.50769458976971, 13.421956524036935, 52.527
 #myLocation <- c(7.613588137509167,51.955501852036285,   7.638086559861329,51.96820564471896) # Muenster Innenstadt
 
 
-mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=15)
+mad_map <- get_stamenmap(bbox=myLocation, maptype="terrain-background", zoom=13)
 
 #write.csv(ProjectionData,"Mannheim_Innenstadt_Oststadt.csv")
 
