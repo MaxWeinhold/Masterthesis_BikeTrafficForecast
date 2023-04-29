@@ -344,7 +344,6 @@ rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summary
 
 #Destatis Data -----------------------------------------------------------------
 
-
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Einwohner_Destatis")
 Destatis12 = read.csv(file = "31122012_Auszug_GV.csv",sep=";")
 Destatis13 = read.csv(file = "31122013_Auszug_GV.csv",sep=";")
@@ -554,10 +553,6 @@ ProjectionData$City_Lat = as.numeric(ProjectionData$City_Lat)
 summary(ProjectionData)
 
 rm(list=setdiff(ls(), c("mapData","ProjectionData","Variables_you_need","summaryBikeData","Town","Year","Bundesland","StationDots")))
-
-#Variables_you_need
-
-#Load data (source: Destatis)
 
 setwd("D:/STUDIUM/Münster/7. Semester/Masterarbeit Daten/Destatis")
 Destatis12 = read.csv(file = "Altersgruppen 2012.csv",sep=";", encoding="ISO-8859-1", skip = 5)
@@ -864,17 +859,17 @@ if(is.null(ProjectionData$young302)){ProjectionData$young302 = ProjectionData$yo
 if(is.null(ProjectionData$PKWs2)){ProjectionData$PKWs2 = ProjectionData$PKWs^2}
 
 names(ProjectionData)
-#ProjectionData = na.omit(ProjectionData)
+
 #calculate Values --------------------------------------------------------------
 setwd("D:/STUDIUM/Münster/7. Semester")
 
+#Load the modell to create predictions
 load("Modell3_RF_newDataset3.rdata")
 #load("Modell3_RF_newDataset2.rdata")
 
 summary(model)
 
 library(randomForest)
-#projection_pred <- model %>% predict(ProjectionData, type='response')
 projection_pred <- predict(model, newdata = ProjectionData, type='response')
 
 summary(as.numeric(projection_pred))
@@ -883,9 +878,11 @@ summary(exp(as.numeric(projection_pred)))
 ProjectionData$Value = exp(as.numeric(projection_pred))
 summary(ProjectionData$Value)
 nrow(ProjectionData)
-#Create Map
+
+#Create Map---------------------------------------------------------------------
 
 #bounding box for our map
+#choose one of these:
 #myLocation <- c(13.37382644656102, 52.50769458976971, 13.421956524036935, 52.52782329267116) #Berlin klein
 #myLocation <- c(13.347453465501058, 52.502773208754654, 13.423154875492763, 52.5310532932502) #Berlin Groß
 #myLocation <- c(13.711855297008274,51.03555566091716, 13.787939108894271,51.064814222798276) #Dresden
@@ -939,21 +936,6 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
       streetPositions = streetPositions[streetPositions$Hour==levels(as.factor(ProjectionData$Hour))[k],]
       nrow(streetPositions)
       
-      #names(streetPositions)
-      #streetPositions$Lon
-      #streetPositions$Lon2
-      #streetPositions$Lat
-      #streetPositions$Lat2
-      #summary(streetPositions$Value)
-      
-      #summary(streetPositions)
-      
-      #summary(ProjectionData$Value)
-      
-      #ProjectionData = na.omit(ProjectionData)
-      
-      #max(ProjectionData$Value)
-      
       streetPositions <- streetPositions[, !duplicated(colnames(streetPositions))]
       
       map_plot = ggmap(mad_map) + geom_segment(data = streetPositions, aes(x = Lon, y = Lat, xend = Lon2, yend = Lat2, color = Value), size = 1.2, alpha = 1, lineend = "round") +
@@ -986,13 +968,5 @@ for(i in 1:nlevels(as.factor(ProjectionData$Months))){
   
 }
 
-
-
 rm(map_plot)
-
-
 beep("mario")
-
-
-
-

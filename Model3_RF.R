@@ -191,6 +191,7 @@ Evaluation_DF <- Evaluation_DF[, c(5,1,2,3,4)]
 
 beep("mario")
 
+#Save the final modell as .rdata. This file will contain the modell and will be later used to make predictions.
 setwd("C:/Users/MaxWe/Documents/GitHub/Masterthesis_BikeTrafficForecast/ValidationResults")
 write.csv(Evaluation_DF,"Modell3_RF_newDataset3.csv")
 save(model,file="Modell3_RF_newDataset3.rdata")

@@ -22,6 +22,7 @@ load("ValidationSets.rdata")
 
 names(validation_set[[1]])
 
+#n contains the number of observations each split will contain
 n = 200000
 
 for_start_time <- Sys.time()
@@ -31,7 +32,6 @@ for(i in 1:length(validation_set)){
   n_stations = nlevels(as.factor(validation_set[[i]]$Station))
   validation_set[[i]]$chosen = 0
   
-  #validation_set[[i]] = na.omit(validation_set[[i]])
   
   size_before = as.numeric(object.size(validation_set))
   
